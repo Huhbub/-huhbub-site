@@ -1,0 +1,511 @@
+---
+import Base from '../layouts/Base.astro';
+import Splash from '../components/Splash.astro';
+---
+<Base title="huhbub — creating experiences for creative people">
+  <Splash />
+
+  <div id="site">
+
+    <!-- NAV -->
+    <nav>
+      <a href="/" class="nav-logo"><span class="logo-text">huhbub</span></a>
+      <div class="nav-links">
+        <a href="/services">services</a>
+        <a href="/projects">projects</a>
+        <a href="/collaborators">collaborators</a>
+        <a href="/venues">venues</a>
+        <a href="/about">about</a>
+        <a href="/contact" class="nav-cta">get in touch</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-overline">sara veal · southampton</p>
+          <h1>
+            creating<br/>
+            <em>experiences</em><br/>
+            for creative<br/>
+            people.
+          </h1>
+          <p class="hero-sub">Events, environments and initiatives that bring people together, build community, and make culture happen.</p>
+          <div class="hero-ctas">
+            <a href="/projects" class="btn-primary">see the work</a>
+            <a href="/contact" class="btn-ghost">get in touch</a>
+          </div>
+        </div>
+        <div class="hero-canvas-wrap">
+          <canvas id="hero-canvas"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        {['intimate events','supper clubs','conferences & festivals','happiness workshops',
+          'cabaret','panel curation','audience development','community building',
+          'cultural production','artist liaison','stage hosting','new initiatives',
+          'intimate events','supper clubs','conferences & festivals','happiness workshops',
+          'cabaret','panel curation','audience development','community building',
+          'cultural production','artist liaison','stage hosting','new initiatives'].map(t => (
+          <span>{t}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- FEATURED PROJECT -->
+    <section class="section-dark featured">
+      <p class="section-label">featured project</p>
+      <div class="featured-inner">
+        <div class="featured-img" aria-label="Black to the Future festival photography placeholder">
+          <span>[ photography ]</span>
+        </div>
+        <div class="featured-content">
+          <div class="feat-tags">
+            <span class="tag tag-collab">collaborative</span>
+            <span class="tag tag-self">cultural production</span>
+          </div>
+          <h2>Black to the Future</h2>
+          <p>An Afrofuturistic festival celebrating Black excellence across the creative industries, accompanying the British Library's Fantasy: Realms of Imagination exhibition. Founded and directed by Irenosen Okojie.</p>
+          <p class="feat-detail">25+ Black artists across 6 venues — British Library, Royal Society of Literature, Warner Brothers, Spotify, The Garden Cinema, The Standard Hotel, Black Cultural Archives — over 8 months, October 2023 to May 2024.</p>
+          <div class="feat-pills">
+            {['British Library','Warner Brothers','Spotify','25+ artists','6 venues','Oct 2023–May 2024'].map(p => (
+              <span class="pill">{p}</span>
+            ))}
+          </div>
+          <a href="/projects/black-to-the-future" class="feat-link">read the full story →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section-cream">
+      <p class="section-label-dark">services</p>
+      <h2 class="h2-dark">what I do</h2>
+      <p class="sub-dark">I work with organisations, initiatives and individuals who make culture — helping them build better from the inside out.</p>
+      <div class="services-grid">
+        {[
+          { n:'01', title:'intimate events', desc:'Supper clubs and gatherings that create real connection between people.' },
+          { n:'02', title:'conferences & festivals', desc:'Producing, programming and hosting panels, conferences and festivals.' },
+          { n:'03', title:'happiness workshops', desc:'Sessions that help teams and individuals find joy in their work and lives.' },
+          { n:'04', title:'new initiatives', desc:'Supporting people taking something from an idea into the world.' },
+          { n:'05', title:'finding your audience', desc:'Helping initiatives and organisations reach the people who need them.' },
+        ].map(s => (
+          <div class="svc-card">
+            <div class="svc-num">{s.n}</div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section-white">
+      <div class="section-header">
+        <div>
+          <p class="section-label-dark">projects</p>
+          <h2 class="h2-dark">selected work</h2>
+        </div>
+        <div class="filter-bar" role="group" aria-label="Filter projects">
+          <button class="filter active" data-filter="all">all</button>
+          <button class="filter" data-filter="self">self-produced</button>
+          <button class="filter" data-filter="commissioned">commissioned</button>
+          <button class="filter" data-filter="collaborative">collaborative</button>
+        </div>
+      </div>
+      <div class="projects-grid">
+        {[
+          { img:'pi1', tags:['collaborative','cultural production'], title:'Black to the Future', sub:'British Library · 2023–24', type:'collaborative' },
+          { img:'pi2', tags:['self-produced','events'], title:'That Time of the Month', sub:'The Book Club, London', type:'self' },
+          { img:'pi3', tags:['self-produced','cabaret'], title:'Purple Reign', sub:'Makers Academy · fundraising Code Club', type:'self' },
+          { img:'pi4', tags:['self-produced','events'], title:'Curious Mermaid events', sub:'Supper club, IWD potluck · Yellow Door', type:'self' },
+          { img:'pi5', tags:['collaborative','events'], title:'Strong Women Squad', sub:'Lisa Dickenson · Trapeze, London', type:'collaborative' },
+          { img:'pi6', tags:['self-produced','cabaret'], title:'Feeling Noughties', sub:'Drink Shop & Do · Core Arts', type:'self' },
+          { img:'pi7', tags:['commissioned','workshop'], title:'Happiness workshops', sub:'Also Festival, Primadonna, Barbican', type:'commissioned' },
+          { img:'pi8', tags:['commissioned','festivals'], title:'Festival work', sub:'Larmer Tree, Port Eliot, Shambala', type:'commissioned' },
+          { img:'pi9', tags:['commissioned','community'], title:'Clean Prose', sub:'70+ events · Irenosen Okojie launch', type:'commissioned' },
+        ].map(p => (
+          <div class={`proj-card proj-${p.type}`} data-type={p.type}>
+            <div class={`proj-img ${p.img}`}><span>[ photo ]</span></div>
+            <div class="proj-body">
+              <div class="proj-tags">
+                {p.tags.map(t => (
+                  <span class={`tag tag-${t.replace(' ','-').replace('self-produced','self')}`}>{t}</span>
+                ))}
+              </div>
+              <h3>{p.title}</h3>
+              <p>{p.sub}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- COLLABORATORS -->
+    <section class="section-lavender">
+      <p class="section-label-dark">collaborators</p>
+      <h2 class="h2-dark">people I'm proud to work with</h2>
+      <p class="sub-dark">Brilliant people I've had the pleasure of working alongside — on commissioned and self-led projects. I recommend them without hesitation.</p>
+      <div class="collab-grid">
+        {[
+          { initials:'RL', name:'Ria Lina', role:'comedian & writer', desc:'Worked together on events bringing comedy and culture into unexpected spaces.', link:'https://rialina.com' },
+          { initials:'LN', name:'Leena Norms', role:'author & content creator', desc:'Host of That Time of the Month throughout, judge at Purple Reign. A recurring joy to work with.', link:'https://leenanorms.com' },
+          { initials:'SV', name:'Sanne Vliegenthart', role:'creative', desc:'A natural collaborator across events and creative projects.', link:'#' },
+          { initials:'VG', name:'Viv Groskop', role:'author, comedian & speaker', desc:'Worked together on events at the intersection of culture, comedy and ideas.', link:'https://vivgroskop.com' },
+        ].map(c => (
+          <div class="collab-card">
+            <div class="collab-photo">
+              <span class="collab-initials">{c.initials}</span>
+            </div>
+            <div class="collab-body">
+              <h3>{c.name}</h3>
+              <p class="collab-role">{c.role}</p>
+              <p class="collab-desc">{c.desc}</p>
+              <a href={c.link} class="collab-link" target="_blank" rel="noopener">visit website →</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- PERSONAL PROJECTS -->
+    <section class="section-dark personal">
+      <p class="section-label">personal projects</p>
+      <h2>the curious mermaid universe</h2>
+      <p class="sub-light">Two connected projects grown from the same spirit of curiosity, community and wonder.</p>
+      <div class="personal-pair">
+        <div class="pp-card">
+          <span class="pp-tag">events</span>
+          <h3>Curious Mermaid</h3>
+          <p>Supper clubs, pop-up galleries and seasonal gatherings built around the world of Sarah Lawak's Curious Mermaid. Fundraising for Yellow Door. Where the community comes together.</p>
+          <a href="/projects/curious-mermaid">see the events →</a>
+        </div>
+        <div class="pp-card">
+          <span class="pp-tag">shop</span>
+          <h3>Sirena Curiosa</h3>
+          <p>An independent shop for curious people — objects, curiosities and things that spark wonder. The retail expression of the same world.</p>
+          <a href="https://sirenacuriosa.com" target="_blank" rel="noopener">visit sirenacuriosa.com →</a>
+        </div>
+      </div>
+      <p class="pp-connector">↑ two sides of the same world ↑</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-left">
+          <p class="footer-logo">huhbub</p>
+          <p class="footer-sub">huhbub ltd · sara veal · southampton · est. 2016</p>
+        </div>
+        <div class="footer-links">
+          <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">linkedin</a>
+          <a href="mailto:sara@huhbub.com">email</a>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- #site -->
+</Base>
+
+<style>
+  #site { opacity: 0; transition: opacity 0.8s ease; }
+  #site.is-visible { opacity: 1; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--sky-mid, #0E0B2E);
+    border-bottom: 0.5px solid var(--border-subtle);
+    padding: 16px 32px;
+    display: flex; justify-content: space-between; align-items: center;
+    backdrop-filter: blur(12px);
+    transition: background 1s ease;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+  }
+  .logo-text {
+    font-family: var(--font-logo);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--accent-soft, #F5A7CC);
+    letter-spacing: -0.5px;
+    line-height: 1;
+  }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a {
+    font-size: 13px; color: var(--text-secondary);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text-primary); }
+  .nav-cta {
+    border: 0.5px solid var(--border-subtle);
+    padding: 7px 16px; border-radius: 20px;
+    color: var(--accent-soft) !important;
+    transition: background 0.2s, border-color 0.2s !important;
+  }
+  .nav-cta:hover { background: rgba(255,255,255,0.06); border-color: var(--accent-soft) !important; }
+
+  /* HERO */
+  .hero {
+    background: var(--sky, #07051A);
+    min-height: 90vh;
+    display: flex; align-items: center;
+    padding: 80px 32px 60px;
+    transition: background 1s ease;
+  }
+  .hero-inner {
+    max-width: 1100px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .hero-overline {
+    font-size: 11px; color: var(--accent-soft);
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-overline::before { content:''; width: 24px; height: 1px; background: var(--accent-soft); display: block; }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 7vw, 80px);
+    font-weight: 300; line-height: 1.08;
+    letter-spacing: -2px;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+  }
+  h1 em { color: var(--accent-soft); font-style: italic; }
+  .hero-sub {
+    font-size: 15px; color: var(--text-secondary);
+    line-height: 1.75; max-width: 420px; margin-bottom: 36px;
+  }
+  .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    font-size: 13px; font-weight: 500;
+    padding: 12px 24px; border-radius: 8px;
+    transition: opacity 0.2s;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost {
+    background: transparent; color: var(--text-secondary);
+    font-size: 13px; padding: 12px 24px; border-radius: 8px;
+    border: 0.5px solid var(--border-subtle);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--accent-soft); color: var(--text-primary); }
+  .hero-canvas-wrap {
+    height: 420px; border-radius: 16px; overflow: hidden;
+    background: rgba(255,255,255,0.02);
+    border: 0.5px solid var(--border-subtle);
+    position: relative;
+  }
+  #hero-canvas { width: 100%; height: 100%; }
+
+  /* MARQUEE */
+  .marquee {
+    background: var(--accent);
+    padding: 11px 0; overflow: hidden; white-space: nowrap;
+  }
+  .marquee-inner { display: inline-block; animation: marquee 28s linear infinite; }
+  .marquee-inner span {
+    font-size: 12px; font-weight: 500; color: #fff;
+    margin: 0 20px; letter-spacing: 1px; text-transform: uppercase;
+  }
+  .marquee-inner span:nth-child(even) { opacity: 0.5; }
+  @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+
+  /* SECTIONS */
+  .section-dark  { background: var(--sky, #07051A); padding: 72px 32px; transition: background 1s ease; }
+  .section-cream { background: var(--sky) !important; padding: 72px 32px; filter: brightness(1.08); }
+  .section-white { background: #fff; padding: 72px 32px; }
+  .section-lavender { background: #F5F0FF; padding: 72px 32px; }
+
+  .section-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
+  .section-label-dark { font-size: 11px; color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
+  .h2-dark { font-family: var(--font-display); font-size: 36px; font-weight: 400; color: #1E1756; margin-bottom: 8px; letter-spacing: -0.5px; }
+  h2 { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -0.5px; }
+  .sub-dark { font-size: 14px; color: #5F5E5A; line-height: 1.75; max-width: 520px; margin-bottom: 32px; }
+  .sub-light { font-size: 14px; color: var(--text-secondary); line-height: 1.75; max-width: 520px; margin-bottom: 32px; }
+
+  /* FEATURED */
+  .featured-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .featured-img {
+    height: 360px; background: rgba(255,255,255,0.04);
+    border: 0.5px solid var(--border-subtle); border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .featured-img span { font-size: 12px; color: rgba(255,255,255,0.15); }
+  .feat-tags { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .feat-content h2 { font-size: 40px; color: var(--text-primary); margin-bottom: 16px; }
+  .feat-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 12px; }
+  .feat-detail { font-size: 13px !important; opacity: 0.8; }
+  .feat-pills { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
+  .pill { font-size: 11px; color: var(--text-secondary); border: 0.5px solid var(--border-subtle); padding: 4px 12px; border-radius: 20px; }
+  .feat-link { font-size: 13px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.4); padding-bottom: 1px; }
+
+  /* TAGS */
+  .tag { font-size: 11px; padding: 3px 9px; border-radius: 20px; display: inline-block; }
+  .tag-self,.tag-self-produced { color: #3C3489; background: #EEEDFE; }
+  .tag-commissioned { color: #085041; background: #E1F5EE; }
+  .tag-collaborative { color: #633806; background: #FAEEDA; }
+  .tag-cultural,.tag-cultural-production { color: #3C3489; background: #EEEDFE; }
+  .tag-events,.tag-cabaret,.tag-workshop,.tag-festivals,.tag-community { color: #085041; background: #E1F5EE; }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; max-width: 1100px; }
+  .svc-card { background: #fff; border: 0.5px solid #E8D5EF; border-radius: 12px; padding: 20px; }
+  .svc-num { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: #EDDBF5; margin-bottom: 10px; line-height: 1; }
+  .svc-card h3 { font-size: 14px; font-weight: 500; color: #1E1756; margin-bottom: 6px; font-family: var(--font-body); }
+  .svc-card p { font-size: 13px; color: #888780; line-height: 1.55; }
+
+  /* PROJECTS */
+  .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; max-width: 1100px; }
+  .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter { font-size: 12px; padding: 6px 16px; border-radius: 20px; border: 0.5px solid #D3D1C7; background: transparent; color: #5F5E5A; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+  .filter.active,.filter:hover { background: #1E1756; color: #F5F0FF; border-color: #1E1756; }
+  .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; max-width: 1100px; }
+  .proj-card { border-radius: 12px; overflow: hidden; border: 0.5px solid #E8E6E0; transition: transform 0.2s; }
+  .proj-card:hover { transform: translateY(-3px); }
+  .proj-card.hidden { display: none; }
+  .proj-img { height: 100px; display: flex; align-items: center; justify-content: center; }
+  .proj-img span { font-size: 11px; color: rgba(255,255,255,0.15); }
+  .pi1{background:#2A1040}.pi2{background:#1A3A1A}.pi3{background:#1E1756}
+  .pi4{background:#3A0A0A}.pi5{background:#1A2A3A}.pi6{background:#2A2A0A}
+  .pi7{background:#2A1A2A}.pi8{background:#0A2A2A}.pi9{background:#2A2010}
+  .proj-body { padding: 14px; background: #fff; }
+  .proj-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 7px; }
+  .proj-body h3 { font-size: 13px; font-weight: 500; color: #1E1756; margin-bottom: 3px; font-family: var(--font-body); }
+  .proj-body p { font-size: 12px; color: #888780; }
+
+  /* COLLABORATORS */
+  .collab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; max-width: 1100px; }
+  .collab-card { background: #fff; border: 0.5px solid #E8E6E0; border-radius: 14px; overflow: hidden; }
+  .collab-photo { height: 120px; background: #1E1756; display: flex; align-items: center; justify-content: center; }
+  .collab-initials { font-family: var(--font-display); font-size: 32px; font-weight: 300; color: rgba(255,255,255,0.2); }
+  .collab-body { padding: 16px; }
+  .collab-body h3 { font-size: 14px; font-weight: 500; color: #1E1756; margin-bottom: 3px; font-family: var(--font-body); }
+  .collab-role { font-size: 12px; color: #D4537E; margin-bottom: 8px; }
+  .collab-desc { font-size: 13px; color: #5F5E5A; line-height: 1.55; margin-bottom: 10px; }
+  .collab-link { font-size: 12px; color: #534AB7; border-bottom: 0.5px solid rgba(83,74,183,0.3); padding-bottom: 1px; }
+
+  /* PERSONAL PROJECTS */
+  .personal { text-align: center; }
+  .personal h2 { margin-bottom: 8px; }
+  .personal-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px; margin: 0 auto 16px; text-align: left; }
+  .pp-card { border: 0.5px solid var(--border-subtle); border-radius: 14px; padding: 24px; background: rgba(255,255,255,0.03); }
+  .pp-tag { font-size: 11px; color: var(--accent-soft); background: rgba(212,83,126,0.12); padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; letter-spacing: 0.5px; }
+  .pp-card h3 { font-family: var(--font-display); font-size: 22px; font-weight: 300; color: var(--text-primary); margin-bottom: 8px; }
+  .pp-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+  .pp-card a { font-size: 13px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 1px; }
+  .pp-connector { font-size: 11px; color: #534AB7; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 8px; }
+
+  /* FOOTER */
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+  .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 300; color: #534AB7; margin-bottom: 4px; }
+  .footer-sub { font-size: 12px; color: #3C3489; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #7F77DD; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent-soft); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-canvas-wrap { height: 260px; }
+    .featured-inner { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .personal-pair { grid-template-columns: 1fr; }
+    nav { padding: 14px 20px; }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 12px; }
+  }
+
+  @media (max-width: 520px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .nav-links .nav-cta { display: none; }
+  }
+</style>
+
+<script>
+// Reveal site after splash exits
+function revealSite() {
+  const site = document.getElementById('site');
+  const splash = document.getElementById('splash');
+  if (!splash) { site.classList.add('is-visible'); return; }
+  const observer = new MutationObserver(() => {
+    if (!document.getElementById('splash')) {
+      site.classList.add('is-visible');
+      observer.disconnect();
+    }
+  });
+  observer.observe(document.body, { childList: true });
+}
+revealSite();
+
+// Hero canvas — mini version of seasonal particles
+(function() {
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const moment = window.__huhbubMoment || 'spring-night';
+  const momentColors = {
+    'spring-dawn':['#F5A7CC','#FAC775','#AFA9EC'],'spring-day':['#D4537E','#7F77DD','#1D9E75'],
+    'spring-dusk':['#F5A7CC','#EF9F27','#7F77DD'],'spring-night':['#D4537E','#AFA9EC','#FAC775'],
+    'summer-dawn':['#FAC775','#EF9F27','#F5A7CC'],'summer-day':['#EF9F27','#D4537E','#1D9E75'],
+    'summer-dusk':['#D4537E','#FAC775','#AFA9EC'],'summer-night':['#FAC775','#7F77DD','#F5A7CC'],
+    'autumn-dawn':['#EF9F27','#D85A30','#FAC775'],'autumn-day':['#BA7517','#D85A30','#EF9F27'],
+    'autumn-dusk':['#EF9F27','#D4537E','#7F77DD'],'autumn-night':['#EF9F27','#D85A30','#AFA9EC'],
+    'winter-dawn':['#B5D4F4','#85B7EB','#F5A7CC'],'winter-day':['#378ADD','#7F77DD','#F5A7CC'],
+    'winter-dusk':['#AFA9EC','#F5A7CC','#B5D4F4'],'winter-night':['#7F77DD','#B5D4F4','#F5A7CC'],
+  };
+  const colors = momentColors[moment] || momentColors['spring-night'];
+  let W, H, objs = [], fr = 0;
+  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
+  function rand(a,b){return a+Math.random()*(b-a);}
+  function spawn(init=false){
+    return { x:rand(0.05,0.95)*W, y:init?rand(0,1)*H:H+20, vx:rand(-0.2,0.2), vy:rand(-0.4,-0.12),
+      r:rand(4,14), col:colors[Math.floor(Math.random()*colors.length)],
+      born:fr, life:rand(280,560), phase:Math.random()*Math.PI*2 };
+  }
+  function draw(o){
+    const age=fr-o.born, fi=Math.min(1,age/40), fo=age>o.life-50?Math.max(0,(o.life-age)/50):1;
+    const a=fi*fo; if(a<=0)return;
+    const pulse=0.5+0.5*Math.sin(o.phase+fr*0.04);
+    ctx.save(); ctx.globalAlpha=a*0.7;
+    const gr=ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r*2.2);
+    gr.addColorStop(0,o.col+'cc'); gr.addColorStop(1,o.col+'00');
+    ctx.fillStyle=gr; ctx.beginPath(); ctx.arc(o.x,o.y,o.r*2.2*pulse,0,Math.PI*2); ctx.fill();
+    ctx.globalAlpha=a; ctx.fillStyle=o.col; ctx.beginPath(); ctx.arc(o.x,o.y,o.r*0.5,0,Math.PI*2); ctx.fill();
+    ctx.restore();
+  }
+  function loop(){
+    ctx.clearRect(0,0,W,H);
+    if(fr%40===0&&objs.length<18) objs.push(spawn());
+    objs=objs.filter(o=>fr-o.born<o.life);
+    objs.forEach(o=>{o.x+=o.vx;o.y+=o.vy;draw(o);});
+    fr++; requestAnimationFrame(loop);
+  }
+  resize(); for(let i=0;i<8;i++){const o=spawn(true);o.born=fr-Math.floor(rand(20,160));objs.push(o);}
+  loop();
+  window.addEventListener('resize', resize);
+})();
+
+// Project filter
+document.querySelectorAll('.filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.proj-card').forEach(card => {
+      card.classList.toggle('hidden', f !== 'all' && card.dataset.type !== f);
+    });
+  });
+});
+</script>
