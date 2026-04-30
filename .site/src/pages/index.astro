@@ -24,7 +24,7 @@ import Splash from '../components/Splash.astro';
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-text">
-          <p class="hero-overline">sara veal · southampton</p>
+          <p class="hero-overline">sara veal</p>
           <h1>
             creating<br/>
             <em>experiences</em><br/>
@@ -434,7 +434,7 @@ import Splash from '../components/Splash.astro';
   }
   .btn-ghost:hover { border-color: var(--accent-soft); color: var(--text-primary); }
   /* HERO BUBBLES */
-  .bubbles { position: relative; height: 420px; width: 100%; }
+  .bubbles { position: relative; height: 500px; width: 100%; }
   .bubble {
     position: absolute; border-radius: 50%; overflow: hidden; cursor: pointer;
     transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
@@ -459,9 +459,9 @@ import Splash from '../components/Splash.astro';
     opacity: 0; transition: opacity 0.3s; z-index: 4;
     font-size: 11px; color: #F5A7CC; letter-spacing: 1px; text-transform: uppercase;
   }
-  .b1 { width: 220px; height: 220px; top: 10px; left: 0; z-index: 1; animation: float1 7s ease-in-out infinite; }
-  .b2 { width: 190px; height: 190px; top: 80px; right: 10px; z-index: 2; animation: float2 9s ease-in-out infinite; }
-  .b3 { width: 160px; height: 160px; bottom: 10px; left: 80px; z-index: 3; animation: float3 8s ease-in-out infinite; }
+  .b1 { width: 290px; height: 290px; top: 0; left: 0; z-index: 1; animation: float1 7s ease-in-out infinite; }
+  .b2 { width: 250px; height: 250px; top: 60px; right: 0; z-index: 2; animation: float2 9s ease-in-out infinite; }
+  .b3 { width: 210px; height: 210px; bottom: 0; left: 90px; z-index: 3; animation: float3 8s ease-in-out infinite; }
   @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
   @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
   @keyframes float3 { 0%,100%{transform:translateY(0)} 33%{transform:translateY(-12px)} 66%{transform:translateY(-4px)} }
@@ -654,7 +654,7 @@ function revealSite() {
 revealSite();
 
 // Lightbox
-function openLB(src, caption) {
+window.openLB = function(src, caption) {
   const lb = document.getElementById('hero-lightbox');
   const img = document.getElementById('lb-img');
   const cap = document.getElementById('lb-caption');
@@ -664,7 +664,7 @@ function openLB(src, caption) {
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeLB() {
+window.closeLB = function() {
   document.getElementById('hero-lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
