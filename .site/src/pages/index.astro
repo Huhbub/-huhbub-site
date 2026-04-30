@@ -409,7 +409,7 @@ import Splash from '../components/Splash.astro';
   }
   .hero-inner {
     max-width: 1100px; margin: 0 auto; width: 100%;
-    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center;
   }
   .hero-overline {
     font-size: 11px; color: var(--accent-soft);
@@ -659,11 +659,12 @@ import Splash from '../components/Splash.astro';
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; }
-    .bubbles { height: 160px; display: flex; justify-content: center; align-items: center; gap: 16px; }
-    .bubble-wrap { position: relative !important; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; animation: none !important; }
-    .bw1 { width: 140px !important; height: 140px !important; }
-    .bw2 { width: 120px !important; height: 120px !important; }
-    .bw3 { width: 100px !important; height: 100px !important; }
+    .hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .bubbles { height: 180px; display: flex; justify-content: center; align-items: center; gap: 20px; }
+    .bubble-wrap { position: relative !important; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; }
+    .bw1 { width: 130px !important; height: 130px !important; animation: float2 8s ease-in-out infinite !important; }
+    .bw2 { width: 130px !important; height: 130px !important; animation: float3 6s ease-in-out infinite !important; margin-top: -20px; }
+    .bw3 { width: 130px !important; height: 130px !important; animation: float1 9s ease-in-out infinite !important; }
     #sparkle-canvas { display: none; }
     .featured-inner { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr 1fr; }
