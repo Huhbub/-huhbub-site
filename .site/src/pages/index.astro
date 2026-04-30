@@ -38,17 +38,30 @@ import Splash from '../components/Splash.astro';
           </div>
         </div>
         <div class="bubbles">
-          <div class="bubble b1" onclick="openLB('/images/hero-1.jpg','Curious Mermaid Palentines Supper Club')" aria-label="View Curious Mermaid photo">
-            <img src="/images/hero-1.jpg" alt="Curious Mermaid supper club" />
-            <div class="bubble-hint">view full image</div>
+          <canvas id="sparkle-canvas"></canvas>
+
+          <div class="bubble-wrap bw1" onclick="openLB('/images/hero-1.jpg','Curious Mermaid Palentines Supper Club')" aria-label="View Curious Mermaid photo">
+            <div class="glow-ring"></div>
+            <div class="bubble">
+              <img src="/images/hero-1.jpg" alt="Curious Mermaid supper club" />
+              <div class="bubble-hint">view full image</div>
+            </div>
           </div>
-          <div class="bubble b2" onclick="openLB('/images/hero-2.jpg','Black to the Future · British Library')" aria-label="View Black to the Future photo">
-            <img src="/images/hero-2.jpg" alt="Black to the Future festival" />
-            <div class="bubble-hint">view full image</div>
+
+          <div class="bubble-wrap bw2" onclick="openLB('/images/hero-2.jpg','Black to the Future · British Library')" aria-label="View Black to the Future photo">
+            <div class="glow-ring"></div>
+            <div class="bubble">
+              <img src="/images/hero-2.jpg" alt="Black to the Future festival" />
+              <div class="bubble-hint">view full image</div>
+            </div>
           </div>
-          <div class="bubble b3" onclick="openLB('/images/hero-3.jpg','Happiness Workshop')" aria-label="View happiness workshop photo">
-            <img src="/images/hero-3.jpg" alt="Happiness workshop" />
-            <div class="bubble-hint">view full image</div>
+
+          <div class="bubble-wrap bw3" onclick="openLB('/images/hero-3.jpg','Happiness Workshop')" aria-label="View happiness workshop photo">
+            <div class="glow-ring"></div>
+            <div class="bubble">
+              <img src="/images/hero-3.jpg" alt="Happiness workshop" />
+              <div class="bubble-hint">view full image</div>
+            </div>
           </div>
         </div>
 
@@ -435,36 +448,55 @@ import Splash from '../components/Splash.astro';
   .btn-ghost:hover { border-color: var(--accent-soft); color: var(--text-primary); }
   /* HERO BUBBLES */
   .bubbles { position: relative; height: 500px; width: 100%; }
-  .bubble {
-    position: absolute; border-radius: 50%; overflow: hidden; cursor: pointer;
+  #sparkle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+  .bubble-wrap {
+    position: absolute; cursor: pointer;
     transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+    z-index: 2;
   }
-  .bubble:hover { transform: scale(1.06) !important; z-index: 10; }
-  .bubble:hover .bubble-hint { opacity: 1; }
-  .bubble::after {
-    content: ''; position: absolute; inset: 0; border-radius: 50%;
-    background: radial-gradient(ellipse at 30% 25%, rgba(255,255,255,0.35) 0%, rgba(245,167,204,0.12) 30%, rgba(127,119,221,0.08) 60%, transparent 100%);
-    opacity: 0.45; pointer-events: none; z-index: 2;
+  .bubble-wrap:hover { transform: scale(1.06) !important; z-index: 10; }
+  .bubble-wrap:hover .bubble-hint { opacity: 1; }
+  .glow-ring {
+    position: absolute; border-radius: 50%; pointer-events: none; inset: -20px;
   }
-  .bubble::before {
-    content: ''; position: absolute; inset: 0; border-radius: 50%;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2), inset 0 0 30px rgba(245,167,204,0.08);
-    z-index: 3; pointer-events: none;
+  .bubble {
+    position: relative; border-radius: 50%; overflow: hidden;
+    width: 100%; height: 100%;
   }
   .bubble img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .bubble::after {
+    content: ''; position: absolute; inset: 0; border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(212,83,126,0.25), rgba(127,119,221,0.2), rgba(181,212,244,0.2), rgba(245,167,204,0.25), rgba(239,159,39,0.15), rgba(212,83,126,0.25));
+    animation: shimmer 6s linear infinite;
+    mix-blend-mode: screen; opacity: 0.6; pointer-events: none; z-index: 3;
+  }
+  .bubble::before {
+    content: ''; position: absolute;
+    width: 40%; height: 35%; top: 10%; left: 15%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.5) 0%, transparent 100%);
+    z-index: 4; pointer-events: none;
+  }
   .bubble-hint {
     position: absolute; inset: 0; border-radius: 50%;
     background: rgba(14,11,46,0.5);
     display: flex; align-items: center; justify-content: center;
-    opacity: 0; transition: opacity 0.3s; z-index: 4;
+    opacity: 0; transition: opacity 0.3s; z-index: 5;
     font-size: 11px; color: #F5A7CC; letter-spacing: 1px; text-transform: uppercase;
   }
-  .b1 { width: 290px; height: 290px; top: 0; left: 0; z-index: 1; animation: float1 7s ease-in-out infinite; }
-  .b2 { width: 250px; height: 250px; top: 60px; right: 0; z-index: 2; animation: float2 9s ease-in-out infinite; }
-  .b3 { width: 210px; height: 210px; bottom: 0; left: 90px; z-index: 3; animation: float3 8s ease-in-out infinite; }
+  @keyframes shimmer { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
+  .bw1 { top: 0; left: 0; width: 290px; height: 290px; animation: float1 7s ease-in-out infinite; }
+  .bw1 .glow-ring { background: radial-gradient(circle, rgba(212,83,126,0.28) 0%, rgba(212,83,126,0.08) 50%, transparent 70%); animation: pulse1 3s ease-in-out infinite; }
+  .bw2 { top: 60px; right: 0; width: 250px; height: 250px; animation: float2 9s ease-in-out infinite; }
+  .bw2 .glow-ring { background: radial-gradient(circle, rgba(127,119,221,0.28) 0%, rgba(127,119,221,0.08) 50%, transparent 70%); animation: pulse2 4s ease-in-out infinite; }
+  .bw3 { bottom: 0; left: 90px; width: 210px; height: 210px; animation: float3 8s ease-in-out infinite; }
+  .bw3 .glow-ring { background: radial-gradient(circle, rgba(245,167,204,0.28) 0%, rgba(239,159,39,0.08) 50%, transparent 70%); animation: pulse3 3.5s ease-in-out infinite; }
   @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
   @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
   @keyframes float3 { 0%,100%{transform:translateY(0)} 33%{transform:translateY(-12px)} 66%{transform:translateY(-4px)} }
+  @keyframes pulse1 { 0%,100%{opacity:0.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.05)} }
+  @keyframes pulse2 { 0%,100%{opacity:0.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.08)} }
+  @keyframes pulse3 { 0%,100%{opacity:0.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.06)} }
 
   /* LIGHTBOX */
   .lightbox {
@@ -652,6 +684,68 @@ function revealSite() {
   observer.observe(document.body, { childList: true });
 }
 revealSite();
+
+// Sparkles around bubbles
+(function() {
+  const canvas = document.getElementById('sparkle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const container = canvas.parentElement;
+  function resize() { canvas.width = container.offsetWidth; canvas.height = container.offsetHeight; }
+  resize();
+  const COLORS = ['#F5A7CC','#D4537E','#AFA9EC','#FAC775','#B5D4F4','#ffffff'];
+  const sparkles = [];
+  let frame = 0;
+  function getCenters() {
+    return [
+      {x: 145, y: 145, r: 145},
+      {x: container.offsetWidth - 125, y: 185, r: 125},
+      {x: 195, y: container.offsetHeight - 105, r: 105},
+    ];
+  }
+  function spawnSparkle() {
+    const centers = getCenters();
+    const c = centers[Math.floor(Math.random()*centers.length)];
+    const angle = Math.random()*Math.PI*2;
+    const dist = c.r + Math.random()*40;
+    sparkles.push({
+      x: c.x + Math.cos(angle)*dist, y: c.y + Math.sin(angle)*dist,
+      vx: (Math.random()-0.5)*0.4, vy: -Math.random()*0.6-0.2,
+      size: Math.random()*2.5+0.5,
+      col: COLORS[Math.floor(Math.random()*COLORS.length)],
+      life: 0, maxLife: Math.random()*80+40,
+      type: Math.random() < 0.5 ? 'star' : 'dot',
+    });
+  }
+  function drawStar(x, y, size, col, alpha) {
+    ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = col;
+    ctx.translate(x, y);
+    for(let i=0;i<4;i++){
+      ctx.rotate(Math.PI/2); ctx.beginPath();
+      ctx.moveTo(0,0); ctx.lineTo(size*0.4,size*1.2); ctx.lineTo(0,size*0.5); ctx.lineTo(-size*0.4,size*1.2);
+      ctx.closePath(); ctx.fill();
+    }
+    ctx.restore();
+  }
+  function loop() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    if(frame%8===0 && sparkles.length<30) spawnSparkle();
+    for(let i=sparkles.length-1;i>=0;i--){
+      const s=sparkles[i]; s.life++; s.x+=s.vx; s.y+=s.vy;
+      const p=s.life/s.maxLife;
+      const alpha = p<0.3 ? p/0.3 : 1-((p-0.3)/0.7);
+      if(s.type==='star') drawStar(s.x,s.y,s.size,s.col,alpha*0.9);
+      else {
+        ctx.save(); ctx.globalAlpha=alpha*0.7; ctx.fillStyle=s.col;
+        ctx.beginPath(); ctx.arc(s.x,s.y,s.size*0.6,0,Math.PI*2); ctx.fill(); ctx.restore();
+      }
+      if(s.life>=s.maxLife) sparkles.splice(i,1);
+    }
+    frame++; requestAnimationFrame(loop);
+  }
+  loop();
+  window.addEventListener('resize', resize);
+})();
 
 // Lightbox
 window.openLB = function(src, caption) {
