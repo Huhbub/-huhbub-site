@@ -204,6 +204,13 @@ import Splash from '../components/Splash.astro';
               </button>
               <div class="svc-body"><div class="svc-inner">Teams who've forgotten to have fun. Individuals at a crossroads. Festival audiences who want something that lasts beyond the weekend. Anyone who wants to think differently about joy.</div></div>
             </div>
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">what will you leave with?</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">A clearer sense of what makes you happy — and practical tools to protect it. Not a list of tips, but a shift in how you think about joy, work, and what you're actually doing this for.</div></div>
+            </div>
           </div>
         </div>
 
@@ -429,7 +436,7 @@ import Splash from '../components/Splash.astro';
 
   /* SECTIONS */
   .section-dark  { background: var(--sky, #07051A); padding: 72px 32px; transition: background 1s ease; }
-  .section-cream { background: var(--sky) !important; padding: 72px 32px; filter: brightness(1.08); }
+  .section-cream { background: color-mix(in srgb, var(--sky-mid) 95%, var(--accent) 5%); padding: 72px 32px; transition: background 1.5s ease; }
   .section-white { background: #fff; padding: 72px 32px; }
   .section-lavender { background: #F5F0FF; padding: 72px 32px; }
 
@@ -466,27 +473,30 @@ import Splash from '../components/Splash.astro';
 
   /* SERVICES CLUSTERS */
   .clusters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1100px; }
-  .cluster { background: #fff; border: 0.5px solid #E8D5EF; border-radius: 16px; overflow: hidden; }
+  .cluster { border-radius: 16px; overflow: hidden; border: 0.5px solid transparent; transition: background 1.5s ease, border-color 1.5s ease; }
+  .cluster:nth-child(1) { background: color-mix(in srgb, var(--accent) 15%, transparent); border-color: color-mix(in srgb, var(--accent) 30%, transparent); }
+  .cluster:nth-child(2) { background: color-mix(in srgb, var(--accent-purple, #7F77DD) 15%, transparent); border-color: color-mix(in srgb, var(--accent-purple, #7F77DD) 30%, transparent); }
+  .cluster:nth-child(3) { background: color-mix(in srgb, var(--accent-gold) 15%, transparent); border-color: color-mix(in srgb, var(--accent-gold) 30%, transparent); }
+  .cluster:nth-child(4) { background: color-mix(in srgb, var(--accent-soft, #F5A7CC) 15%, transparent); border-color: color-mix(in srgb, var(--accent-soft, #F5A7CC) 30%, transparent); }
   .cluster-header { padding: 24px 24px 16px; }
-  .cluster-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 16px; }
-  .ci-pink { background: #FBEAF0; }
-  .ci-purple { background: #EEEDFE; }
-  .ci-teal { background: #E1F5EE; }
-  .ci-gold { background: #FAEEDA; }
-  .cluster-title { font-size: 15px; font-weight: 500; color: #1E1756; margin-bottom: 4px; }
-  .cluster-desc { font-size: 12px; color: #888780; line-height: 1.6; }
+  .cluster-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 16px; transition: background 1.5s ease; }
+  .cluster:nth-child(1) .cluster-icon { background: color-mix(in srgb, var(--accent) 25%, transparent); }
+  .cluster:nth-child(2) .cluster-icon { background: color-mix(in srgb, var(--accent-purple, #7F77DD) 25%, transparent); }
+  .cluster:nth-child(3) .cluster-icon { background: color-mix(in srgb, var(--accent-gold) 25%, transparent); }
+  .cluster:nth-child(4) .cluster-icon { background: color-mix(in srgb, var(--accent-soft, #F5A7CC) 25%, transparent); }
+  .cluster-title { font-size: 15px; font-weight: 500; color: var(--text-primary); margin-bottom: 4px; transition: color 1.5s ease; }
+  .cluster-desc { font-size: 12px; color: var(--text-secondary); line-height: 1.6; transition: color 1.5s ease; }
   .svc-list { padding: 0 12px 12px; }
   .svc-item { border-radius: 10px; overflow: hidden; margin-bottom: 4px; }
   .svc-trigger { width: 100%; background: none; border: none; padding: 11px 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; transition: background 0.2s; font-family: var(--font-body); }
-  .svc-trigger:hover { background: #FDF6F0; }
-  .svc-trigger.open { background: #FDF6F0; }
-  .svc-name { font-size: 13px; font-weight: 500; color: #1E1756; }
-  .svc-arrow { width: 20px; height: 20px; border-radius: 50%; background: #F5EEF8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.2s; }
-  .svc-arrow svg { width: 8px; height: 8px; stroke: #993556; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .svc-trigger.open .svc-arrow { transform: rotate(180deg); background: #FBEAF0; }
+  .svc-trigger:hover, .svc-trigger.open { background: rgba(255,255,255,0.15); }
+  .svc-name { font-size: 13px; font-weight: 500; color: var(--text-primary); transition: color 1.5s ease; }
+  .svc-arrow { width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.2s; }
+  .svc-arrow svg { width: 8px; height: 8px; stroke: var(--accent-soft, #F5A7CC); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: stroke 1.5s ease; }
+  .svc-trigger.open .svc-arrow { transform: rotate(180deg); background: rgba(255,255,255,0.25); }
   .svc-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
   .svc-body.open { max-height: 200px; }
-  .svc-inner { padding: 4px 12px 14px; font-size: 12px; color: #5F5E5A; line-height: 1.7; border-top: 0.5px solid #F0E8F5; }
+  .svc-inner { padding: 4px 12px 14px; font-size: 12px; color: var(--text-secondary); line-height: 1.7; border-top: 0.5px solid rgba(255,255,255,0.15); transition: color 1.5s ease; }
   .burst { position: fixed; pointer-events: none; z-index: 9999; }
   .burst-dot { position: absolute; width: 5px; height: 5px; border-radius: 50%; animation: burst-out 0.7s ease-out forwards; }
   @keyframes burst-out { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0} }
@@ -587,8 +597,8 @@ revealSite();
     'spring-dusk':['#F5A7CC','#EF9F27','#7F77DD'],'spring-night':['#D4537E','#AFA9EC','#FAC775'],
     'summer-dawn':['#FAC775','#EF9F27','#F5A7CC'],'summer-day':['#EF9F27','#D4537E','#1D9E75'],
     'summer-dusk':['#D4537E','#FAC775','#AFA9EC'],'summer-night':['#FAC775','#7F77DD','#F5A7CC'],
-    'autumn-dawn':['#EF9F27','#D85A30','#FAC775'],'autumn-day':['#BA7517','#D85A30','#EF9F27'],
-    'autumn-dusk':['#EF9F27','#D4537E','#7F77DD'],'autumn-night':['#EF9F27','#D85A30','#AFA9EC'],
+    'autumn-dawn':['#E85070','#F07050','#C070E0'],'autumn-day':['#C04060','#E8603A','#8040A0'],
+    'autumn-dusk':['#E85070','#E8603A','#C070E0'],'autumn-night':['#E85070','#E8603A','#C070E0'],
     'winter-dawn':['#B5D4F4','#85B7EB','#F5A7CC'],'winter-day':['#378ADD','#7F77DD','#F5A7CC'],
     'winter-dusk':['#AFA9EC','#F5A7CC','#B5D4F4'],'winter-night':['#7F77DD','#B5D4F4','#F5A7CC'],
   };
