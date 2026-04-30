@@ -38,7 +38,17 @@ import Splash from '../components/Splash.astro';
           </div>
         </div>
         <div class="hero-canvas-wrap">
-          <canvas id="hero-canvas"></canvas>
+          <div class="hero-photo-grid">
+            <div class="hero-photo hero-photo-wide">
+              <img src="/images/hero-1.jpg" alt="Curious Mermaid supper club" />
+            </div>
+            <div class="hero-photo">
+              <img src="/images/hero-2.jpg" alt="Black to the Future festival" />
+            </div>
+            <div class="hero-photo">
+              <img src="/images/hero-3.jpg" alt="Happiness workshop" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -61,8 +71,8 @@ import Splash from '../components/Splash.astro';
     <section class="section-dark featured">
       <p class="section-label">featured project</p>
       <div class="featured-inner">
-        <div class="featured-img" aria-label="Black to the Future festival photography placeholder">
-          <span>[ photography ]</span>
+        <div class="featured-img">
+          <img src="/images/featured-bttf.jpg" alt="Black to the Future festival" />
         </div>
         <div class="featured-content">
           <div class="feat-tags">
@@ -415,11 +425,23 @@ import Splash from '../components/Splash.astro';
   .btn-ghost:hover { border-color: var(--accent-soft); color: var(--text-primary); }
   .hero-canvas-wrap {
     height: 420px; border-radius: 16px; overflow: hidden;
-    background: rgba(255,255,255,0.02);
     border: 0.5px solid var(--border-subtle);
-    position: relative;
   }
-  #hero-canvas { width: 100%; height: 100%; }
+  .hero-photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: 100%;
+    gap: 4px;
+  }
+  .hero-photo { overflow: hidden; }
+  .hero-photo-wide { grid-column: 1 / 3; }
+  .hero-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform 0.4s ease;
+  }
+  .hero-photo:hover img { transform: scale(1.03); }
 
   /* MARQUEE */
   .marquee {
@@ -450,11 +472,10 @@ import Splash from '../components/Splash.astro';
   /* FEATURED */
   .featured-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; max-width: 1100px; margin: 0 auto; }
   .featured-img {
-    height: 360px; background: rgba(255,255,255,0.04);
-    border: 0.5px solid var(--border-subtle); border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
+    height: 360px; border-radius: 16px; overflow: hidden;
+    border: 0.5px solid var(--border-subtle);
   }
-  .featured-img span { font-size: 12px; color: rgba(255,255,255,0.15); }
+  .featured-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .feat-tags { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
   .feat-content h2 { font-size: 40px; color: var(--text-primary); margin-bottom: 16px; }
   .feat-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 12px; }
@@ -585,54 +606,6 @@ function revealSite() {
   observer.observe(document.body, { childList: true });
 }
 revealSite();
-
-// Hero canvas — mini version of seasonal particles
-(function() {
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const moment = window.__huhbubMoment || 'spring-night';
-  const momentColors = {
-    'spring-dawn':['#F5A7CC','#FAC775','#AFA9EC'],'spring-day':['#D4537E','#7F77DD','#1D9E75'],
-    'spring-dusk':['#F5A7CC','#EF9F27','#7F77DD'],'spring-night':['#D4537E','#AFA9EC','#FAC775'],
-    'summer-dawn':['#FAC775','#EF9F27','#F5A7CC'],'summer-day':['#EF9F27','#D4537E','#1D9E75'],
-    'summer-dusk':['#D4537E','#FAC775','#AFA9EC'],'summer-night':['#FAC775','#7F77DD','#F5A7CC'],
-    'autumn-dawn':['#E85070','#F07050','#C070E0'],'autumn-day':['#C04060','#E8603A','#8040A0'],
-    'autumn-dusk':['#E85070','#E8603A','#C070E0'],'autumn-night':['#E85070','#E8603A','#C070E0'],
-    'winter-dawn':['#B5D4F4','#85B7EB','#F5A7CC'],'winter-day':['#378ADD','#7F77DD','#F5A7CC'],
-    'winter-dusk':['#AFA9EC','#F5A7CC','#B5D4F4'],'winter-night':['#7F77DD','#B5D4F4','#F5A7CC'],
-  };
-  const colors = momentColors[moment] || momentColors['spring-night'];
-  let W, H, objs = [], fr = 0;
-  function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
-  function rand(a,b){return a+Math.random()*(b-a);}
-  function spawn(init=false){
-    return { x:rand(0.05,0.95)*W, y:init?rand(0,1)*H:H+20, vx:rand(-0.2,0.2), vy:rand(-0.4,-0.12),
-      r:rand(4,14), col:colors[Math.floor(Math.random()*colors.length)],
-      born:fr, life:rand(280,560), phase:Math.random()*Math.PI*2 };
-  }
-  function draw(o){
-    const age=fr-o.born, fi=Math.min(1,age/40), fo=age>o.life-50?Math.max(0,(o.life-age)/50):1;
-    const a=fi*fo; if(a<=0)return;
-    const pulse=0.5+0.5*Math.sin(o.phase+fr*0.04);
-    ctx.save(); ctx.globalAlpha=a*0.7;
-    const gr=ctx.createRadialGradient(o.x,o.y,0,o.x,o.y,o.r*2.2);
-    gr.addColorStop(0,o.col+'cc'); gr.addColorStop(1,o.col+'00');
-    ctx.fillStyle=gr; ctx.beginPath(); ctx.arc(o.x,o.y,o.r*2.2*pulse,0,Math.PI*2); ctx.fill();
-    ctx.globalAlpha=a; ctx.fillStyle=o.col; ctx.beginPath(); ctx.arc(o.x,o.y,o.r*0.5,0,Math.PI*2); ctx.fill();
-    ctx.restore();
-  }
-  function loop(){
-    ctx.clearRect(0,0,W,H);
-    if(fr%40===0&&objs.length<18) objs.push(spawn());
-    objs=objs.filter(o=>fr-o.born<o.life);
-    objs.forEach(o=>{o.x+=o.vx;o.y+=o.vy;draw(o);});
-    fr++; requestAnimationFrame(loop);
-  }
-  resize(); for(let i=0;i<8;i++){const o=spawn(true);o.born=fr-Math.floor(rand(20,160));objs.push(o);}
-  loop();
-  window.addEventListener('resize', resize);
-})();
 
 // Services cluster expand/collapse
 document.querySelectorAll('.svc-trigger').forEach(btn => {
