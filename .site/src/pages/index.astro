@@ -37,17 +37,31 @@ import Splash from '../components/Splash.astro';
             <a href="/contact" class="btn-ghost">get in touch</a>
           </div>
         </div>
-        <div class="hero-canvas-wrap">
-          <div class="hero-photo-grid">
-            <div class="hero-photo hero-photo-wide">
+        <div class="hero-domes">
+          <div class="dome-row">
+            <div class="dome dome-big" onclick="openLB('/images/hero-1.jpg','Curious Mermaid Palentines Supper Club')" aria-label="View Curious Mermaid supper club photo">
               <img src="/images/hero-1.jpg" alt="Curious Mermaid supper club" />
+              <div class="dome-hint">view full image</div>
             </div>
-            <div class="hero-photo">
+          </div>
+          <div class="dome-row">
+            <div class="dome dome-sm" onclick="openLB('/images/hero-2.jpg','Black to the Future · British Library')" aria-label="View Black to the Future photo">
               <img src="/images/hero-2.jpg" alt="Black to the Future festival" />
+              <div class="dome-hint">view full image</div>
             </div>
-            <div class="hero-photo">
+            <div class="dome dome-sm" onclick="openLB('/images/hero-3.jpg','Happiness Workshop')" aria-label="View happiness workshop photo">
               <img src="/images/hero-3.jpg" alt="Happiness workshop" />
+              <div class="dome-hint">view full image</div>
             </div>
+          </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="hero-lightbox" onclick="closeLB()">
+          <div class="lb-inner" onclick="event.stopPropagation()">
+            <button class="lb-close" onclick="closeLB()" aria-label="Close">×</button>
+            <img id="lb-img" src="" alt="" />
+            <p class="lb-caption" id="lb-caption"></p>
           </div>
         </div>
       </div>
@@ -423,25 +437,57 @@ import Splash from '../components/Splash.astro';
     transition: border-color 0.2s, color 0.2s;
   }
   .btn-ghost:hover { border-color: var(--accent-soft); color: var(--text-primary); }
-  .hero-canvas-wrap {
-    height: 420px; border-radius: 16px; overflow: hidden;
-    border: 0.5px solid var(--border-subtle);
+  /* HERO DOMES */
+  .hero-domes { display: flex; flex-direction: column; gap: 12px; }
+  .dome-row { display: flex; gap: 12px; justify-content: center; }
+  .dome {
+    overflow: hidden; cursor: pointer; position: relative;
+    transition: transform 0.4s ease; flex-shrink: 0;
   }
-  .hero-photo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    height: 100%;
-    gap: 4px;
+  .dome:hover { transform: scale(1.03); }
+  .dome:hover .dome-hint { opacity: 1; }
+  .dome img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .dome-hint {
+    position: absolute; inset: 0;
+    background: rgba(14,11,46,0.45);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s;
+    font-size: 11px; color: #F5A7CC; letter-spacing: 1px; text-transform: uppercase;
   }
-  .hero-photo { overflow: hidden; }
-  .hero-photo-wide { grid-column: 1 / 3; }
-  .hero-photo img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-    transition: transform 0.4s ease;
+  .dome-big {
+    width: 100%; height: 220px;
+    border-radius: 50% 50% 48% 52% / 55% 55% 45% 45%;
+    animation: domeA 14s ease-in-out infinite;
   }
-  .hero-photo:hover img { transform: scale(1.03); }
+  .dome-sm {
+    width: calc(50% - 6px); height: 160px;
+    border-radius: 50% 50% 48% 52% / 55% 55% 45% 45%;
+  }
+  .dome-sm:first-child { animation: domeB 16s ease-in-out infinite; }
+  .dome-sm:last-child  { animation: domeC 18s ease-in-out infinite; }
+  @keyframes domeA { 0%,100%{border-radius:50% 50% 48% 52%/55% 55% 45% 45%} 50%{border-radius:52% 48% 50% 50%/52% 52% 48% 48%} }
+  @keyframes domeB { 0%,100%{border-radius:50% 50% 48% 52%/55% 55% 45% 45%} 50%{border-radius:48% 52% 52% 48%/50% 50% 50% 50%} }
+  @keyframes domeC { 0%,100%{border-radius:50% 50% 48% 52%/55% 55% 45% 45%} 50%{border-radius:52% 48% 48% 52%/55% 48% 52% 45%} }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed; inset: 0; background: rgba(7,5,26,0.92);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 999; opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .lightbox.open { opacity: 1; pointer-events: all; }
+  .lb-inner { position: relative; max-width: 85vw; max-height: 85vh; }
+  .lb-inner img { max-width: 85vw; max-height: 80vh; border-radius: 24px; display: block; object-fit: contain; }
+  .lb-close {
+    position: absolute; top: -14px; right: -14px;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: #D4537E; border: none; cursor: pointer;
+    color: #fff; font-size: 18px; display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+  }
+  .lb-close:hover { background: #B03060; }
+  .lb-caption { text-align: center; font-size: 12px; color: #9B96CC; margin-top: 12px; letter-spacing: 0.5px; }
 
   /* MARQUEE */
   .marquee {
@@ -576,7 +622,8 @@ import Splash from '../components/Splash.astro';
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; }
-    .hero-canvas-wrap { height: 260px; }
+    .dome-big { height: 160px; }
+    .dome-sm { height: 120px; }
     .featured-inner { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr 1fr; }
     .personal-pair { grid-template-columns: 1fr; }
@@ -606,6 +653,23 @@ function revealSite() {
   observer.observe(document.body, { childList: true });
 }
 revealSite();
+
+// Lightbox
+function openLB(src, caption) {
+  const lb = document.getElementById('hero-lightbox');
+  const img = document.getElementById('lb-img');
+  const cap = document.getElementById('lb-caption');
+  img.src = src;
+  img.alt = caption;
+  cap.textContent = caption;
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLB() {
+  document.getElementById('hero-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLB(); });
 
 // Services cluster expand/collapse
 document.querySelectorAll('.svc-trigger').forEach(btn => {
