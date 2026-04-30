@@ -91,6 +91,48 @@ import Splash from '../components/Splash.astro';
       </div>
     </div>
 
+    <!-- WRITING — THE CURIOUS MERMAID -->
+    <section class="section-writing">
+      <div class="writing-inner">
+        <div class="writing-header">
+          <div>
+            <p class="section-label-dark">writing & updates</p>
+            <h2 class="h2-dark">The Curious Mermaid</h2>
+            <p class="sub-dark">Profiles, cultural criticism, community prompts, opportunity roundups and dispatches from huhbub — Sara Veal's newsletter about creativity, culture and the people making things happen.</p>
+          </div>
+          <a href="/writing" class="writing-all">read all →</a>
+        </div>
+        <div class="writing-grid">
+          {[
+            { cat:'huhbub', catColour:'tag-self', title:'huhbub turns 10 in July', excerpt:'A decade of making culture happen — and what comes next.', date:'Coming soon' },
+            { cat:'people', catColour:'tag-commissioned', title:'Leena Norms: on hosting, joy and saying yes', excerpt:'A profile of the writer, host and recurring huhbub collaborator.', date:'Coming soon' },
+            { cat:'culture', catColour:'tag-collaborative', title:'What makes a room work', excerpt:'On the invisible craft of creating spaces where people connect.', date:'Coming soon' },
+          ].map(w => (
+            <div class="writing-card">
+              <span class={`tag ${w.catColour}`}>{w.cat}</span>
+              <h3>{w.title}</h3>
+              <p>{w.excerpt}</p>
+              <span class="writing-date">{w.date}</span>
+            </div>
+          ))}
+        </div>
+        <div class="writing-subscribe">
+          <p>want to receive The Curious Mermaid?</p>
+          <a href="https://curiousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe">subscribe on substack →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGO BAR -->
+    <div class="logo-bar">
+      <p class="logo-bar-label">organisations I've worked with</p>
+      <div class="logo-bar-inner">
+        {['British Library','Royal Society of Literature','Barbican','Primadonna Festival','Primo Toys','Games London','WorkWise for Screen','October Books','GamesAid','Failbetter Games'].map(org => (
+          <span class="logo-pill">{org}</span>
+        ))}
+      </div>
+    </div>
+
     <!-- FEATURED PROJECT -->
     <section class="section-dark featured">
       <p class="section-label">featured project</p>
@@ -359,37 +401,16 @@ import Splash from '../components/Splash.astro';
       <p class="pp-connector">↑ two sides of the same world ↑</p>
     </section>
 
-    <!-- WRITING -->
-    <section class="section-writing">
-      <div class="writing-inner">
-        <div class="writing-header">
-          <div>
-            <p class="section-label-dark">writing & updates</p>
-            <h2 class="h2-dark">The Curious Mermaid</h2>
-            <p class="sub-dark">Profiles, cultural criticism, community prompts, opportunity roundups and dispatches from huhbub — Sara Veal's newsletter about creativity, culture and the people making things happen.</p>
-          </div>
-          <a href="/writing" class="writing-all">read all →</a>
-        </div>
-        <div class="writing-grid">
-          {[
-            { cat:'huhbub', catColour:'tag-self', title:'huhbub turns 10 in July', excerpt:'A decade of making culture happen — and what comes next.', date:'Coming soon' },
-            { cat:'people', catColour:'tag-commissioned', title:'Leena Norms: on hosting, joy and saying yes', excerpt:'A profile of the writer, host and recurring huhbub collaborator.', date:'Coming soon' },
-            { cat:'culture', catColour:'tag-collaborative', title:'What makes a room work', excerpt:'On the invisible craft of creating spaces where people connect.', date:'Coming soon' },
-          ].map(w => (
-            <div class="writing-card">
-              <span class={`tag ${w.catColour}`}>{w.cat}</span>
-              <h3>{w.title}</h3>
-              <p>{w.excerpt}</p>
-              <span class="writing-date">{w.date}</span>
-            </div>
-          ))}
-        </div>
-        <div class="writing-subscribe">
-          <p>want to receive The Curious Mermaid?</p>
-          <a href="https://curiousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe">subscribe on substack →</a>
-        </div>
+    <!-- PRESS STRIP -->
+    <div class="press-strip">
+      <p class="press-label">as featured in</p>
+      <div class="press-inner">
+        {['The Guardian','The Bookseller','GamesIndustry.biz','Ensemble 2026'].map(pub => (
+          <span class="press-name">{pub}</span>
+        ))}
       </div>
-    </section>
+      <a href="/press" class="press-all">read the press →</a>
+    </div>
 
     <!-- FOOTER -->
     <footer>
@@ -884,7 +905,21 @@ import Splash from '../components/Splash.astro';
   .pp-card a { font-size: 13px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 1px; }
   .pp-connector { font-size: 11px; color: #534AB7; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 8px; }
 
-  /* WRITING */
+  /* LOGO BAR */
+  .logo-bar { background: var(--sky-mid, #0E0B2E); padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); border-bottom: 0.5px solid rgba(255,255,255,0.06); transition: background 1s ease; }
+  .logo-bar-label { font-size: 10px; color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; text-align: center; margin-bottom: 20px; opacity: 0.6; }
+  .logo-bar-inner { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; max-width: 900px; margin: 0 auto; }
+  .logo-pill { font-size: 13px; color: var(--text-secondary); opacity: 0.7; padding: 6px 16px; border: 0.5px solid rgba(255,255,255,0.1); border-radius: 20px; transition: opacity 0.2s, border-color 0.2s; white-space: nowrap; }
+  .logo-pill:hover { opacity: 1; border-color: rgba(255,255,255,0.25); }
+
+  /* PRESS STRIP */
+  .press-strip { background: var(--sky-mid, #0E0B2E); padding: 40px 32px; border-top: 0.5px solid rgba(255,255,255,0.06); text-align: center; transition: background 1s ease; }
+  .press-label { font-size: 10px; color: var(--text-secondary); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; opacity: 0.6; }
+  .press-inner { display: flex; flex-wrap: wrap; gap: 0; justify-content: center; align-items: center; margin-bottom: 20px; }
+  .press-name { font-family: var(--font-display); font-size: 22px; font-weight: 300; color: var(--text-secondary); opacity: 0.6; padding: 0 24px; border-right: 0.5px solid rgba(255,255,255,0.12); line-height: 1; transition: opacity 0.2s; }
+  .press-name:last-child { border-right: none; }
+  .press-name:hover { opacity: 1; }
+  .press-all { font-size: 13px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 1px; }
   .section-writing { background: #fff; padding: 72px 32px; }
   .writing-inner { max-width: 1100px; margin: 0 auto; }
   .writing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
