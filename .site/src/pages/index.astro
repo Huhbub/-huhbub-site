@@ -93,26 +93,22 @@ import Splash from '../components/Splash.astro';
       </div>
     </div>
 
-    <!-- FEATURED PROJECT -->
-    <div class="hero-featured">
+    <!-- FEATURED PROJECT (random, pulled from projects data) -->
+    <div class="hero-featured" id="featured-project">
       <div class="hero-featured-inner">
-        <div class="featured-polaroid" onclick="window.location='/projects/black-to-the-future'">
+        <div class="featured-polaroid" id="feat-polaroid">
           <div class="featured-polaroid-img">
-            <img src="/images/featured-bttf.jpg" alt="Black to the Future festival" />
+            <img id="feat-img" src="/images/featured-bttf.jpg" alt="" />
           </div>
-          <div class="featured-polaroid-caption">Black to the Future</div>
-          <div class="featured-polaroid-sub">British Library · 2023–24</div>
+          <div class="featured-polaroid-caption" id="feat-caption">Black to the Future</div>
+          <div class="featured-polaroid-sub" id="feat-sub">British Library · 2023–24</div>
         </div>
         <div class="feat-content">
           <p class="feat-eyebrow">featured project</p>
-          <h2>Black to the Future</h2>
-          <p>An Afrofuturistic festival celebrating Black excellence across the creative industries. 25+ Black artists across 6 venues over 8 months — British Library, RSL, Warner Brothers, Spotify and more.</p>
-          <div class="feat-pills">
-            {['collaborative','cultural production','25+ artists','6 venues'].map(p => (
-              <span class="pill">{p}</span>
-            ))}
-          </div>
-          <a href="/projects/black-to-the-future" class="feat-link">read the full story →</a>
+          <h2 id="feat-title">Black to the Future</h2>
+          <p id="feat-desc">An Afrofuturistic festival celebrating Black excellence across the creative industries. 25+ Black artists across 6 venues over 8 months.</p>
+          <div class="feat-pills" id="feat-pills"></div>
+          <a href="/projects" id="feat-link" class="feat-link">see all projects →</a>
         </div>
       </div>
     </div>
@@ -138,18 +134,63 @@ import Splash from '../components/Splash.astro';
       <a href="/press" class="press-all">read the press →</a>
     </div>
 
-    <!-- LATEST FROM THE CURIOUS MERMAID -->
-    <div class="hero-latest">
-      <div class="hero-latest-inner">
-        <div class="latest-meta">
-          <p class="latest-label">latest from The Curious Mermaid</p>
-          <a href="/writing" class="latest-all">read all →</a>
+    <!-- THE CURIOUS MERMAID — EDITORIAL -->
+    <div class="mermaid-section">
+      <div class="mermaid-inner">
+        <div class="mermaid-header">
+          <div class="mermaid-title-lockup">
+            <p class="mermaid-overline">from the writer's desk</p>
+            <h2 class="mermaid-title">The Curious Mermaid</h2>
+            <p class="mermaid-sub">Stories of creativity, community and the beauty in what others might overlook. Published on Substack.</p>
+          </div>
+          <a href="/writing" class="mermaid-all-link">read all essays →</a>
         </div>
-        <div class="latest-teaser">
-          <span class="tag tag-self">huhbub</span>
-          <h3 class="latest-title">huhbub turns 10 in July</h3>
-          <p class="latest-excerpt">A decade of making culture happen — and what comes next.</p>
-          <a href="/writing" class="latest-link">read more →</a>
+
+        <div class="mermaid-grid">
+          <!-- FEATURED — The Siren's Gift -->
+          <div class="mermaid-feature">
+            <div class="mermaid-feature-img">
+              <div class="mermaid-img-placeholder">
+                <span>🐚</span>
+              </div>
+            </div>
+            <div class="mermaid-feature-body">
+              <div class="mermaid-meta">
+                <span class="mermaid-category">personal</span>
+                <span class="mermaid-date">Apr 2025</span>
+              </div>
+              <h3 class="mermaid-feature-title">The Siren's Gift</h3>
+              <p class="mermaid-feature-lede">How a shop of secondhand treasures led me to creativity, community, and myself. The story of Sirena Curiosa — a 6×6 stall, a diagnosis, and what happens when you finally let go.</p>
+              <blockquote class="mermaid-pullquote">"I was told I lit up like a lighthouse when I spoke about the shop."</blockquote>
+              <a href="https://curiousmermaid.substack.com" target="_blank" rel="noopener" class="mermaid-read-link">read on substack →</a>
+            </div>
+          </div>
+
+          <!-- SECONDARY CARDS -->
+          <div class="mermaid-cards">
+            <div class="mermaid-card">
+              <div class="mermaid-card-meta">
+                <span class="mermaid-category">community</span>
+                <span class="mermaid-date">coming soon</span>
+              </div>
+              <h4 class="mermaid-card-title">huhbub turns 10</h4>
+              <p class="mermaid-card-lede">A decade of making culture happen. What it cost, what it built, and what comes next.</p>
+              <a href="/writing" class="mermaid-card-link">read when published →</a>
+            </div>
+            <div class="mermaid-card">
+              <div class="mermaid-card-meta">
+                <span class="mermaid-category">huhbub</span>
+                <span class="mermaid-date">coming soon</span>
+              </div>
+              <h4 class="mermaid-card-title">The power of the room</h4>
+              <p class="mermaid-card-lede">On why live events still matter — and what gets lost when we stop making space for them.</p>
+              <a href="/writing" class="mermaid-card-link">read when published →</a>
+            </div>
+            <div class="mermaid-subscribe">
+              <p class="mermaid-subscribe-label">get new essays in your inbox</p>
+              <a href="https://curiousmermaid.substack.com" target="_blank" rel="noopener" class="btn-mermaid-subscribe">subscribe free on substack →</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -235,22 +276,53 @@ import Splash from '../components/Splash.astro';
   .mobile-menu-links a:hover { color: var(--accent-soft); }
 
   /* HERO FEATURED */
-  .hero-featured { background: var(--sky, #07051A); padding: 24px 32px; border-top: 0.5px solid var(--border-subtle); transition: background 1s; }
-  .hero-featured-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center; }
-  .feat-eyebrow { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
-  .feat-content h2 { font-family: var(--font-display); font-size: 32px; font-weight: 300; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.5px; }
-  .feat-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
+  .hero-featured { background: var(--sky, #07051A); padding: 48px 32px; border-top: 0.5px solid var(--border-subtle); transition: background 1s; }
+  .hero-featured-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 340px 1fr; gap: 56px; align-items: center; }
+  .feat-eyebrow { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
+  .feat-content h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 300; color: var(--text-primary); margin-bottom: 14px; letter-spacing: -1px; line-height: 1.1; }
+  .feat-content p { font-size: 15px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 18px; }
+  .feat-link { font-size: 13px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 2px; display: inline-block; margin-top: 4px; transition: border-color 0.2s; }
+  .feat-link:hover { border-color: var(--accent-soft); }
 
-  /* HERO LATEST */
-  .hero-latest { background: var(--sky, #07051A); padding: 20px 32px 28px; border-top: 0.5px solid var(--border-subtle); transition: background 1s; }
-  .hero-latest-inner { max-width: 960px; margin: 0 auto; }
-  .latest-meta { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 14px; }
-  .latest-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; font-weight: 500; }
-  .latest-all { font-size: 12px; color: var(--text-secondary); border-bottom: 0.5px solid rgba(255,255,255,0.15); padding-bottom: 1px; }
-  .latest-teaser { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-  .latest-title { font-family: var(--font-display); font-size: 22px; font-weight: 300; color: var(--text-primary); letter-spacing: -0.3px; }
-  .latest-excerpt { font-size: 13px; color: var(--text-secondary); flex: 1; min-width: 160px; }
-  .latest-link { font-size: 12px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 1px; white-space: nowrap; }
+  /* CURIOUS MERMAID EDITORIAL */
+  .mermaid-section { background: #0A0820; padding: 56px 32px; border-top: 0.5px solid rgba(127,119,221,0.2); }
+  .mermaid-inner { max-width: 1060px; margin: 0 auto; }
+  .mermaid-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; gap: 24px; flex-wrap: wrap; }
+  .mermaid-overline { font-size: 10px; color: #7F77DD; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .mermaid-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 300; color: #fff; letter-spacing: -1px; line-height: 1; margin-bottom: 8px; }
+  .mermaid-sub { font-size: 14px; color: #AFA9EC; line-height: 1.6; max-width: 400px; }
+  .mermaid-all-link { font-size: 13px; color: #7F77DD; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; white-space: nowrap; transition: color 0.2s; flex-shrink: 0; }
+  .mermaid-all-link:hover { color: #AFA9EC; }
+  .mermaid-grid { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
+
+  /* Feature piece */
+  .mermaid-feature { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(127,119,221,0.2); border-radius: 4px; overflow: hidden; }
+  .mermaid-feature-img { height: 200px; background: linear-gradient(135deg, #1A1040 0%, #0D0B2E 100%); display: flex; align-items: center; justify-content: center; border-bottom: 0.5px solid rgba(127,119,221,0.2); }
+  .mermaid-img-placeholder { font-size: 48px; opacity: 0.5; }
+  .mermaid-feature-body { padding: 28px; }
+  .mermaid-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
+  .mermaid-category { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(127,119,221,0.15); padding: 3px 8px; border-radius: 20px; }
+  .mermaid-date { font-size: 12px; color: #534AB7; }
+  .mermaid-feature-title { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: #fff; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.15; }
+  .mermaid-feature-lede { font-size: 14px; color: #AFA9EC; line-height: 1.75; margin-bottom: 20px; }
+  .mermaid-pullquote { font-family: var(--font-display); font-size: 17px; font-style: italic; color: #D4B8F8; border-left: 2px solid #7F77DD; padding-left: 16px; margin: 20px 0; line-height: 1.5; }
+  .mermaid-read-link { font-size: 13px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.3); padding-bottom: 2px; transition: color 0.2s; display: inline-block; }
+  .mermaid-read-link:hover { color: #fff; }
+
+  /* Secondary cards */
+  .mermaid-cards { display: flex; flex-direction: column; gap: 16px; }
+  .mermaid-card { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(127,119,221,0.15); border-radius: 4px; padding: 22px; transition: border-color 0.2s; }
+  .mermaid-card:hover { border-color: rgba(127,119,221,0.4); }
+  .mermaid-card-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+  .mermaid-card-title { font-family: var(--font-display); font-size: 18px; font-weight: 300; color: #D4B8F8; letter-spacing: -0.3px; margin-bottom: 6px; }
+  .mermaid-card-lede { font-size: 13px; color: #7F77DD; line-height: 1.65; margin-bottom: 12px; }
+  .mermaid-card-link { font-size: 12px; color: #534AB7; border-bottom: 0.5px solid rgba(83,74,183,0.3); padding-bottom: 1px; }
+
+  /* Subscribe nudge */
+  .mermaid-subscribe { background: linear-gradient(135deg, rgba(127,119,221,0.12) 0%, rgba(83,74,183,0.08) 100%); border: 0.5px solid rgba(127,119,221,0.25); border-radius: 4px; padding: 24px; text-align: center; }
+  .mermaid-subscribe-label { font-size: 13px; color: #AFA9EC; margin-bottom: 14px; line-height: 1.5; }
+  .btn-mermaid-subscribe { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 10px 20px; border-radius: 6px; transition: opacity 0.2s; display: inline-block; }
+  .btn-mermaid-subscribe:hover { opacity: 0.85; }
 
   /* SCATTER TRANSITION CANVAS */
   #scatter-canvas {
@@ -286,6 +358,8 @@ import Splash from '../components/Splash.astro';
     .nav-burger { display: flex; }
     .hero-featured-inner { grid-template-columns: 1fr; }
     .featured-polaroid { margin: 0 auto; }
+    .mermaid-grid { grid-template-columns: 1fr; }
+    .mermaid-header { flex-direction: column; align-items: flex-start; gap: 12px; }
     .about-grid { grid-template-columns: 1fr; gap: 28px; }
   }
 
@@ -804,6 +878,40 @@ import Splash from '../components/Splash.astro';
 </style>
 
 <script>
+// Featured project — random pick, changes daily
+const PROJECTS = [
+  { title:'Black to the Future', caption:'Black to the Future', sub:'British Library · 2023', img:'/images/featured-bttf.jpg', tags:['collaborative','afrofuturism','25+ artists'], desc:'An Afrofuturistic festival at the British Library celebrating Black excellence across the creative industries.', slug:'black-to-the-future' },
+  { title:'Clean Prose', caption:'Clean Prose', sub:'London · 2016–2020', img:'/images/project-clean-prose.jpg', tags:['commissioned','literary events','70+ events'], desc:'Over 70 literary events produced with Irenosen Okojie — salons, launches, festivals and readings across London.', slug:'clean-prose' },
+  { title:'That Time of the Month', caption:'That Time of the Month', sub:'London · 2018–19', img:'/images/project-that-time.jpg', tags:['self-produced','book club','jane austen'], desc:'A feminist book club and screening series — Jane Austen, wine, and zero irony.', slug:'that-time-of-the-month' },
+  { title:'The Happiness Workshop', caption:'The Happiness Workshop', sub:'festivals & venues · 2019–present', img:'/images/project-happiness.jpg', tags:['self-produced','wellbeing','facilitation'], desc:'A standalone workshop on joy as a practice. Delivered at the Barbican, Primadonna, Also Festival, and more.', slug:'happiness-workshop' },
+  { title:'Strong Women Squad', caption:'Strong Women Squad', sub:'London · 2018', img:'/images/project-strong-women.jpg', tags:['self-produced','community','events'], desc:'A community of women and non-binary people — parties, panels, solidarity and strength in east London.', slug:'strong-women-squad' },
+  { title:'Purple Reign', caption:'Purple Reign', sub:"Maker's Academy · 2018", img:'/images/project-purple-reign.jpg', tags:['self-produced','cabaret','music'], desc:'A vegan birthday bakeoff cabaret in tribute to Prince. One night, one legend, many cakes.', slug:'purple-reign' },
+  { title:'Feeling Noughties', caption:'Feeling Noughties', sub:'Drink Shop & Do · 2016', img:'/images/project-feeling-noughties.jpg', tags:['self-produced','party','nostalgia'], desc:'A Y2K nostalgia party celebrating the music, fashion and chaos of the 2000s. Sold out. Obviously.', slug:'feeling-noughties' },
+  { title:'The Curious Mermaid', caption:'The Curious Mermaid', sub:'Substack · 2024–present', img:'/images/project-curious-mermaid.jpg', tags:['self-produced','writing','community'], desc:'Stories of creativity, community and the beauty in what others might overlook.', slug:'curious-mermaid' },
+];
+
+(function() {
+  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(),0,0)) / 86400000);
+  const p = PROJECTS[dayOfYear % PROJECTS.length];
+  const img = document.getElementById('feat-img');
+  const caption = document.getElementById('feat-caption');
+  const sub = document.getElementById('feat-sub');
+  const title = document.getElementById('feat-title');
+  const desc = document.getElementById('feat-desc');
+  const pills = document.getElementById('feat-pills');
+  const link = document.getElementById('feat-link');
+  const polaroid = document.getElementById('feat-polaroid');
+  if (!title) return;
+  if (img) { img.src = p.img; img.alt = p.title; }
+  if (caption) caption.textContent = p.caption;
+  if (sub) sub.textContent = p.sub;
+  if (title) title.textContent = p.title;
+  if (desc) desc.textContent = p.desc;
+  if (pills) pills.innerHTML = p.tags.map(t => `<span class="pill">${t}</span>`).join('');
+  if (link) link.href = `/projects/${p.slug}`;
+  if (polaroid) polaroid.style.cursor = 'pointer', polaroid.onclick = () => window.location.href = `/projects/${p.slug}`;
+})();
+
 // Mobile menu
 const burger = document.getElementById('burger');
 const mobileMenu = document.getElementById('mobile-menu');
