@@ -309,26 +309,32 @@ import Splash from '../components/Splash.astro';
       <p class="section-label-dark">collaborators</p>
       <h2 class="h2-dark">people I'm proud to work with</h2>
       <p class="sub-dark">Brilliant people I've had the pleasure of working alongside — on commissioned and self-led projects. I recommend them without hesitation.</p>
-      <div class="collab-grid">
+      <div class="gallery-wall">
         {[
-          { initials:'RL', name:'Ria Lina', role:'comedian & writer', desc:'Worked together on events bringing comedy and culture into unexpected spaces.', link:'https://rialina.com' },
-          { initials:'LN', name:'Leena Norms', role:'author & content creator', desc:'Host of That Time of the Month throughout, judge at Purple Reign. A recurring joy to work with.', link:'https://leenanorms.com' },
-          { initials:'SV', name:'Sanne Vliegenthart', role:'creative', desc:'A natural collaborator across events and creative projects.', link:'#' },
-          { initials:'VG', name:'Viv Groskop', role:'author, comedian & speaker', desc:'Worked together on events at the intersection of culture, comedy and ideas.', link:'https://vivgroskop.com' },
+          { initials:'RL', img:'collab-ria-lina.jpg', name:'Ria Lina', role:'comedian & writer', desc:'Worked together on events bringing comedy and culture into unexpected spaces.', link:'https://rialina.com', size:'md', rot:-3 },
+          { initials:'LN', img:'collab-leena-norms.jpg', name:'Leena Norms', role:'author & content creator', desc:'Host of That Time of the Month throughout, judge at Purple Reign. A recurring joy to work with.', link:'https://leenanorms.com', size:'lg', rot:1.5 },
+          { initials:'SV', img:'collab-sanne-vliegenthart.jpg', name:'Sanne Vliegenthart', role:'creative', desc:'A natural collaborator across events and creative projects.', link:'#', size:'sm', rot:-1 },
+          { initials:'VG', img:'collab-viv-groskop.jpg', name:'Viv Groskop', role:'author, comedian & speaker', desc:'Worked together on events at the intersection of culture, comedy and ideas.', link:'https://vivgroskop.com', size:'md', rot:2.5 },
         ].map(c => (
-          <div class="collab-card">
-            <div class="collab-photo">
-              <span class="collab-initials">{c.initials}</span>
+          <div class={`portrait portrait-${c.size}`} style={`--prot:${c.rot}deg`}>
+            <div class="frame">
+              <div class="frame-img">
+                <img src={`/images/${c.img}`} alt={c.name} onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`} />
+                <div class="frame-initials">{c.initials}</div>
+                <div class="frame-overlay">
+                  <p class="overlay-desc">{c.desc}</p>
+                  <a class="overlay-link" href={c.link} target="_blank" rel="noopener">visit website →</a>
+                </div>
+              </div>
             </div>
-            <div class="collab-body">
-              <h3>{c.name}</h3>
-              <p class="collab-role">{c.role}</p>
-              <p class="collab-desc">{c.desc}</p>
-              <a href={c.link} class="collab-link" target="_blank" rel="noopener">visit website →</a>
+            <div class="nameplate">
+              <div class="nameplate-name">{c.name}</div>
+              <div class="nameplate-role">{c.role}</div>
             </div>
           </div>
         ))}
       </div>
+      <p class="gallery-note">hover to find out more</p>
     </section>
 
     <!-- PERSONAL PROJECTS -->
@@ -814,16 +820,57 @@ import Splash from '../components/Splash.astro';
     letter-spacing: 0.5px; font-family: var(--font-body);
   }
 
-  /* COLLABORATORS */
-  .collab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; max-width: 1100px; }
-  .collab-card { background: #fff; border: 0.5px solid #E8E6E0; border-radius: 14px; overflow: hidden; }
-  .collab-photo { height: 120px; background: #1E1756; display: flex; align-items: center; justify-content: center; }
-  .collab-initials { font-family: var(--font-display); font-size: 32px; font-weight: 300; color: rgba(255,255,255,0.2); }
-  .collab-body { padding: 16px; }
-  .collab-body h3 { font-size: 14px; font-weight: 500; color: #1E1756; margin-bottom: 3px; font-family: var(--font-body); }
-  .collab-role { font-size: 12px; color: #D4537E; margin-bottom: 8px; }
-  .collab-desc { font-size: 13px; color: #5F5E5A; line-height: 1.55; margin-bottom: 10px; }
-  .collab-link { font-size: 12px; color: #534AB7; border-bottom: 0.5px solid rgba(83,74,183,0.3); padding-bottom: 1px; }
+  /* COLLABORATORS — PORTRAIT GALLERY */
+  .gallery-wall { display: flex; flex-wrap: wrap; gap: 0; justify-content: center; align-items: flex-end; padding: 20px 0 8px; max-width: 1100px; }
+  .portrait {
+    display: flex; flex-direction: column; align-items: center;
+    margin: 0 16px 28px;
+    cursor: pointer;
+    transform: rotate(var(--prot, 0deg));
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .portrait:hover { transform: rotate(0deg) scale(1.06) !important; z-index: 10; }
+  .frame {
+    background: #F8F4EC; padding: 10px;
+    position: relative;
+    box-shadow:
+      inset 0 0 0 1px rgba(180,160,100,0.4),
+      inset 0 0 0 3px #F8F4EC,
+      inset 0 0 0 4px rgba(180,160,100,0.3),
+      2px 3px 12px rgba(0,0,0,0.15), 0 1px 4px rgba(0,0,0,0.1);
+  }
+  .frame::before {
+    content: ''; position: absolute; inset: 5px;
+    border: 1px solid rgba(180,160,100,0.5);
+    pointer-events: none; z-index: 1;
+  }
+  .frame::after {
+    content: ''; position: absolute; inset: 8px;
+    border: 0.5px solid rgba(180,160,100,0.25);
+    pointer-events: none; z-index: 1;
+  }
+  .frame-img { position: relative; overflow: hidden; background: #2A1040; display: block; }
+  .frame-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .frame-initials {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display); font-size: 36px; font-weight: 300; color: rgba(255,255,255,0.15);
+  }
+  .frame-overlay {
+    position: absolute; inset: 0;
+    background: rgba(30,23,86,0.88);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 16px; opacity: 0; transition: opacity 0.3s; z-index: 2;
+  }
+  .portrait:hover .frame-overlay { opacity: 1; }
+  .overlay-desc { font-size: 12px; color: #F5F0FF; text-align: center; line-height: 1.6; margin-bottom: 10px; }
+  .overlay-link { font-size: 11px; color: #F5A7CC; letter-spacing: 0.5px; border-bottom: 0.5px solid rgba(245,167,204,0.4); padding-bottom: 1px; }
+  .portrait-lg .frame-img { width: 180px; height: 220px; }
+  .portrait-md .frame-img { width: 150px; height: 190px; }
+  .portrait-sm .frame-img { width: 130px; height: 165px; }
+  .nameplate { margin-top: 12px; text-align: center; }
+  .nameplate-name { font-family: var(--font-display); font-size: 18px; font-weight: 400; color: #1E1756; letter-spacing: 0.3px; }
+  .nameplate-role { font-size: 11px; color: #D4537E; letter-spacing: 1px; text-transform: uppercase; margin-top: 3px; }
+  .gallery-note { font-size: 12px; color: #B4B2A9; font-style: italic; margin-top: 4px; }
 
   /* PERSONAL PROJECTS */
   .personal { text-align: center; }
