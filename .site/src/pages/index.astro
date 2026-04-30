@@ -404,12 +404,12 @@ import Splash from '../components/Splash.astro';
     background: var(--sky, #07051A);
     min-height: 90vh;
     display: flex; align-items: center;
-    padding: 80px 16px 60px;
+    padding: 80px 32px 60px;
     transition: background 1s ease;
   }
   .hero-inner {
-    max-width: 1200px; margin: 0 auto; width: 100%;
-    display: grid; grid-template-columns: 1.3fr 1fr; gap: 0; align-items: center;
+    max-width: 960px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center;
   }
   .hero-overline {
     font-size: 11px; color: var(--accent-soft);
@@ -429,7 +429,7 @@ import Splash from '../components/Splash.astro';
   h1 em { color: var(--accent-soft); font-style: italic; }
   .hero-sub {
     font-size: 15px; color: var(--text-secondary);
-    line-height: 1.75; max-width: 420px; margin-bottom: 36px;
+    line-height: 1.75; margin-bottom: 36px;
   }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn-primary {
