@@ -87,25 +87,126 @@ import Splash from '../components/Splash.astro';
       <p class="section-label-dark">services</p>
       <h2 class="h2-dark">what I do</h2>
       <p class="sub-dark">I work with organisations, initiatives and individuals who make culture — helping them build better from the inside out.</p>
-      <div class="services-grid">
-        {[
-          { n:'01', title:'make culture happen', desc:'Event production and creative direction — from concept to room. Originating, producing and directing cultural events, series and experiences that bring people together around something that matters.' },
-          { n:'02', title:'build better environments', desc:'People and culture consultancy — HR infrastructure, workplace culture, community and engagement strategy for creative organisations. The inside work that makes the outside work possible.' },
-          { n:'03', title:'find your people', desc:'Audience development — helping cultural organisations and initiatives identify, reach and genuinely connect with the communities they exist to serve.' },
-          { n:'04', title:'the happiness workshop', desc:'A named, bookable workshop experience for festivals, organisations, teams and individuals. Delivered at the Barbican, Primadonna Festival, Also Festival and more.' },
-          { n:'05', title:"let's build it together", desc:'Mentoring and consultancy for people with an idea they\'re ready to make real. No conventional path required — just curiosity, commitment and the will to make something happen.' },
-          { n:'06', title:'make work feel alive', desc:'Internal events, rituals and communications that turn a workplace into a community. From all-hands to onboarding, from internal newsletters to team rituals — the culture your people experience every day, not just on special occasions.' },
-          { n:'07', title:'build something that lasts', desc:'For new organisations, studios and initiatives that need to get the foundations right. Brand identity and positioning, people infrastructure, internal culture, community strategy — the scaffolding that lets everything else grow. Built from scratch, multiple times, across the games industry, cultural sector and beyond.' },
-          { n:'08', title:'create cultural moments for good', desc:'Social impact and social enterprise work that actually moves people. Translating values, causes and missions into cultural experiences — events, campaigns and moments that build community around something that matters. Because the best advocacy doesn\'t feel like advocacy.' },
-          { n:'09', title:'in the room', desc:'Available to host, chair, speak or sit on panels. Bringing warmth, curiosity and a genuinely cross-sector perspective to stages, screens and boardrooms. Topics include creative industries, workplace culture, community building, social impact, happiness and the spaces where culture and people meet.' },
-          { n:'10', title:'creative partnership', desc:'Being brought in as a collaborator, not a contractor. You bring the vision, huhbub brings the producing, the relationships, the judgment. Black to the Future is the model.' },
-        ].map(s => (
-          <div class="svc-card">
-            <div class="svc-num">{s.n}</div>
-            <h3>{s.title}</h3>
-            <p>{s.desc}</p>
+
+      <div class="clusters-grid">
+
+        <div class="cluster">
+          <div class="cluster-header">
+            <div class="cluster-icon ci-pink">✦</div>
+            <div class="cluster-title">events & production</div>
+            <div class="cluster-desc">Making culture happen — in rooms, on stages, in the world.</div>
           </div>
-        ))}
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">make culture happen</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">Event production and creative direction — from concept to room. Originating, producing and directing cultural events, series and experiences that bring people together around something that matters.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">create cultural moments for good</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">Social impact work that actually moves people. Translating values, causes and missions into cultural experiences. Because the best advocacy doesn't feel like advocacy.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">in the room</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">Available to host, chair, speak or sit on panels. Bringing warmth, curiosity and a genuinely cross-sector perspective to stages, screens and boardrooms.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cluster">
+          <div class="cluster-header">
+            <div class="cluster-icon ci-purple">❋</div>
+            <div class="cluster-title">people & organisations</div>
+            <div class="cluster-desc">The inside work that makes the outside work possible.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">build better environments</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">People and culture consultancy — HR infrastructure, workplace culture, community and engagement strategy for creative organisations.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">make work feel alive</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">Internal events, rituals and communications that turn a workplace into a community. The culture your people experience every day, not just on special occasions.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">build something that lasts</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">For new organisations that need to get the foundations right. Brand identity, positioning, people infrastructure, internal culture — the scaffolding that lets everything else grow.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cluster">
+          <div class="cluster-header">
+            <div class="cluster-icon ci-teal">◈</div>
+            <div class="cluster-title">growth & connection</div>
+            <div class="cluster-desc">Finding the people, building the relationships, growing the thing.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">find your people</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">Audience development — helping cultural organisations and initiatives identify, reach and genuinely connect with the communities they exist to serve.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">let's build it together</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">Mentoring and consultancy for people with an idea they're ready to make real. No conventional path required — just curiosity, commitment and the will to make something happen.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">creative partnership</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">Being brought in as a collaborator, not a contractor. You bring the vision, huhbub brings the producing, the relationships, the judgment. Black to the Future is the model.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cluster">
+          <div class="cluster-header">
+            <div class="cluster-icon ci-gold">✿</div>
+            <div class="cluster-title">the happiness workshop</div>
+            <div class="cluster-desc">A standalone offering. Bookable. Joyful. Transformative.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">what is it?</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">A named, bookable workshop experience for festivals, organisations, teams and individuals. Delivered at the Barbican, Primadonna Festival, Also Festival and more. Get in touch to book.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger">
+                <span class="svc-name">who is it for?</span>
+                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
+              </button>
+              <div class="svc-body"><div class="svc-inner">Teams who've forgotten to have fun. Individuals at a crossroads. Festival audiences who want something that lasts beyond the weekend. Anyone who wants to think differently about joy.</div></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -363,12 +464,33 @@ import Splash from '../components/Splash.astro';
   .tag-cultural,.tag-cultural-production { color: #3C3489; background: #EEEDFE; }
   .tag-events,.tag-cabaret,.tag-workshop,.tag-festivals,.tag-community { color: #085041; background: #E1F5EE; }
 
-  /* SERVICES */
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 12px; max-width: 1100px; }
-  .svc-card { background: #fff; border: 0.5px solid #E8D5EF; border-radius: 12px; padding: 20px; }
-  .svc-num { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: #EDDBF5; margin-bottom: 10px; line-height: 1; }
-  .svc-card h3 { font-size: 14px; font-weight: 500; color: #1E1756; margin-bottom: 6px; font-family: var(--font-body); }
-  .svc-card p { font-size: 13px; color: #888780; line-height: 1.55; }
+  /* SERVICES CLUSTERS */
+  .clusters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1100px; }
+  .cluster { background: #fff; border: 0.5px solid #E8D5EF; border-radius: 16px; overflow: hidden; }
+  .cluster-header { padding: 24px 24px 16px; }
+  .cluster-icon { width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; font-size: 16px; }
+  .ci-pink { background: #FBEAF0; }
+  .ci-purple { background: #EEEDFE; }
+  .ci-teal { background: #E1F5EE; }
+  .ci-gold { background: #FAEEDA; }
+  .cluster-title { font-size: 15px; font-weight: 500; color: #1E1756; margin-bottom: 4px; }
+  .cluster-desc { font-size: 12px; color: #888780; line-height: 1.6; }
+  .svc-list { padding: 0 12px 12px; }
+  .svc-item { border-radius: 10px; overflow: hidden; margin-bottom: 4px; }
+  .svc-trigger { width: 100%; background: none; border: none; padding: 11px 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; transition: background 0.2s; font-family: var(--font-body); }
+  .svc-trigger:hover { background: #FDF6F0; }
+  .svc-trigger.open { background: #FDF6F0; }
+  .svc-name { font-size: 13px; font-weight: 500; color: #1E1756; }
+  .svc-arrow { width: 20px; height: 20px; border-radius: 50%; background: #F5EEF8; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.2s; }
+  .svc-arrow svg { width: 8px; height: 8px; stroke: #993556; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .svc-trigger.open .svc-arrow { transform: rotate(180deg); background: #FBEAF0; }
+  .svc-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .svc-body.open { max-height: 200px; }
+  .svc-inner { padding: 4px 12px 14px; font-size: 12px; color: #5F5E5A; line-height: 1.7; border-top: 0.5px solid #F0E8F5; }
+  .burst { position: fixed; pointer-events: none; z-index: 9999; }
+  .burst-dot { position: absolute; width: 5px; height: 5px; border-radius: 50%; animation: burst-out 0.7s ease-out forwards; }
+  @keyframes burst-out { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0} }
+  @media (max-width: 768px) { .clusters-grid { grid-template-columns: 1fr; } }
 
   /* PROJECTS */
   .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; max-width: 1100px; }
@@ -502,7 +624,46 @@ revealSite();
   window.addEventListener('resize', resize);
 })();
 
-// Project filter
+// Services cluster expand/collapse
+document.querySelectorAll('.svc-trigger').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const body = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.svc-trigger.open').forEach(b => {
+      b.classList.remove('open');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      body.classList.add('open');
+      burstEffect(btn);
+    }
+  });
+});
+
+function burstEffect(el) {
+  const rect = el.getBoundingClientRect();
+  const cx = rect.right - 18;
+  const cy = rect.top + rect.height / 2;
+  const colors = ['#D4537E','#F5A7CC','#EF9F27','#7F77DD','#FAC775','#AFA9EC'];
+  const container = document.createElement('div');
+  container.className = 'burst';
+  container.style.left = cx + 'px';
+  container.style.top = cy + 'px';
+  document.body.appendChild(container);
+  for (let i = 0; i < 10; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'burst-dot';
+    const angle = (i / 10) * Math.PI * 2;
+    const dist = 24 + Math.random() * 20;
+    dot.style.setProperty('--tx', Math.cos(angle) * dist + 'px');
+    dot.style.setProperty('--ty', Math.sin(angle) * dist + 'px');
+    dot.style.background = colors[i % colors.length];
+    dot.style.animationDelay = (Math.random() * 0.08) + 's';
+    container.appendChild(dot);
+  }
+  setTimeout(() => container.remove(), 800);
+}
 document.querySelectorAll('.filter').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
