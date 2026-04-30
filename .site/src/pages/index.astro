@@ -46,12 +46,12 @@ import Splash from '../components/Splash.astro';
     <!-- MARQUEE -->
     <div class="marquee" aria-hidden="true">
       <div class="marquee-inner">
-        {['intimate events','supper clubs','conferences & festivals','happiness workshops',
-          'cabaret','panel curation','audience development','community building',
-          'cultural production','artist liaison','stage hosting','new initiatives',
-          'intimate events','supper clubs','conferences & festivals','happiness workshops',
-          'cabaret','panel curation','audience development','community building',
-          'cultural production','artist liaison','stage hosting','new initiatives'].map(t => (
+        {['event production','creative direction','people & culture','happiness workshops',
+          'audience development','creative partnership','mentoring','community building',
+          'cultural production','artist liaison','stage hosting','let\'s build it together',
+          'event production','creative direction','people & culture','happiness workshops',
+          'audience development','creative partnership','mentoring','community building',
+          'cultural production','artist liaison','stage hosting','let\'s build it together'].map(t => (
           <span>{t}</span>
         ))}
       </div>
@@ -89,11 +89,16 @@ import Splash from '../components/Splash.astro';
       <p class="sub-dark">I work with organisations, initiatives and individuals who make culture — helping them build better from the inside out.</p>
       <div class="services-grid">
         {[
-          { n:'01', title:'intimate events', desc:'Supper clubs and gatherings that create real connection between people.' },
-          { n:'02', title:'conferences & festivals', desc:'Producing, programming and hosting panels, conferences and festivals.' },
-          { n:'03', title:'happiness workshops', desc:'Sessions that help teams and individuals find joy in their work and lives.' },
-          { n:'04', title:'new initiatives', desc:'Supporting people taking something from an idea into the world.' },
-          { n:'05', title:'finding your audience', desc:'Helping initiatives and organisations reach the people who need them.' },
+          { n:'01', title:'make culture happen', desc:'Event production and creative direction — from concept to room. Originating, producing and directing cultural events, series and experiences that bring people together around something that matters.' },
+          { n:'02', title:'build better environments', desc:'People and culture consultancy — HR infrastructure, workplace culture, community and engagement strategy for creative organisations. The inside work that makes the outside work possible.' },
+          { n:'03', title:'find your people', desc:'Audience development — helping cultural organisations and initiatives identify, reach and genuinely connect with the communities they exist to serve.' },
+          { n:'04', title:'the happiness workshop', desc:'A named, bookable workshop experience for festivals, organisations, teams and individuals. Delivered at the Barbican, Primadonna Festival, Also Festival and more.' },
+          { n:'05', title:"let's build it together", desc:'Mentoring and consultancy for people with an idea they\'re ready to make real. No conventional path required — just curiosity, commitment and the will to make something happen.' },
+          { n:'06', title:'make work feel alive', desc:'Internal events, rituals and communications that turn a workplace into a community. From all-hands to onboarding, from internal newsletters to team rituals — the culture your people experience every day, not just on special occasions.' },
+          { n:'07', title:'build something that lasts', desc:'For new organisations, studios and initiatives that need to get the foundations right. Brand identity and positioning, people infrastructure, internal culture, community strategy — the scaffolding that lets everything else grow. Built from scratch, multiple times, across the games industry, cultural sector and beyond.' },
+          { n:'08', title:'create cultural moments for good', desc:'Social impact and social enterprise work that actually moves people. Translating values, causes and missions into cultural experiences — events, campaigns and moments that build community around something that matters. Because the best advocacy doesn\'t feel like advocacy.' },
+          { n:'09', title:'in the room', desc:'Available to host, chair, speak or sit on panels. Bringing warmth, curiosity and a genuinely cross-sector perspective to stages, screens and boardrooms. Topics include creative industries, workplace culture, community building, social impact, happiness and the spaces where culture and people meet.' },
+          { n:'10', title:'creative partnership', desc:'Being brought in as a collaborator, not a contractor. You bring the vision, huhbub brings the producing, the relationships, the judgment. Black to the Future is the model.' },
         ].map(s => (
           <div class="svc-card">
             <div class="svc-num">{s.n}</div>
