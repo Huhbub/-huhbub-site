@@ -268,24 +268,36 @@ import Splash from '../components/Splash.astro';
           <button class="filter" data-filter="collaborative">collaborative</button>
         </div>
       </div>
+      <p class="projects-hint">hover to see the night — poster on the front, photography on the back</p>
       <div class="polaroid-grid">
         {[
-          { img:'project-bttf.jpg', rot:-2.5, title:'Black to the Future', sub:'British Library · 2023–24', tag:'collaborative', type:'collaborative' },
-          { img:'project-that-time.jpg', rot:1.2, title:'That Time of the Month', sub:'The Book Club, London', tag:'self-produced', type:'self' },
-          { img:'project-purple-reign.jpg', rot:-1, title:'Purple Reign', sub:'Makers Academy', tag:'self-produced', type:'self' },
-          { img:'project-curious-mermaid.jpg', rot:2, title:'Curious Mermaid events', sub:'Supper club · Yellow Door', tag:'self-produced', type:'self' },
-          { img:'project-strong-women.jpg', rot:-0.8, title:'Strong Women Squad', sub:'Lisa Dickenson · Trapeze', tag:'collaborative', type:'collaborative' },
-          { img:'project-feeling-noughties.jpg', rot:1.8, title:'Feeling Noughties', sub:'Drink Shop & Do · Core Arts', tag:'self-produced', type:'self' },
-          { img:'project-happiness.jpg', rot:-1.5, title:'Happiness workshops', sub:'Barbican, Primadonna, Also', tag:'commissioned', type:'commissioned' },
-          { img:'project-festivals.jpg', rot:0.8, title:'Festival work', sub:'Larmer Tree, Port Eliot', tag:'commissioned', type:'commissioned' },
-          { img:'project-clean-prose.jpg', rot:-2, title:'Clean Prose', sub:'70+ events · London', tag:'commissioned', type:'commissioned' },
+          { poster:'poster-bttf.jpg', photo:'project-bttf.jpg', rot:-2.5, title:'Black to the Future', sub:'British Library · 2023–24', tag:'collaborative', type:'collaborative' },
+          { poster:'poster-that-time.jpg', photo:'project-that-time.jpg', rot:1.2, title:'That Time of the Month', sub:'The Book Club, London', tag:'self-produced', type:'self' },
+          { poster:'poster-purple-reign.jpg', photo:'project-purple-reign.jpg', rot:-1, title:'Purple Reign', sub:'Makers Academy', tag:'self-produced', type:'self' },
+          { poster:'poster-curious-mermaid.jpg', photo:'project-curious-mermaid.jpg', rot:2, title:'Curious Mermaid events', sub:'Supper club · Yellow Door', tag:'self-produced', type:'self' },
+          { poster:'poster-strong-women.jpg', photo:'project-strong-women.jpg', rot:-0.8, title:'Strong Women Squad', sub:'Lisa Dickenson · Trapeze', tag:'collaborative', type:'collaborative' },
+          { poster:'poster-feeling-noughties.jpg', photo:'project-feeling-noughties.jpg', rot:1.8, title:'Feeling Noughties', sub:'Drink Shop & Do · Core Arts', tag:'self-produced', type:'self' },
+          { poster:'poster-happiness.jpg', photo:'project-happiness.jpg', rot:-1.5, title:'Happiness workshops', sub:'Barbican, Primadonna, Also', tag:'commissioned', type:'commissioned' },
+          { poster:'poster-festivals.jpg', photo:'project-festivals.jpg', rot:0.8, title:'Festival work', sub:'Larmer Tree, Port Eliot', tag:'commissioned', type:'commissioned' },
+          { poster:'poster-clean-prose.jpg', photo:'project-clean-prose.jpg', rot:-2, title:'Clean Prose', sub:'70+ events · London', tag:'commissioned', type:'commissioned' },
         ].map(p => (
-          <div class="polaroid" data-type={p.type} style={`--rot:${p.rot}deg`}>
-            <div class="polaroid-img">
-              <img src={`/images/${p.img}`} alt={p.title} onerror="this.parentElement.classList.add('polaroid-placeholder')" />
+          <div class="flip-wrap" data-type={p.type} style={`--rot:${p.rot}deg`}>
+            <div class="polaroid-outer">
+              <div class="polaroid-face">
+                <div class="polaroid-img">
+                  <img src={`/images/${p.poster}`} alt={`${p.title} poster`} />
+                </div>
+                <div class="polaroid-caption">{p.title}</div>
+                <div class="polaroid-tag">{p.tag}</div>
+              </div>
+              <div class="polaroid-face polaroid-back">
+                <div class="polaroid-img">
+                  <img src={`/images/${p.photo}`} alt={`${p.title} photography`} />
+                </div>
+                <div class="polaroid-caption">{p.title}</div>
+                <div class="polaroid-tag">{p.sub}</div>
+              </div>
             </div>
-            <div class="polaroid-caption">{p.title}</div>
-            <div class="polaroid-tag">{p.tag}</div>
           </div>
         ))}
       </div>
@@ -709,40 +721,59 @@ import Splash from '../components/Splash.astro';
   [data-moment="summer-day"] .postit-mint,
   [data-moment="summer-dusk"] .postit-mint { background: color-mix(in srgb, #C8F0E0 88%, #FAC775 12%); }
 
-  /* PROJECTS — POLAROIDS */
-  .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; max-width: 1100px; }
+  /* PROJECTS — FLIP POLAROIDS */
+  .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px; flex-wrap: wrap; gap: 16px; max-width: 1100px; }
+  .projects-hint { font-size: 12px; color: #888780; margin-bottom: 28px; font-style: italic; }
   .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
   .filter { font-size: 12px; padding: 6px 16px; border-radius: 20px; border: 0.5px solid #D3D1C7; background: transparent; color: #5F5E5A; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
   .filter.active,.filter:hover { background: #1E1756; color: #F5F0FF; border-color: #1E1756; }
   .polaroid-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; max-width: 1100px; align-items: end; padding: 16px 8px; }
-  .polaroid {
-    background: #fff;
-    padding: 10px 10px 36px;
-    border-radius: 2px;
-    box-shadow: 2px 3px 12px rgba(0,0,0,0.14), 0 1px 3px rgba(0,0,0,0.08);
+
+  /* Flip wrap — perspective container */
+  .flip-wrap {
+    perspective: 1000px;
     cursor: pointer;
     transform: rotate(var(--rot, 0deg));
-    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
-    display: flex; flex-direction: column;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
   }
-  .polaroid:hover {
-    transform: rotate(0deg) scale(1.05) !important;
-    box-shadow: 6px 10px 28px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.1);
-    z-index: 10;
+  .flip-wrap.hidden { display: none; }
+  .flip-wrap:hover { transform: rotate(0deg) !important; }
+
+  /* Rotating inner */
+  .polaroid-outer {
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    position: relative;
   }
-  .polaroid.hidden { display: none; }
+  .flip-wrap.flipped .polaroid-outer { transform: rotateY(180deg); }
+  .flip-wrap:hover .polaroid-outer { transform: rotateY(180deg); }
+  .flip-wrap.flipped:hover .polaroid-outer { transform: rotateY(180deg); }
+
+  /* Both faces share polaroid styling */
+  .polaroid-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    background: #fff;
+    padding: 10px 10px 40px;
+    border-radius: 2px;
+    box-shadow: 2px 3px 12px rgba(0,0,0,0.14), 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .polaroid-back {
+    position: absolute;
+    inset: 0;
+    transform: rotateY(180deg);
+    padding: 10px 10px 40px;
+  }
   .polaroid-img {
     width: 100%; aspect-ratio: 1;
-    background: #E8E0F0;
     overflow: hidden; margin-bottom: 8px;
+    background: #E8E0F0;
   }
   .polaroid-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .polaroid-img.polaroid-placeholder { display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(0,0,0,0.2); }
   .polaroid-caption {
     font-family: var(--font-handwriting);
     font-size: 15px; color: #3C3C3C;
-    text-align: center; line-height: 1.4;
-    padding: 0 4px; margin-top: auto;
+    text-align: center; line-height: 1.4; padding: 0 4px;
   }
   .polaroid-tag {
     font-size: 10px; color: #D4537E;
@@ -791,8 +822,7 @@ import Splash from '../components/Splash.astro';
     .bw3 { width: 130px !important; height: 130px !important; animation: float1 9s ease-in-out infinite !important; }
     #sparkle-canvas { display: none; }
     .featured-inner { grid-template-columns: 1fr; }
-    .polaroid-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .personal-pair { grid-template-columns: 1fr; }
+    .polaroid-grid { grid-template-columns: 1fr 1fr; gap: 20px; }    .personal-pair { grid-template-columns: 1fr; }
     nav { padding: 14px 20px; }
     .nav-links { gap: 14px; }
     .nav-links a { font-size: 12px; }
@@ -948,12 +978,26 @@ function burstEffect(el) {
   }
   setTimeout(() => container.remove(), 800);
 }
+// Polaroid flip — hover on desktop, tap on mobile
+document.querySelectorAll('.flip-wrap').forEach(w => {
+  w.addEventListener('mouseenter', () => {
+    if(window.innerWidth > 768) w.classList.add('flipped');
+  });
+  w.addEventListener('mouseleave', () => {
+    if(window.innerWidth > 768) w.classList.remove('flipped');
+  });
+  w.addEventListener('click', () => {
+    if(window.innerWidth <= 768) w.classList.toggle('flipped');
+  });
+});
+
+// Project filter
 document.querySelectorAll('.filter').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const f = btn.dataset.filter;
-    document.querySelectorAll('.polaroid').forEach(card => {
+    document.querySelectorAll('.flip-wrap').forEach(card => {
       card.classList.toggle('hidden', f !== 'all' && card.dataset.type !== f);
     });
   });
