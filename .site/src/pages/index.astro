@@ -921,27 +921,25 @@ burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
 menuClose?.addEventListener('click', () => mobileMenu.classList.remove('open'));
 window.closeMenu = () => mobileMenu.classList.remove('open');
 
-// Star sparkle nav transition
-const SPARKLE_COLORS = ['#F5A7CC','#AFA9EC','#FAC775','#EF9F27','#D4537E','#fff','#7F77DD'];
-
-function drawStar(ctx, x, y, r, col, alpha, rot) {
-  ctx.save();
-  ctx.globalAlpha = alpha;
-  ctx.fillStyle = col;
-  ctx.translate(x, y);
-  ctx.rotate(rot);
-  ctx.beginPath();
-  for (let i = 0; i < 8; i++) {
-    const angle = (i / 8) * Math.PI * 2;
-    const radius = i % 2 === 0 ? r : r * 0.38;
-    const px = Math.cos(angle) * radius;
-    const py = Math.sin(angle) * radius;
-    i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
-  }
-  ctx.closePath();
-  ctx.fill();
-  ctx.restore();
-}
+// Nav transition — soft glowing particles matching the splash screen world
+const MOMENT_COLORS = {
+  'spring-dawn':  ['#F5A7CC','#FAC775','#AFA9EC','#F4C0D1'],
+  'spring-day':   ['#D4537E','#7F77DD','#F5A7CC','#EF9F27'],
+  'spring-dusk':  ['#F5A7CC','#EF9F27','#7F77DD','#FAC775'],
+  'spring-night': ['#D4537E','#AFA9EC','#FAC775','#F5A7CC'],
+  'summer-dawn':  ['#FAC775','#EF9F27','#F5A7CC','#FAEEDA'],
+  'summer-day':   ['#EF9F27','#D4537E','#FAC775','#F5A7CC'],
+  'summer-dusk':  ['#D4537E','#FAC775','#AFA9EC','#F5A7CC'],
+  'summer-night': ['#FAC775','#7F77DD','#F5A7CC','#EF9F27'],
+  'autumn-dawn':  ['#EF9F27','#D85A30','#FAC775','#BA7517'],
+  'autumn-day':   ['#BA7517','#D85A30','#EF9F27','#FAC775'],
+  'autumn-dusk':  ['#EF9F27','#D4537E','#7F77DD','#D85A30'],
+  'autumn-night': ['#EF9F27','#D85A30','#AFA9EC','#FAC775'],
+  'winter-dawn':  ['#B5D4F4','#85B7EB','#F5A7CC','#AFA9EC'],
+  'winter-day':   ['#378ADD','#7F77DD','#F5A7CC','#B5D4F4'],
+  'winter-dusk':  ['#AFA9EC','#F5A7CC','#B5D4F4','#7F77DD'],
+  'winter-night': ['#7F77DD','#B5D4F4','#F5A7CC','#AFA9EC'],
+};
 
 function sparkleTo(href, originX, originY) {
   const canvas = document.getElementById('sparkle-canvas');
@@ -950,44 +948,59 @@ function sparkleTo(href, originX, originY) {
   canvas.height = window.innerHeight;
   canvas.classList.add('active');
 
-  const stars = [];
-  const COUNT = 55;
-  for (let i = 0; i < COUNT; i++) {
+  const palette = MOMENT_COLORS[window.__huhbubMoment || 'spring-night'];
+  const particles = [];
+
+  for (let i = 0; i < 48; i++) {
     const angle = Math.random() * Math.PI * 2;
-    const speed = Math.random() * 9 + 3;
-    const size = Math.random() * 10 + 4;
-    stars.push({
+    const speed = Math.random() * 5 + 1.5;
+    const col = palette[Math.floor(Math.random() * palette.length)];
+    const r = Math.random() * 5 + 2;
+    particles.push({
       x: originX, y: originY,
       vx: Math.cos(angle) * speed,
       vy: Math.sin(angle) * speed,
-      size,
-      col: SPARKLE_COLORS[Math.floor(Math.random() * SPARKLE_COLORS.length)],
-      rot: Math.random() * Math.PI,
-      rotV: (Math.random() - 0.5) * 0.12,
-      alpha: 1,
-      scale: 0, scaleV: 0.1,
+      r, col,
+      alpha: 0,
+      phase: Math.random() * Math.PI * 2,
     });
   }
 
-  // Navigate at peak spread
-  setTimeout(() => { window.location.href = href; }, 380);
+  setTimeout(() => { window.location.href = href; }, 420);
 
   let frame = 0;
-  const TOTAL = 32;
+  const TOTAL = 36;
   function anim() {
     if (frame > TOTAL) return;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    stars.forEach(s => {
-      s.x += s.vx;
-      s.y += s.vy;
-      s.vx *= 0.97;
-      s.vy *= 0.97;
-      s.rot += s.rotV;
-      s.scale = Math.min(1, s.scale + s.scaleV);
-      const fadeIn = 10, fadeOut = TOTAL - fadeIn;
-      s.alpha = frame < fadeIn ? frame / fadeIn : 1 - ((frame - fadeIn) / fadeOut);
-      if (s.alpha <= 0) return;
-      drawStar(ctx, s.x, s.y, s.size * s.scale, s.col, s.alpha, s.rot);
+    particles.forEach(p => {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vx *= 0.96;
+      p.vy *= 0.96;
+      // gentle twinkle like the splash stars
+      const tw = 0.7 + 0.3 * Math.sin(p.phase + frame * 0.25);
+      const fadeIn = 8, fadeOut = TOTAL - fadeIn;
+      const base = frame < fadeIn ? frame / fadeIn : 1 - ((frame - fadeIn) / fadeOut);
+      p.alpha = Math.max(0, base * tw);
+      if (p.alpha <= 0) return;
+      // soft glow — radial gradient like splash objects
+      const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2.5);
+      grd.addColorStop(0, p.col);
+      grd.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.save();
+      ctx.globalAlpha = p.alpha * 0.35;
+      ctx.fillStyle = grd;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r * 2.5, 0, Math.PI * 2);
+      ctx.fill();
+      // solid core
+      ctx.globalAlpha = p.alpha;
+      ctx.fillStyle = p.col;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
     });
     frame++;
     requestAnimationFrame(anim);
