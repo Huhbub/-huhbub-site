@@ -409,7 +409,7 @@ import Splash from '../components/Splash.astro';
   }
   .hero-inner {
     max-width: 1100px; margin: 0 auto; width: 100%;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; align-items: center;
   }
   .hero-overline {
     font-size: 11px; color: var(--accent-soft);
@@ -498,7 +498,15 @@ import Splash from '../components/Splash.astro';
   @keyframes pulse2 { 0%,100%{opacity:0.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.08)} }
   @keyframes pulse3 { 0%,100%{opacity:0.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.06)} }
 
-  /* LIGHTBOX */
+  /* Day mode — use multiply blend for shimmer visibility */
+  [data-moment="spring-day"] .bubble::after,
+  [data-moment="summer-day"] .bubble::after,
+  [data-moment="autumn-day"] .bubble::after,
+  [data-moment="winter-day"] .bubble::after {
+    background: conic-gradient(from 0deg, rgba(212,83,126,0.4), rgba(127,119,221,0.35), rgba(29,158,117,0.3), rgba(239,159,39,0.35), rgba(212,83,126,0.4));
+    mix-blend-mode: multiply;
+    opacity: 0.5;
+  }
   .lightbox {
     position: fixed; inset: 0; background: rgba(7,5,26,0.92);
     display: flex; align-items: center; justify-content: center;
@@ -651,10 +659,12 @@ import Splash from '../components/Splash.astro';
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; }
-    .bubbles { height: 300px; }
-    .b1 { width: 160px; height: 160px; }
-    .b2 { width: 140px; height: 140px; }
-    .b3 { width: 120px; height: 120px; }
+    .bubbles { height: 160px; display: flex; justify-content: center; align-items: center; gap: 16px; }
+    .bubble-wrap { position: relative !important; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; animation: none !important; }
+    .bw1 { width: 140px !important; height: 140px !important; }
+    .bw2 { width: 120px !important; height: 120px !important; }
+    .bw3 { width: 100px !important; height: 100px !important; }
+    #sparkle-canvas { display: none; }
     .featured-inner { grid-template-columns: 1fr; }
     .projects-grid { grid-template-columns: 1fr 1fr; }
     .personal-pair { grid-template-columns: 1fr; }
@@ -693,7 +703,11 @@ revealSite();
   const container = canvas.parentElement;
   function resize() { canvas.width = container.offsetWidth; canvas.height = container.offsetHeight; }
   resize();
-  const COLORS = ['#F5A7CC','#D4537E','#AFA9EC','#FAC775','#B5D4F4','#ffffff'];
+  const moment = window.__huhbubMoment || 'spring-night';
+  const isDay = moment.includes('day');
+  const COLORS = isDay
+    ? ['#D4537E','#7F77DD','#EF9F27','#1D9E75','#F5A7CC','#534AB7','#E85070','#C070E0']
+    : ['#F5A7CC','#D4537E','#AFA9EC','#FAC775','#B5D4F4','#ffffff'];
   const sparkles = [];
   let frame = 0;
   function getCenters() {
@@ -711,10 +725,10 @@ revealSite();
     sparkles.push({
       x: c.x + Math.cos(angle)*dist, y: c.y + Math.sin(angle)*dist,
       vx: (Math.random()-0.5)*0.4, vy: -Math.random()*0.6-0.2,
-      size: Math.random()*2.5+0.5,
+      size: isDay ? Math.random()*3.5+1.5 : Math.random()*2.5+0.5,
       col: COLORS[Math.floor(Math.random()*COLORS.length)],
       life: 0, maxLife: Math.random()*80+40,
-      type: Math.random() < 0.5 ? 'star' : 'dot',
+      type: isDay ? (Math.random() < 0.4 ? 'star' : Math.random() < 0.5 ? 'rect' : 'dot') : (Math.random() < 0.5 ? 'star' : 'dot'),
     });
   }
   function drawStar(x, y, size, col, alpha) {
@@ -735,7 +749,12 @@ revealSite();
       const p=s.life/s.maxLife;
       const alpha = p<0.3 ? p/0.3 : 1-((p-0.3)/0.7);
       if(s.type==='star') drawStar(s.x,s.y,s.size,s.col,alpha*0.9);
-      else {
+      else if(s.type==='rect') {
+        ctx.save(); ctx.globalAlpha=alpha*0.85; ctx.fillStyle=s.col;
+        ctx.translate(s.x,s.y); ctx.rotate(s.life*0.08);
+        ctx.fillRect(-s.size,-s.size*0.5,s.size*2,s.size);
+        ctx.restore();
+      } else {
         ctx.save(); ctx.globalAlpha=alpha*0.7; ctx.fillStyle=s.col;
         ctx.beginPath(); ctx.arc(s.x,s.y,s.size*0.6,0,Math.PI*2); ctx.fill(); ctx.restore();
       }
