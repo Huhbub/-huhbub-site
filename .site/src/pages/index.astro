@@ -404,11 +404,11 @@ import Splash from '../components/Splash.astro';
     background: var(--sky, #07051A);
     min-height: 90vh;
     display: flex; align-items: center;
-    padding: 80px 32px 60px;
+    padding: 80px 16px 60px;
     transition: background 1s ease;
   }
   .hero-inner {
-    max-width: 1100px; margin: 0 auto; width: 100%;
+    max-width: 1200px; margin: 0 auto; width: 100%;
     display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: center;
   }
   .hero-overline {
@@ -658,7 +658,6 @@ import Splash from '../components/Splash.astro';
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; }
     .hero-inner { grid-template-columns: 1fr; gap: 32px; }
     .bubbles { height: 180px; display: flex; justify-content: center; align-items: center; gap: 20px; }
     .bubble-wrap { position: relative !important; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; }
