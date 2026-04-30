@@ -15,6 +15,7 @@ import Splash from '../components/Splash.astro';
         <a href="/projects">projects</a>
         <a href="/collaborators">collaborators</a>
         <a href="/venues">venues</a>
+        <a href="/writing">writing</a>
         <a href="/about">about</a>
         <a href="/contact" class="nav-cta">get in touch</a>
       </div>
@@ -334,7 +335,7 @@ import Splash from '../components/Splash.astro';
     <section class="section-dark personal">
       <p class="section-label">personal projects</p>
       <h2>the curious mermaid universe</h2>
-      <p class="sub-light">Two connected projects grown from the same spirit of curiosity, community and wonder.</p>
+      <p class="sub-light personal-sub">Two connected projects grown from the same spirit of curiosity, community and wonder.</p>
       <div class="personal-pair">
         <div class="pp-card">
           <span class="pp-tag">events</span>
@@ -350,6 +351,38 @@ import Splash from '../components/Splash.astro';
         </div>
       </div>
       <p class="pp-connector">↑ two sides of the same world ↑</p>
+    </section>
+
+    <!-- WRITING -->
+    <section class="section-writing">
+      <div class="writing-inner">
+        <div class="writing-header">
+          <div>
+            <p class="section-label-dark">writing & updates</p>
+            <h2 class="h2-dark">The Curious Mermaid</h2>
+            <p class="sub-dark">Profiles, cultural criticism, community prompts, opportunity roundups and dispatches from huhbub — Sara Veal's newsletter about creativity, culture and the people making things happen.</p>
+          </div>
+          <a href="/writing" class="writing-all">read all →</a>
+        </div>
+        <div class="writing-grid">
+          {[
+            { cat:'huhbub', catColour:'tag-self', title:'huhbub turns 10 in July', excerpt:'A decade of making culture happen — and what comes next.', date:'Coming soon' },
+            { cat:'people', catColour:'tag-commissioned', title:'Leena Norms: on hosting, joy and saying yes', excerpt:'A profile of the writer, host and recurring huhbub collaborator.', date:'Coming soon' },
+            { cat:'culture', catColour:'tag-collaborative', title:'What makes a room work', excerpt:'On the invisible craft of creating spaces where people connect.', date:'Coming soon' },
+          ].map(w => (
+            <div class="writing-card">
+              <span class={`tag ${w.catColour}`}>{w.cat}</span>
+              <h3>{w.title}</h3>
+              <p>{w.excerpt}</p>
+              <span class="writing-date">{w.date}</span>
+            </div>
+          ))}
+        </div>
+        <div class="writing-subscribe">
+          <p>want to receive The Curious Mermaid?</p>
+          <a href="https://curiousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe">subscribe on substack →</a>
+        </div>
+      </div>
     </section>
 
     <!-- FOOTER -->
@@ -795,6 +828,7 @@ import Splash from '../components/Splash.astro';
   /* PERSONAL PROJECTS */
   .personal { text-align: center; }
   .personal h2 { margin-bottom: 8px; }
+  .personal-sub { text-align: center; margin-left: auto; margin-right: auto; }
   .personal-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 700px; margin: 0 auto 16px; text-align: left; }
   .pp-card { border: 0.5px solid var(--border-subtle); border-radius: 14px; padding: 24px; background: rgba(255,255,255,0.03); }
   .pp-tag { font-size: 11px; color: var(--accent-soft); background: rgba(212,83,126,0.12); padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 12px; letter-spacing: 0.5px; }
@@ -802,6 +836,36 @@ import Splash from '../components/Splash.astro';
   .pp-card p { font-size: 13px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
   .pp-card a { font-size: 13px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 1px; }
   .pp-connector { font-size: 11px; color: #534AB7; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 8px; }
+
+  /* WRITING */
+  .section-writing { background: #fff; padding: 72px 32px; }
+  .writing-inner { max-width: 1100px; margin: 0 auto; }
+  .writing-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 32px; flex-wrap: wrap; gap: 16px; }
+  .writing-header > div { max-width: 560px; }
+  .writing-all { font-size: 13px; color: #534AB7; border-bottom: 0.5px solid rgba(83,74,183,0.3); padding-bottom: 1px; white-space: nowrap; }
+  .writing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-bottom: 40px; }
+  .writing-card {
+    border: 0.5px solid #E8E6E0; border-radius: 14px;
+    padding: 20px; background: #FDFBF8;
+    display: flex; flex-direction: column; gap: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .writing-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.08); }
+  .writing-card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 400; color: #1E1756; line-height: 1.3; }
+  .writing-card p { font-size: 13px; color: #5F5E5A; line-height: 1.65; flex: 1; }
+  .writing-date { font-size: 11px; color: #B4B2A9; letter-spacing: 0.5px; margin-top: auto; }
+  .writing-subscribe {
+    display: flex; align-items: center; gap: 16px;
+    padding: 24px; background: #F5F0FF; border-radius: 14px;
+    flex-wrap: wrap;
+  }
+  .writing-subscribe p { font-size: 14px; color: #3C3489; font-family: var(--font-display); font-style: italic; font-size: 18px; }
+  .btn-subscribe {
+    font-size: 13px; font-weight: 500; color: #fff;
+    background: #534AB7; padding: 10px 20px; border-radius: 8px;
+    transition: opacity 0.2s; white-space: nowrap;
+  }
+  .btn-subscribe:hover { opacity: 0.85; }
 
   /* FOOTER */
   footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
