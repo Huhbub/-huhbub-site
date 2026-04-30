@@ -6,17 +6,19 @@ import Splash from '../components/Splash.astro';
   <Splash />
 
   <div id="site">
+    <!-- Scatter transition canvas -->
+    <canvas id="scatter-canvas"></canvas>
 
     <!-- NAV -->
     <nav>
       <a href="/" class="nav-logo"><span class="logo-text">huhbub</span></a>
       <div class="nav-links">
-        <a href="#tab-services">services</a>
-        <a href="#tab-projects">projects</a>
-        <a href="#tab-collaborators">collaborators</a>
-        <a href="#tab-venues">venues</a>
-        <a href="/writing">writing</a>
-        <a href="#tab-about">about</a>
+        <a href="/services" class="nav-link">services</a>
+        <a href="/projects" class="nav-link">projects</a>
+        <a href="/collaborators" class="nav-link">collaborators</a>
+        <a href="/venues" class="nav-link">venues</a>
+        <a href="/writing" class="nav-link">writing</a>
+        <a href="/about" class="nav-link">about</a>
         <a href="mailto:sara@huhbub.com" class="nav-cta">get in touch</a>
       </div>
       <button class="nav-burger" id="burger" aria-label="Open menu">
@@ -28,12 +30,12 @@ import Splash from '../components/Splash.astro';
     <div class="mobile-menu" id="mobile-menu">
       <button class="mobile-menu-close" id="menu-close" aria-label="Close menu">×</button>
       <div class="mobile-menu-links">
-        <a href="#tab-services" onclick="closeMenu()">services</a>
-        <a href="#tab-projects" onclick="closeMenu()">projects</a>
-        <a href="#tab-collaborators" onclick="closeMenu()">collaborators</a>
-        <a href="#tab-venues" onclick="closeMenu()">venues</a>
+        <a href="/services" onclick="closeMenu()">services</a>
+        <a href="/projects" onclick="closeMenu()">projects</a>
+        <a href="/collaborators" onclick="closeMenu()">collaborators</a>
+        <a href="/venues" onclick="closeMenu()">venues</a>
         <a href="/writing" onclick="closeMenu()">writing</a>
-        <a href="#tab-about" onclick="closeMenu()">about</a>
+        <a href="/about" onclick="closeMenu()">about</a>
         <a href="mailto:sara@huhbub.com" onclick="closeMenu()">get in touch</a>
       </div>
     </div>
@@ -46,7 +48,7 @@ import Splash from '../components/Splash.astro';
           <h1>creating<br/><em>experiences</em><br/>for creative<br/>people.</h1>
           <p class="hero-sub">Events, environments and initiatives that bring people together, build community, and make culture happen.</p>
           <div class="hero-ctas">
-            <a href="#tab-projects" class="btn-primary">see the work</a>
+            <a href="/projects" class="btn-primary nav-link">see the work</a>
             <a href="mailto:sara@huhbub.com" class="btn-ghost">get in touch</a>
           </div>
         </div>
@@ -152,242 +154,6 @@ import Splash from '../components/Splash.astro';
       </div>
     </div>
 
-    <!-- STICKY TAB BAR -->
-    <div class="tabs-bar" id="tabs-bar">
-      <div class="tab-pills">
-        <button class="tab-pill active" data-tab="services">services</button>
-        <button class="tab-pill" data-tab="projects">projects</button>
-        <button class="tab-pill" data-tab="collaborators">collaborators</button>
-        <button class="tab-pill" data-tab="venues">venues</button>
-        <button class="tab-pill" data-tab="about">about</button>
-      </div>
-    </div>
-
-    <!-- TAB CONTENT -->
-    <div class="tab-content" id="tab-content">
-      <canvas id="particle-canvas"></canvas>
-
-      <!-- SERVICES TAB -->
-      <div id="tab-services" class="tab-panel active">
-        <div class="section-postits tab-section">
-          <p class="section-label-dark">services</p>
-          <h2 class="h2-dark">what I do</h2>
-          <p class="sub-dark">I work with organisations, initiatives and individuals who make culture — helping them build better from the inside out.</p>
-          <div class="clusters-grid">
-            <div class="cluster postit-pink">
-              <div class="cluster-header">
-                <div class="cluster-icon ci-pink">✦</div>
-                <div class="cluster-title">events & production</div>
-                <div class="cluster-desc">Making culture happen — in rooms, on stages, in the world.</div>
-              </div>
-              <div class="svc-list">
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">make culture happen</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Event production and creative direction — from concept to room. Originating, producing and directing cultural events, series and experiences that bring people together around something that matters.</div></div></div>
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">create cultural moments for good</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Social impact work that actually moves people. Translating values, causes and missions into cultural experiences. Because the best advocacy doesn't feel like advocacy.</div></div></div>
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">in the room</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Available to host, chair, speak or sit on panels. Bringing warmth, curiosity and a genuinely cross-sector perspective to stages, screens and boardrooms.</div></div></div>
-              </div>
-            </div>
-            <div class="cluster postit-lavender">
-              <div class="cluster-header">
-                <div class="cluster-icon ci-purple">❋</div>
-                <div class="cluster-title">people & organisations</div>
-                <div class="cluster-desc">The inside work that makes the outside work possible.</div>
-              </div>
-              <div class="svc-list">
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">build better environments</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">People and culture consultancy — HR infrastructure, workplace culture, community and engagement strategy for creative organisations.</div></div></div>
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">make work feel alive</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Internal events, rituals and communications that turn a workplace into a community. The culture your people experience every day, not just on special occasions.</div></div></div>
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">build something that lasts</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">For new organisations that need to get the foundations right. Brand identity, positioning, people infrastructure, internal culture — the scaffolding that lets everything else grow.</div></div></div>
-              </div>
-            </div>
-            <div class="cluster postit-yellow">
-              <div class="cluster-header">
-                <div class="cluster-icon ci-teal">◈</div>
-                <div class="cluster-title">growth & connection</div>
-                <div class="cluster-desc">Finding the people, building the relationships, growing the thing.</div>
-              </div>
-              <div class="svc-list">
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">find your people</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Audience development — helping cultural organisations and initiatives identify, reach and genuinely connect with the communities they exist to serve.</div></div></div>
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">let's build it together</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Mentoring and consultancy for people with an idea they're ready to make real. No conventional path required — just curiosity, commitment and the will to make something happen.</div></div></div>
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">creative partnership</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Being brought in as a collaborator, not a contractor. You bring the vision, huhbub brings the producing, the relationships, the judgment. Black to the Future is the model.</div></div></div>
-              </div>
-            </div>
-            <div class="cluster postit-mint">
-              <div class="cluster-header">
-                <div class="cluster-icon ci-gold">✿</div>
-                <div class="cluster-title">the happiness workshop</div>
-                <div class="cluster-desc">A standalone offering. Bookable. Joyful. Transformative.</div>
-              </div>
-              <div class="svc-list">
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">what is it?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">A named, bookable workshop experience for festivals, organisations, teams and individuals. Delivered at the Barbican, Primadonna Festival, Also Festival and more.</div></div></div>
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">who is it for?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Teams who've forgotten to have fun. Individuals at a crossroads. Festival audiences who want something that lasts beyond the weekend.</div></div></div>
-                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">what will you leave with?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">A clearer sense of what makes you happy — and practical tools to protect it. Not a list of tips, but a shift in how you think about joy.</div></div></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PROJECTS TAB -->
-      <div id="tab-projects" class="tab-panel">
-        <div class="section-corkboard tab-section">
-          <div class="section-header">
-            <div>
-              <p class="section-label-dark">projects</p>
-              <h2 class="h2-dark">selected work</h2>
-            </div>
-            <div class="filter-bar" role="group">
-              <button class="filter active" data-filter="all">all</button>
-              <button class="filter" data-filter="self">self-produced</button>
-              <button class="filter" data-filter="commissioned">commissioned</button>
-              <button class="filter" data-filter="collaborative">collaborative</button>
-            </div>
-          </div>
-          <p class="projects-hint">hover to flip — poster on the front, photography on the back</p>
-          <div class="polaroid-grid">
-            {[
-              { poster:'poster-bttf.jpg', photo:'project-bttf.jpg', rot:-2.5, title:'Black to the Future', sub:'British Library · 2023–24', tag:'collaborative', type:'collaborative' },
-              { poster:'poster-that-time.jpg', photo:'project-that-time.jpg', rot:1.2, title:'That Time of the Month', sub:'The Book Club, London', tag:'self-produced', type:'self' },
-              { poster:'poster-purple-reign.jpg', photo:'project-purple-reign.jpg', rot:-1, title:'Purple Reign', sub:'Makers Academy', tag:'self-produced', type:'self' },
-              { poster:'poster-curious-mermaid.jpg', photo:'project-curious-mermaid.jpg', rot:2, title:'Curious Mermaid events', sub:'Supper club · Yellow Door', tag:'self-produced', type:'self' },
-              { poster:'poster-strong-women.jpg', photo:'project-strong-women.jpg', rot:-0.8, title:'Strong Women Squad', sub:'Lisa Dickenson · Trapeze', tag:'collaborative', type:'collaborative' },
-              { poster:'poster-feeling-noughties.jpg', photo:'project-feeling-noughties.jpg', rot:1.8, title:'Feeling Noughties', sub:'Drink Shop & Do · Core Arts', tag:'self-produced', type:'self' },
-              { poster:'poster-happiness.jpg', photo:'project-happiness.jpg', rot:-1.5, title:'Happiness workshops', sub:'Barbican, Primadonna, Also', tag:'commissioned', type:'commissioned' },
-              { poster:'poster-festivals.jpg', photo:'project-festivals.jpg', rot:0.8, title:'Festival work', sub:'Larmer Tree, Port Eliot', tag:'commissioned', type:'commissioned' },
-              { poster:'poster-clean-prose.jpg', photo:'project-clean-prose.jpg', rot:-2, title:'Clean Prose', sub:'70+ events · London', tag:'commissioned', type:'commissioned' },
-            ].map(p => (
-              <div class="flip-wrap" data-type={p.type} style={`--rot:${p.rot}deg`}>
-                <div class="polaroid-outer">
-                  <div class="polaroid-face">
-                    <div class="polaroid-img"><img src={`/images/${p.poster}`} alt={`${p.title} poster`} /></div>
-                    <div class="polaroid-caption">{p.title}</div>
-                    <div class="polaroid-tag">{p.tag}</div>
-                  </div>
-                  <div class="polaroid-face polaroid-back">
-                    <div class="polaroid-img"><img src={`/images/${p.photo}`} alt={`${p.title} photography`} /></div>
-                    <div class="polaroid-caption">{p.title}</div>
-                    <div class="polaroid-tag">{p.sub}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <!-- COLLABORATORS TAB -->
-      <div id="tab-collaborators" class="tab-panel">
-        <div class="section-lavender tab-section">
-          <p class="section-label-dark">collaborators</p>
-          <h2 class="h2-dark">people I'm proud to work with</h2>
-          <p class="sub-dark">Brilliant people I've had the pleasure of working alongside. I recommend them without hesitation.</p>
-          <div class="gallery-wall">
-            {[
-              { initials:'RL', img:'collab-ria-lina.jpg', name:'Ria Lina', role:'comedian & writer', desc:'Worked together on events bringing comedy and culture into unexpected spaces.', link:'https://rialina.com', size:'md', rot:-3 },
-              { initials:'LN', img:'collab-leena-norms.jpg', name:'Leena Norms', role:'author & content creator', desc:'Host of That Time of the Month throughout, judge at Purple Reign. A recurring joy.', link:'https://leenanorms.com', size:'lg', rot:1.5 },
-              { initials:'SV', img:'collab-sanne-vliegenthart.jpg', name:'Sanne Vliegenthart', role:'creative', desc:'A natural collaborator across events and creative projects.', link:'#', size:'sm', rot:-1 },
-              { initials:'VG', img:'collab-viv-groskop.jpg', name:'Viv Groskop', role:'author, comedian & speaker', desc:'Worked together on events at the intersection of culture, comedy and ideas.', link:'https://vivgroskop.com', size:'md', rot:2.5 },
-            ].map(c => (
-              <div class={`portrait portrait-${c.size}`} style={`--prot:${c.rot}deg`}>
-                <div class="frame">
-                  <div class="frame-img">
-                    <img src={`/images/${c.img}`} alt={c.name} onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`} />
-                    <div class="frame-initials">{c.initials}</div>
-                    <div class="frame-overlay">
-                      <p class="overlay-desc">{c.desc}</p>
-                      <a class="overlay-link" href={c.link} target="_blank" rel="noopener">visit website →</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="nameplate">
-                  <div class="nameplate-name">{c.name}</div>
-                  <div class="nameplate-role">{c.role}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-          <p class="gallery-note">hover to find out more</p>
-        </div>
-      </div>
-
-      <!-- VENUES TAB -->
-      <div id="tab-venues" class="tab-panel">
-        <div class="section-white tab-section">
-          <p class="section-label-dark">venues</p>
-          <h2 class="h2-dark">places that made it possible</h2>
-          <p class="sub-dark">From intimate Southampton supper clubs to British Library galleries, festival fields to London bookshops. The full venues page is coming soon.</p>
-          <div class="venues-preview">
-            {[
-              { name:'British Library', city:'London', events:'Black to the Future' },
-              { name:'October Books', city:'Southampton', events:'Leena Norms evening · Logging Off Club · Curious Mermaid supper club' },
-              { name:'Drink Shop & Do', city:'London', closed:true, events:'Feeling Noughties' },
-              { name:'The Book Club', city:'London', events:'That Time of the Month' },
-              { name:'Makers Academy', city:'London', events:'Purple Reign' },
-              { name:'Port Eliot', city:'Cornwall', festival:true, events:'Artist liaison' },
-            ].map(v => (
-              <div class="venue-card">
-                <div class="venue-header">
-                  <h3>{v.name}</h3>
-                  {v.closed && <span class="venue-closed">now closed</span>}
-                  {v.festival && <span class="venue-festival">festival</span>}
-                </div>
-                <p class="venue-city">{v.city}</p>
-                <p class="venue-events">{v.events}</p>
-              </div>
-            ))}
-          </div>
-          <a href="/venues" class="venues-all">see all venues →</a>
-        </div>
-      </div>
-
-      <!-- ABOUT TAB -->
-      <div id="tab-about" class="tab-panel">
-        <div class="section-dark tab-section about-tab">
-          <p class="section-label">about</p>
-          <h2>Sara Veal</h2>
-          <p class="sub-light">Culture and community producer, people strategist, event director, writer. Southampton-based, internationally connected.</p>
-          <div class="about-grid">
-            <div class="about-bio">
-              <p>I've spent twenty years working at the intersection of culture, community and people — as a journalist, publisher, games industry people strategist and cultural producer. I founded huhbub in 2016 to bring those worlds together.</p>
-              <p>I'm Chair of GamesAid, Community and Member Engagement Lead at October Books, and Director of The Sewing Hub CIC. I'm a London Games Festival Ensemble 2026 participant and BAFTA Connect member.</p>
-              <p>In July 2025 I was named Unsung Hero at Game Dev Heroes. I've won two Lovie Awards as part of Chayn's team, and been a finalist at The Inclusion Dividend Leadership Conference & Awards 2025.</p>
-            </div>
-            <div class="about-recognition">
-              <p class="recog-label">recognition</p>
-              <div class="recog-list">
-                {[
-                  { badge:'winner', label:'Game Dev Heroes Unsung Hero' },
-                  { badge:'winner ×2', label:'The Lovie Awards' },
-                  { badge:'finalist', label:'The Inclusion Dividend 2025' },
-                  { badge:'nominee', label:'Develop Awards Tomorrow\'s Star' },
-                  { badge:'member', label:'LGF Ensemble 2026' },
-                  { badge:'member', label:'BAFTA Connect' },
-                ].map(r => (
-                  <div class="recog-item">
-                    <span class="recog-badge">{r.badge}</span>
-                    <span class="recog-name">{r.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-          <div class="personal-pair" style="margin-top:40px">
-            <div class="pp-card">
-              <span class="pp-tag">events</span>
-              <h3>Curious Mermaid</h3>
-              <p>Supper clubs, pop-up galleries and seasonal gatherings. Fundraising for Yellow Door.</p>
-              <a href="/projects/curious-mermaid">see the events →</a>
-            </div>
-            <div class="pp-card">
-              <span class="pp-tag">shop</span>
-              <h3>Sirena Curiosa</h3>
-              <p>An independent shop for curious people — objects, curiosities and things that spark wonder.</p>
-              <a href="https://sirenacuriosa.com" target="_blank" rel="noopener">visit sirenacuriosa.com →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- tab-content -->
-
     <!-- FOOTER -->
     <footer>
       <div class="footer-inner">
@@ -486,21 +252,13 @@ import Splash from '../components/Splash.astro';
   .latest-excerpt { font-size: 13px; color: var(--text-secondary); flex: 1; min-width: 160px; }
   .latest-link { font-size: 12px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 1px; white-space: nowrap; }
 
-  /* TABS BAR */
-  .tabs-bar { background: #07051A; padding: 0 32px; border-top: 0.5px solid rgba(255,255,255,0.1); border-bottom: 0.5px solid rgba(255,255,255,0.06); position: sticky; top: 57px; z-index: 50; transition: background 1s; }
-  .tab-pills { display: flex; gap: 8px; padding: 12px 0; overflow-x: auto; max-width: 960px; margin: 0 auto; scrollbar-width: none; }
-  .tab-pills::-webkit-scrollbar { display: none; }
-  .tab-pill { font-size: 13px; color: var(--text-secondary); padding: 8px 20px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.12); background: transparent; cursor: pointer; transition: all 0.25s; white-space: nowrap; font-family: var(--font-body); }
-  .tab-pill.active { background: var(--accent, #D4537E); color: #fff; border-color: var(--accent, #D4537E); }
-  .tab-pill:hover:not(.active) { background: rgba(255,255,255,0.06); color: var(--text-primary); }
-
-  /* TAB CONTENT */
-  .tab-content { position: relative; min-height: 400px; }
-  #particle-canvas { position: absolute; inset: 0; pointer-events: none; z-index: 20; width: 100%; height: 100%; }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; animation: fadeIn 0.4s ease; }
-  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
-  .tab-section { padding: 48px 32px; }
+  /* SCATTER TRANSITION CANVAS */
+  #scatter-canvas {
+    position: fixed; inset: 0; pointer-events: none;
+    z-index: 9999; opacity: 0; width: 100%; height: 100%;
+    transition: opacity 0.1s;
+  }
+  #scatter-canvas.active { opacity: 1; pointer-events: all; }
 
   /* VENUES */
   .venues-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; max-width: 1100px; margin-bottom: 24px; }
@@ -529,8 +287,6 @@ import Splash from '../components/Splash.astro';
     .hero-featured-inner { grid-template-columns: 1fr; }
     .featured-polaroid { margin: 0 auto; }
     .about-grid { grid-template-columns: 1fr; gap: 28px; }
-    .tabs-bar { top: 50px; }
-    .tab-section { padding: 32px 20px; }
   }
 
   /* HERO */
@@ -1056,66 +812,115 @@ burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
 menuClose?.addEventListener('click', () => mobileMenu.classList.remove('open'));
 window.closeMenu = () => mobileMenu.classList.remove('open');
 
-// Tab switching with particle transition
-const PCOLS = ['#D4537E','#F5A7CC','#AFA9EC','#FAC775','#7F77DD','#ffffff'];
-document.querySelectorAll('.tab-pill').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const id = btn.dataset.tab;
-    const current = document.querySelector('.tab-panel.active');
-    const next = document.getElementById('tab-' + id);
-    if (!next || current === next) return;
-    document.querySelectorAll('.tab-pill').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    particleTransition(current, next);
-    // Scroll to tabs
-    document.getElementById('tabs-bar')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-  });
-});
+// Seasonal particle colours for nav transition
+const momentColors = {
+  'spring-dawn':  ['#F5A7CC','#FAC775','#AFA9EC','#F4C0D1','#fff'],
+  'spring-day':   ['#D4537E','#7F77DD','#1D9E75','#F5A7CC','#EF9F27'],
+  'spring-dusk':  ['#F5A7CC','#EF9F27','#7F77DD','#FAC775','#fff'],
+  'spring-night': ['#D4537E','#AFA9EC','#FAC775','#F5A7CC','#7F77DD'],
+  'summer-dawn':  ['#FAC775','#EF9F27','#F5A7CC','#fff','#AFA9EC'],
+  'summer-day':   ['#EF9F27','#D4537E','#1D9E75','#FAC775','#F5A7CC'],
+  'summer-dusk':  ['#D4537E','#FAC775','#AFA9EC','#F5A7CC','#EF9F27'],
+  'summer-night': ['#FAC775','#7F77DD','#F5A7CC','#EF9F27','#fff'],
+  'autumn-dawn':  ['#E85070','#F07050','#C070E0','#FAC775','#fff'],
+  'autumn-day':   ['#C04060','#E8603A','#8040A0','#E85070','#F5A7CC'],
+  'autumn-dusk':  ['#E85070','#E8603A','#C070E0','#F5A7CC','#AFA9EC'],
+  'autumn-night': ['#E85070','#E8603A','#C070E0','#AFA9EC','#FAC775'],
+  'winter-dawn':  ['#B5D4F4','#85B7EB','#F5A7CC','#AFA9EC','#fff'],
+  'winter-day':   ['#378ADD','#7F77DD','#F5A7CC','#B5D4F4','#AFA9EC'],
+  'winter-dusk':  ['#AFA9EC','#F5A7CC','#B5D4F4','#7F77DD','#fff'],
+  'winter-night': ['#7F77DD','#B5D4F4','#F5A7CC','#AFA9EC','#fff'],
+};
 
-// Nav links that point to tabs
-document.querySelectorAll('a[href^="#tab-"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const id = a.getAttribute('href').replace('#','');
-    const tabName = id.replace('tab-','');
-    const btn = document.querySelector(`.tab-pill[data-tab="${tabName}"]`);
-    if (btn) btn.click();
-  });
-});
+function getScatterColors() {
+  const moment = window.__huhbubMoment || 'spring-night';
+  return momentColors[moment] || momentColors['spring-night'];
+}
 
-function particleTransition(from, to) {
-  const canvas = document.getElementById('particle-canvas');
-  if (!canvas) { from.classList.remove('active'); to.classList.add('active'); return; }
+function scatterTo(href, clickX, clickY) {
+  const canvas = document.getElementById('scatter-canvas');
   const ctx = canvas.getContext('2d');
-  const container = canvas.parentElement;
-  canvas.width = container.offsetWidth;
-  canvas.height = container.offsetHeight;
-  const ps = [];
-  const cx = canvas.width / 2, cy = 80;
-  for (let i = 0; i < 80; i++) {
-    const a = Math.random() * Math.PI * 2, s = Math.random() * 5 + 1;
-    ps.push({ x:cx, y:cy, vx:Math.cos(a)*s, vy:Math.sin(a)*s - 1,
-      r: Math.random()*3+1, col: PCOLS[Math.floor(Math.random()*PCOLS.length)],
-      life:0, max: Math.random()*35+20 });
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  canvas.classList.add('active');
+
+  const colors = getScatterColors();
+  const cols = 35, rows = 22;
+  const cw = canvas.width / cols, ch = canvas.height / rows;
+  const particles = [];
+
+  for (let i = 0; i < cols; i++) {
+    for (let j = 0; j < rows; j++) {
+      const x = i * cw + cw/2, y = j * ch + ch/2;
+      const dx = x - clickX, dy = y - clickY;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      particles.push({
+        x, y,
+        tx: clickX + (Math.random()-0.5) * canvas.width * 1.8,
+        ty: clickY + (Math.random()-0.5) * canvas.height * 1.8,
+        col: colors[Math.floor(Math.random()*colors.length)],
+        size: Math.random()*3.5+0.8,
+        delay: dist * 0.25,
+        life: 0, maxLife: 45 + Math.random()*25,
+      });
+    }
   }
-  from.classList.remove('active');
+
+  let frame = 0;
+  const SCATTER = 40, HOLD = 15, navigated = false;
+
   function anim() {
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    let alive = false;
-    ps.forEach(p => {
-      p.life++; p.x += p.vx; p.y += p.vy; p.vy += 0.1;
-      const alpha = 1 - (p.life/p.max);
-      if (alpha > 0) {
-        alive = true;
-        ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = p.col;
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); ctx.restore();
+
+    if (frame === SCATTER + HOLD && !navigated) {
+      window.location.href = href;
+      return;
+    }
+
+    particles.forEach(p => {
+      if (frame < p.delay/6) return;
+      p.life++;
+      const t = Math.min(1, p.life / p.maxLife);
+
+      let ex, ey, alpha;
+      if (frame < SCATTER) {
+        ex = p.x + (p.tx - p.x) * easeOut(t);
+        ey = p.y + (p.ty - p.y) * easeOut(t);
+        alpha = 0.8 - t * 0.3;
+      } else {
+        const gt = Math.min(1, (frame - SCATTER) / HOLD);
+        ex = p.tx + (p.x - p.tx) * easeIn(gt);
+        ey = p.ty + (p.y - p.ty) * easeIn(gt);
+        alpha = gt * 0.5;
       }
+
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.fillStyle = p.col;
+      ctx.beginPath();
+      ctx.arc(ex, ey, p.size, 0, Math.PI*2);
+      ctx.fill();
+      ctx.restore();
     });
-    if (alive) requestAnimationFrame(anim);
-    else { ctx.clearRect(0,0,canvas.width,canvas.height); to.classList.add('active'); }
+
+    frame++;
+    requestAnimationFrame(anim);
   }
   anim();
 }
+
+function easeOut(t) { return 1 - Math.pow(1-t,3); }
+function easeIn(t) { return t*t*t; }
+
+// Wire up nav links
+document.querySelectorAll('.nav-link').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('mailto') || href.startsWith('http')) return;
+    e.preventDefault();
+    scatterTo(href, e.clientX, e.clientY);
+  });
+});
 
 // Reveal site after splash exits
 function revealSite() {
