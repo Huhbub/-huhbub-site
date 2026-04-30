@@ -4,7 +4,8 @@ import Base from '../layouts/Base.astro';
 <Base title="services — huhbub">
 
   <div id="site">
-    <canvas id="scatter-canvas"></canvas>
+    <!-- Shimmer transition overlay -->
+    <div id="shimmer-overlay"></div>
 
     <!-- NAV -->
     <nav>
@@ -176,9 +177,14 @@ import Base from '../layouts/Base.astro';
   #site { opacity: 0; transition: opacity 0.8s ease; }
   #site.is-visible { opacity: 1; }
 
-  /* SCATTER CANVAS */
-  #scatter-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0; width: 100%; height: 100%; }
-  #scatter-canvas.active { opacity: 1; pointer-events: all; }
+  /* SHIMMER TRANSITION */
+  #shimmer-overlay {
+    position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0;
+    background: linear-gradient(135deg, rgba(212,83,126,0) 0%, rgba(175,169,236,0.6) 25%, rgba(245,167,204,0.8) 45%, rgba(239,159,39,0.5) 65%, rgba(127,119,221,0.6) 80%, rgba(212,83,126,0) 100%);
+    background-size: 200% 200%; transition: opacity 0.18s ease-in;
+  }
+  #shimmer-overlay.shimmer-in { opacity: 1; animation: shimmer-move 0.35s ease-out forwards; pointer-events: all; }
+  @keyframes shimmer-move { 0%{background-position:0% 50%;opacity:0} 30%{opacity:1} 100%{background-position:100% 50%;opacity:0.85} }
 
   /* NAV */
   nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); border-bottom: 0.5px solid var(--border-subtle); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(12px); transition: background 1s ease; }
@@ -346,52 +352,12 @@ import Base from '../layouts/Base.astro';
     setTimeout(() => container.remove(), 800);
   }
 
-  // Seasonal scatter nav transition
-  const momentColors = {
-    'spring-dawn':['#F5A7CC','#FAC775','#AFA9EC','#fff'],'spring-day':['#D4537E','#7F77DD','#1D9E75','#F5A7CC'],
-    'spring-dusk':['#F5A7CC','#EF9F27','#7F77DD','#FAC775'],'spring-night':['#D4537E','#AFA9EC','#FAC775','#7F77DD'],
-    'summer-dawn':['#FAC775','#EF9F27','#F5A7CC','#fff'],'summer-day':['#EF9F27','#D4537E','#1D9E75','#FAC775'],
-    'summer-dusk':['#D4537E','#FAC775','#AFA9EC','#EF9F27'],'summer-night':['#FAC775','#7F77DD','#F5A7CC','#EF9F27'],
-    'autumn-dawn':['#E85070','#F07050','#C070E0','#fff'],'autumn-day':['#C04060','#E8603A','#8040A0','#E85070'],
-    'autumn-dusk':['#E85070','#E8603A','#C070E0','#AFA9EC'],'autumn-night':['#E85070','#E8603A','#C070E0','#FAC775'],
-    'winter-dawn':['#B5D4F4','#85B7EB','#F5A7CC','#fff'],'winter-day':['#378ADD','#7F77DD','#F5A7CC','#B5D4F4'],
-    'winter-dusk':['#AFA9EC','#F5A7CC','#B5D4F4','#fff'],'winter-night':['#7F77DD','#B5D4F4','#F5A7CC','#AFA9EC'],
-  };
-
-  function scatterTo(href, cx, cy) {
-    const canvas = document.getElementById('scatter-canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
-    canvas.classList.add('active');
-    const colors = momentColors[window.__huhbubMoment||'spring-night'] || momentColors['spring-night'];
-    const ps = [];
-    for (let i = 0; i < 72; i++) {
-      const angle = (Math.random() * Math.PI * 1.4) - Math.PI * 0.7 - Math.PI / 2;
-      const speed = Math.random() * 20 + 12;
-      const isRect = Math.random() > 0.3;
-      ps.push({ x:cx+(Math.random()-.5)*80, y:cy,
-        vx:Math.cos(angle)*speed, vy:Math.sin(angle)*speed,
-        col:colors[Math.floor(Math.random()*colors.length)],
-        w:isRect?Math.random()*12+6:Math.random()*7+3, h:isRect?Math.random()*6+3:0,
-        rot:Math.random()*Math.PI*2, rotV:(Math.random()-.5)*0.45, alpha:1 });
-    }
-    setTimeout(() => { window.location.href = href; }, 300);
-    let frame = 0;
-    function anim() {
-      if (frame > 25) return;
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      ps.forEach(p => {
-        p.x+=p.vx; p.y+=p.vy; p.vy+=0.7; p.vx*=0.97; p.rot+=p.rotV; p.alpha-=0.032;
-        if(p.alpha<=0)return;
-        ctx.save();ctx.globalAlpha=p.alpha;ctx.fillStyle=p.col;
-        ctx.translate(p.x,p.y);ctx.rotate(p.rot);
-        if(p.h){ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);}
-        else{ctx.beginPath();ctx.arc(0,0,p.w/2,0,Math.PI*2);ctx.fill();}
-        ctx.restore();
-      });
-      frame++; requestAnimationFrame(anim);
-    }
-    anim();
+  // Shimmer fade nav transition
+  function shimmerTo(href) {
+    const overlay = document.getElementById('shimmer-overlay');
+    if (!overlay) { window.location.href = href; return; }
+    overlay.classList.add('shimmer-in');
+    setTimeout(() => { window.location.href = href; }, 280);
   }
 
   document.querySelectorAll('.nav-link').forEach(a => {
@@ -399,7 +365,7 @@ import Base from '../layouts/Base.astro';
       const href = a.getAttribute('href');
       if (!href || href.startsWith('mailto') || href.startsWith('http')) return;
       e.preventDefault();
-      scatterTo(href, e.clientX, e.clientY);
+      shimmerTo(href);
     });
   });
 </script>
