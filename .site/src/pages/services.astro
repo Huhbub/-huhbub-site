@@ -1,0 +1,401 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="services — huhbub">
+
+  <div id="site">
+    <canvas id="scatter-canvas"></canvas>
+
+    <!-- NAV -->
+    <nav>
+      <a href="/" class="nav-logo nav-link"><span class="logo-text">huhbub</span></a>
+      <div class="nav-links">
+        <a href="/services" class="nav-link active">services</a>
+        <a href="/projects" class="nav-link">projects</a>
+        <a href="/collaborators" class="nav-link">collaborators</a>
+        <a href="/venues" class="nav-link">venues</a>
+        <a href="/writing" class="nav-link">writing</a>
+        <a href="/about" class="nav-link">about</a>
+        <a href="mailto:sara@huhbub.com" class="nav-cta">get in touch</a>
+      </div>
+      <button class="nav-burger" id="burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu-close" id="menu-close" aria-label="Close menu">×</button>
+      <div class="mobile-menu-links">
+        <a href="/services" onclick="closeMenu()">services</a>
+        <a href="/projects" onclick="closeMenu()">projects</a>
+        <a href="/collaborators" onclick="closeMenu()">collaborators</a>
+        <a href="/venues" onclick="closeMenu()">venues</a>
+        <a href="/writing" onclick="closeMenu()">writing</a>
+        <a href="/about" onclick="closeMenu()">about</a>
+        <a href="mailto:sara@huhbub.com" onclick="closeMenu()">get in touch</a>
+      </div>
+    </div>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <p class="page-overline">services</p>
+        <h1>what I do</h1>
+        <p class="page-sub">I work with organisations, initiatives and individuals who make culture — helping them build better from the inside out. Here's how.</p>
+      </div>
+    </div>
+
+    <!-- SERVICES GRID -->
+    <section class="services-section">
+      <div class="clusters-grid">
+
+        <div class="cluster postit-pink">
+          <div class="cluster-header">
+            <div class="cluster-icon">✦</div>
+            <div class="cluster-title">events & production</div>
+            <div class="cluster-desc">Making culture happen — in rooms, on stages, in the world.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">make culture happen</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Event production and creative direction — from concept to room. Originating, producing and directing cultural events, series and experiences that bring people together around something that matters.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">create cultural moments for good</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Social impact work that actually moves people. Translating values, causes and missions into cultural experiences — events, campaigns and moments that build community around something that matters. Because the best advocacy doesn't feel like advocacy.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">in the room</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Available to host, chair, speak or sit on panels. Bringing warmth, curiosity and a genuinely cross-sector perspective to stages, screens and boardrooms. Topics include creative industries, workplace culture, community building, social impact and happiness.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cluster postit-lavender">
+          <div class="cluster-header">
+            <div class="cluster-icon">❋</div>
+            <div class="cluster-title">people & organisations</div>
+            <div class="cluster-desc">The inside work that makes the outside work possible.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">build better environments</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">People and culture consultancy — HR infrastructure, workplace culture, community and engagement strategy for creative organisations. The inside work that makes the outside work possible.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">make work feel alive</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Internal events, rituals and communications that turn a workplace into a community. From all-hands to onboarding, from internal newsletters to team rituals — the culture your people experience every day, not just on special occasions.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">build something that lasts</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">For new organisations, studios and initiatives that need to get the foundations right. Brand identity and positioning, people infrastructure, internal culture, community strategy — the scaffolding that lets everything else grow. Built from scratch, multiple times, across the games industry, cultural sector and beyond.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cluster postit-yellow">
+          <div class="cluster-header">
+            <div class="cluster-icon">◈</div>
+            <div class="cluster-title">growth & connection</div>
+            <div class="cluster-desc">Finding the people, building the relationships, growing the thing.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">find your people</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Audience development — helping cultural organisations and initiatives identify, reach and genuinely connect with the communities they exist to serve.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">let's build it together</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Mentoring and consultancy for people with an idea they're ready to make real. No conventional path required — just curiosity, commitment and the will to make something happen.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">creative partnership</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Being brought in as a collaborator, not a contractor. You bring the vision, huhbub brings the producing, the relationships, the judgment. Black to the Future is the model.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cluster postit-mint">
+          <div class="cluster-header">
+            <div class="cluster-icon">✿</div>
+            <div class="cluster-title">the happiness workshop</div>
+            <div class="cluster-desc">A standalone offering. Bookable. Joyful. Transformative.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">what is it?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">A named, bookable workshop experience for festivals, organisations, teams and individuals. Delivered at the Barbican, Primadonna Festival, Also Festival, Logging Off Club at October Books and more. Get in touch to book.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">who is it for?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Teams who've forgotten to have fun. Individuals at a crossroads. Festival audiences who want something that lasts beyond the weekend. Anyone who wants to think differently about joy.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">what will you leave with?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">A clearer sense of what makes you happy — and practical tools to protect it. Not a list of tips, but a shift in how you think about joy, work, and what you're actually doing this for.</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="services-cta">
+      <div class="cta-inner">
+        <h2>sound like what you need?</h2>
+        <p>Get in touch and let's talk about what we could make happen together.</p>
+        <a href="mailto:sara@huhbub.com" class="btn-cta">sara@huhbub.com</a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-left">
+          <p class="footer-logo">huhbub</p>
+          <p class="footer-sub">huhbub ltd · sara veal · southampton · est. 2016</p>
+        </div>
+        <div class="footer-middle">
+          <p class="footer-subscribe-label">read The Curious Mermaid</p>
+          <a href="https://curiousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">linkedin</a>
+          <a href="mailto:sara@huhbub.com">email</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</Base>
+
+<style>
+  #site { opacity: 0; transition: opacity 0.8s ease; }
+  #site.is-visible { opacity: 1; }
+
+  /* SCATTER CANVAS */
+  #scatter-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 9999; opacity: 0; width: 100%; height: 100%; }
+  #scatter-canvas.active { opacity: 1; pointer-events: all; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); border-bottom: 0.5px solid var(--border-subtle); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(12px); transition: background 1s ease; }
+  .nav-logo { display: flex; align-items: center; }
+  .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+  .nav-links a.active { border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px; }
+  .nav-cta { border: 0.5px solid var(--border-subtle); padding: 7px 16px; border-radius: 20px; color: var(--accent-soft) !important; transition: background 0.2s !important; }
+  .nav-cta:hover { background: rgba(255,255,255,0.06); }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
+
+  /* MOBILE MENU */
+  .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; line-height: 1; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--text-primary); letter-spacing: -0.5px; padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--accent-soft); }
+
+  /* PAGE HERO */
+  .page-hero { background: var(--sky, #07051A); padding: 56px 32px 48px; transition: background 1s; }
+  .page-hero-inner { max-width: 960px; margin: 0 auto; }
+  .page-overline { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); display: block; }
+  h1 { font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: var(--text-primary); line-height: 1.05; letter-spacing: -2px; margin-bottom: 16px; }
+  .page-sub { font-size: 16px; color: var(--text-secondary); line-height: 1.75; max-width: 560px; }
+
+  /* SERVICES */
+  .services-section { background: #FDF6F0; padding: 56px 32px; }
+  .clusters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; padding: 8px; }
+
+  /* POST-IT CLUSTERS */
+  .cluster {
+    position: relative; border-radius: 2px; padding: 0;
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08);
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  }
+  .cluster:hover { box-shadow: 4px 8px 20px rgba(0,0,0,0.18); z-index: 10; }
+  .cluster:nth-child(1) { transform: rotate(-1deg); } .cluster:nth-child(1):hover { transform: rotate(0deg) scale(1.02); }
+  .cluster:nth-child(2) { transform: rotate(0.8deg); } .cluster:nth-child(2):hover { transform: rotate(0deg) scale(1.02); }
+  .cluster:nth-child(3) { transform: rotate(-0.5deg); } .cluster:nth-child(3):hover { transform: rotate(0deg) scale(1.02); }
+  .cluster:nth-child(4) { transform: rotate(1.2deg); } .cluster:nth-child(4):hover { transform: rotate(0deg) scale(1.02); }
+
+  .cluster::after { content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 0; border-style: solid; pointer-events: none; z-index: 2; }
+
+  .cluster-header { padding: 22px 22px 14px; }
+  .cluster-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 16px; background: rgba(255,255,255,0.4); }
+  .cluster-title { font-size: 16px; font-weight: 500; margin-bottom: 4px; font-family: var(--font-body); }
+  .cluster-desc { font-size: 13px; line-height: 1.6; }
+
+  .svc-list { padding: 0 12px 12px; }
+  .svc-item { border-radius: 3px; overflow: hidden; margin-bottom: 4px; }
+  .svc-trigger { width: 100%; background: none; border: none; padding: 11px 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; transition: background 0.2s; font-family: var(--font-body); border-radius: 3px; }
+  .svc-trigger:hover, .svc-trigger.open { background: rgba(255,255,255,0.5); }
+  .svc-name { font-size: 13px; font-weight: 500; }
+  .svc-arrow { width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+  .svc-arrow svg { width: 8px; height: 8px; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .svc-trigger.open .svc-arrow { transform: rotate(180deg); }
+  .svc-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .svc-body.open { max-height: 200px; }
+  .svc-inner { padding: 4px 12px 14px; font-size: 13px; line-height: 1.7; border-top: 0.5px solid rgba(0,0,0,0.08); }
+
+  /* Burst */
+  .burst { position: fixed; pointer-events: none; z-index: 9999; }
+  .burst-dot { position: absolute; width: 5px; height: 5px; border-radius: 50%; animation: burst-out 0.7s ease-out forwards; }
+  @keyframes burst-out { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0} }
+
+  /* Post-it colours */
+  .postit-pink { background: #FADADD; } .postit-pink .cluster-title { color: #7A1830; } .postit-pink .cluster-desc,.postit-pink .svc-inner { color: #8A4050; } .postit-pink .svc-name { color: #5A1828; } .postit-pink .svc-arrow svg { stroke: #993556; } .postit-pink::after { border-width: 0 0 18px 18px; border-color: transparent transparent #E8B8BC transparent; }
+  .postit-lavender { background: #E8D8F8; } .postit-lavender .cluster-title { color: #3C2060; } .postit-lavender .cluster-desc,.postit-lavender .svc-inner { color: #5A4070; } .postit-lavender .svc-name { color: #2A1848; } .postit-lavender .svc-arrow svg { stroke: #534AB7; } .postit-lavender::after { border-width: 0 0 18px 18px; border-color: transparent transparent #C8B8E8 transparent; }
+  .postit-yellow { background: #FFF3A3; } .postit-yellow .cluster-title { color: #4A3A00; } .postit-yellow .cluster-desc,.postit-yellow .svc-inner { color: #6A5A10; } .postit-yellow .svc-name { color: #3A2A00; } .postit-yellow .svc-arrow svg { stroke: #BA7517; } .postit-yellow::after { border-width: 0 0 18px 18px; border-color: transparent transparent #E8DC80 transparent; }
+  .postit-mint { background: #C8F0E0; } .postit-mint .cluster-title { color: #0A3828; } .postit-mint .cluster-desc,.postit-mint .svc-inner { color: #1A5840; } .postit-mint .svc-name { color: #082818; } .postit-mint .svc-arrow svg { stroke: #0F6E56; } .postit-mint::after { border-width: 0 0 18px 18px; border-color: transparent transparent #A0D8C0 transparent; }
+
+  /* Seasonal tinting */
+  [data-moment="autumn-night"] .postit-pink,[data-moment="autumn-dusk"] .postit-pink { background: color-mix(in srgb, #FADADD 85%, #E85070 15%); }
+  [data-moment="autumn-night"] .postit-lavender,[data-moment="autumn-dusk"] .postit-lavender { background: color-mix(in srgb, #E8D8F8 85%, #C070E0 15%); }
+  [data-moment="autumn-night"] .postit-yellow,[data-moment="autumn-dusk"] .postit-yellow { background: color-mix(in srgb, #FFF3A3 85%, #E8603A 15%); }
+  [data-moment="autumn-night"] .postit-mint,[data-moment="autumn-dusk"] .postit-mint { background: color-mix(in srgb, #C8F0E0 85%, #E85070 15%); }
+  [data-moment="winter-night"] .postit-pink,[data-moment="winter-dusk"] .postit-pink { background: color-mix(in srgb, #FADADD 85%, #B5D4F4 15%); }
+  [data-moment="winter-night"] .postit-lavender,[data-moment="winter-dusk"] .postit-lavender { background: color-mix(in srgb, #E8D8F8 85%, #B5D4F4 15%); }
+  [data-moment="winter-night"] .postit-yellow,[data-moment="winter-dusk"] .postit-yellow { background: color-mix(in srgb, #FFF3A3 85%, #AFA9EC 15%); }
+  [data-moment="winter-night"] .postit-mint,[data-moment="winter-dusk"] .postit-mint { background: color-mix(in srgb, #C8F0E0 85%, #B5D4F4 15%); }
+  [data-moment="summer-day"] .postit-yellow,[data-moment="summer-dusk"] .postit-yellow { background: color-mix(in srgb, #FFF3A3 88%, #EF9F27 12%); }
+
+  /* CTA */
+  .services-cta { background: var(--sky, #07051A); padding: 56px 32px; border-top: 0.5px solid var(--border-subtle); text-align: center; transition: background 1s; }
+  .cta-inner { max-width: 560px; margin: 0 auto; }
+  .cta-inner h2 { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--text-primary); margin-bottom: 12px; letter-spacing: -0.5px; }
+  .cta-inner p { font-size: 15px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 28px; }
+  .btn-cta { display: inline-block; font-size: 14px; font-weight: 500; color: #fff; background: var(--accent, #D4537E); padding: 14px 28px; border-radius: 8px; transition: opacity 0.2s; }
+  .btn-cta:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 300; color: #534AB7; margin-bottom: 4px; }
+  .footer-sub { font-size: 12px; color: #3C3489; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #534AB7; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #7F77DD; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent-soft); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .clusters-grid { grid-template-columns: 1fr; }
+    h1 { letter-spacing: -1px; }
+  }
+</style>
+
+<script>
+  // Reveal
+  function revealSite() {
+    const site = document.getElementById('site');
+    const splash = document.getElementById('splash');
+    if (!splash) { site.classList.add('is-visible'); return; }
+    const observer = new MutationObserver(() => {
+      if (!document.getElementById('splash')) { site.classList.add('is-visible'); observer.disconnect(); }
+    });
+    observer.observe(document.body, { childList: true });
+  }
+  revealSite();
+  document.getElementById('site').classList.add('is-visible');
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
+  window.closeMenu = () => mobileMenu.classList.remove('open');
+
+  // Services expand/collapse with burst
+  document.querySelectorAll('.svc-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.svc-trigger.open').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('open'); });
+      if (!isOpen) { btn.classList.add('open'); body.classList.add('open'); burstEffect(btn); }
+    });
+  });
+
+  function burstEffect(el) {
+    const rect = el.getBoundingClientRect();
+    const colors = ['#D4537E','#F5A7CC','#EF9F27','#7F77DD','#FAC775','#AFA9EC'];
+    const container = document.createElement('div');
+    container.className = 'burst';
+    container.style.cssText = `left:${rect.right-18}px;top:${rect.top+rect.height/2}px`;
+    document.body.appendChild(container);
+    for (let i = 0; i < 10; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'burst-dot';
+      const angle = (i/10)*Math.PI*2, dist = 22+Math.random()*18;
+      dot.style.setProperty('--tx', Math.cos(angle)*dist+'px');
+      dot.style.setProperty('--ty', Math.sin(angle)*dist+'px');
+      dot.style.background = colors[i%colors.length];
+      dot.style.animationDelay = (Math.random()*0.08)+'s';
+      container.appendChild(dot);
+    }
+    setTimeout(() => container.remove(), 800);
+  }
+
+  // Seasonal scatter nav transition
+  const momentColors = {
+    'spring-dawn':['#F5A7CC','#FAC775','#AFA9EC','#fff'],'spring-day':['#D4537E','#7F77DD','#1D9E75','#F5A7CC'],
+    'spring-dusk':['#F5A7CC','#EF9F27','#7F77DD','#FAC775'],'spring-night':['#D4537E','#AFA9EC','#FAC775','#7F77DD'],
+    'summer-dawn':['#FAC775','#EF9F27','#F5A7CC','#fff'],'summer-day':['#EF9F27','#D4537E','#1D9E75','#FAC775'],
+    'summer-dusk':['#D4537E','#FAC775','#AFA9EC','#EF9F27'],'summer-night':['#FAC775','#7F77DD','#F5A7CC','#EF9F27'],
+    'autumn-dawn':['#E85070','#F07050','#C070E0','#fff'],'autumn-day':['#C04060','#E8603A','#8040A0','#E85070'],
+    'autumn-dusk':['#E85070','#E8603A','#C070E0','#AFA9EC'],'autumn-night':['#E85070','#E8603A','#C070E0','#FAC775'],
+    'winter-dawn':['#B5D4F4','#85B7EB','#F5A7CC','#fff'],'winter-day':['#378ADD','#7F77DD','#F5A7CC','#B5D4F4'],
+    'winter-dusk':['#AFA9EC','#F5A7CC','#B5D4F4','#fff'],'winter-night':['#7F77DD','#B5D4F4','#F5A7CC','#AFA9EC'],
+  };
+
+  function scatterTo(href, cx, cy) {
+    const canvas = document.getElementById('scatter-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    canvas.classList.add('active');
+    const colors = momentColors[window.__huhbubMoment||'spring-night'] || momentColors['spring-night'];
+    const cols = 35, rows = 22, cw = canvas.width/cols, ch = canvas.height/rows;
+    const ps = [];
+    for (let i=0;i<cols;i++) for (let j=0;j<rows;j++) {
+      const x=i*cw+cw/2, y=j*ch+ch/2, dx=x-cx, dy=y-cy;
+      ps.push({ x,y, tx:cx+(Math.random()-.5)*canvas.width*1.8, ty:cy+(Math.random()-.5)*canvas.height*1.8,
+        col:colors[Math.floor(Math.random()*colors.length)], size:Math.random()*3.5+.8,
+        delay:Math.sqrt(dx*dx+dy*dy)*.25, life:0, maxLife:45+Math.random()*25 });
+    }
+    let frame=0;
+    const SCATTER=40, HOLD=15;
+    function anim() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      if(frame===SCATTER+HOLD){window.location.href=href;return;}
+      ps.forEach(p=>{
+        if(frame<p.delay/6)return; p.life++;
+        const t=Math.min(1,p.life/p.maxLife);
+        let ex,ey,alpha;
+        if(frame<SCATTER){ex=p.x+(p.tx-p.x)*(1-Math.pow(1-t,3));ey=p.y+(p.ty-p.y)*(1-Math.pow(1-t,3));alpha=.8-t*.3;}
+        else{const gt=Math.min(1,(frame-SCATTER)/HOLD);ex=p.tx+(p.x-p.tx)*(gt*gt*gt);ey=p.ty+(p.y-p.ty)*(gt*gt*gt);alpha=gt*.5;}
+        ctx.save();ctx.globalAlpha=alpha;ctx.fillStyle=p.col;ctx.beginPath();ctx.arc(ex,ey,p.size,0,Math.PI*2);ctx.fill();ctx.restore();
+      });
+      frame++; requestAnimationFrame(anim);
+    }
+    anim();
+  }
+
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('mailto') || href.startsWith('http')) return;
+      e.preventDefault();
+      scatterTo(href, e.clientX, e.clientY);
+    });
+  });
+</script>
