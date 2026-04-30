@@ -116,14 +116,14 @@ import Splash from '../components/Splash.astro';
     </section>
 
     <!-- SERVICES -->
-    <section class="section-cream">
+    <section class="section-postits">
       <p class="section-label-dark">services</p>
       <h2 class="h2-dark">what I do</h2>
       <p class="sub-dark">I work with organisations, initiatives and individuals who make culture — helping them build better from the inside out.</p>
 
       <div class="clusters-grid">
 
-        <div class="cluster">
+        <div class="cluster postit-pink">
           <div class="cluster-header">
             <div class="cluster-icon ci-pink">✦</div>
             <div class="cluster-title">events & production</div>
@@ -154,7 +154,7 @@ import Splash from '../components/Splash.astro';
           </div>
         </div>
 
-        <div class="cluster">
+        <div class="cluster postit-lavender">
           <div class="cluster-header">
             <div class="cluster-icon ci-purple">❋</div>
             <div class="cluster-title">people & organisations</div>
@@ -185,7 +185,7 @@ import Splash from '../components/Splash.astro';
           </div>
         </div>
 
-        <div class="cluster">
+        <div class="cluster postit-yellow">
           <div class="cluster-header">
             <div class="cluster-icon ci-teal">◈</div>
             <div class="cluster-title">growth & connection</div>
@@ -216,7 +216,7 @@ import Splash from '../components/Splash.astro';
           </div>
         </div>
 
-        <div class="cluster">
+        <div class="cluster postit-mint">
           <div class="cluster-header">
             <div class="cluster-icon ci-gold">✿</div>
             <div class="cluster-title">the happiness workshop</div>
@@ -251,7 +251,7 @@ import Splash from '../components/Splash.astro';
     </section>
 
     <!-- PROJECTS -->
-    <section class="section-white">
+    <section class="section-corkboard">
       <div class="section-header">
         <div>
           <p class="section-label-dark">projects</p>
@@ -264,29 +264,24 @@ import Splash from '../components/Splash.astro';
           <button class="filter" data-filter="collaborative">collaborative</button>
         </div>
       </div>
-      <div class="projects-grid">
+      <div class="polaroid-grid">
         {[
-          { img:'pi1', tags:['collaborative','cultural production'], title:'Black to the Future', sub:'British Library · 2023–24', type:'collaborative' },
-          { img:'pi2', tags:['self-produced','events'], title:'That Time of the Month', sub:'The Book Club, London', type:'self' },
-          { img:'pi3', tags:['self-produced','cabaret'], title:'Purple Reign', sub:'Makers Academy · fundraising Code Club', type:'self' },
-          { img:'pi4', tags:['self-produced','events'], title:'Curious Mermaid events', sub:'Supper club, IWD potluck · Yellow Door', type:'self' },
-          { img:'pi5', tags:['collaborative','events'], title:'Strong Women Squad', sub:'Lisa Dickenson · Trapeze, London', type:'collaborative' },
-          { img:'pi6', tags:['self-produced','cabaret'], title:'Feeling Noughties', sub:'Drink Shop & Do · Core Arts', type:'self' },
-          { img:'pi7', tags:['commissioned','workshop'], title:'Happiness workshops', sub:'Also Festival, Primadonna, Barbican', type:'commissioned' },
-          { img:'pi8', tags:['commissioned','festivals'], title:'Festival work', sub:'Larmer Tree, Port Eliot, Shambala', type:'commissioned' },
-          { img:'pi9', tags:['commissioned','community'], title:'Clean Prose', sub:'70+ events · Irenosen Okojie launch', type:'commissioned' },
+          { img:'project-bttf.jpg', rot:-2.5, title:'Black to the Future', sub:'British Library · 2023–24', tag:'collaborative', type:'collaborative' },
+          { img:'project-that-time.jpg', rot:1.2, title:'That Time of the Month', sub:'The Book Club, London', tag:'self-produced', type:'self' },
+          { img:'project-purple-reign.jpg', rot:-1, title:'Purple Reign', sub:'Makers Academy', tag:'self-produced', type:'self' },
+          { img:'project-curious-mermaid.jpg', rot:2, title:'Curious Mermaid events', sub:'Supper club · Yellow Door', tag:'self-produced', type:'self' },
+          { img:'project-strong-women.jpg', rot:-0.8, title:'Strong Women Squad', sub:'Lisa Dickenson · Trapeze', tag:'collaborative', type:'collaborative' },
+          { img:'project-feeling-noughties.jpg', rot:1.8, title:'Feeling Noughties', sub:'Drink Shop & Do · Core Arts', tag:'self-produced', type:'self' },
+          { img:'project-happiness.jpg', rot:-1.5, title:'Happiness workshops', sub:'Barbican, Primadonna, Also', tag:'commissioned', type:'commissioned' },
+          { img:'project-festivals.jpg', rot:0.8, title:'Festival work', sub:'Larmer Tree, Port Eliot', tag:'commissioned', type:'commissioned' },
+          { img:'project-clean-prose.jpg', rot:-2, title:'Clean Prose', sub:'70+ events · London', tag:'commissioned', type:'commissioned' },
         ].map(p => (
-          <div class={`proj-card proj-${p.type}`} data-type={p.type}>
-            <div class={`proj-img ${p.img}`}><span>[ photo ]</span></div>
-            <div class="proj-body">
-              <div class="proj-tags">
-                {p.tags.map(t => (
-                  <span class={`tag tag-${t.replace(' ','-').replace('self-produced','self')}`}>{t}</span>
-                ))}
-              </div>
-              <h3>{p.title}</h3>
-              <p>{p.sub}</p>
+          <div class="polaroid" data-type={p.type} style={`--rot:${p.rot}deg`}>
+            <div class="polaroid-img">
+              <img src={`/images/${p.img}`} alt={p.title} onerror="this.parentElement.classList.add('polaroid-placeholder')" />
             </div>
+            <div class="polaroid-caption">{p.title}</div>
+            <div class="polaroid-tag">{p.tag}</div>
           </div>
         ))}
       </div>
@@ -543,6 +538,8 @@ import Splash from '../components/Splash.astro';
   .section-dark  { background: var(--sky, #07051A); padding: 72px 32px; transition: background 1s ease; }
   .section-cream { background: color-mix(in srgb, var(--sky-mid) 95%, var(--accent) 5%); padding: 72px 32px; transition: background 1.5s ease; }
   .section-white { background: #fff; padding: 72px 32px; }
+  .section-postits { background: #FDF6F0; padding: 72px 32px; }
+  .section-corkboard { background: #F2EBE0; padding: 72px 32px; background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.06) 1px, transparent 0); background-size: 24px 24px; }
   .section-lavender { background: #F5F0FF; padding: 72px 32px; }
 
   .section-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
@@ -606,24 +603,82 @@ import Splash from '../components/Splash.astro';
   @keyframes burst-out { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0} }
   @media (max-width: 768px) { .clusters-grid { grid-template-columns: 1fr; } }
 
-  /* PROJECTS */
+  /* PROJECTS — POLAROIDS */
   .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; max-width: 1100px; }
   .filter-bar { display: flex; gap: 8px; flex-wrap: wrap; }
   .filter { font-size: 12px; padding: 6px 16px; border-radius: 20px; border: 0.5px solid #D3D1C7; background: transparent; color: #5F5E5A; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
   .filter.active,.filter:hover { background: #1E1756; color: #F5F0FF; border-color: #1E1756; }
-  .projects-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; max-width: 1100px; }
-  .proj-card { border-radius: 12px; overflow: hidden; border: 0.5px solid #E8E6E0; transition: transform 0.2s; }
-  .proj-card:hover { transform: translateY(-3px); }
-  .proj-card.hidden { display: none; }
-  .proj-img { height: 100px; display: flex; align-items: center; justify-content: center; }
-  .proj-img span { font-size: 11px; color: rgba(255,255,255,0.15); }
-  .pi1{background:#2A1040}.pi2{background:#1A3A1A}.pi3{background:#1E1756}
-  .pi4{background:#3A0A0A}.pi5{background:#1A2A3A}.pi6{background:#2A2A0A}
-  .pi7{background:#2A1A2A}.pi8{background:#0A2A2A}.pi9{background:#2A2010}
-  .proj-body { padding: 14px; background: #fff; }
-  .proj-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 7px; }
-  .proj-body h3 { font-size: 13px; font-weight: 500; color: #1E1756; margin-bottom: 3px; font-family: var(--font-body); }
-  .proj-body p { font-size: 12px; color: #888780; }
+  .polaroid-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; max-width: 1100px; align-items: end; padding: 16px 8px; }
+  .polaroid {
+    background: #fff;
+    padding: 10px 10px 36px;
+    border-radius: 2px;
+    box-shadow: 2px 3px 12px rgba(0,0,0,0.14), 0 1px 3px rgba(0,0,0,0.08);
+    cursor: pointer;
+    transform: rotate(var(--rot, 0deg));
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+    display: flex; flex-direction: column;
+  }
+  .polaroid:hover {
+    transform: rotate(0deg) scale(1.05) !important;
+    box-shadow: 6px 10px 28px rgba(0,0,0,0.2), 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+  .polaroid.hidden { display: none; }
+  .polaroid-img {
+    width: 100%; aspect-ratio: 1;
+    background: #E8E0F0;
+    overflow: hidden; margin-bottom: 8px;
+  }
+  .polaroid-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .polaroid-img.polaroid-placeholder { display: flex; align-items: center; justify-content: center; font-size: 10px; color: rgba(0,0,0,0.2); }
+  .polaroid-caption {
+    font-family: var(--font-handwriting);
+    font-size: 15px; color: #3C3C3C;
+    text-align: center; line-height: 1.4;
+    padding: 0 4px; margin-top: auto;
+  }
+  .polaroid-tag {
+    font-size: 10px; color: #D4537E;
+    text-align: center; margin-top: 4px;
+    letter-spacing: 0.5px; font-family: var(--font-body);
+  }
+
+  /* POST-IT colours for service clusters */
+  .postit-pink { background: #FADADD !important; border-color: #E8B8BC !important; }
+  .postit-pink .cluster-title { color: #7A1830 !important; }
+  .postit-pink .cluster-desc { color: #8A4050 !important; }
+  .postit-pink .svc-name { color: #5A1828 !important; }
+  .postit-pink .svc-trigger:hover,.postit-pink .svc-trigger.open { background: rgba(255,255,255,0.5) !important; }
+  .postit-pink .svc-inner { color: #8A4050 !important; border-top-color: rgba(0,0,0,0.08) !important; }
+  .postit-pink::after { content:''; position:absolute; bottom:0; right:0; width:0; height:0; border-style:solid; border-width:0 0 16px 16px; border-color:transparent transparent #E8B8BC transparent; }
+
+  .postit-lavender { background: #E8D8F8 !important; border-color: #C8B8E8 !important; }
+  .postit-lavender .cluster-title { color: #3C2060 !important; }
+  .postit-lavender .cluster-desc { color: #5A4070 !important; }
+  .postit-lavender .svc-name { color: #2A1848 !important; }
+  .postit-lavender .svc-trigger:hover,.postit-lavender .svc-trigger.open { background: rgba(255,255,255,0.5) !important; }
+  .postit-lavender .svc-inner { color: #5A4070 !important; border-top-color: rgba(0,0,0,0.08) !important; }
+  .postit-lavender::after { content:''; position:absolute; bottom:0; right:0; width:0; height:0; border-style:solid; border-width:0 0 16px 16px; border-color:transparent transparent #C8B8E8 transparent; }
+
+  .postit-yellow { background: #FFF3A3 !important; border-color: #E8DC80 !important; }
+  .postit-yellow .cluster-title { color: #4A3A00 !important; }
+  .postit-yellow .cluster-desc { color: #6A5A10 !important; }
+  .postit-yellow .svc-name { color: #3A2A00 !important; }
+  .postit-yellow .svc-trigger:hover,.postit-yellow .svc-trigger.open { background: rgba(255,255,255,0.5) !important; }
+  .postit-yellow .svc-inner { color: #6A5A10 !important; border-top-color: rgba(0,0,0,0.08) !important; }
+  .postit-yellow::after { content:''; position:absolute; bottom:0; right:0; width:0; height:0; border-style:solid; border-width:0 0 16px 16px; border-color:transparent transparent #E8DC80 transparent; }
+
+  .postit-mint { background: #C8F0E0 !important; border-color: #A0D8C0 !important; }
+  .postit-mint .cluster-title { color: #0A3828 !important; }
+  .postit-mint .cluster-desc { color: #1A5840 !important; }
+  .postit-mint .svc-name { color: #082818 !important; }
+  .postit-mint .svc-trigger:hover,.postit-mint .svc-trigger.open { background: rgba(255,255,255,0.5) !important; }
+  .postit-mint .svc-inner { color: #1A5840 !important; border-top-color: rgba(0,0,0,0.08) !important; }
+  .postit-mint::after { content:''; position:absolute; bottom:0; right:0; width:0; height:0; border-style:solid; border-width:0 0 16px 16px; border-color:transparent transparent #A0D8C0 transparent; }
+
+  .cluster { position: relative; }
+  .cluster::after { pointer-events: none; }
 
   /* COLLABORATORS */
   .collab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; max-width: 1100px; }
@@ -666,7 +721,7 @@ import Splash from '../components/Splash.astro';
     .bw3 { width: 130px !important; height: 130px !important; animation: float1 9s ease-in-out infinite !important; }
     #sparkle-canvas { display: none; }
     .featured-inner { grid-template-columns: 1fr; }
-    .projects-grid { grid-template-columns: 1fr 1fr; }
+    .polaroid-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
     .personal-pair { grid-template-columns: 1fr; }
     nav { padding: 14px 20px; }
     .nav-links { gap: 14px; }
@@ -674,7 +729,7 @@ import Splash from '../components/Splash.astro';
   }
 
   @media (max-width: 520px) {
-    .projects-grid { grid-template-columns: 1fr; }
+    .polaroid-grid { grid-template-columns: 1fr; }
     .nav-links .nav-cta { display: none; }
   }
 </style>
@@ -828,7 +883,7 @@ document.querySelectorAll('.filter').forEach(btn => {
     document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     const f = btn.dataset.filter;
-    document.querySelectorAll('.proj-card').forEach(card => {
+    document.querySelectorAll('.polaroid').forEach(card => {
       card.classList.toggle('hidden', f !== 'all' && card.dataset.type !== f);
     });
   });
