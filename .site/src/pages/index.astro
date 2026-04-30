@@ -11,15 +11,396 @@ import Splash from '../components/Splash.astro';
     <nav>
       <a href="/" class="nav-logo"><span class="logo-text">huhbub</span></a>
       <div class="nav-links">
-        <a href="/services">services</a>
-        <a href="/projects">projects</a>
-        <a href="/collaborators">collaborators</a>
-        <a href="/venues">venues</a>
+        <a href="#tab-services">services</a>
+        <a href="#tab-projects">projects</a>
+        <a href="#tab-collaborators">collaborators</a>
+        <a href="#tab-venues">venues</a>
         <a href="/writing">writing</a>
-        <a href="/about">about</a>
-        <a href="/contact" class="nav-cta">get in touch</a>
+        <a href="#tab-about">about</a>
+        <a href="mailto:sara@huhbub.com" class="nav-cta">get in touch</a>
       </div>
+      <button class="nav-burger" id="burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu-close" id="menu-close" aria-label="Close menu">×</button>
+      <div class="mobile-menu-links">
+        <a href="#tab-services" onclick="closeMenu()">services</a>
+        <a href="#tab-projects" onclick="closeMenu()">projects</a>
+        <a href="#tab-collaborators" onclick="closeMenu()">collaborators</a>
+        <a href="#tab-venues" onclick="closeMenu()">venues</a>
+        <a href="/writing" onclick="closeMenu()">writing</a>
+        <a href="#tab-about" onclick="closeMenu()">about</a>
+        <a href="mailto:sara@huhbub.com" onclick="closeMenu()">get in touch</a>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-overline">sara veal</p>
+          <h1>creating<br/><em>experiences</em><br/>for creative<br/>people.</h1>
+          <p class="hero-sub">Events, environments and initiatives that bring people together, build community, and make culture happen.</p>
+          <div class="hero-ctas">
+            <a href="#tab-projects" class="btn-primary">see the work</a>
+            <a href="mailto:sara@huhbub.com" class="btn-ghost">get in touch</a>
+          </div>
+        </div>
+        <div class="bubbles">
+          <canvas id="sparkle-canvas"></canvas>
+          <div class="bubble-wrap bw1" onclick="openLB('/images/hero-1.jpg','Curious Mermaid Palentines Supper Club')" aria-label="View Curious Mermaid photo">
+            <div class="glow-ring"></div>
+            <div class="bubble"><img src="/images/hero-1.jpg" alt="Curious Mermaid supper club" /><div class="bubble-hint">view full image</div></div>
+          </div>
+          <div class="bubble-wrap bw2" onclick="openLB('/images/hero-2.jpg','Black to the Future · British Library')" aria-label="View Black to the Future photo">
+            <div class="glow-ring"></div>
+            <div class="bubble"><img src="/images/hero-2.jpg" alt="Black to the Future festival" /><div class="bubble-hint">view full image</div></div>
+          </div>
+          <div class="bubble-wrap bw3" onclick="openLB('/images/hero-3.jpg','Happiness Workshop')" aria-label="View happiness workshop photo">
+            <div class="glow-ring"></div>
+            <div class="bubble"><img src="/images/hero-3.jpg" alt="Happiness workshop" /><div class="bubble-hint">view full image</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="hero-lightbox" onclick="closeLB()">
+      <div class="lb-inner" onclick="event.stopPropagation()">
+        <button class="lb-close" onclick="closeLB()" aria-label="Close">×</button>
+        <img id="lb-img" src="" alt="" />
+        <p class="lb-caption" id="lb-caption"></p>
+      </div>
+    </div>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-inner">
+        {['event production','creative direction','people & culture','happiness workshops',
+          'audience development','creative partnership','mentoring','community building',
+          'cultural production','artist liaison','stage hosting','let\'s build it together',
+          'event production','creative direction','people & culture','happiness workshops',
+          'audience development','creative partnership','mentoring','community building',
+          'cultural production','artist liaison','stage hosting','let\'s build it together'].map(t => (
+          <span>{t}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- FEATURED PROJECT -->
+    <div class="hero-featured">
+      <div class="hero-featured-inner">
+        <div class="featured-polaroid" onclick="window.location='/projects/black-to-the-future'">
+          <div class="featured-polaroid-img">
+            <img src="/images/featured-bttf.jpg" alt="Black to the Future festival" />
+          </div>
+          <div class="featured-polaroid-caption">Black to the Future</div>
+          <div class="featured-polaroid-sub">British Library · 2023–24</div>
+        </div>
+        <div class="feat-content">
+          <p class="feat-eyebrow">featured project</p>
+          <h2>Black to the Future</h2>
+          <p>An Afrofuturistic festival celebrating Black excellence across the creative industries. 25+ Black artists across 6 venues over 8 months — British Library, RSL, Warner Brothers, Spotify and more.</p>
+          <div class="feat-pills">
+            {['collaborative','cultural production','25+ artists','6 venues'].map(p => (
+              <span class="pill">{p}</span>
+            ))}
+          </div>
+          <a href="/projects/black-to-the-future" class="feat-link">read the full story →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGO BAR -->
+    <div class="logo-bar">
+      <p class="logo-bar-label">organisations I've worked with</p>
+      <div class="logo-bar-inner">
+        {['British Library','Royal Society of Literature','Barbican','Primadonna Festival','Primo Toys','Games London','WorkWise for Screen','October Books','GamesAid','Failbetter Games'].map(org => (
+          <span class="logo-pill">{org}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- PRESS STRIP -->
+    <div class="press-strip">
+      <span class="press-label">as featured in</span>
+      <div class="press-inner">
+        {['The Guardian','The Bookseller','GamesIndustry.biz','Ensemble 2026'].map(pub => (
+          <span class="press-name">{pub}</span>
+        ))}
+      </div>
+      <a href="/press" class="press-all">read the press →</a>
+    </div>
+
+    <!-- LATEST FROM THE CURIOUS MERMAID -->
+    <div class="hero-latest">
+      <p class="latest-label">latest from The Curious Mermaid</p>
+      <div class="notebook-card">
+        <span class="tag tag-self">huhbub</span>
+        <h3>huhbub turns 10 in July</h3>
+        <p>A decade of making culture happen — and what comes next. Reflecting on ten years of events, people and creative production.</p>
+        <a href="/writing" class="nc-link">read more →</a>
+      </div>
+    </div>
+
+    <!-- STICKY TAB BAR -->
+    <div class="tabs-bar" id="tabs-bar">
+      <div class="tab-pills">
+        <button class="tab-pill active" data-tab="services">services</button>
+        <button class="tab-pill" data-tab="projects">projects</button>
+        <button class="tab-pill" data-tab="collaborators">collaborators</button>
+        <button class="tab-pill" data-tab="venues">venues</button>
+        <button class="tab-pill" data-tab="about">about</button>
+      </div>
+    </div>
+
+    <!-- TAB CONTENT -->
+    <div class="tab-content" id="tab-content">
+      <canvas id="particle-canvas"></canvas>
+
+      <!-- SERVICES TAB -->
+      <div id="tab-services" class="tab-panel active">
+        <div class="section-postits tab-section">
+          <p class="section-label-dark">services</p>
+          <h2 class="h2-dark">what I do</h2>
+          <p class="sub-dark">I work with organisations, initiatives and individuals who make culture — helping them build better from the inside out.</p>
+          <div class="clusters-grid">
+            <div class="cluster postit-pink">
+              <div class="cluster-header">
+                <div class="cluster-icon ci-pink">✦</div>
+                <div class="cluster-title">events & production</div>
+                <div class="cluster-desc">Making culture happen — in rooms, on stages, in the world.</div>
+              </div>
+              <div class="svc-list">
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">make culture happen</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Event production and creative direction — from concept to room. Originating, producing and directing cultural events, series and experiences that bring people together around something that matters.</div></div></div>
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">create cultural moments for good</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Social impact work that actually moves people. Translating values, causes and missions into cultural experiences. Because the best advocacy doesn't feel like advocacy.</div></div></div>
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">in the room</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Available to host, chair, speak or sit on panels. Bringing warmth, curiosity and a genuinely cross-sector perspective to stages, screens and boardrooms.</div></div></div>
+              </div>
+            </div>
+            <div class="cluster postit-lavender">
+              <div class="cluster-header">
+                <div class="cluster-icon ci-purple">❋</div>
+                <div class="cluster-title">people & organisations</div>
+                <div class="cluster-desc">The inside work that makes the outside work possible.</div>
+              </div>
+              <div class="svc-list">
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">build better environments</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">People and culture consultancy — HR infrastructure, workplace culture, community and engagement strategy for creative organisations.</div></div></div>
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">make work feel alive</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Internal events, rituals and communications that turn a workplace into a community. The culture your people experience every day, not just on special occasions.</div></div></div>
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">build something that lasts</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">For new organisations that need to get the foundations right. Brand identity, positioning, people infrastructure, internal culture — the scaffolding that lets everything else grow.</div></div></div>
+              </div>
+            </div>
+            <div class="cluster postit-yellow">
+              <div class="cluster-header">
+                <div class="cluster-icon ci-teal">◈</div>
+                <div class="cluster-title">growth & connection</div>
+                <div class="cluster-desc">Finding the people, building the relationships, growing the thing.</div>
+              </div>
+              <div class="svc-list">
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">find your people</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Audience development — helping cultural organisations and initiatives identify, reach and genuinely connect with the communities they exist to serve.</div></div></div>
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">let's build it together</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Mentoring and consultancy for people with an idea they're ready to make real. No conventional path required — just curiosity, commitment and the will to make something happen.</div></div></div>
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">creative partnership</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Being brought in as a collaborator, not a contractor. You bring the vision, huhbub brings the producing, the relationships, the judgment. Black to the Future is the model.</div></div></div>
+              </div>
+            </div>
+            <div class="cluster postit-mint">
+              <div class="cluster-header">
+                <div class="cluster-icon ci-gold">✿</div>
+                <div class="cluster-title">the happiness workshop</div>
+                <div class="cluster-desc">A standalone offering. Bookable. Joyful. Transformative.</div>
+              </div>
+              <div class="svc-list">
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">what is it?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">A named, bookable workshop experience for festivals, organisations, teams and individuals. Delivered at the Barbican, Primadonna Festival, Also Festival and more.</div></div></div>
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">who is it for?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">Teams who've forgotten to have fun. Individuals at a crossroads. Festival audiences who want something that lasts beyond the weekend.</div></div></div>
+                <div class="svc-item"><button class="svc-trigger"><span class="svc-name">what will you leave with?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button><div class="svc-body"><div class="svc-inner">A clearer sense of what makes you happy — and practical tools to protect it. Not a list of tips, but a shift in how you think about joy.</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS TAB -->
+      <div id="tab-projects" class="tab-panel">
+        <div class="section-corkboard tab-section">
+          <div class="section-header">
+            <div>
+              <p class="section-label-dark">projects</p>
+              <h2 class="h2-dark">selected work</h2>
+            </div>
+            <div class="filter-bar" role="group">
+              <button class="filter active" data-filter="all">all</button>
+              <button class="filter" data-filter="self">self-produced</button>
+              <button class="filter" data-filter="commissioned">commissioned</button>
+              <button class="filter" data-filter="collaborative">collaborative</button>
+            </div>
+          </div>
+          <p class="projects-hint">hover to flip — poster on the front, photography on the back</p>
+          <div class="polaroid-grid">
+            {[
+              { poster:'poster-bttf.jpg', photo:'project-bttf.jpg', rot:-2.5, title:'Black to the Future', sub:'British Library · 2023–24', tag:'collaborative', type:'collaborative' },
+              { poster:'poster-that-time.jpg', photo:'project-that-time.jpg', rot:1.2, title:'That Time of the Month', sub:'The Book Club, London', tag:'self-produced', type:'self' },
+              { poster:'poster-purple-reign.jpg', photo:'project-purple-reign.jpg', rot:-1, title:'Purple Reign', sub:'Makers Academy', tag:'self-produced', type:'self' },
+              { poster:'poster-curious-mermaid.jpg', photo:'project-curious-mermaid.jpg', rot:2, title:'Curious Mermaid events', sub:'Supper club · Yellow Door', tag:'self-produced', type:'self' },
+              { poster:'poster-strong-women.jpg', photo:'project-strong-women.jpg', rot:-0.8, title:'Strong Women Squad', sub:'Lisa Dickenson · Trapeze', tag:'collaborative', type:'collaborative' },
+              { poster:'poster-feeling-noughties.jpg', photo:'project-feeling-noughties.jpg', rot:1.8, title:'Feeling Noughties', sub:'Drink Shop & Do · Core Arts', tag:'self-produced', type:'self' },
+              { poster:'poster-happiness.jpg', photo:'project-happiness.jpg', rot:-1.5, title:'Happiness workshops', sub:'Barbican, Primadonna, Also', tag:'commissioned', type:'commissioned' },
+              { poster:'poster-festivals.jpg', photo:'project-festivals.jpg', rot:0.8, title:'Festival work', sub:'Larmer Tree, Port Eliot', tag:'commissioned', type:'commissioned' },
+              { poster:'poster-clean-prose.jpg', photo:'project-clean-prose.jpg', rot:-2, title:'Clean Prose', sub:'70+ events · London', tag:'commissioned', type:'commissioned' },
+            ].map(p => (
+              <div class="flip-wrap" data-type={p.type} style={`--rot:${p.rot}deg`}>
+                <div class="polaroid-outer">
+                  <div class="polaroid-face">
+                    <div class="polaroid-img"><img src={`/images/${p.poster}`} alt={`${p.title} poster`} /></div>
+                    <div class="polaroid-caption">{p.title}</div>
+                    <div class="polaroid-tag">{p.tag}</div>
+                  </div>
+                  <div class="polaroid-face polaroid-back">
+                    <div class="polaroid-img"><img src={`/images/${p.photo}`} alt={`${p.title} photography`} /></div>
+                    <div class="polaroid-caption">{p.title}</div>
+                    <div class="polaroid-tag">{p.sub}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- COLLABORATORS TAB -->
+      <div id="tab-collaborators" class="tab-panel">
+        <div class="section-lavender tab-section">
+          <p class="section-label-dark">collaborators</p>
+          <h2 class="h2-dark">people I'm proud to work with</h2>
+          <p class="sub-dark">Brilliant people I've had the pleasure of working alongside. I recommend them without hesitation.</p>
+          <div class="gallery-wall">
+            {[
+              { initials:'RL', img:'collab-ria-lina.jpg', name:'Ria Lina', role:'comedian & writer', desc:'Worked together on events bringing comedy and culture into unexpected spaces.', link:'https://rialina.com', size:'md', rot:-3 },
+              { initials:'LN', img:'collab-leena-norms.jpg', name:'Leena Norms', role:'author & content creator', desc:'Host of That Time of the Month throughout, judge at Purple Reign. A recurring joy.', link:'https://leenanorms.com', size:'lg', rot:1.5 },
+              { initials:'SV', img:'collab-sanne-vliegenthart.jpg', name:'Sanne Vliegenthart', role:'creative', desc:'A natural collaborator across events and creative projects.', link:'#', size:'sm', rot:-1 },
+              { initials:'VG', img:'collab-viv-groskop.jpg', name:'Viv Groskop', role:'author, comedian & speaker', desc:'Worked together on events at the intersection of culture, comedy and ideas.', link:'https://vivgroskop.com', size:'md', rot:2.5 },
+            ].map(c => (
+              <div class={`portrait portrait-${c.size}`} style={`--prot:${c.rot}deg`}>
+                <div class="frame">
+                  <div class="frame-img">
+                    <img src={`/images/${c.img}`} alt={c.name} onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`} />
+                    <div class="frame-initials">{c.initials}</div>
+                    <div class="frame-overlay">
+                      <p class="overlay-desc">{c.desc}</p>
+                      <a class="overlay-link" href={c.link} target="_blank" rel="noopener">visit website →</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="nameplate">
+                  <div class="nameplate-name">{c.name}</div>
+                  <div class="nameplate-role">{c.role}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p class="gallery-note">hover to find out more</p>
+        </div>
+      </div>
+
+      <!-- VENUES TAB -->
+      <div id="tab-venues" class="tab-panel">
+        <div class="section-white tab-section">
+          <p class="section-label-dark">venues</p>
+          <h2 class="h2-dark">places that made it possible</h2>
+          <p class="sub-dark">From intimate Southampton supper clubs to British Library galleries, festival fields to London bookshops. The full venues page is coming soon.</p>
+          <div class="venues-preview">
+            {[
+              { name:'British Library', city:'London', events:'Black to the Future' },
+              { name:'October Books', city:'Southampton', events:'Leena Norms evening · Logging Off Club · Curious Mermaid supper club' },
+              { name:'Drink Shop & Do', city:'London', closed:true, events:'Feeling Noughties' },
+              { name:'The Book Club', city:'London', events:'That Time of the Month' },
+              { name:'Makers Academy', city:'London', events:'Purple Reign' },
+              { name:'Port Eliot', city:'Cornwall', festival:true, events:'Artist liaison' },
+            ].map(v => (
+              <div class="venue-card">
+                <div class="venue-header">
+                  <h3>{v.name}</h3>
+                  {v.closed && <span class="venue-closed">now closed</span>}
+                  {v.festival && <span class="venue-festival">festival</span>}
+                </div>
+                <p class="venue-city">{v.city}</p>
+                <p class="venue-events">{v.events}</p>
+              </div>
+            ))}
+          </div>
+          <a href="/venues" class="venues-all">see all venues →</a>
+        </div>
+      </div>
+
+      <!-- ABOUT TAB -->
+      <div id="tab-about" class="tab-panel">
+        <div class="section-dark tab-section about-tab">
+          <p class="section-label">about</p>
+          <h2>Sara Veal</h2>
+          <p class="sub-light">Culture and community producer, people strategist, event director, writer. Southampton-based, internationally connected.</p>
+          <div class="about-grid">
+            <div class="about-bio">
+              <p>I've spent twenty years working at the intersection of culture, community and people — as a journalist, publisher, games industry people strategist and cultural producer. I founded huhbub in 2016 to bring those worlds together.</p>
+              <p>I'm Chair of GamesAid, Community and Member Engagement Lead at October Books, and Director of The Sewing Hub CIC. I'm a London Games Festival Ensemble 2026 participant and BAFTA Connect member.</p>
+              <p>In July 2025 I was named Unsung Hero at Game Dev Heroes. I've won two Lovie Awards as part of Chayn's team, and been a finalist at The Inclusion Dividend Leadership Conference & Awards 2025.</p>
+            </div>
+            <div class="about-recognition">
+              <p class="recog-label">recognition</p>
+              <div class="recog-list">
+                {[
+                  { badge:'winner', label:'Game Dev Heroes Unsung Hero' },
+                  { badge:'winner ×2', label:'The Lovie Awards' },
+                  { badge:'finalist', label:'The Inclusion Dividend 2025' },
+                  { badge:'nominee', label:'Develop Awards Tomorrow\'s Star' },
+                  { badge:'member', label:'LGF Ensemble 2026' },
+                  { badge:'member', label:'BAFTA Connect' },
+                ].map(r => (
+                  <div class="recog-item">
+                    <span class="recog-badge">{r.badge}</span>
+                    <span class="recog-name">{r.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div class="personal-pair" style="margin-top:40px">
+            <div class="pp-card">
+              <span class="pp-tag">events</span>
+              <h3>Curious Mermaid</h3>
+              <p>Supper clubs, pop-up galleries and seasonal gatherings. Fundraising for Yellow Door.</p>
+              <a href="/projects/curious-mermaid">see the events →</a>
+            </div>
+            <div class="pp-card">
+              <span class="pp-tag">shop</span>
+              <h3>Sirena Curiosa</h3>
+              <p>An independent shop for curious people — objects, curiosities and things that spark wonder.</p>
+              <a href="https://sirenacuriosa.com" target="_blank" rel="noopener">visit sirenacuriosa.com →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- tab-content -->
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-left">
+          <p class="footer-logo">huhbub</p>
+          <p class="footer-sub">huhbub ltd · sara veal · southampton · est. 2016</p>
+        </div>
+        <div class="footer-middle">
+          <p class="footer-subscribe-label">read The Curious Mermaid</p>
+          <a href="https://curiousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+        </div>
+        <div class="footer-links">
+          <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">linkedin</a>
+          <a href="mailto:sara@huhbub.com">email</a>
+        </div>
+      </div>
+    </footer>
 
     <!-- HERO -->
     <section class="hero">
@@ -102,332 +483,6 @@ import Splash from '../components/Splash.astro';
       <a href="/press" class="press-all">read the press →</a>
     </div>
 
-    <!-- LOGO BAR -->
-    <div class="logo-bar">
-      <p class="logo-bar-label">organisations I've worked with</p>
-      <div class="logo-bar-inner">
-        {['British Library','Royal Society of Literature','Barbican','Primadonna Festival','Primo Toys','Games London','WorkWise for Screen','October Books','GamesAid','Failbetter Games'].map(org => (
-          <span class="logo-pill">{org}</span>
-        ))}
-      </div>
-    </div>
-
-    <!-- FEATURED PROJECT -->
-    <section class="section-dark featured">
-      <p class="section-label">featured project</p>
-      <div class="featured-inner">
-        <div class="featured-polaroid">
-          <div class="featured-polaroid-img">
-            <img src="/images/featured-bttf.jpg" alt="Black to the Future festival" />
-          </div>
-          <div class="featured-polaroid-caption">Black to the Future</div>
-          <div class="featured-polaroid-sub">British Library · 2023–24</div>
-        </div>
-        <div class="featured-content">
-          <div class="feat-tags">
-            <span class="tag tag-collab">collaborative</span>
-            <span class="tag tag-self">cultural production</span>
-          </div>
-          <h2>Black to the Future</h2>
-          <p>An Afrofuturistic festival celebrating Black excellence across the creative industries, accompanying the British Library's Fantasy: Realms of Imagination exhibition. Founded and directed by Irenosen Okojie.</p>
-          <p class="feat-detail">25+ Black artists across 6 venues — British Library, Royal Society of Literature, Warner Brothers, Spotify, The Garden Cinema, The Standard Hotel, Black Cultural Archives — over 8 months, October 2023 to May 2024.</p>
-          <div class="feat-pills">
-            {['British Library','Warner Brothers','Spotify','25+ artists','6 venues','Oct 2023–May 2024'].map(p => (
-              <span class="pill">{p}</span>
-            ))}
-          </div>
-          <a href="/projects/black-to-the-future" class="feat-link">read the full story →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- WRITING — THE CURIOUS MERMAID -->
-    <section class="section-notebook">
-      <div class="writing-inner">
-        <div class="writing-header">
-          <div>
-            <p class="section-label-dark">writing & updates</p>
-            <h2 class="h2-dark">The Curious Mermaid</h2>
-            <p class="sub-dark">Profiles, cultural criticism, community prompts and dispatches from huhbub.</p>
-          </div>
-          <a href="/writing" class="writing-all">read all →</a>
-        </div>
-        <div class="writing-grid">
-          {[
-            { cat:'huhbub', catColour:'tag-self', title:'huhbub turns 10 in July', excerpt:'A decade of making culture happen — and what comes next.', date:'Coming soon' },
-            { cat:'people', catColour:'tag-commissioned', title:'Leena Norms: on hosting, joy and saying yes', excerpt:'A profile of the writer, host and recurring huhbub collaborator.', date:'Coming soon' },
-            { cat:'culture', catColour:'tag-collaborative', title:'What makes a room work', excerpt:'On the invisible craft of creating spaces where people connect.', date:'Coming soon' },
-          ].map(w => (
-            <div class="notebook-card">
-              <span class={`tag ${w.catColour}`}>{w.cat}</span>
-              <h3>{w.title}</h3>
-              <p>{w.excerpt}</p>
-              <span class="writing-date">{w.date}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section-postits">
-      <p class="section-label-dark">services</p>
-      <h2 class="h2-dark">what I do</h2>
-      <p class="sub-dark">I work with organisations, initiatives and individuals who make culture — helping them build better from the inside out.</p>
-
-      <div class="clusters-grid">
-
-        <div class="cluster postit-pink">
-          <div class="cluster-header">
-            <div class="cluster-icon ci-pink">✦</div>
-            <div class="cluster-title">events & production</div>
-            <div class="cluster-desc">Making culture happen — in rooms, on stages, in the world.</div>
-          </div>
-          <div class="svc-list">
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">make culture happen</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">Event production and creative direction — from concept to room. Originating, producing and directing cultural events, series and experiences that bring people together around something that matters.</div></div>
-            </div>
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">create cultural moments for good</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">Social impact work that actually moves people. Translating values, causes and missions into cultural experiences. Because the best advocacy doesn't feel like advocacy.</div></div>
-            </div>
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">in the room</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">Available to host, chair, speak or sit on panels. Bringing warmth, curiosity and a genuinely cross-sector perspective to stages, screens and boardrooms.</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cluster postit-lavender">
-          <div class="cluster-header">
-            <div class="cluster-icon ci-purple">❋</div>
-            <div class="cluster-title">people & organisations</div>
-            <div class="cluster-desc">The inside work that makes the outside work possible.</div>
-          </div>
-          <div class="svc-list">
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">build better environments</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">People and culture consultancy — HR infrastructure, workplace culture, community and engagement strategy for creative organisations.</div></div>
-            </div>
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">make work feel alive</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">Internal events, rituals and communications that turn a workplace into a community. The culture your people experience every day, not just on special occasions.</div></div>
-            </div>
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">build something that lasts</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">For new organisations that need to get the foundations right. Brand identity, positioning, people infrastructure, internal culture — the scaffolding that lets everything else grow.</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cluster postit-yellow">
-          <div class="cluster-header">
-            <div class="cluster-icon ci-teal">◈</div>
-            <div class="cluster-title">growth & connection</div>
-            <div class="cluster-desc">Finding the people, building the relationships, growing the thing.</div>
-          </div>
-          <div class="svc-list">
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">find your people</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">Audience development — helping cultural organisations and initiatives identify, reach and genuinely connect with the communities they exist to serve.</div></div>
-            </div>
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">let's build it together</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">Mentoring and consultancy for people with an idea they're ready to make real. No conventional path required — just curiosity, commitment and the will to make something happen.</div></div>
-            </div>
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">creative partnership</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">Being brought in as a collaborator, not a contractor. You bring the vision, huhbub brings the producing, the relationships, the judgment. Black to the Future is the model.</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="cluster postit-mint">
-          <div class="cluster-header">
-            <div class="cluster-icon ci-gold">✿</div>
-            <div class="cluster-title">the happiness workshop</div>
-            <div class="cluster-desc">A standalone offering. Bookable. Joyful. Transformative.</div>
-          </div>
-          <div class="svc-list">
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">what is it?</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">A named, bookable workshop experience for festivals, organisations, teams and individuals. Delivered at the Barbican, Primadonna Festival, Also Festival and more. Get in touch to book.</div></div>
-            </div>
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">who is it for?</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">Teams who've forgotten to have fun. Individuals at a crossroads. Festival audiences who want something that lasts beyond the weekend. Anyone who wants to think differently about joy.</div></div>
-            </div>
-            <div class="svc-item">
-              <button class="svc-trigger">
-                <span class="svc-name">what will you leave with?</span>
-                <span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span>
-              </button>
-              <div class="svc-body"><div class="svc-inner">A clearer sense of what makes you happy — and practical tools to protect it. Not a list of tips, but a shift in how you think about joy, work, and what you're actually doing this for.</div></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section class="section-corkboard">
-      <div class="section-header">
-        <div>
-          <p class="section-label-dark">projects</p>
-          <h2 class="h2-dark">selected work</h2>
-        </div>
-        <div class="filter-bar" role="group" aria-label="Filter projects">
-          <button class="filter active" data-filter="all">all</button>
-          <button class="filter" data-filter="self">self-produced</button>
-          <button class="filter" data-filter="commissioned">commissioned</button>
-          <button class="filter" data-filter="collaborative">collaborative</button>
-        </div>
-      </div>
-      <p class="projects-hint">hover to see the night — poster on the front, photography on the back</p>
-      <div class="polaroid-grid">
-        {[
-          { poster:'poster-bttf.jpg', photo:'project-bttf.jpg', rot:-2.5, title:'Black to the Future', sub:'British Library · 2023–24', tag:'collaborative', type:'collaborative' },
-          { poster:'poster-that-time.jpg', photo:'project-that-time.jpg', rot:1.2, title:'That Time of the Month', sub:'The Book Club, London', tag:'self-produced', type:'self' },
-          { poster:'poster-purple-reign.jpg', photo:'project-purple-reign.jpg', rot:-1, title:'Purple Reign', sub:'Makers Academy', tag:'self-produced', type:'self' },
-          { poster:'poster-curious-mermaid.jpg', photo:'project-curious-mermaid.jpg', rot:2, title:'Curious Mermaid events', sub:'Supper club · Yellow Door', tag:'self-produced', type:'self' },
-          { poster:'poster-strong-women.jpg', photo:'project-strong-women.jpg', rot:-0.8, title:'Strong Women Squad', sub:'Lisa Dickenson · Trapeze', tag:'collaborative', type:'collaborative' },
-          { poster:'poster-feeling-noughties.jpg', photo:'project-feeling-noughties.jpg', rot:1.8, title:'Feeling Noughties', sub:'Drink Shop & Do · Core Arts', tag:'self-produced', type:'self' },
-          { poster:'poster-happiness.jpg', photo:'project-happiness.jpg', rot:-1.5, title:'Happiness workshops', sub:'Barbican, Primadonna, Also', tag:'commissioned', type:'commissioned' },
-          { poster:'poster-festivals.jpg', photo:'project-festivals.jpg', rot:0.8, title:'Festival work', sub:'Larmer Tree, Port Eliot', tag:'commissioned', type:'commissioned' },
-          { poster:'poster-clean-prose.jpg', photo:'project-clean-prose.jpg', rot:-2, title:'Clean Prose', sub:'70+ events · London', tag:'commissioned', type:'commissioned' },
-        ].map(p => (
-          <div class="flip-wrap" data-type={p.type} style={`--rot:${p.rot}deg`}>
-            <div class="polaroid-outer">
-              <div class="polaroid-face">
-                <div class="polaroid-img">
-                  <img src={`/images/${p.poster}`} alt={`${p.title} poster`} />
-                </div>
-                <div class="polaroid-caption">{p.title}</div>
-                <div class="polaroid-tag">{p.tag}</div>
-              </div>
-              <div class="polaroid-face polaroid-back">
-                <div class="polaroid-img">
-                  <img src={`/images/${p.photo}`} alt={`${p.title} photography`} />
-                </div>
-                <div class="polaroid-caption">{p.title}</div>
-                <div class="polaroid-tag">{p.sub}</div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- COLLABORATORS -->
-    <section class="section-lavender">
-      <p class="section-label-dark">collaborators</p>
-      <h2 class="h2-dark">people I'm proud to work with</h2>
-      <p class="sub-dark">Brilliant people I've had the pleasure of working alongside — on commissioned and self-led projects. I recommend them without hesitation.</p>
-      <div class="gallery-wall">
-        {[
-          { initials:'RL', img:'collab-ria-lina.jpg', name:'Ria Lina', role:'comedian & writer', desc:'Worked together on events bringing comedy and culture into unexpected spaces.', link:'https://rialina.com', size:'md', rot:-3 },
-          { initials:'LN', img:'collab-leena-norms.jpg', name:'Leena Norms', role:'author & content creator', desc:'Host of That Time of the Month throughout, judge at Purple Reign. A recurring joy to work with.', link:'https://leenanorms.com', size:'lg', rot:1.5 },
-          { initials:'SV', img:'collab-sanne-vliegenthart.jpg', name:'Sanne Vliegenthart', role:'creative', desc:'A natural collaborator across events and creative projects.', link:'#', size:'sm', rot:-1 },
-          { initials:'VG', img:'collab-viv-groskop.jpg', name:'Viv Groskop', role:'author, comedian & speaker', desc:'Worked together on events at the intersection of culture, comedy and ideas.', link:'https://vivgroskop.com', size:'md', rot:2.5 },
-        ].map(c => (
-          <div class={`portrait portrait-${c.size}`} style={`--prot:${c.rot}deg`}>
-            <div class="frame">
-              <div class="frame-img">
-                <img src={`/images/${c.img}`} alt={c.name} onerror={`this.style.display='none';this.nextElementSibling.style.display='flex'`} />
-                <div class="frame-initials">{c.initials}</div>
-                <div class="frame-overlay">
-                  <p class="overlay-desc">{c.desc}</p>
-                  <a class="overlay-link" href={c.link} target="_blank" rel="noopener">visit website →</a>
-                </div>
-              </div>
-            </div>
-            <div class="nameplate">
-              <div class="nameplate-name">{c.name}</div>
-              <div class="nameplate-role">{c.role}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-      <p class="gallery-note">hover to find out more</p>
-    </section>
-
-    <!-- PERSONAL PROJECTS -->
-    <section class="section-dark personal">
-      <p class="section-label">personal projects</p>
-      <h2>the curious mermaid universe</h2>
-      <p class="sub-light personal-sub">Two connected projects grown from the same spirit of curiosity, community and wonder.</p>
-      <div class="personal-pair">
-        <div class="pp-card">
-          <span class="pp-tag">events</span>
-          <h3>Curious Mermaid</h3>
-          <p>Supper clubs, pop-up galleries and seasonal gatherings built around the world of Sarah Lawak's Curious Mermaid. Fundraising for Yellow Door. Where the community comes together.</p>
-          <a href="/projects/curious-mermaid">see the events →</a>
-        </div>
-        <div class="pp-card">
-          <span class="pp-tag">shop</span>
-          <h3>Sirena Curiosa</h3>
-          <p>An independent shop for curious people — objects, curiosities and things that spark wonder. The retail expression of the same world.</p>
-          <a href="https://sirenacuriosa.com" target="_blank" rel="noopener">visit sirenacuriosa.com →</a>
-        </div>
-      </div>
-      <p class="pp-connector">↑ two sides of the same world ↑</p>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <div class="footer-inner">
-        <div class="footer-left">
-          <p class="footer-logo">huhbub</p>
-          <p class="footer-sub">huhbub ltd · sara veal · southampton · est. 2016</p>
-        </div>
-        <div class="footer-middle">
-          <p class="footer-subscribe-label">read The Curious Mermaid</p>
-          <a href="https://curiousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
-        </div>
-        <div class="footer-links">
-          <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener">linkedin</a>
-          <a href="mailto:sara@huhbub.com">email</a>
-        </div>
-      </div>
-    </footer>
-
-  </div><!-- #site -->
 </Base>
 
 <style>
@@ -469,6 +524,86 @@ import Splash from '../components/Splash.astro';
     transition: background 0.2s, border-color 0.2s !important;
   }
   .nav-cta:hover { background: rgba(255,255,255,0.06); border-color: var(--accent-soft) !important; }
+
+  /* NAV BURGER */
+  .nav-burger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 4px;
+  }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
+
+  /* MOBILE MENU */
+  .mobile-menu {
+    position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E);
+    z-index: 200; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 4px;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s;
+  }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; line-height: 1; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--text-primary); letter-spacing: -0.5px; padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--accent-soft); }
+
+  /* HERO FEATURED */
+  .hero-featured { background: var(--sky, #07051A); padding: 32px 32px 24px; border-top: 0.5px solid var(--border-subtle); transition: background 1s; }
+  .hero-featured-inner { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; }
+  .feat-eyebrow { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; font-weight: 500; }
+  .feat-content h2 { font-family: var(--font-display); font-size: 32px; font-weight: 300; color: var(--text-primary); margin-bottom: 10px; letter-spacing: -0.5px; }
+  .feat-content p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 14px; }
+
+  /* HERO LATEST */
+  .hero-latest { background: var(--sky, #07051A); padding: 24px 32px 32px; transition: background 1s; }
+  .latest-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; font-weight: 500; display: block; max-width: 960px; margin-left: auto; margin-right: auto; }
+  .notebook-card { max-width: 680px; margin: 0 auto; }
+  .nc-link { font-size: 12px; color: #534AB7; border-bottom: 0.5px solid rgba(83,74,183,0.3); padding-bottom: 1px; }
+
+  /* TABS BAR */
+  .tabs-bar { background: #07051A; padding: 0 32px; border-top: 0.5px solid rgba(255,255,255,0.1); border-bottom: 0.5px solid rgba(255,255,255,0.06); position: sticky; top: 57px; z-index: 50; transition: background 1s; }
+  .tab-pills { display: flex; gap: 8px; padding: 12px 0; overflow-x: auto; max-width: 960px; margin: 0 auto; scrollbar-width: none; }
+  .tab-pills::-webkit-scrollbar { display: none; }
+  .tab-pill { font-size: 13px; color: var(--text-secondary); padding: 8px 20px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.12); background: transparent; cursor: pointer; transition: all 0.25s; white-space: nowrap; font-family: var(--font-body); }
+  .tab-pill.active { background: var(--accent, #D4537E); color: #fff; border-color: var(--accent, #D4537E); }
+  .tab-pill:hover:not(.active) { background: rgba(255,255,255,0.06); color: var(--text-primary); }
+
+  /* TAB CONTENT */
+  .tab-content { position: relative; min-height: 400px; }
+  #particle-canvas { position: absolute; inset: 0; pointer-events: none; z-index: 20; width: 100%; height: 100%; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+  .tab-section { padding: 48px 32px; }
+
+  /* VENUES */
+  .venues-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; max-width: 1100px; margin-bottom: 24px; }
+  .venue-card { background: #fff; border: 0.5px solid #E8E6E0; border-radius: 12px; padding: 16px; }
+  .venue-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+  .venue-card h3 { font-size: 14px; font-weight: 500; color: #1E1756; font-family: var(--font-body); }
+  .venue-closed { font-size: 10px; color: #888780; background: #F0EEE8; padding: 2px 8px; border-radius: 20px; }
+  .venue-festival { font-size: 10px; color: #534AB7; background: #EEEDFE; padding: 2px 8px; border-radius: 20px; }
+  .venue-city { font-size: 12px; color: #D4537E; margin-bottom: 6px; }
+  .venue-events { font-size: 12px; color: #888780; line-height: 1.5; }
+  .venues-all { font-size: 13px; color: #534AB7; border-bottom: 0.5px solid rgba(83,74,183,0.3); padding-bottom: 1px; }
+
+  /* ABOUT TAB */
+  .about-tab h2 { font-family: var(--font-display); font-size: 48px; font-weight: 300; color: var(--text-primary); margin-bottom: 8px; letter-spacing: -1px; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 32px; max-width: 1100px; }
+  .about-bio p { font-size: 14px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; }
+  .recog-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 16px; font-weight: 500; }
+  .recog-list { display: flex; flex-direction: column; gap: 10px; }
+  .recog-item { display: flex; align-items: center; gap: 10px; }
+  .recog-badge { font-size: 10px; padding: 3px 10px; border-radius: 20px; background: rgba(212,83,126,0.15); color: var(--accent-soft); white-space: nowrap; }
+  .recog-name { font-size: 13px; color: var(--text-primary); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .hero-featured-inner { grid-template-columns: 1fr; }
+    .featured-polaroid { margin: 0 auto; }
+    .about-grid { grid-template-columns: 1fr; gap: 28px; }
+    .tabs-bar { top: 50px; }
+    .tab-section { padding: 32px 20px; }
+  }
 
   /* HERO */
   .hero {
@@ -983,6 +1118,75 @@ import Splash from '../components/Splash.astro';
 </style>
 
 <script>
+// Mobile menu
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuClose = document.getElementById('menu-close');
+burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
+menuClose?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+window.closeMenu = () => mobileMenu.classList.remove('open');
+
+// Tab switching with particle transition
+const PCOLS = ['#D4537E','#F5A7CC','#AFA9EC','#FAC775','#7F77DD','#ffffff'];
+document.querySelectorAll('.tab-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.tab;
+    const current = document.querySelector('.tab-panel.active');
+    const next = document.getElementById('tab-' + id);
+    if (!next || current === next) return;
+    document.querySelectorAll('.tab-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    particleTransition(current, next);
+    // Scroll to tabs
+    document.getElementById('tabs-bar')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+});
+
+// Nav links that point to tabs
+document.querySelectorAll('a[href^="#tab-"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const id = a.getAttribute('href').replace('#','');
+    const tabName = id.replace('tab-','');
+    const btn = document.querySelector(`.tab-pill[data-tab="${tabName}"]`);
+    if (btn) btn.click();
+  });
+});
+
+function particleTransition(from, to) {
+  const canvas = document.getElementById('particle-canvas');
+  if (!canvas) { from.classList.remove('active'); to.classList.add('active'); return; }
+  const ctx = canvas.getContext('2d');
+  const container = canvas.parentElement;
+  canvas.width = container.offsetWidth;
+  canvas.height = container.offsetHeight;
+  const ps = [];
+  const cx = canvas.width / 2, cy = 80;
+  for (let i = 0; i < 80; i++) {
+    const a = Math.random() * Math.PI * 2, s = Math.random() * 5 + 1;
+    ps.push({ x:cx, y:cy, vx:Math.cos(a)*s, vy:Math.sin(a)*s - 1,
+      r: Math.random()*3+1, col: PCOLS[Math.floor(Math.random()*PCOLS.length)],
+      life:0, max: Math.random()*35+20 });
+  }
+  from.classList.remove('active');
+  function anim() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    let alive = false;
+    ps.forEach(p => {
+      p.life++; p.x += p.vx; p.y += p.vy; p.vy += 0.1;
+      const alpha = 1 - (p.life/p.max);
+      if (alpha > 0) {
+        alive = true;
+        ctx.save(); ctx.globalAlpha = alpha; ctx.fillStyle = p.col;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); ctx.restore();
+      }
+    });
+    if (alive) requestAnimationFrame(anim);
+    else { ctx.clearRect(0,0,canvas.width,canvas.height); to.classList.add('active'); }
+  }
+  anim();
+}
+
 // Reveal site after splash exits
 function revealSite() {
   const site = document.getElementById('site');
