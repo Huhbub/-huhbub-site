@@ -3,17 +3,17 @@ import Base from '../layouts/Base.astro';
 
 const projects = [
   { slug:'black-to-the-future', title:'Black to the Future', year:'2023', type:'collaborative', tags:['festival','afrofuturism','curation'], caption:'afrofuturism at the British Library', description:'A ground-breaking Afrofuturist festival at the British Library. huhbub produced and creatively directed; Irenosen Okojie founded and led artistically.', image:'/images/project-bttf.jpg', poster:'/images/poster-bttf.jpg', rot:-2 },
-  { slug:'clean-prose', title:'Clean Prose', year:'2016–2020', type:'commissioned', tags:['literary events','books','community'], caption:'Created and promoted launch programme for London’s first literary co-working space', description:'Over 70 literary events produced for Clean Prose, including an edible book launch for Irenosen Okojie's Nudibranch.', image:'/images/project-clean-prose.jpg', poster:'/images/poster-clean-prose.jpg', rot:1.5 },
+  { slug:'clean-prose', title:'Clean Prose', year:'2016–2020', type:'commissioned', tags:['literary events','writers','community'], caption:'London\'s first co-working space for writers', description:'Clean Prose was London\'s first co-working space for writers. huhbub was first hire — leading recruitment, programming 70+ events with bestselling and debut authors, running industry outreach, publicity, social media and community. Strong DEI lens throughout. Created an edible book launch for Irenosen Okojie\'s Nudibranch.', image:'/images/project-clean-prose.jpg', poster:'/images/poster-clean-prose.jpg', rot:1.5 },
   { slug:'that-time-of-the-month', title:'That Time of the Month', year:'2018–2019', type:'self', tags:['book club','jane austen','community'], caption:'Jane Austen, feminist readings, feelings', description:'A feminist book club and screening series bringing women together around Jane Austen — with wine, feelings, and zero irony.', image:'/images/project-that-time.jpg', poster:'/images/poster-that-time.jpg', rot:-1 },
   { slug:'strong-women-squad', title:'Strong Women Squad', year:'2018', type:'self', tags:['community','wellbeing','events'], caption:'sisterhood in east London', description:'A community of women and non-binary people making space for strength, softness and solidarity — parties, panels and everything in between.', image:'/images/project-strong-women.jpg', poster:'/images/poster-strong-women.jpg', rot:2 },
   { slug:'purple-reign', title:'Purple Reign', year:'2018', type:'self', tags:['music','cabaret','celebration'], caption:'a Prince-inspired birthday bakeoff cabaret', description:'A vegan birthday bakeoff cabaret in tribute to Prince. One night, one legend, many cakes.', image:'/images/project-purple-reign.jpg', poster:'/images/poster-purple-reign.jpg', rot:-2.5 },
   { slug:'feeling-noughties', title:'Feeling Noughties', year:'2016', type:'self', tags:['music','nostalgia','party'], caption:'noughties nostalgia at Drink Shop & Do', description:'A Y2K nostalgia party celebrating the music, fashion and chaos of the 2000s. Sold out. Obviously.', image:'/images/project-feeling-noughties.jpg', poster:'/images/poster-feeling-noughties.jpg', rot:1 },
-  { slug:'happiness-workshop', title:'The Happiness Workshop', year:'2019–present', type:'self', tags:['wellbeing','workshop','facilitation'], caption:'joy as a practice, not a destination', description:'A standalone workshop on the science and art of happiness. Delivered at the Barbican, Primadonna, Also Festival, Logging Off Club and more.', image:'/images/project-happiness.jpg', poster:'/images/poster-happiness.jpg', rot:-1.5 },
+  { slug:'happiness-workshop', title:'Happiness Origami', year:'2019–present', type:'origami', tags:['wellbeing','workshop','facilitation'], caption:'joy as a practice, not a destination', description:'A happiness workshop delivered as origami — literally and metaphorically. fold by fold, participants build something they can take away. Delivered at the Barbican, Primadonna, Also Festival, Logging Off Club and more.', image:'/images/project-happiness.jpg', poster:'/images/poster-happiness.jpg', rot:-1.5 },
   { slug:'curious-mermaid', title:'The Curious Mermaid', year:'2024–present', type:'self', tags:['writing','community','substack'], caption:'stories of creativity, community & belonging', description:'An essay series and community newsletter exploring creativity, community and the beauty in what others might overlook.', image:'/images/project-curious-mermaid.jpg', poster:'/images/poster-curious-mermaid.jpg', rot:2.5 },
 ];
 
-const typeLabel = { self: 'self-produced', commissioned: 'commissioned', collaborative: 'collaborative' };
-const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7F77DD' };
+const typeLabel = { self: '', commissioned: 'commissioned', collaborative: 'creative partnership', origami: '' };
+const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7F77DD', origami: '#D4537E' };
 ---
 
 <Base title="projects — huhbub">
@@ -56,12 +56,11 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
     <div class="page-hero-inner">
       <p class="page-overline">projects</p>
       <h1>a decade of making things happen</h1>
-      <p class="page-sub">Events, series, festivals and cultural experiences — self-produced, commissioned, and in creative partnership. Hover to flip.</p>
+      <p class="page-sub">Events, series, festivals and cultural experiences, including commissions and creative partnerships. Hover to flip.</p>
       <div class="filter-pills">
         <button class="filter-pill active" data-filter="all">all</button>
-        <button class="filter-pill" data-filter="self">self-produced</button>
         <button class="filter-pill" data-filter="commissioned">commissioned</button>
-        <button class="filter-pill" data-filter="collaborative">collaborative</button>
+        <button class="filter-pill" data-filter="collaborative">creative partnership</button>
       </div>
     </div>
   </div>
@@ -79,31 +78,61 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
           <!-- PIN -->
           <div class="pin"></div>
 
-          <div class="polaroid">
-            <!-- FRONT: poster -->
-            <div class="polaroid-front">
-              <div class="polaroid-img">
-                <img src={p.poster} alt={p.title} loading="lazy" onerror="this.parentElement.classList.add('no-img')" />
-                <div class="polaroid-img-placeholder">
-                  <span class="placeholder-initial">{p.title[0]}</span>
+          {p.type === 'origami' ? (
+            <div class="origami-heart">
+              <div class="origami-heart-closed">
+                <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#F5A7CC"/>
+                      <stop offset="50%" stop-color="#D4537E"/>
+                      <stop offset="100%" stop-color="#AFA9EC"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M50 82 C50 82 5 52 5 28 C5 14 15 5 28 5 C36 5 43 9 50 16 C57 9 64 5 72 5 C85 5 95 14 95 28 C95 52 50 82 50 82Z" fill="url(#hg)"/>
+                  <!-- origami crease lines -->
+                  <line x1="50" y1="16" x2="50" y2="82" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
+                  <line x1="5" y1="28" x2="95" y2="28" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
+                  <line x1="5" y1="28" x2="50" y2="82" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+                  <line x1="95" y1="28" x2="50" y2="82" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+                  <text x="50" y="50" text-anchor="middle" font-size="8" fill="rgba(255,255,255,0.7)" font-family="serif" font-style="italic">open me</text>
+                </svg>
+              </div>
+              <div class="origami-crease">
+                <div class="origami-inner">
+                  <div class="back-type" style="color: #D4537E;">happiness origami</div>
+                  <h3 class="back-title">Happiness Origami</h3>
+                  <p class="back-desc">{p.description}</p>
+                  <span class="origami-year">{p.year}</span>
                 </div>
               </div>
-              <div class="polaroid-label">
-                <span class="polaroid-caption">{p.caption}</span>
-                <span class="polaroid-year">{p.year}</span>
+            </div>
+          ) : (
+            <div class="polaroid">
+              <!-- FRONT: poster -->
+              <div class="polaroid-front">
+                <div class="polaroid-img">
+                  <img src={p.poster} alt={p.title} loading="lazy" onerror="this.parentElement.classList.add('no-img')" />
+                  <div class="polaroid-img-placeholder">
+                    <span class="placeholder-initial">{p.title[0]}</span>
+                  </div>
+                </div>
+                <div class="polaroid-label">
+                  <span class="polaroid-caption">{p.caption}</span>
+                  <span class="polaroid-year">{p.year}</span>
+                </div>
+              </div>
+              <!-- BACK: info -->
+              <div class="polaroid-back">
+                {typeLabel[p.type] && <div class="back-type" style={`color: ${typeColor[p.type]}`}>{typeLabel[p.type]}</div>}
+                <h3 class="back-title">{p.title}</h3>
+                <p class="back-desc">{p.description}</p>
+                <div class="back-tags">
+                  {p.tags.map(t => <span class="back-tag">{t}</span>)}
+                </div>
               </div>
             </div>
-
-            <!-- BACK: info -->
-            <div class="polaroid-back">
-              <div class="back-type" style={`color: ${typeColor[p.type]}`}>{typeLabel[p.type]}</div>
-              <h3 class="back-title">{p.title}</h3>
-              <p class="back-desc">{p.description}</p>
-              <div class="back-tags">
-                {p.tags.map(t => <span class="back-tag">{t}</span>)}
-              </div>
-            </div>
-          </div>
+          )}
         </div>
       ))}
     </div>
@@ -177,15 +206,16 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
   /* CORKBOARD */
   .corkboard {
     position: relative;
-    background: #8B6914;
+    background: #C9A96E;
     background-image:
-      repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,0.03) 3px, rgba(0,0,0,0.03) 4px),
-      repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(0,0,0,0.03) 3px, rgba(0,0,0,0.03) 4px);
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E"),
+      repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(0,0,0,0.015) 5px, rgba(0,0,0,0.015) 6px),
+      repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0,0,0,0.015) 5px, rgba(0,0,0,0.015) 6px);
     min-height: 600px;
     padding: 60px 40px 80px;
-    border-top: 6px solid #6B4F10;
-    border-bottom: 6px solid #6B4F10;
-    box-shadow: inset 0 4px 20px rgba(0,0,0,0.3), inset 0 -4px 20px rgba(0,0,0,0.2);
+    border-top: 8px solid #B8904A;
+    border-bottom: 8px solid #B8904A;
+    box-shadow: inset 0 4px 24px rgba(0,0,0,0.15), inset 0 -4px 24px rgba(0,0,0,0.1);
   }
 
   .polaroids-grid {
@@ -297,7 +327,55 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
     padding: 2px 7px; border-radius: 10px; letter-spacing: 0.3px;
   }
 
-  /* FOOTER */
+  /* ORIGAMI HEART — special treatment for happiness */
+  .polaroid-wrap[data-type="origami"] .polaroid {
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    width: 200px;
+    height: 212px; /* same total height as polaroid */
+  }
+  .polaroid-wrap[data-type="origami"]:hover .polaroid {
+    transform: none; /* no flip — unfold instead */
+  }
+  .origami-heart {
+    width: 200px; height: 212px;
+    position: relative; cursor: pointer;
+  }
+  /* Heart shape via two CSS triangles + pseudo */
+  .origami-heart-closed {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.4s;
+  }
+  .origami-heart-closed svg {
+    width: 140px; height: 140px;
+    filter: drop-shadow(2px 4px 8px rgba(0,0,0,0.25));
+    transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .polaroid-wrap[data-type="origami"]:hover .origami-heart-closed svg {
+    transform: scale(1.08);
+  }
+  .origami-crease {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.3s 0.1s;
+    pointer-events: none;
+  }
+  .polaroid-wrap[data-type="origami"]:hover .origami-crease {
+    opacity: 1;
+  }
+  .origami-inner {
+    background: #FFF8F0; border: 0.5px solid #E0D4C8;
+    border-radius: 4px; padding: 16px 14px; width: 180px;
+    text-align: center;
+    box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+  }
+  .origami-inner .back-type { margin-bottom: 6px; }
+  .origami-inner .back-title { font-size: 15px; margin-bottom: 6px; }
+  .origami-inner .back-desc { font-size: 11px; }
+  .origami-year { font-size: 10px; color: #8A7A6A; margin-top: 6px; display: block; }
+
   footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
   .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
   .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 300; color: #534AB7; margin-bottom: 4px; }
