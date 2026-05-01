@@ -2,10 +2,12 @@
 import Base from '../layouts/Base.astro';
 
 const collaborators = [
-  { name: 'Ria Lina', role: 'comedian, writer & performer', bio: 'Ria Lina is a Filipina-Irish comedian, writer and performer whose work spans stand-up, TV and theatre. huhbub has collaborated with Ria across multiple events exploring identity, culture and comedy.', img: '/images/collab-ria-lina.jpg' },
+  { name: 'Ria Lina', role: 'comedian, writer & performer', bio: 'Ria Lina is a Filipina-Irish comedian, writer and performer. Sharp, warm and politically astute — a recurring huhbub collaborator across events exploring identity, culture and comedy.', img: '/images/collab-ria-lina.jpg' },
   { name: 'Leena Norms', role: 'author, YouTuber & presenter', bio: 'Leena Norms is an author, YouTuber and presenter known for thoughtful content on books, culture and mental health. A recurring huhbub collaborator.', img: '/images/collab-leena-norms.jpg' },
   { name: 'Sanne Vliegenthart', role: 'author & content creator', bio: 'Sanne Vliegenthart is a Dutch author and content creator based in the UK. huhbub has worked with Sanne across literary events and book community programming.', img: '/images/collab-sanne-vliegenthart.jpg' },
   { name: 'Viv Groskop', role: 'author, comedian & broadcaster', bio: 'Viv Groskop is an author, comedian and broadcaster. Her work on confidence, ambition and how women talk has been a natural fit with the huhbub ethos.', img: '/images/collab-viv-groskop.jpg' },
+  { name: 'Irenosen Okojie', role: 'author & artistic director', bio: 'Award-winning author and artistic director of Black to the Future. Her creative partnership with huhbub has been one of the great privileges of the last decade.', img: '/images/collab-irenosen-okojie.jpg' },
+  { name: 'Sarah LaWak', role: 'illustrator & artist', bio: 'Sarah LaWak created the original vision of The Curious Mermaid — paper and paint, a purple frame. The results stunned everyone who saw them.', img: '/images/collab-sarah-lawak.jpg' },
 ];
 
 const clients = [
@@ -132,16 +134,19 @@ const recognition = [
     </div>
   </div>
 
-  <!-- COLLABORATORS -->
+  <!-- COLLABORATORS SAMPLE -->
   <div class="collaborators-section">
     <div class="collaborators-inner">
       <div class="section-header">
-        <p class="section-overline">people huhbub makes things with</p>
-        <h2 class="section-title">collaborators</h2>
+        <div>
+          <p class="section-overline">people huhbub makes things with</p>
+          <h2 class="section-title">collaborators</h2>
+        </div>
+        <a href="/collaborators" class="nav-link meet-all-link">meet everyone →</a>
       </div>
-      <div class="collaborators-gallery">
+      <div class="collaborators-gallery" id="collab-sample">
         {collaborators.map(c => (
-          <div class="collaborator-card">
+          <div class="collaborator-card" data-slug={c.name.toLowerCase().replace(/ /g,'-')}>
             <div class="collab-frame">
               <img src={c.img} alt={c.name} onerror="this.parentElement.classList.add('no-img')" />
               <div class="collab-placeholder">{c.name.split(' ').map((n: string) => n[0]).join('')}</div>
@@ -153,6 +158,9 @@ const recognition = [
             </div>
           </div>
         ))}
+      </div>
+      <div class="meet-all-mobile">
+        <a href="/collaborators" class="nav-link btn-meet-all">see all collaborators →</a>
       </div>
     </div>
   </div>
@@ -267,7 +275,12 @@ const recognition = [
   /* COLLABORATORS */
   .collaborators-section { background: #0A0820; padding: 64px 32px; border-bottom: 0.5px solid rgba(127,119,221,0.15); }
   .collaborators-inner { max-width: 1060px; margin: 0 auto; }
-  .section-header { margin-bottom: 40px; }
+  .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 12px; }
+  .meet-all-link { font-size: 13px; color: #7F77DD; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; white-space: nowrap; transition: color 0.2s; }
+  .meet-all-link:hover { color: #AFA9EC; }
+  .meet-all-mobile { display: none; text-align: center; margin-top: 32px; }
+  .btn-meet-all { font-size: 13px; color: #7F77DD; border: 0.5px solid rgba(127,119,221,0.3); padding: 10px 20px; border-radius: 20px; display: inline-block; transition: all 0.2s; }
+  .btn-meet-all:hover { background: rgba(127,119,221,0.1); }
   .section-overline { font-size: 10px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
   .section-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 300; color: var(--text-primary); letter-spacing: -1px; }
   .collaborators-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
@@ -325,6 +338,15 @@ const recognition = [
   document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
   burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
   window.closeMenu = () => mobileMenu.classList.remove('open');
+
+  // Random collaborator sample — show 3, shuffled each visit
+  const cards = Array.from(document.querySelectorAll('#collab-sample .collaborator-card'));
+  const shuffled = cards.sort(() => Math.random() - 0.5).slice(0, 3);
+  const grid = document.getElementById('collab-sample');
+  if (grid) {
+    grid.innerHTML = '';
+    shuffled.forEach(c => grid.appendChild(c));
+  }
 
   // Story tabs
   document.querySelectorAll('.story-nav-btn').forEach(btn => {
