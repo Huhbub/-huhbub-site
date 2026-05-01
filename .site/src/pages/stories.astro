@@ -1,7 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 ---
-<Base title="Sara Veal">
+<Base title="stories — huhbub">
 <div id="site">
   <canvas id="sparkle-canvas"></canvas>
 
@@ -13,7 +13,7 @@ import Base from '../layouts/Base.astro';
       <a href="/projects" class="nav-link">projects</a>
       <a href="/events" class="nav-link">events</a>
       <a href="/about" class="nav-link">about</a>
-      <a href="/stories" class="nav-link">stories</a>
+      <a href="/stories" class="nav-link active">stories</a>
       <a href="mailto:sara@huhbub.com" class="nav-cta">contact</a>
     </div>
     <button class="nav-burger" id="burger" aria-label="Open menu">
@@ -35,27 +35,43 @@ import Base from '../layouts/Base.astro';
   </div>
 
   <!-- CONTENT -->
-  <div class="sara-page">
+  <div class="stories-page">
     <canvas id="float-canvas"></canvas>
-    <div class="sara-inner">
-      <div class="sara-portrait">
-        <div class="portrait-frame">
-          <img src="/images/sara-portrait.jpg" alt="Sara Veal" onerror="this.parentElement.classList.add('no-img')" />
-          <div class="portrait-placeholder">SV</div>
-        </div>
+    <div class="stories-inner">
+
+      <div class="mermaid-mark">
+        <svg viewBox="0 0 60 54" xmlns="http://www.w3.org/2000/svg" class="mermaid-svg">
+          <defs>
+            <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#F5A7CC"/>
+              <stop offset="50%" stop-color="#D4537E"/>
+              <stop offset="100%" stop-color="#AFA9EC"/>
+            </linearGradient>
+          </defs>
+          <path d="M30 49 C30 49 3 31 3 17 C3 8 9 3 17 3 C22 3 26 6 30 10 C34 6 38 3 43 3 C51 3 57 8 57 17 C57 31 30 49 30 49Z" fill="url(#mg)" opacity="0.9"/>
+          <line x1="30" y1="10" x2="30" y2="49" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
+          <line x1="3" y1="17" x2="57" y2="17" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+        </svg>
       </div>
-      <div class="sara-content">
-        <p class="sara-overline">founder & digital witch</p>
-        <h1>Sara Veal</h1>
-        <p class="sara-lead">Producer. Community builder. People strategist. Writer. Founder of huhbub. Based in Southampton.</p>
-        <p class="sara-body">A full portfolio — career, projects, writing, and everything in between — is coming soon.</p>
-        <p class="sara-body">In the meantime, the best place to find out what I do is <a href="/about">huhbub.com/about</a>, and the best way to reach me is <a href="mailto:sara@huhbub.com">sara@huhbub.com</a>.</p>
-        <div class="sara-links">
-          <a href="/about" class="nav-link btn-primary">about huhbub →</a>
-          <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener" class="btn-secondary">linkedin →</a>
-          <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-secondary">the curious mermaid →</a>
-        </div>
+
+      <p class="stories-overline">stories</p>
+      <h1>The Curious Mermaid</h1>
+      <p class="stories-lead">Essays, updates and stories from Sara Veal and huhbub — on creativity, community, culture and what it means to make things happen.</p>
+      <p class="stories-body">This section is taking shape. In the meantime, the first essay — <em>The Siren's Gift</em> — is live on Substack.</p>
+
+      <div class="stories-links">
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-primary">read on substack →</a>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-secondary">subscribe free →</a>
       </div>
+
+      <div class="first-essay">
+        <div class="essay-eyebrow">latest essay</div>
+        <h2 class="essay-title">The Siren's Gift</h2>
+        <p class="essay-lede">How a shop of secondhand treasures led me to creativity, community, and myself. The story of Sirena Curiosa — a 6×6 stall, a diagnosis, and what happens when you finally let go.</p>
+        <blockquote class="essay-quote">"I was told I lit up like a lighthouse when I spoke about the shop."</blockquote>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="essay-read">read the full essay →</a>
+      </div>
+
     </div>
   </div>
 
@@ -66,14 +82,19 @@ import Base from '../layouts/Base.astro';
         <p class="footer-logo">huhbub</p>
         <p class="footer-sub">huhbub ltd · sara veal · southampton · est. 2016</p>
       </div>
+      <div class="footer-middle">
+        <p class="footer-subscribe-label">read The Curious Mermaid</p>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+      </div>
       <div class="footer-links">
         <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
         <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener">linkedin</a>
         <a href="/press" class="nav-link">press</a>
-          <a href="mailto:sara@huhbub.com">email</a>
+        <a href="mailto:sara@huhbub.com">email</a>
       </div>
     </div>
   </footer>
+
 </div>
 </Base>
 
@@ -88,7 +109,8 @@ import Base from '../layouts/Base.astro';
   .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
   .nav-links { display: flex; gap: 24px; align-items: center; }
   .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text-primary); }
+  .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+  .nav-links a.active { border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px; }
   .nav-cta { border: 0.5px solid var(--border-subtle); padding: 7px 16px; border-radius: 20px; color: var(--accent-soft) !important; }
   .nav-cta:hover { background: rgba(255,255,255,0.06); }
   .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
@@ -100,43 +122,79 @@ import Base from '../layouts/Base.astro';
   .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--text-primary); padding: 8px 0; transition: color 0.2s; }
   .mobile-menu-links a:hover { color: var(--accent-soft); }
 
-  /* SARA PAGE */
-  .sara-page { position: relative; min-height: calc(100vh - 58px - 80px); background: var(--sky, #07051A); display: flex; align-items: center; justify-content: center; padding: 64px 32px; overflow: hidden; transition: background 1s; }
+  /* PAGE */
+  .stories-page {
+    position: relative;
+    min-height: calc(100vh - 58px - 80px);
+    background: #0A0820;
+    display: flex; align-items: center; justify-content: center;
+    padding: 64px 32px;
+    overflow: hidden;
+  }
   #float-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.5; }
-  .sara-inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 240px 1fr; gap: 64px; align-items: center; }
-  .portrait-frame { width: 200px; height: 260px; position: relative; overflow: hidden; border-radius: 2px; box-shadow: 4px 6px 24px rgba(0,0,0,0.5); border: 6px solid #fff; }
-  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .portrait-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A0A2E, #0E0B2E); font-family: var(--font-display); font-size: 48px; font-weight: 300; color: rgba(245,167,204,0.35); }
-  .portrait-frame.no-img img { display: none; }
-  .sara-overline { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-  .sara-overline::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); display: block; }
-  h1 { font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: var(--text-primary); letter-spacing: -2px; line-height: 1; margin-bottom: 20px; }
-  .sara-lead { font-size: 16px; color: var(--text-primary); line-height: 1.7; margin-bottom: 12px; max-width: 500px; }
-  .sara-body { font-size: 14px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 10px; max-width: 500px; }
-  .sara-body a { color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); transition: border-color 0.2s; }
-  .sara-body a:hover { border-color: var(--accent-soft); }
-  .sara-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-  .btn-primary { font-size: 13px !important; font-weight: 500; color: #fff !important; background: var(--accent, #D4537E); padding: 10px 20px; border-radius: 8px; transition: opacity 0.2s; }
+
+  .stories-inner {
+    position: relative; z-index: 2;
+    max-width: 580px; margin: 0 auto;
+    text-align: center;
+  }
+
+  /* MERMAID MARK */
+  .mermaid-mark { margin-bottom: 28px; }
+  .mermaid-svg {
+    width: 56px; height: 50px;
+    filter: drop-shadow(0 0 12px rgba(212,83,126,0.4));
+    animation: float 4s ease-in-out infinite;
+  }
+  @keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  .stories-overline { font-size: 10px; color: #7F77DD; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
+  h1 { font-family: var(--font-display); font-size: clamp(32px, 6vw, 56px); font-weight: 300; color: #fff; letter-spacing: -1.5px; line-height: 1; margin-bottom: 18px; }
+  .stories-lead { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 12px; }
+  .stories-body { font-size: 14px; color: #7F77DD; line-height: 1.7; margin-bottom: 28px; }
+  .stories-body em { color: #AFA9EC; font-style: italic; }
+
+  .stories-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+  .btn-primary { font-size: 13px; font-weight: 500; color: #fff; background: #D4537E; padding: 11px 22px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
   .btn-primary:hover { opacity: 0.85; }
-  .btn-secondary { font-size: 13px; color: var(--text-secondary); border: 0.5px solid var(--border-subtle); padding: 10px 20px; border-radius: 8px; transition: all 0.2s; }
-  .btn-secondary:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
+  .btn-secondary { font-size: 13px; color: #AFA9EC; border: 0.5px solid rgba(175,169,236,0.3); padding: 11px 22px; border-radius: 8px; transition: all 0.2s; display: inline-block; }
+  .btn-secondary:hover { background: rgba(175,169,236,0.08); color: #fff; }
+
+  /* FIRST ESSAY CARD */
+  .first-essay {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(127,119,221,0.2);
+    border-radius: 4px;
+    padding: 28px 32px;
+    text-align: left;
+  }
+  .essay-eyebrow { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+  .essay-title { font-family: var(--font-display); font-size: 26px; font-weight: 300; color: #fff; letter-spacing: -0.5px; margin-bottom: 10px; }
+  .essay-lede { font-size: 14px; color: #AFA9EC; line-height: 1.7; margin-bottom: 16px; }
+  .essay-quote { font-family: var(--font-display); font-size: 16px; font-style: italic; color: #D4B8F8; border-left: 2px solid #7F77DD; padding-left: 14px; margin: 0 0 18px; line-height: 1.5; }
+  .essay-read { font-size: 13px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.3); padding-bottom: 2px; transition: color 0.2s; display: inline-block; }
+  .essay-read:hover { color: #fff; }
 
   footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
   .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
   .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 300; color: #534AB7; margin-bottom: 4px; }
   .footer-sub { font-size: 12px; color: #3C3489; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #534AB7; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
   .footer-links { display: flex; gap: 20px; }
   .footer-links a { font-size: 13px; color: #7F77DD; transition: color 0.2s; }
   .footer-links a:hover { color: var(--accent-soft); }
 
   @media (max-width: 768px) {
     .nav-links { display: none; } .nav-burger { display: flex; }
-    .sara-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
-    .sara-portrait { display: flex; justify-content: center; }
-    .sara-overline { justify-content: center; }
-    .sara-overline::before { display: none; }
-    h1 { letter-spacing: -1px; }
-    .sara-links { justify-content: center; }
+    h1 { letter-spacing: -0.5px; }
+    .first-essay { padding: 20px; }
+    .stories-links { flex-direction: column; align-items: center; }
   }
 </style>
 
@@ -148,20 +206,20 @@ import Base from '../layouts/Base.astro';
   burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
   window.closeMenu = () => mobileMenu.classList.remove('open');
 
-  // Gentle floating particles
+  // Floating particles
   (function() {
     const canvas = document.getElementById('float-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    const COLORS = ['#D4537E','#F5A7CC','#AFA9EC','#FAC775','#7F77DD'];
+    const COLORS = ['#D4537E','#F5A7CC','#AFA9EC','#7F77DD','#D4B8F8'];
     let W, H;
     function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
     resize(); window.addEventListener('resize', resize);
     const ps = Array.from({length: 24}, () => ({
       x: Math.random() * 800, y: Math.random() * 600,
-      r: Math.random() * 3 + 1, vx: (Math.random()-.5)*.35, vy: -Math.random()*.3-.1,
+      r: Math.random() * 3 + 1, vx: (Math.random()-.5)*.3, vy: -Math.random()*.25-.08,
       col: COLORS[Math.floor(Math.random()*COLORS.length)],
-      phase: Math.random()*Math.PI*2, alpha: Math.random()*.35+.1,
+      phase: Math.random()*Math.PI*2, alpha: Math.random()*.3+.1,
     }));
     function anim() {
       ctx.clearRect(0,0,W,H);
@@ -171,12 +229,12 @@ import Base from '../layouts/Base.astro';
         if(p.x<-10)p.x=W+10; if(p.x>W+10)p.x=-10;
         const tw=0.6+0.4*Math.sin(p.phase);
         const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.5);
-        grd.addColorStop(0,p.col);grd.addColorStop(1,'rgba(0,0,0,0)');
+        grd.addColorStop(0,p.col); grd.addColorStop(1,'rgba(0,0,0,0)');
         ctx.save();
-        ctx.globalAlpha=p.alpha*tw*.4;ctx.fillStyle=grd;
-        ctx.beginPath();ctx.arc(p.x,p.y,p.r*2.5,0,Math.PI*2);ctx.fill();
-        ctx.globalAlpha=p.alpha*tw;ctx.fillStyle=p.col;
-        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+        ctx.globalAlpha=p.alpha*tw*.4; ctx.fillStyle=grd;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r*2.5,0,Math.PI*2); ctx.fill();
+        ctx.globalAlpha=p.alpha*tw; ctx.fillStyle=p.col;
+        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
         ctx.restore();
       });
       requestAnimationFrame(anim);
@@ -185,12 +243,20 @@ import Base from '../layouts/Base.astro';
   })();
 
   // Nav sparkle
-  const MC = {'spring-night':['#D4537E','#AFA9EC','#FAC775','#F5A7CC'],'summer-night':['#FAC775','#7F77DD','#F5A7CC','#EF9F27'],'autumn-night':['#EF9F27','#D85A30','#AFA9EC','#FAC775'],'winter-night':['#7F77DD','#B5D4F4','#F5A7CC','#AFA9EC']};
+  const MOMENT_COLORS = {
+    'spring-dawn':['#F5A7CC','#FAC775','#AFA9EC','#F4C0D1'],'spring-day':['#D4537E','#7F77DD','#F5A7CC','#EF9F27'],
+    'spring-dusk':['#F5A7CC','#EF9F27','#7F77DD','#FAC775'],'spring-night':['#D4537E','#AFA9EC','#FAC775','#F5A7CC'],
+    'summer-dawn':['#FAC775','#EF9F27','#F5A7CC','#FAEEDA'],'summer-day':['#EF9F27','#D4537E','#FAC775','#F5A7CC'],
+    'summer-dusk':['#D4537E','#FAC775','#AFA9EC','#F5A7CC'],'summer-night':['#FAC775','#7F77DD','#F5A7CC','#EF9F27'],
+    'autumn-dawn':['#EF9F27','#D85A30','#FAC775','#BA7517'],'autumn-day':['#BA7517','#D85A30','#EF9F27','#FAC775'],
+    'autumn-dusk':['#EF9F27','#D4537E','#7F77DD','#D85A30'],'autumn-night':['#EF9F27','#D85A30','#AFA9EC','#FAC775'],
+    'winter-dawn':['#B5D4F4','#85B7EB','#F5A7CC','#AFA9EC'],'winter-day':['#378ADD','#7F77DD','#F5A7CC','#B5D4F4'],
+    'winter-dusk':['#AFA9EC','#F5A7CC','#B5D4F4','#7F77DD'],'winter-night':['#7F77DD','#B5D4F4','#F5A7CC','#AFA9EC'],
+  };
   function sparkleTo(href,ox,oy){
     const canvas=document.getElementById('sparkle-canvas'),ctx=canvas.getContext('2d');
     canvas.width=window.innerWidth;canvas.height=window.innerHeight;canvas.classList.add('active');
-    const m=window.__huhbubMoment||'spring-night';
-    const palette=MC[m]||MC['spring-night'];
+    const palette=MOMENT_COLORS[window.__huhbubMoment||'spring-night'];
     const ps=[];
     for(let i=0;i<48;i++){const a=Math.random()*Math.PI*2,s=Math.random()*5+1.5;ps.push({x:ox,y:oy,vx:Math.cos(a)*s,vy:Math.sin(a)*s,r:Math.random()*5+2,col:palette[Math.floor(Math.random()*palette.length)],alpha:0,phase:Math.random()*Math.PI*2});}
     setTimeout(()=>{window.location.href=href;},420);
