@@ -1,0 +1,398 @@
+---
+import Base from '../layouts/Base.astro';
+
+const collaborators = [
+  { name: 'Ria Lina', role: 'comedian, writer & performer', bio: 'Ria Lina is a Filipina-Irish comedian, writer and performer whose work spans stand-up, TV and theatre. huhbub has collaborated with Ria across multiple events exploring identity, culture and comedy.', img: '/images/collab-ria-lina.jpg' },
+  { name: 'Leena Norms', role: 'author, YouTuber & presenter', bio: 'Leena Norms is an author, YouTuber and presenter known for thoughtful content on books, culture and mental health. A recurring huhbub collaborator.', img: '/images/collab-leena-norms.jpg' },
+  { name: 'Sanne Vliegenthart', role: 'author & content creator', bio: 'Sanne Vliegenthart is a Dutch author and content creator based in the UK. huhbub has worked with Sanne across literary events and book community programming.', img: '/images/collab-sanne-vliegenthart.jpg' },
+  { name: 'Viv Groskop', role: 'author, comedian & broadcaster', bio: 'Viv Groskop is an author, comedian and broadcaster. Her work on confidence, ambition and how women talk has been a natural fit with the huhbub ethos.', img: '/images/collab-viv-groskop.jpg' },
+];
+
+const clients = [
+  'Primo Toys', 'Barbican', 'Salon London', 'Also Festival', 'Primadonna Festival',
+  'Port Eliot', 'Larmer Tree', 'Shambala', 'Sunrise Festival', 'Logging Off Club',
+  'Woogie Big Pants', 'October Books', 'Read with Audrey', 'OWN IT!',
+  'CMC / WorkWise for Screen', 'GamesAid', 'The Sewing Hub CIC',
+];
+
+const recognition = [
+  { label: 'Game Dev Heroes', detail: 'Unsung Hero 2025' },
+  { label: 'Lovies', detail: '× 2' },
+  { label: 'Inclusion Dividend', detail: 'finalist 2025' },
+  { label: 'LGF Ensemble', detail: '2026' },
+  { label: 'BAFTA Connect', detail: 'member' },
+  { label: 'Develop', detail: "Tomorrow's Star nominee" },
+];
+---
+
+<Base title="about — huhbub">
+<div id="site">
+  <canvas id="sparkle-canvas"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo nav-link"><span class="logo-text">huhbub</span></a>
+    <div class="nav-links">
+      <a href="/services" class="nav-link">services</a>
+      <a href="/projects" class="nav-link">projects</a>
+      <a href="/events" class="nav-link">events</a>
+      <a href="/about" class="nav-link active">about</a>
+      <a href="/stories" class="nav-link">stories</a>
+      <a href="mailto:sara@huhbub.com" class="nav-cta">contact</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close">×</button>
+    <div class="mobile-menu-links">
+      <a href="/services" onclick="closeMenu()">services</a>
+      <a href="/projects" onclick="closeMenu()">projects</a>
+      <a href="/events" onclick="closeMenu()">events</a>
+      <a href="/about" onclick="closeMenu()">about</a>
+      <a href="/stories" onclick="closeMenu()">stories</a>
+      <a href="mailto:sara@huhbub.com" onclick="closeMenu()">contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="about-hero">
+    <div class="about-hero-inner">
+      <div class="about-portrait">
+        <div class="portrait-frame">
+          <img src="/images/sara-portrait.jpg" alt="Sara Veal" onerror="this.parentElement.classList.add('no-img')" />
+          <div class="portrait-placeholder">SV</div>
+        </div>
+        <p class="portrait-caption">Sara Veal · founder, huhbub</p>
+      </div>
+      <div class="about-intro">
+        <p class="page-overline">about</p>
+        <h1>making things happen<br/>since 2016</h1>
+        <p class="about-lead">huhbub is a cultural consultancy founded by Sara Veal — producer, community builder, people strategist, and writer. Based in Southampton. Working everywhere.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOGNITION STRIP -->
+  <div class="recognition-strip">
+    {recognition.map(r => (
+      <div class="recognition-item">
+        <span class="recognition-label">{r.label}</span>
+        <span class="recognition-detail">{r.detail}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- THE STORY -->
+  <div class="story-section">
+    <div class="story-inner">
+      <div class="story-sidebar">
+        <div class="story-nav">
+          <button class="story-nav-btn active" data-section="origin">the beginning</button>
+          <button class="story-nav-btn" data-section="before">before huhbub</button>
+          <button class="story-nav-btn" data-section="now">right now</button>
+        </div>
+        <div class="ten-years-badge">
+          <div class="badge-inner">
+            <span class="badge-number">10</span>
+            <span class="badge-label">years</span>
+            <span class="badge-sub">july 2016 – 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-content">
+        <div class="story-panel active" id="section-origin">
+          <h2>the beginning</h2>
+          <p>I launched huhbub in July 2016, shortly after my first child's first birthday, so I could keep doing the work I loved most — creating events and community — in tandem with parenthood.</p>
+          <p>huhbub was inspired by the first sounds my son made, and by living in Bristol at the time, where babies were usually called "bubs". The name also speaks to my desire to create a hubbub — to share excitement and to create experiences that make you feel truly in the moment. A state of being I have spent my life seeking out, and been fortunate to find repeatedly.</p>
+          <p>In ten years, huhbub has produced and directed cultural events, built people functions for creative organisations, programmed literary festivals, run community strategy for a workers' cooperative bookshop, chaired a games industry charity, and made a great deal of things happen that probably shouldn't have been possible.</p>
+        </div>
+
+        <div class="story-panel" id="section-before">
+          <h2>before huhbub</h2>
+          <p>I studied social anthropology at SOAS, which gave me a way of thinking about people, culture and community that has never really left me.</p>
+          <p>Before huhbub, I worked in publishing at Atlantic Books and Harlequin, and in games at Failbetter Games. Before that: journalism and subediting in Indonesia, Cambodia and Tanzania; research at Amnesty International; the International Development Office at Lambeth Palace. An assortment, as I used to say.</p>
+          <p>I also received a scholarship from Thoughtworks to study web development at Makers Academy. My second child was born a few weeks after I graduated.</p>
+          <p>The through-line, looking back, was always this: finding the people, making the room, and making something happen in it.</p>
+        </div>
+
+        <div class="story-panel" id="section-now">
+          <h2>right now</h2>
+          <p>huhbub turns 10 in July 2026. This site is part of marking that — taking stock of what's been built, and pointing clearly at what comes next.</p>
+          <p>Currently: Chair of GamesAid, Community and Member Engagement Lead at October Books, Director of The Sewing Hub CIC, London Games Festival Ensemble 2026 participant, BAFTA Connect member.</p>
+          <p>Also: solo parent to Zelda and Reuben. Owner of two cats — Cheesecake and Xavi. Writer of a fantasy novel called <em>Dandelion</em> and an essay collection called <em>You Don't Have to Be Cool</em>. Based in Southampton, which suits me more than I expected.</p>
+          <p>If you're wondering whether huhbub is right for your project — get in touch. I have a good sense, quickly, of whether something is a fit.</p>
+          <a href="mailto:sara@huhbub.com" class="story-cta">sara@huhbub.com →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COLLABORATORS -->
+  <div class="collaborators-section">
+    <div class="collaborators-inner">
+      <div class="section-header">
+        <p class="section-overline">people huhbub makes things with</p>
+        <h2 class="section-title">collaborators</h2>
+      </div>
+      <div class="collaborators-gallery">
+        {collaborators.map(c => (
+          <div class="collaborator-card">
+            <div class="collab-frame">
+              <img src={c.img} alt={c.name} onerror="this.parentElement.classList.add('no-img')" />
+              <div class="collab-placeholder">{c.name.split(' ').map((n: string) => n[0]).join('')}</div>
+            </div>
+            <div class="collab-info">
+              <h3 class="collab-name">{c.name}</h3>
+              <p class="collab-role">{c.role}</p>
+              <p class="collab-bio">{c.bio}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- PARTNERS & CLIENTS -->
+  <div class="clients-section">
+    <div class="clients-inner">
+      <p class="section-overline">partners & clients</p>
+      <div class="clients-cloud">
+        {clients.map(c => (
+          <span class="client-name">{c}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-logo">huhbub</p>
+        <p class="footer-sub">huhbub ltd · sara veal · southampton · est. 2016</p>
+      </div>
+      <div class="footer-middle">
+        <p class="footer-subscribe-label">read The Curious Mermaid</p>
+        <a href="https://curiousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+        <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener">linkedin</a>
+        <a href="mailto:sara@huhbub.com">email</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</Base>
+
+<style>
+  #site { opacity: 0; transition: opacity 0.6s ease; }
+  #site.is-visible { opacity: 1; }
+
+  #sparkle-canvas { position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0; width: 100%; height: 100%; }
+  #sparkle-canvas.active { opacity: 1; pointer-events: all; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); border-bottom: 0.5px solid var(--border-subtle); padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; backdrop-filter: blur(12px); transition: background 1s; }
+  .nav-logo { display: flex; align-items: center; }
+  .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--text-primary); }
+  .nav-links a.active { border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px; }
+  .nav-cta { border: 0.5px solid var(--border-subtle); padding: 7px 16px; border-radius: 20px; color: var(--accent-soft) !important; }
+  .nav-cta:hover { background: rgba(255,255,255,0.06); }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
+
+  /* MOBILE MENU */
+  .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--text-primary); padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--accent-soft); }
+
+  /* HERO */
+  .about-hero { background: var(--sky, #07051A); padding: 56px 32px; border-bottom: 0.5px solid var(--border-subtle); transition: background 1s; }
+  .about-hero-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
+  .portrait-frame { width: 220px; height: 280px; position: relative; overflow: hidden; border-radius: 2px; box-shadow: 4px 6px 20px rgba(0,0,0,0.4); border: 6px solid #fff; }
+  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .portrait-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A0A2E, #0E0B2E); font-family: var(--font-display); font-size: 48px; font-weight: 300; color: rgba(245,167,204,0.4); }
+  .portrait-frame.no-img img { display: none; }
+  .portrait-caption { font-size: 11px; color: var(--text-secondary); margin-top: 10px; letter-spacing: 0.5px; }
+  .page-overline { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); display: block; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: var(--text-primary); line-height: 1.05; letter-spacing: -2px; margin-bottom: 18px; }
+  .about-lead { font-size: 16px; color: var(--text-secondary); line-height: 1.75; max-width: 520px; }
+
+  /* RECOGNITION STRIP */
+  .recognition-strip { background: var(--sky-mid, #0E0B2E); border-bottom: 0.5px solid var(--border-subtle); padding: 0 32px; display: flex; overflow-x: auto; scrollbar-width: none; transition: background 1s; }
+  .recognition-strip::-webkit-scrollbar { display: none; }
+  .recognition-item { display: flex; flex-direction: column; padding: 16px 28px; border-right: 0.5px solid var(--border-subtle); white-space: nowrap; flex-shrink: 0; }
+  .recognition-item:first-child { padding-left: 0; }
+  .recognition-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
+  .recognition-detail { font-size: 13px; color: var(--text-primary); font-family: var(--font-display); font-weight: 300; }
+
+  /* STORY */
+  .story-section { background: var(--sky, #07051A); padding: 64px 32px; border-bottom: 0.5px solid var(--border-subtle); transition: background 1s; }
+  .story-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 220px 1fr; gap: 64px; }
+  .story-nav { display: flex; flex-direction: column; gap: 4px; margin-bottom: 32px; }
+  .story-nav-btn { background: none; border: none; text-align: left; font-size: 13px; color: var(--text-secondary); cursor: pointer; padding: 8px 12px; border-radius: 4px; transition: all 0.2s; font-family: var(--font-body); border-left: 2px solid transparent; }
+  .story-nav-btn:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
+  .story-nav-btn.active { color: var(--accent-soft); border-left-color: var(--accent-soft); background: rgba(212,83,126,0.06); }
+
+  /* 10 years badge */
+  .ten-years-badge { margin-top: 16px; }
+  .badge-inner { width: 100px; height: 100px; border-radius: 50%; border: 1.5px solid rgba(212,83,126,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(212,83,126,0.06); }
+  .badge-number { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--accent-soft); line-height: 1; }
+  .badge-label { font-size: 10px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; }
+  .badge-sub { font-size: 8px; color: var(--text-secondary); letter-spacing: 0.5px; margin-top: 4px; text-align: center; }
+
+  .story-panel { display: none; animation: fadeIn 0.4s ease; }
+  .story-panel.active { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .story-panel h2 { font-family: var(--font-display); font-size: 32px; font-weight: 300; color: var(--text-primary); margin-bottom: 24px; letter-spacing: -0.5px; }
+  .story-panel p { font-size: 15px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 18px; max-width: 600px; }
+  .story-panel p em { color: var(--accent-soft); font-style: italic; }
+  .story-cta { display: inline-block; font-size: 14px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 2px; margin-top: 8px; transition: border-color 0.2s; }
+  .story-cta:hover { border-color: var(--accent-soft); }
+
+  /* COLLABORATORS */
+  .collaborators-section { background: #0A0820; padding: 64px 32px; border-bottom: 0.5px solid rgba(127,119,221,0.15); }
+  .collaborators-inner { max-width: 1060px; margin: 0 auto; }
+  .section-header { margin-bottom: 40px; }
+  .section-overline { font-size: 10px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 300; color: var(--text-primary); letter-spacing: -1px; }
+  .collaborators-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .collaborator-card { display: flex; flex-direction: column; gap: 16px; }
+  .collab-frame { width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: 2px; position: relative; box-shadow: 3px 4px 16px rgba(0,0,0,0.4); border: 4px solid #1A1830; }
+  .collab-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .collaborator-card:hover .collab-frame img { transform: scale(1.04); }
+  .collab-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A1040, #0D0B2E); font-family: var(--font-display); font-size: 32px; font-weight: 300; color: rgba(175,169,236,0.4); }
+  .collab-frame.no-img img { display: none; }
+  .collab-name { font-family: var(--font-display); font-size: 18px; font-weight: 300; color: #D4B8F8; letter-spacing: -0.2px; margin-bottom: 2px; }
+  .collab-role { font-size: 11px; color: #7F77DD; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .collab-bio { font-size: 12px; color: #534AB7; line-height: 1.65; }
+
+  /* PARTNERS & CLIENTS */
+  .clients-section { background: var(--sky, #07051A); padding: 56px 32px; border-bottom: 0.5px solid var(--border-subtle); transition: background 1s; }
+  .clients-inner { max-width: 1060px; margin: 0 auto; }
+  .clients-cloud { display: flex; flex-wrap: wrap; gap: 12px 16px; margin-top: 24px; }
+  .client-name { font-family: var(--font-display); font-size: clamp(16px, 2vw, 22px); font-weight: 300; color: var(--text-secondary); letter-spacing: -0.3px; transition: color 0.2s; cursor: default; }
+  .client-name:nth-child(3n) { color: rgba(245,167,204,0.6); }
+  .client-name:nth-child(5n) { color: rgba(175,169,236,0.7); }
+  .client-name:nth-child(7n) { color: rgba(239,159,39,0.6); }
+  .client-name:hover { color: var(--text-primary); }
+
+  /* FOOTER */
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 300; color: #534AB7; margin-bottom: 4px; }
+  .footer-sub { font-size: 12px; color: #3C3489; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #534AB7; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #7F77DD; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--accent-soft); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .about-hero-inner { grid-template-columns: 1fr; gap: 32px; }
+    .portrait-frame { width: 160px; height: 200px; }
+    .story-inner { grid-template-columns: 1fr; gap: 32px; }
+    .story-nav { flex-direction: row; flex-wrap: wrap; }
+    .collaborators-gallery { grid-template-columns: repeat(2, 1fr); }
+    h1 { letter-spacing: -1px; }
+  }
+</style>
+
+<script>
+  document.getElementById('site').classList.add('is-visible');
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
+  window.closeMenu = () => mobileMenu.classList.remove('open');
+
+  // Story tabs
+  document.querySelectorAll('.story-nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.story-nav-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.story-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('section-' + btn.dataset.section)?.classList.add('active');
+    });
+  });
+
+  // Nav sparkle transition
+  const MOMENT_COLORS = {
+    'spring-dawn':['#F5A7CC','#FAC775','#AFA9EC','#F4C0D1'],'spring-day':['#D4537E','#7F77DD','#F5A7CC','#EF9F27'],
+    'spring-dusk':['#F5A7CC','#EF9F27','#7F77DD','#FAC775'],'spring-night':['#D4537E','#AFA9EC','#FAC775','#F5A7CC'],
+    'summer-dawn':['#FAC775','#EF9F27','#F5A7CC','#FAEEDA'],'summer-day':['#EF9F27','#D4537E','#FAC775','#F5A7CC'],
+    'summer-dusk':['#D4537E','#FAC775','#AFA9EC','#F5A7CC'],'summer-night':['#FAC775','#7F77DD','#F5A7CC','#EF9F27'],
+    'autumn-dawn':['#EF9F27','#D85A30','#FAC775','#BA7517'],'autumn-day':['#BA7517','#D85A30','#EF9F27','#FAC775'],
+    'autumn-dusk':['#EF9F27','#D4537E','#7F77DD','#D85A30'],'autumn-night':['#EF9F27','#D85A30','#AFA9EC','#FAC775'],
+    'winter-dawn':['#B5D4F4','#85B7EB','#F5A7CC','#AFA9EC'],'winter-day':['#378ADD','#7F77DD','#F5A7CC','#B5D4F4'],
+    'winter-dusk':['#AFA9EC','#F5A7CC','#B5D4F4','#7F77DD'],'winter-night':['#7F77DD','#B5D4F4','#F5A7CC','#AFA9EC'],
+  };
+
+  function sparkleTo(href, ox, oy) {
+    const canvas = document.getElementById('sparkle-canvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    canvas.classList.add('active');
+    const palette = MOMENT_COLORS[window.__huhbubMoment||'spring-night'];
+    const ps = [];
+    for(let i=0;i<48;i++){
+      const angle=Math.random()*Math.PI*2, speed=Math.random()*5+1.5;
+      ps.push({x:ox,y:oy,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
+        r:Math.random()*5+2,col:palette[Math.floor(Math.random()*palette.length)],
+        alpha:0,phase:Math.random()*Math.PI*2});
+    }
+    setTimeout(()=>{window.location.href=href;},420);
+    let frame=0;const TOTAL=36;
+    function anim(){
+      if(frame>TOTAL)return;
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      ps.forEach(p=>{
+        p.x+=p.vx;p.y+=p.vy;p.vx*=0.96;p.vy*=0.96;
+        const tw=0.7+0.3*Math.sin(p.phase+frame*0.25);
+        const fi=8,fo=TOTAL-fi;
+        const base=frame<fi?frame/fi:1-((frame-fi)/fo);
+        p.alpha=Math.max(0,base*tw);
+        if(p.alpha<=0)return;
+        const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.5);
+        grd.addColorStop(0,p.col);grd.addColorStop(1,'rgba(0,0,0,0)');
+        ctx.save();ctx.globalAlpha=p.alpha*0.35;ctx.fillStyle=grd;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r*2.5,0,Math.PI*2);ctx.fill();
+        ctx.globalAlpha=p.alpha;ctx.fillStyle=p.col;
+        ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill();
+        ctx.restore();
+      });
+      frame++;requestAnimationFrame(anim);
+    }
+    anim();
+  }
+
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href || href.startsWith('mailto') || href.startsWith('http')) return;
+      e.preventDefault();
+      const rect = a.getBoundingClientRect();
+      sparkleTo(href, rect.left + rect.width/2, rect.top + rect.height/2);
+    });
+  });
+</script>
