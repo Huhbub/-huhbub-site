@@ -105,7 +105,10 @@ import Splash from '../components/Splash.astro';
           <h2 id="feat-title">Black to the Future</h2>
           <p id="feat-desc">An Afrofuturistic festival celebrating Black excellence across the creative industries. 25+ Black artists across 6 venues over 8 months.</p>
           <div class="feat-pills" id="feat-pills"></div>
-          <a href="/projects" id="feat-link" class="feat-link">see all projects →</a>
+          <div class="feat-links">
+            <a href="/projects" id="feat-link" class="feat-link">read more →</a>
+            <a href="/projects" class="feat-link-secondary">see all projects →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -278,8 +281,11 @@ import Splash from '../components/Splash.astro';
   .feat-eyebrow { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
   .feat-content h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 300; color: var(--text-primary); margin-bottom: 14px; letter-spacing: -1px; line-height: 1.1; }
   .feat-content p { font-size: 15px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 18px; }
-  .feat-link { font-size: 13px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 2px; display: inline-block; margin-top: 4px; transition: border-color 0.2s; }
+  .feat-links { display: flex; gap: 20px; align-items: center; margin-top: 4px; }
+  .feat-link { font-size: 13px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 2px; display: inline-block; transition: border-color 0.2s; }
   .feat-link:hover { border-color: var(--accent-soft); }
+  .feat-link-secondary { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+  .feat-link-secondary:hover { color: var(--text-primary); }
 
   /* CURIOUS MERMAID EDITORIAL */
   .mermaid-section { background: #0A0820; padding: 56px 32px; border-top: 0.5px solid rgba(127,119,221,0.2); }
