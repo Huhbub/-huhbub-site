@@ -144,17 +144,21 @@ const recognition = [
         <a href="/collaborators" class="nav-link meet-all-link">meet everyone →</a>
       </div>
       <div class="collaborators-gallery" id="collab-sample">
-        {collaborators.map(c => (
+        {collaborators.map((c, i) => (
           <div class="collaborator-card" data-slug={c.name.toLowerCase().replace(/ /g,'-')}>
-            <div class="collab-frame">
-              <img src={c.img} alt={c.name} onerror="this.parentElement.classList.add('no-img')" />
-              <div class="collab-placeholder">{c.name.split(' ').map((n: string) => n[0]).join('')}</div>
+            <div class="collab-frame-wrap" style={`--rot: ${[-2, 1.5, -1][i % 3]}deg`}>
+              <div class="collab-wire"></div>
+              <div class="collab-frame">
+                <div class="collab-portrait">
+                  <img src={c.img} alt={c.name} onerror="this.parentElement.classList.add('no-img')" />
+                  <div class="collab-placeholder" style="z-index:0">{c.name.split(' ').map((n: string) => n[0]).join('')}</div>
+                </div>
+                <div class="collab-nameplate">
+                  <span class="collab-name-label">{c.name}</span>
+                </div>
+              </div>
             </div>
-            <div class="collab-info">
-              <h3 class="collab-name">{c.name}</h3>
-              <p class="collab-role">{c.role}</p>
-              <p class="collab-bio">{c.bio}</p>
-            </div>
+            <p class="collab-role-small">{c.role}</p>
           </div>
         ))}
       </div>
@@ -278,16 +282,43 @@ const recognition = [
   .btn-meet-all:hover { background: rgba(127,119,221,0.1); }
   .section-overline { font-size: 10px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
   .section-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 300; color: var(--text-primary); letter-spacing: -1px; }
-  .collaborators-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  .collaborator-card { display: flex; flex-direction: column; gap: 16px; }
-  .collab-frame { width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: 2px; position: relative; box-shadow: 3px 4px 16px rgba(0,0,0,0.4); border: 4px solid #1A1830; }
-  .collab-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; position: relative; z-index: 1; }
-  .collaborator-card:hover .collab-frame img { transform: scale(1.04); }
-  .collab-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A1040, #0D0B2E); font-family: var(--font-display); font-size: 32px; font-weight: 300; color: rgba(175,169,236,0.4); z-index: 0; }
-  .collab-frame.no-img img { display: none; }
-  .collab-name { font-family: var(--font-display); font-size: 18px; font-weight: 300; color: #D4B8F8; letter-spacing: -0.2px; margin-bottom: 2px; }
-  .collab-role { font-size: 11px; color: #7F77DD; letter-spacing: 0.5px; margin-bottom: 8px; }
-  .collab-bio { font-size: 12px; color: #534AB7; line-height: 1.65; }
+  .collaborators-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: end; }
+  .collaborator-card { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .collab-frame-wrap {
+    position: relative;
+    transform: rotate(var(--rot));
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .collab-frame-wrap:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
+  .collab-wire {
+    position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 20px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(255,255,255,0.06));
+  }
+  .collab-wire::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+  .collab-frame {
+    background: #F8F2EC; padding: 6px 6px 0;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 0 0 3px #C8A876, 0 0 0 4px rgba(0,0,0,0.15), 3px 6px 16px rgba(0,0,0,0.4);
+    width: 120px;
+  }
+  .collab-frame::before {
+    content: ''; position: absolute; inset: 3px;
+    border: 0.5px solid rgba(255,215,100,0.15); pointer-events: none; z-index: 5;
+  }
+  .collab-portrait {
+    width: 100%; height: 150px; overflow: hidden; position: relative; background: #2A1E14;
+  }
+  .collab-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; transition: transform 0.4s; }
+  .collab-frame-wrap:hover .collab-portrait img { transform: scale(1.04); }
+  .collab-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2A1E14, #1A1208); font-family: var(--font-display); font-size: 24px; font-weight: 300; color: rgba(200,168,118,0.4); }
+  .collab-portrait.no-img img { display: none; }
+  .collab-nameplate { padding: 5px 4px 7px; text-align: center; background: #F8F2EC; border-top: 0.5px solid rgba(0,0,0,0.06); }
+  .collab-name-label { font-family: var(--font-handwriting, 'Caveat', cursive); font-size: 12px; color: #3A2E1A; display: block; }
+  .collab-role-small { font-size: 11px; color: var(--text-secondary); text-align: center; line-height: 1.4; max-width: 120px; }
 
   /* PARTNERS & CLIENTS */
   .clients-section { background: var(--sky, #07051A); padding: 56px 32px; border-bottom: 0.5px solid var(--border-subtle); transition: background 1s; }
@@ -319,7 +350,7 @@ const recognition = [
     .portrait-frame { width: 160px; height: 200px; }
     .story-inner { grid-template-columns: 1fr; gap: 32px; }
     .story-nav { flex-direction: row; flex-wrap: wrap; }
-    .collaborators-gallery { grid-template-columns: repeat(2, 1fr); }
+    .collaborators-gallery { grid-template-columns: repeat(3, 1fr); gap: 20px; }
     h1 { letter-spacing: -1px; }
   }
 </style>
