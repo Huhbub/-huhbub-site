@@ -34,43 +34,54 @@ import Base from '../layouts/Base.astro';
   </div>
 
   <!-- CONTENT -->
-  <div class="stories-page">
-    <canvas id="float-canvas"></canvas>
-    <div class="stories-inner">
-
-      <div class="mermaid-mark">
-        <svg viewBox="0 0 60 54" xmlns="http://www.w3.org/2000/svg" class="mermaid-svg">
-          <defs>
-            <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" stop-color="#F5A7CC"/>
-              <stop offset="50%" stop-color="#D4537E"/>
-              <stop offset="100%" stop-color="#AFA9EC"/>
-            </linearGradient>
-          </defs>
-          <path d="M30 49 C30 49 3 31 3 17 C3 8 9 3 17 3 C22 3 26 6 30 10 C34 6 38 3 43 3 C51 3 57 8 57 17 C57 31 30 49 30 49Z" fill="url(#mg)" opacity="0.9"/>
-          <line x1="30" y1="10" x2="30" y2="49" stroke="rgba(255,255,255,0.2)" stroke-width="0.5"/>
-          <line x1="3" y1="17" x2="57" y2="17" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
-        </svg>
-      </div>
-
-      <p class="stories-overline">stories</p>
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-overline">stories</p>
       <h1>The Curious Mermaid</h1>
-      <p class="stories-lead">Essays, updates and stories from Sara Veal and huhbub — on creativity, community, culture and what it means to make things happen.</p>
-      <p class="stories-body">This section is taking shape. In the meantime, the first essay — <em>The Siren's Gift</em> — is live on Substack.</p>
-
-      <div class="stories-links">
+      <p class="page-sub">Essays, updates and stories from Sara Veal and huhbub — on creativity, community, culture and what it means to make things happen.</p>
+      <div class="hero-links">
         <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-primary">read on substack →</a>
-        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-secondary">subscribe free →</a>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-ghost">subscribe free →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LATEST ESSAY -->
+  <div class="stories-section">
+    <div class="stories-inner">
+      <div class="essay-featured">
+        <div class="essay-featured-img">
+          <div class="essay-heart">
+            <svg viewBox="0 0 60 54" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F5A7CC"/>
+                  <stop offset="50%" stop-color="#D4537E"/>
+                  <stop offset="100%" stop-color="#AFA9EC"/>
+                </linearGradient>
+              </defs>
+              <path d="M30 49 C30 49 3 31 3 17 C3 8 9 3 17 3 C22 3 26 6 30 10 C34 6 38 3 43 3 C51 3 57 8 57 17 C57 31 30 49 30 49Z" fill="url(#mg)" opacity="0.9"/>
+            </svg>
+          </div>
+        </div>
+        <div class="essay-featured-body">
+          <div class="essay-meta">
+            <span class="essay-category">personal</span>
+            <span class="essay-date">Apr 2025</span>
+          </div>
+          <h2 class="essay-title">The Siren's Gift</h2>
+          <p class="essay-lede">How a shop of secondhand treasures led me to creativity, community, and myself. The story of Sirena Curiosa — a 6×6 stall, a diagnosis, and what happens when you finally let go.</p>
+          <blockquote class="essay-quote">"I was told I lit up like a lighthouse when I spoke about the shop."</blockquote>
+          <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="essay-read">read on substack →</a>
+        </div>
       </div>
 
-      <div class="first-essay">
-        <div class="essay-eyebrow">latest essay</div>
-        <h2 class="essay-title">The Siren's Gift</h2>
-        <p class="essay-lede">How a shop of secondhand treasures led me to creativity, community, and myself. The story of Sirena Curiosa — a 6×6 stall, a diagnosis, and what happens when you finally let go.</p>
-        <blockquote class="essay-quote">"I was told I lit up like a lighthouse when I spoke about the shop."</blockquote>
-        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="essay-read">read the full essay →</a>
+      <div class="stories-coming">
+        <p class="stories-coming-label">more stories coming</p>
+        <p>This section is taking shape alongside huhbub's 10th anniversary. Subscribe on Substack to be notified when new essays land.</p>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-inline">subscribe free on substack →</a>
       </div>
-
     </div>
   </div>
 
@@ -117,61 +128,44 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
   .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--text-primary); padding: 8px 0; transition: color 0.2s; }
   .mobile-menu-links a:hover { color: var(--accent-soft); }
 
-  /* PAGE */
-  .stories-page {
-    position: relative;
-    min-height: calc(100vh - 58px - 80px);
-    background: #0A0820;
-    display: flex; align-items: center; justify-content: center;
-    padding: 64px 32px;
-    overflow: hidden;
-  }
-  #float-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.5; }
-
-  .stories-inner {
-    position: relative; z-index: 2;
-    max-width: 580px; margin: 0 auto;
-    text-align: center;
-  }
-
-  /* MERMAID MARK */
-  .mermaid-mark { margin-bottom: 28px; }
-  .mermaid-svg {
-    width: 56px; height: 50px;
-    filter: drop-shadow(0 0 12px rgba(212,83,126,0.4));
-    animation: float 4s ease-in-out infinite;
-  }
-  @keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-
-  .stories-overline { font-size: 10px; color: #7F77DD; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; }
-  h1 { font-family: var(--font-display); font-size: clamp(32px, 6vw, 56px); font-weight: 300; color: #fff; letter-spacing: -1.5px; line-height: 1; margin-bottom: 18px; }
-  .stories-lead { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 12px; }
-  .stories-body { font-size: 14px; color: #7F77DD; line-height: 1.7; margin-bottom: 28px; }
-  .stories-body em { color: #AFA9EC; font-style: italic; }
-
-  .stories-links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
-  .btn-primary { font-size: 13px; font-weight: 500; color: #fff; background: #D4537E; padding: 11px 22px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  /* PAGE HERO */
+  .page-hero { background: var(--sky, #07051A); padding: 48px 32px 40px; border-bottom: 0.5px solid var(--border-subtle); transition: background 1s; }
+  .page-hero-inner { max-width: 960px; margin: 0 auto; }
+  .page-overline { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); display: block; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: var(--text-primary); line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: var(--text-secondary); line-height: 1.7; max-width: 520px; margin-bottom: 24px; }
+  .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { font-size: 13px; font-weight: 500; color: #fff; background: var(--accent, #D4537E); padding: 10px 20px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
   .btn-primary:hover { opacity: 0.85; }
-  .btn-secondary { font-size: 13px; color: #AFA9EC; border: 0.5px solid rgba(175,169,236,0.3); padding: 11px 22px; border-radius: 8px; transition: all 0.2s; display: inline-block; }
-  .btn-secondary:hover { background: rgba(175,169,236,0.08); color: #fff; }
+  .btn-ghost { font-size: 13px; color: var(--text-secondary); border: 0.5px solid var(--border-subtle); padding: 10px 20px; border-radius: 8px; transition: all 0.2s; display: inline-block; }
+  .btn-ghost:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
 
-  /* FIRST ESSAY CARD */
-  .first-essay {
-    background: rgba(255,255,255,0.04);
-    border: 0.5px solid rgba(127,119,221,0.2);
-    border-radius: 4px;
-    padding: 28px 32px;
-    text-align: left;
-  }
-  .essay-eyebrow { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
-  .essay-title { font-family: var(--font-display); font-size: 26px; font-weight: 300; color: #fff; letter-spacing: -0.5px; margin-bottom: 10px; }
-  .essay-lede { font-size: 14px; color: #AFA9EC; line-height: 1.7; margin-bottom: 16px; }
-  .essay-quote { font-family: var(--font-display); font-size: 16px; font-style: italic; color: #D4B8F8; border-left: 2px solid #7F77DD; padding-left: 14px; margin: 0 0 18px; line-height: 1.5; }
+  /* STORIES SECTION */
+  .stories-section { background: #0A0820; padding: 56px 32px 64px; }
+  .stories-inner { max-width: 960px; margin: 0 auto; }
+
+  /* FEATURED ESSAY */
+  .essay-featured { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 0.5px solid rgba(127,119,221,0.15); }
+  .essay-featured-img { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(127,119,221,0.15); border-radius: 4px; aspect-ratio: 1; }
+  .essay-heart svg { width: 80px; height: 72px; filter: drop-shadow(0 0 16px rgba(212,83,126,0.4)); animation: float-heart 4s ease-in-out infinite; }
+  @keyframes float-heart { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .essay-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .essay-category { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(127,119,221,0.12); padding: 3px 8px; border-radius: 20px; }
+  .essay-date { font-size: 12px; color: #534AB7; }
+  .essay-title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); font-weight: 300; color: #fff; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.15; }
+  .essay-lede { font-size: 14px; color: #AFA9EC; line-height: 1.75; margin-bottom: 18px; }
+  .essay-quote { font-family: var(--font-display); font-size: 17px; font-style: italic; color: #D4B8F8; border-left: 2px solid #7F77DD; padding-left: 16px; margin: 0 0 20px; line-height: 1.5; }
   .essay-read { font-size: 13px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.3); padding-bottom: 2px; transition: color 0.2s; display: inline-block; }
   .essay-read:hover { color: #fff; }
+
+  /* COMING SOON */
+  .stories-coming { max-width: 480px; }
+  .stories-coming-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .stories-coming-label::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); display: block; }
+  .stories-coming p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px; }
+  .btn-subscribe-inline { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 10px 20px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-inline:hover { opacity: 0.85; }
 
   footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
   .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
@@ -187,9 +181,9 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
 
   @media (max-width: 768px) {
     .nav-links { display: none; } .nav-burger { display: flex; }
-    h1 { letter-spacing: -0.5px; }
-    .first-essay { padding: 20px; }
-    .stories-links { flex-direction: column; align-items: center; }
+    h1 { letter-spacing: -1px; }
+    .essay-featured { grid-template-columns: 1fr; gap: 28px; }
+    .essay-featured-img { aspect-ratio: 2; }
   }
 </style>
 
@@ -200,40 +194,5 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
   burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
   window.closeMenu = () => mobileMenu.classList.remove('open');
 
-  // Floating particles
-  (function() {
-    const canvas = document.getElementById('float-canvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const COLORS = ['#D4537E','#F5A7CC','#AFA9EC','#7F77DD','#D4B8F8'];
-    let W, H;
-    function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
-    resize(); window.addEventListener('resize', resize);
-    const ps = Array.from({length: 24}, () => ({
-      x: Math.random() * 800, y: Math.random() * 600,
-      r: Math.random() * 3 + 1, vx: (Math.random()-.5)*.3, vy: -Math.random()*.25-.08,
-      col: COLORS[Math.floor(Math.random()*COLORS.length)],
-      phase: Math.random()*Math.PI*2, alpha: Math.random()*.3+.1,
-    }));
-    function anim() {
-      ctx.clearRect(0,0,W,H);
-      ps.forEach(p => {
-        p.x+=p.vx; p.y+=p.vy; p.phase+=0.018;
-        if(p.y<-10){p.y=H+10;p.x=Math.random()*W;}
-        if(p.x<-10)p.x=W+10; if(p.x>W+10)p.x=-10;
-        const tw=0.6+0.4*Math.sin(p.phase);
-        const grd=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*2.5);
-        grd.addColorStop(0,p.col); grd.addColorStop(1,'rgba(0,0,0,0)');
-        ctx.save();
-        ctx.globalAlpha=p.alpha*tw*.4; ctx.fillStyle=grd;
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r*2.5,0,Math.PI*2); ctx.fill();
-        ctx.globalAlpha=p.alpha*tw; ctx.fillStyle=p.col;
-        ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
-        ctx.restore();
-      });
-      requestAnimationFrame(anim);
-    }
-    anim();
-  })();
 
 </script>
