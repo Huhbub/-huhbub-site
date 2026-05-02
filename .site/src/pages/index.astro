@@ -92,12 +92,23 @@ import Splash from '../components/Splash.astro';
     <!-- FEATURED PROJECT (random, pulled from projects data) -->
     <div class="hero-featured" id="featured-project">
       <div class="hero-featured-inner">
-        <div class="featured-polaroid" id="feat-polaroid">
-          <div class="featured-polaroid-img">
-            <img id="feat-img" src="/images/poster-bttf.jpg" alt="" />
+        <div class="feat-polaroids">
+          <div class="featured-polaroid" id="feat-polaroid">
+            <div class="featured-polaroid-img">
+              <img id="feat-img" src="/images/poster-bttf.jpg" alt="" />
+            </div>
+            <div class="featured-polaroid-caption" id="feat-caption">Black to the Future</div>
+            <div class="featured-polaroid-sub" id="feat-sub">British Library · 2023</div>
           </div>
-          <div class="featured-polaroid-caption" id="feat-caption">Black to the Future</div>
-          <div class="featured-polaroid-sub" id="feat-sub">British Library · 2023–24</div>
+          <div class="featured-polaroid feat-polaroid-2" id="feat-polaroid-2">
+            <div class="featured-polaroid-img feat-polaroid-2-img">
+              <img id="feat-img-2" src="/images/poster-bttf.jpg" alt="" />
+              <div class="feat-polaroid-2-overlay">
+                <span>more images<br/>coming soon</span>
+              </div>
+            </div>
+            <div class="featured-polaroid-caption">from the archive</div>
+          </div>
         </div>
         <div class="feat-content">
           <p class="feat-eyebrow">featured project</p>
@@ -274,7 +285,21 @@ import Splash from '../components/Splash.astro';
 
   /* HERO FEATURED */
   .hero-featured { background: var(--sky, #07051A); padding: 48px 32px; border-top: 0.5px solid var(--border-subtle); transition: background 1s; }
-  .hero-featured-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 340px 1fr; gap: 56px; align-items: center; }
+  .hero-featured-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 360px 1fr; gap: 40px; align-items: center; }
+  .feat-polaroids { display: flex; gap: 16px; align-items: flex-end; justify-content: center; }
+  .feat-polaroid-2 { transform: rotate(1.5deg) !important; opacity: 0.7; }
+  .feat-polaroid-2-img { position: relative; }
+  .feat-polaroid-2-overlay {
+    position: absolute; inset: 0;
+    background: rgba(7,5,26,0.55);
+    display: flex; align-items: center; justify-content: center;
+    backdrop-filter: blur(2px);
+  }
+  .feat-polaroid-2-overlay span {
+    font-family: var(--font-handwriting, 'Caveat', cursive);
+    font-size: 13px; color: rgba(255,255,255,0.7);
+    text-align: center; line-height: 1.5;
+  }
   .feat-eyebrow { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
   .feat-content h2 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 300; color: var(--text-primary); margin-bottom: 14px; letter-spacing: -1px; line-height: 1.1; }
   .feat-content p { font-size: 15px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 18px; }
@@ -897,6 +922,8 @@ const PROJECTS = [
   const polaroid = document.getElementById('feat-polaroid');
   if (!title) return;
   if (img) { img.src = p.img; img.alt = p.title; }
+  const img2 = document.getElementById('feat-img-2');
+  if (img2) { img2.src = p.img; img2.alt = p.title; } // same image until project gallery exists
   if (caption) caption.textContent = p.caption;
   if (sub) sub.textContent = p.sub;
   if (title) title.textContent = p.title;
