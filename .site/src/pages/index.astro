@@ -933,6 +933,9 @@ revealSite();
 // Sparkles around bubbles
 (function() {
   const canvas = document.getElementById('hero-sparkle-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const container = canvas.parentElement;
   function resize() { canvas.width = container.offsetWidth; canvas.height = container.offsetHeight; }
   resize();
   const moment = window.__huhbubMoment || 'spring-night';
