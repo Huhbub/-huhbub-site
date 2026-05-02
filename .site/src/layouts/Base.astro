@@ -96,7 +96,7 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     }
     .nav-links a::after {
       content: '';
-      position: absolute; inset: -6px -10px;
+      position: absolute; inset: -4px -6px;
       border-radius: 8px;
       background: radial-gradient(ellipse at center,
         rgba(239,159,39,0.12) 0%,
@@ -105,8 +105,14 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.4s;
+      z-index: -1;
     }
     .nav-links a:hover::after { opacity: 1; }
+
+    /* Mobile menu always on top */
+    .mobile-menu { z-index: 9000 !important; }
+    /* Ensure burger is always tappable */
+    .nav-burger { position: relative; z-index: 101; }
 
     /* CURSOR TRAIL CANVAS */
     #cursor-trail {
