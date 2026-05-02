@@ -226,8 +226,8 @@ const recognition = [
   .about-hero { background: var(--sky, #07051A); padding: 56px 32px; border-bottom: 0.5px solid var(--border-subtle); transition: background 1s; }
   .about-hero-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
   .portrait-frame { width: 220px; height: 280px; position: relative; overflow: hidden; border-radius: 2px; box-shadow: 4px 6px 20px rgba(0,0,0,0.4); border: 6px solid #fff; }
-  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .portrait-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A0A2E, #0E0B2E); font-family: var(--font-display); font-size: 48px; font-weight: 300; color: rgba(245,167,204,0.4); }
+  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
+  .portrait-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A0A2E, #0E0B2E); font-family: var(--font-display); font-size: 48px; font-weight: 300; color: rgba(245,167,204,0.4); z-index: 0; }
   .portrait-frame.no-img img { display: none; }
   .portrait-caption { font-size: 11px; color: var(--text-secondary); margin-top: 10px; letter-spacing: 0.5px; }
   .page-overline { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
@@ -281,9 +281,9 @@ const recognition = [
   .collaborators-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
   .collaborator-card { display: flex; flex-direction: column; gap: 16px; }
   .collab-frame { width: 100%; aspect-ratio: 3/4; overflow: hidden; border-radius: 2px; position: relative; box-shadow: 3px 4px 16px rgba(0,0,0,0.4); border: 4px solid #1A1830; }
-  .collab-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; }
+  .collab-frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s; position: relative; z-index: 1; }
   .collaborator-card:hover .collab-frame img { transform: scale(1.04); }
-  .collab-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A1040, #0D0B2E); font-family: var(--font-display); font-size: 32px; font-weight: 300; color: rgba(175,169,236,0.4); }
+  .collab-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A1040, #0D0B2E); font-family: var(--font-display); font-size: 32px; font-weight: 300; color: rgba(175,169,236,0.4); z-index: 0; }
   .collab-frame.no-img img { display: none; }
   .collab-name { font-family: var(--font-display); font-size: 18px; font-weight: 300; color: #D4B8F8; letter-spacing: -0.2px; margin-bottom: 2px; }
   .collab-role { font-size: 11px; color: #7F77DD; letter-spacing: 0.5px; margin-bottom: 8px; }

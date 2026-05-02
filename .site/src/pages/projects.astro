@@ -240,11 +240,11 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
     width: 100%; height: 180px;
     background: #E8E0D8; overflow: hidden; position: relative;
   }
-  .polaroid-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .polaroid-img img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
   .polaroid-img-placeholder {
     position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
     background: linear-gradient(135deg, #E8D8C8, #D0C0B0);
-    opacity: 1;
+    opacity: 1; z-index: 0;
   }
   .polaroid-img img + .polaroid-img-placeholder { opacity: 0; }
   .polaroid-img.no-img img { display: none; }

@@ -319,6 +319,7 @@ const rotations = [-2, 1.5, -1, 2.5, -1.5, 1];
     object-fit: cover; display: block;
     transition: transform 0.5s;
     filter: sepia(8%) contrast(1.05);
+    position: relative; z-index: 1;
   }
   .frame-wrap:hover .frame-portrait img { transform: scale(1.04); }
   .portrait-fallback {
@@ -327,6 +328,7 @@ const rotations = [-2, 1.5, -1, 2.5, -1.5, 1];
     background: linear-gradient(135deg, #2A1E14, #1A1208);
     font-family: var(--font-display); font-size: 32px; font-weight: 300;
     color: rgba(200,168,118,0.4);
+    z-index: 0;
   }
   .frame-portrait.no-img img { display: none; }
 
