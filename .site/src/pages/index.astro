@@ -6,7 +6,7 @@ import Splash from '../components/Splash.astro';
   <Splash />
 
   <div id="site">
-    <canvas id="sparkle-canvas"></canvas>
+    <div id="teleport-overlay"></div>
 
     <!-- NAV -->
     <nav>
@@ -50,8 +50,7 @@ import Splash from '../components/Splash.astro';
           </div>
         </div>
         <div class="bubbles">
-          <canvas id="sparkle-canvas"></canvas>
-          <div class="bubble-wrap bw1" onclick="openLB('/images/hero-1.jpg','Curious Mermaid Palentines Supper Club')" aria-label="View Curious Mermaid photo">
+          <canvas id="hero-sparkle-canvas"></canvas> onclick="openLB('/images/hero-1.jpg','Curious Mermaid Palentines Supper Club')" aria-label="View Curious Mermaid photo">
             <div class="glow-ring"></div>
             <div class="bubble"><img src="/images/hero-1.jpg" alt="Curious Mermaid supper club" /><div class="bubble-hint">view full image</div></div>
           </div>
@@ -329,14 +328,27 @@ import Splash from '../components/Splash.astro';
   .btn-mermaid-subscribe:hover { opacity: 0.85; }
 
   /* SHIMMER TRANSITION */
-  /* SPARKLE TRANSITION */
-  #sparkle-canvas {
-    position: fixed; inset: 0; z-index: 9999;
-    pointer-events: none; opacity: 0;
-    width: 100%; height: 100%;
-    transition: opacity 0.05s;
+  /* NAV GLOW ON HOVER */
+  .nav-links a { position: relative; }
+  .nav-links a::after {
+    content: ''; position: absolute; inset: -4px -8px; border-radius: 6px;
+    background: radial-gradient(ellipse at center, rgba(245,167,204,0.2) 0%, transparent 70%);
+    opacity: 0; pointer-events: none; transition: opacity 0.35s;
   }
-  #sparkle-canvas.active { opacity: 1; pointer-events: all; }
+  .nav-links a:hover::after { opacity: 1; }
+  .nav-links a:hover { color: #fff !important; text-shadow: 0 0 12px rgba(245,167,204,0.8), 0 0 24px rgba(245,167,204,0.4); }
+
+  /* TELEPORT FLASH */
+  #teleport-overlay {
+    position: fixed; inset: 0; z-index: 9999; pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(ellipse 60% 60% at var(--ox,50%) var(--oy,10%),
+      rgba(255,255,255,0.98) 0%,
+      rgba(245,167,204,0.85) 18%,
+      rgba(175,169,236,0.7) 40%,
+      rgba(212,83,126,0.4) 65%,
+      transparent 85%);
+  }
 
   /* VENUES */
   .venues-preview { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 12px; max-width: 1100px; margin-bottom: 24px; }
@@ -418,7 +430,7 @@ import Splash from '../components/Splash.astro';
   .btn-ghost:hover { border-color: var(--accent-soft); color: var(--text-primary); }
   /* HERO BUBBLES */
   .bubbles { position: relative; height: 500px; width: 100%; }
-  #sparkle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+  #hero-sparkle-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
   .bubble-wrap {
     position: absolute; cursor: pointer;
     transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
@@ -927,90 +939,25 @@ menuClose?.addEventListener('click', () => mobileMenu.classList.remove('open'));
 window.closeMenu = () => mobileMenu.classList.remove('open');
 
 // Nav transition — soft glowing particles matching the splash screen world
-const MOMENT_COLORS = {
-  'spring-dawn':  ['#F5A7CC','#FAC775','#AFA9EC','#F4C0D1'],
-  'spring-day':   ['#D4537E','#7F77DD','#F5A7CC','#EF9F27'],
-  'spring-dusk':  ['#F5A7CC','#EF9F27','#7F77DD','#FAC775'],
-  'spring-night': ['#D4537E','#AFA9EC','#FAC775','#F5A7CC'],
-  'summer-dawn':  ['#FAC775','#EF9F27','#F5A7CC','#FAEEDA'],
-  'summer-day':   ['#EF9F27','#D4537E','#FAC775','#F5A7CC'],
-  'summer-dusk':  ['#D4537E','#FAC775','#AFA9EC','#F5A7CC'],
-  'summer-night': ['#FAC775','#7F77DD','#F5A7CC','#EF9F27'],
-  'autumn-dawn':  ['#EF9F27','#D85A30','#FAC775','#BA7517'],
-  'autumn-day':   ['#BA7517','#D85A30','#EF9F27','#FAC775'],
-  'autumn-dusk':  ['#EF9F27','#D4537E','#7F77DD','#D85A30'],
-  'autumn-night': ['#EF9F27','#D85A30','#AFA9EC','#FAC775'],
-  'winter-dawn':  ['#B5D4F4','#85B7EB','#F5A7CC','#AFA9EC'],
-  'winter-day':   ['#378ADD','#7F77DD','#F5A7CC','#B5D4F4'],
-  'winter-dusk':  ['#AFA9EC','#F5A7CC','#B5D4F4','#7F77DD'],
-  'winter-night': ['#7F77DD','#B5D4F4','#F5A7CC','#AFA9EC'],
-};
+// Teleport nav transition — flash from link position, then navigate
+function teleportTo(href, ox, oy) {
+  const overlay = document.getElementById('teleport-overlay');
+  if (!overlay) { window.location.href = href; return; }
 
-function sparkleTo(href, originX, originY) {
-  const canvas = document.getElementById('sparkle-canvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  canvas.classList.add('active');
+  // Set the flash origin as CSS vars (as % of viewport)
+  const pctX = Math.round((ox / window.innerWidth) * 100);
+  const pctY = Math.round((oy / window.innerHeight) * 100);
+  overlay.style.setProperty('--ox', pctX + '%');
+  overlay.style.setProperty('--oy', pctY + '%');
 
-  const palette = MOMENT_COLORS[window.__huhbubMoment || 'spring-night'];
-  const particles = [];
+  // Bright flash in, then navigate
+  overlay.animate([
+    { opacity: 0 },
+    { opacity: 1, offset: 0.3 },
+    { opacity: 1 },
+  ], { duration: 320, easing: 'ease-out', fill: 'forwards' });
 
-  for (let i = 0; i < 48; i++) {
-    const angle = Math.random() * Math.PI * 2;
-    const speed = Math.random() * 5 + 1.5;
-    const col = palette[Math.floor(Math.random() * palette.length)];
-    const r = Math.random() * 5 + 2;
-    particles.push({
-      x: originX, y: originY,
-      vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed,
-      r, col,
-      alpha: 0,
-      phase: Math.random() * Math.PI * 2,
-    });
-  }
-
-  setTimeout(() => { window.location.href = href; }, 420);
-
-  let frame = 0;
-  const TOTAL = 36;
-  function anim() {
-    if (frame > TOTAL) return;
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      p.vx *= 0.96;
-      p.vy *= 0.96;
-      // gentle twinkle like the splash stars
-      const tw = 0.7 + 0.3 * Math.sin(p.phase + frame * 0.25);
-      const fadeIn = 8, fadeOut = TOTAL - fadeIn;
-      const base = frame < fadeIn ? frame / fadeIn : 1 - ((frame - fadeIn) / fadeOut);
-      p.alpha = Math.max(0, base * tw);
-      if (p.alpha <= 0) return;
-      // soft glow — radial gradient like splash objects
-      const grd = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 2.5);
-      grd.addColorStop(0, p.col);
-      grd.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.save();
-      ctx.globalAlpha = p.alpha * 0.35;
-      ctx.fillStyle = grd;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r * 2.5, 0, Math.PI * 2);
-      ctx.fill();
-      // solid core
-      ctx.globalAlpha = p.alpha;
-      ctx.fillStyle = p.col;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    });
-    frame++;
-    requestAnimationFrame(anim);
-  }
-  anim();
+  setTimeout(() => { window.location.href = href; }, 260);
 }
 
 // Wire up nav links
@@ -1022,7 +969,7 @@ document.querySelectorAll('.nav-link').forEach(a => {
     const rect = a.getBoundingClientRect();
     const ox = rect.left + rect.width / 2;
     const oy = rect.top + rect.height / 2;
-    sparkleTo(href, ox, oy);
+    teleportTo(href, ox, oy);
   });
 });
 
@@ -1043,10 +990,7 @@ revealSite();
 
 // Sparkles around bubbles
 (function() {
-  const canvas = document.getElementById('sparkle-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const container = canvas.parentElement;
+  const canvas = document.getElementById('hero-sparkle-canvas');
   function resize() { canvas.width = container.offsetWidth; canvas.height = container.offsetHeight; }
   resize();
   const moment = window.__huhbubMoment || 'spring-night';
