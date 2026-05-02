@@ -944,20 +944,12 @@ function teleportTo(href, ox, oy) {
   const overlay = document.getElementById('teleport-overlay');
   if (!overlay) { window.location.href = href; return; }
 
-  // Set the flash origin as CSS vars (as % of viewport)
-  const pctX = Math.round((ox / window.innerWidth) * 100);
-  const pctY = Math.round((oy / window.innerHeight) * 100);
-  overlay.style.setProperty('--ox', pctX + '%');
-  overlay.style.setProperty('--oy', pctY + '%');
+  overlay.style.setProperty('--ox', Math.round((ox / window.innerWidth) * 100) + '%');
+  overlay.style.setProperty('--oy', Math.round((oy / window.innerHeight) * 100) + '%');
+  overlay.style.transition = 'opacity 0.25s ease-out';
+  overlay.style.opacity = '1';
 
-  // Bright flash in, then navigate
-  overlay.animate([
-    { opacity: 0 },
-    { opacity: 1, offset: 0.3 },
-    { opacity: 1 },
-  ], { duration: 320, easing: 'ease-out', fill: 'forwards' });
-
-  setTimeout(() => { window.location.href = href; }, 260);
+  setTimeout(() => { window.location.href = href; }, 250);
 }
 
 // Wire up nav links

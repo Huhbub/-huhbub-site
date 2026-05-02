@@ -299,8 +299,9 @@ const hasUpcoming = upcomingEvents.length > 0;
     if (!overlay) { window.location.href = href; return; }
     overlay.style.setProperty('--ox', Math.round((ox/window.innerWidth)*100)+'%');
     overlay.style.setProperty('--oy', Math.round((oy/window.innerHeight)*100)+'%');
-    overlay.animate([{opacity:0},{opacity:1,offset:0.3},{opacity:1}],{duration:320,easing:'ease-out',fill:'forwards'});
-    setTimeout(()=>{window.location.href=href;},260);
+    overlay.style.transition = 'opacity 0.25s ease-out';
+    overlay.style.opacity = '1';
+    setTimeout(()=>{window.location.href=href;},250);
   }
   document.querySelectorAll('.nav-link').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(!href||href.startsWith('mailto')||href.startsWith('http'))return;e.preventDefault();const rect=a.getBoundingClientRect();teleportTo(href,rect.left+rect.width/2,rect.top+rect.height/2);});});});
 </script>
