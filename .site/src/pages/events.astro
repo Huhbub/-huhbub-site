@@ -303,5 +303,5 @@ const hasUpcoming = upcomingEvents.length > 0;
     overlay.style.opacity = '1';
     setTimeout(()=>{window.location.href=href;},250);
   }
-  document.querySelectorAll('.nav-link').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(!href||href.startsWith('mailto')||href.startsWith('http'))return;e.preventDefault();const rect=a.getBoundingClientRect();teleportTo(href,rect.left+rect.width/2,rect.top+rect.height/2);});});});
+  document.querySelectorAll('.nav-link').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(!href||href.startsWith('mailto')||href.startsWith('http'))return;e.preventDefault();const rect=a.getBoundingClientRect();teleportTo(href,rect.left+rect.width/2,rect.top+rect.height/2);});});
 </script>
