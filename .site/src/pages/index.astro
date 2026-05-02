@@ -50,7 +50,8 @@ import Splash from '../components/Splash.astro';
           </div>
         </div>
         <div class="bubbles">
-          <canvas id="hero-sparkle-canvas"></canvas> onclick="openLB('/images/hero-1.jpg','Curious Mermaid Palentines Supper Club')" aria-label="View Curious Mermaid photo">
+          <canvas id="hero-sparkle-canvas"></canvas>
+          <div class="bubble-wrap bw1" onclick="openLB('/images/hero-1.jpg','Curious Mermaid Palentines Supper Club')" aria-label="View Curious Mermaid photo">
             <div class="glow-ring"></div>
             <div class="bubble"><img src="/images/hero-1.jpg" alt="Curious Mermaid supper club" /><div class="bubble-hint">view full image</div></div>
           </div>
@@ -881,7 +882,7 @@ import Splash from '../components/Splash.astro';
     .bw1 { width: 130px !important; height: 130px !important; animation: float2 8s ease-in-out infinite !important; }
     .bw2 { width: 130px !important; height: 130px !important; animation: float3 6s ease-in-out infinite !important; margin-top: -20px; }
     .bw3 { width: 130px !important; height: 130px !important; animation: float1 9s ease-in-out infinite !important; }
-    #sparkle-canvas { display: none; }
+    #hero-sparkle-canvas { display: none; }
     .featured-inner { grid-template-columns: 1fr; }
     .polaroid-grid { grid-template-columns: 1fr 1fr; gap: 20px; }    .personal-pair { grid-template-columns: 1fr; }
     nav { padding: 14px 20px; }
