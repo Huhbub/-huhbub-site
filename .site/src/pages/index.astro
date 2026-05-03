@@ -463,14 +463,6 @@ import Splash from '../components/Splash.astro';
   @keyframes pulse3 { 0%,100%{opacity:0.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.06)} }
 
   /* Day mode — use multiply blend for shimmer visibility */
-  [data-moment="spring-day"] .bubble::after,
-  [data-moment="summer-day"] .bubble::after,
-  [data-moment="autumn-day"] .bubble::after,
-  [data-moment="winter-day"] .bubble::after {
-    background: conic-gradient(from 0deg, rgba(212,83,126,0.4), rgba(127,119,221,0.35), rgba(29,158,117,0.3), rgba(239,159,39,0.35), rgba(212,83,126,0.4));
-    mix-blend-mode: multiply;
-    opacity: 0.5;
-  }
   .lightbox {
     position: fixed; inset: 0; background: rgba(7,5,26,0.92);
     display: flex; align-items: center; justify-content: center;
@@ -650,32 +642,6 @@ import Splash from '../components/Splash.astro';
   .postit-mint::after { border-width: 0 0 18px 18px; border-color: transparent transparent #A0D8C0 transparent; }
 
   /* Seasonal tinting — mixes season accent into post-it backgrounds */
-  [data-moment="autumn-night"] .postit-pink,
-  [data-moment="autumn-dusk"] .postit-pink { background: color-mix(in srgb, #FADADD 85%, #E85070 15%); }
-  [data-moment="autumn-night"] .postit-lavender,
-  [data-moment="autumn-dusk"] .postit-lavender { background: color-mix(in srgb, #E8D8F8 85%, #C070E0 15%); }
-  [data-moment="autumn-night"] .postit-yellow,
-  [data-moment="autumn-dusk"] .postit-yellow { background: color-mix(in srgb, #FFF3A3 85%, #E8603A 15%); }
-  [data-moment="autumn-night"] .postit-mint,
-  [data-moment="autumn-dusk"] .postit-mint { background: color-mix(in srgb, #C8F0E0 85%, #E85070 15%); }
-
-  [data-moment="winter-night"] .postit-pink,
-  [data-moment="winter-dusk"] .postit-pink { background: color-mix(in srgb, #FADADD 85%, #B5D4F4 15%); }
-  [data-moment="winter-night"] .postit-lavender,
-  [data-moment="winter-dusk"] .postit-lavender { background: color-mix(in srgb, #E8D8F8 85%, #B5D4F4 15%); }
-  [data-moment="winter-night"] .postit-yellow,
-  [data-moment="winter-dusk"] .postit-yellow { background: color-mix(in srgb, #FFF3A3 85%, #AFA9EC 15%); }
-  [data-moment="winter-night"] .postit-mint,
-  [data-moment="winter-dusk"] .postit-mint { background: color-mix(in srgb, #C8F0E0 85%, #B5D4F4 15%); }
-
-  [data-moment="summer-day"] .postit-pink,
-  [data-moment="summer-dusk"] .postit-pink { background: color-mix(in srgb, #FADADD 88%, #FAC775 12%); }
-  [data-moment="summer-day"] .postit-lavender,
-  [data-moment="summer-dusk"] .postit-lavender { background: color-mix(in srgb, #E8D8F8 88%, #FAC775 12%); }
-  [data-moment="summer-day"] .postit-yellow,
-  [data-moment="summer-dusk"] .postit-yellow { background: color-mix(in srgb, #FFF3A3 88%, #EF9F27 12%); }
-  [data-moment="summer-day"] .postit-mint,
-  [data-moment="summer-dusk"] .postit-mint { background: color-mix(in srgb, #C8F0E0 88%, #FAC775 12%); }
 
   /* PROJECTS — FLIP POLAROIDS */
   .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px; flex-wrap: wrap; gap: 16px; max-width: 1100px; }
@@ -946,8 +912,7 @@ revealSite();
   const container = canvas.parentElement;
   function resize() { canvas.width = container.offsetWidth; canvas.height = container.offsetHeight; }
   resize();
-  const moment = window.__huhbubMoment || 'spring-night';
-  const isDay = moment.includes('day');
+  const isDay = (new Date().getHours() >= 9 && new Date().getHours() < 18);
   const COLORS = isDay
     ? ['#D4537E','#7F77DD','#EF9F27','#1D9E75','#F5A7CC','#534AB7','#E85070','#C070E0']
     : ['#F5A7CC','#D4537E','#AFA9EC','#FAC775','#B5D4F4','#ffffff'];

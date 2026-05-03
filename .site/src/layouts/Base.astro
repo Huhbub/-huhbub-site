@@ -20,7 +20,6 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       --font-logo: 'Nunito', system-ui, sans-serif;
       --font-handwriting: 'Caveat', cursive;
 
-      /* Base palette — overridden per season/time */
       --sky: #07051A;
       --sky-mid: #0E0B2E;
       --accent: #D4537E;
@@ -29,195 +28,57 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       --accent-purple: #7F77DD;
       --text-primary: #F5F0FF;
       --text-secondary: #9B96CC;
-      --text-dark: #1E1756;
       --border-subtle: rgba(255,255,255,0.08);
     }
 
-    /* Season × time overrides */
-    [data-moment="spring-dawn"] { --sky:#1A0E2E; --sky-mid:#251540; --accent:#F5A7CC; --accent-gold:#FAC775; --text-secondary:#C4B8E8; }
-    [data-moment="spring-day"]  { --sky:#FDF6FF; --sky-mid:#F5EEF8; --accent:#D4537E; --accent-gold:#EF9F27; --text-primary:#1E1756; --text-secondary:#534AB7; --border-subtle:rgba(0,0,0,0.07); }
-    [data-moment="spring-dusk"] { --sky:#2D1040; --sky-mid:#3A1550; --accent:#F5A7CC; --accent-gold:#EF9F27; --text-secondary:#C4A8E0; }
-    [data-moment="spring-night"]{ --sky:#07051A; --sky-mid:#0E0B2E; --accent:#D4537E; --accent-gold:#FAC775; }
-
-    [data-moment="summer-dawn"] { --sky:#1A1530; --sky-mid:#221B3A; --accent:#FAC775; --accent-gold:#EF9F27; --text-secondary:#C8C0E8; }
-    [data-moment="summer-day"]  { --sky:#FFFBF0; --sky-mid:#FFF5E0; --accent:#D4537E; --accent-gold:#BA7517; --text-primary:#1E1756; --text-secondary:#634A10; --border-subtle:rgba(0,0,0,0.07); }
-    [data-moment="summer-dusk"] { --sky:#2A0A20; --sky-mid:#380D2A; --accent:#D4537E; --accent-gold:#FAC775; --text-secondary:#D4A8C8; }
-    [data-moment="summer-night"]{ --sky:#040312; --sky-mid:#080525; --accent:#FAC775; --accent-gold:#EF9F27; --accent-soft:#F5C6A0; }
-
-    [data-moment="autumn-dawn"] { --sky:#180810; --sky-mid:#221018; --accent:#E85070; --accent-gold:#E8603A; --accent-soft:#E090C0; --text-secondary:#C890A8; }
-    [data-moment="autumn-day"]  { --sky:#FDF0F4; --sky-mid:#F8E8EE; --accent:#C04060; --accent-gold:#E8603A; --text-primary:#2C0818; --text-secondary:#803050; --border-subtle:rgba(0,0,0,0.07); }
-    [data-moment="autumn-dusk"] { --sky:#1A0818; --sky-mid:#260C20; --accent:#E85070; --accent-gold:#C070E0; --accent-soft:#E090C0; --text-secondary:#C080A8; }
-    [data-moment="autumn-night"]{ --sky:#08050A; --sky-mid:#120810; --accent:#E85070; --accent-gold:#E8603A; --accent-soft:#C070E0; }
-
-    [data-moment="winter-dawn"] { --sky:#0A1020; --sky-mid:#0E1828; --accent:#B5D4F4; --accent-gold:#F5A7CC; --text-secondary:#A0B8D8; }
-    [data-moment="winter-day"]  { --sky:#F0F4FF; --sky-mid:#E8EEF8; --accent:#378ADD; --accent-gold:#7F77DD; --text-primary:#1E1756; --text-secondary:#3C5080; --border-subtle:rgba(0,0,0,0.07); }
-    [data-moment="winter-dusk"] { --sky:#150A25; --sky-mid:#1E1035; --accent:#AFA9EC; --accent-gold:#F5A7CC; --text-secondary:#B0A8D8; }
-    [data-moment="winter-night"]{ --sky:#04060F; --sky-mid:#08091A; --accent:#7F77DD; --accent-gold:#B5D4F4; --accent-soft:#AFA9EC; }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { font-size: 16px; -webkit-font-smoothing: antialiased; }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--sky);
-      color: var(--text-primary);
-      transition: background 2s ease, color 1s ease;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: var(--font-display);
-      font-weight: 400;
-    }
-
+    body { font-family: var(--font-body); background: var(--sky); color: var(--text-primary); overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; }
     a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--accent); color: #fff; }
 
-    ::selection {
-      background: var(--accent);
-      color: #fff;
-    }
+    /* PAGE FADE-IN */
+    #site { animation: site-arrive 0.4s ease forwards; }
+    @keyframes site-arrive { from { opacity: 0; } to { opacity: 1; } }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--sky); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
-    /* NAV TABS — index divider style */
-    .nav-links {
-      display: flex;
-      align-items: flex-end;
-      gap: 0;
-    }
-
+    /* NAV TABS */
+    .nav-links { display: flex; align-items: flex-end; gap: 0; margin-left: 48px; }
     .nav-links a {
-      position: relative;
-      display: inline-block;
-      padding: 6px 14px 10px;
-      font-size: 12px;
-      color: rgba(20,10,40,0.7) !important;
-      font-weight: 500;
+      position: relative; display: inline-block;
+      padding: 6px 14px 10px; font-size: 12px;
+      color: rgba(20,10,40,0.7) !important; font-weight: 500;
       text-shadow: none !important;
-      border-radius: 6px 8px 0 0;
-      margin-right: 2px;
-      transform: translateY(3px);
-      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s;
+      border-radius: 6px 8px 0 0; margin-right: 2px;
       background: #E8D8F0;
       box-shadow: 1px -2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5);
-      /* Clip the right corner slightly for that divider tab shape */
-      clip-path: polygon(0 100%, 0 8px, 6px 0, calc(100% - 0px) 0, 100% 8px, 100% 100%);
+      clip-path: polygon(0 100%, 0 8px, 6px 0, 100% 0, 100% 8px, 100% 100%);
+      transition: filter 0.2s;
+      z-index: 1;
     }
-
-    /* Colour each tab */
-    .nav-links a[href="/services"]     { background: #FAD9A0; } /* gold */
-    .nav-links a[href="/projects"]     { background: #F5C8DC; } /* pink */
-    .nav-links a[href="/events"]       { background: #B8E8D8; } /* mint */
-    .nav-links a[href="/about"]        { background: #F5B8C4; } /* rose */
-    .nav-links a[href="/stories"]      { background: #D4C8F0; } /* periwinkle lavender */
-    .nav-links a.nav-cta               { background: #B8CCF0; border-radius: 6px 8px 0 0; } /* soft blue */
-
-    /* Hover — lift the tab */
-    .nav-links a:hover {
-      transform: translateY(0px) !important;
-      filter: brightness(1.08);
-      box-shadow: 2px -4px 12px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.6);
-      color: rgba(10,5,30,0.85) !important;
-    }
-
-    /* Active — fully lifted, slightly larger, no shadow underneath */
-    .nav-links a.active {
-      transform: translateY(-1px) !important;
-      filter: brightness(1.05) saturate(1.1);
-      box-shadow: 2px -4px 14px rgba(0,0,0,0.18), inset 0 1px 0 rgba(255,255,255,0.7);
-      color: rgba(10,5,30,0.9) !important;
-      z-index: 10;
-      padding-bottom: 11px;
-      border-bottom: none !important;
-    }
-
-    /* Remove the old pseudo-element glow */
+    .nav-links a[href="/services"]  { background: #FAD9A0; }
+    .nav-links a[href="/projects"]  { background: #F5C8DC; }
+    .nav-links a[href="/events"]    { background: #B8E8D8; }
+    .nav-links a[href="/about"]     { background: #F5B8C4; }
+    .nav-links a[href="/stories"]   { background: #D4C8F0; }
+    .nav-links a[href="/contact"]   { background: #B8CCF0; }
+    .nav-links a:hover { filter: brightness(1.08); color: rgba(10,5,30,0.9) !important; }
+    .nav-links a.active { filter: brightness(1.05) saturate(1.1); z-index: 10; color: rgba(10,5,30,0.9) !important; }
     .nav-links a::after { display: none; }
-    /* Kill any border-bottom — tabs handle active state */
     .nav-links a, .nav-links a.active { border-bottom: none !important; }
 
     /* Mobile menu always on top */
     .mobile-menu { z-index: 9000 !important; }
-    /* Ensure burger is always tappable */
     .nav-burger { position: relative; z-index: 101; }
 
-    /* Nav bar — folder tab effect */
-    nav {
-      padding-bottom: 0 !important;
-      align-items: flex-end !important;
-      border-bottom: none !important;
-      position: relative;
-      overflow: visible !important;
-    }
-
-    /* All tabs sit flat at nav bottom */
-    .nav-links a {
-      transform: none !important;
-      margin-bottom: 0 !important;
-      z-index: 1;
-    }
-
-    /* Push tabs away from logo */
-    .nav-links { margin-left: 48px; }
-
-    /* More breathing room above */
-    nav { padding-top: 28px !important; padding-bottom: 0 !important; }
-
-    /* All inactive tabs — no special treatment */
-    .nav-links a { z-index: 1; }
-
-    /* CURSOR TRAIL CANVAS */
-    #cursor-trail {
-      position: fixed; inset: 0;
-      pointer-events: none;
-      z-index: 199;
-    }
-
-    /* PAGE FADE-IN on arrival */
-    #site {
-      animation: site-arrive 0.5s ease forwards;
-    }
-    @keyframes site-arrive {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
+    /* Nav top padding */
+    nav { padding-top: 28px !important; padding-bottom: 0 !important; overflow: visible !important; }
   </style>
 </head>
 <body>
-  <!-- Cursor particle trail -->
-  <canvas id="cursor-trail"></canvas>
   <slot />
   <script>
-    function getMoment() {
-      const now = new Date();
-      const month = now.getMonth(); // 0-11
-      const hour = now.getHours();  // 0-23
-
-      // Season
-      let season;
-      if (month >= 2 && month <= 4) season = 'spring';
-      else if (month >= 5 && month <= 7) season = 'summer';
-      else if (month >= 8 && month <= 10) season = 'autumn';
-      else season = 'winter';
-
-      // Time of day
-      let time;
-      if (hour >= 5 && hour < 9) time = 'dawn';
-      else if (hour >= 9 && hour < 18) time = 'day';
-      else if (hour >= 18 && hour < 21) time = 'dusk';
-      else time = 'night';
-
-      return `${season}-${time}`;
-    }
-
-    const moment = getMoment();
-    document.documentElement.setAttribute('data-moment', moment);
-    window.__huhbubMoment = moment;
-
-    // Folder tab bar
+    // Folder tab bar — set nav border-bottom to match active tab
     (function() {
       const TAB_COLORS = {
         '/':         '#E8E0F8',
@@ -232,17 +93,11 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       };
       const nav = document.querySelector('nav');
       if (!nav) return;
-
-      // Detect current page
       const homeMarker = nav.querySelector('.nav-home-active');
       const active = homeMarker ? null : nav.querySelector('.nav-link.active');
       const href = homeMarker ? '/' : active?.getAttribute('href');
       const color = TAB_COLORS[href] || TAB_COLORS['/'];
-
-      // Set nav border
       nav.style.borderBottom = `8px solid ${color}`;
-
-      // Style active tab (not on home — logo stays clean)
       if (active) {
         active.style.setProperty('background', color, 'important');
         active.style.setProperty('border-radius', '6px 8px 0 0', 'important');
@@ -251,92 +106,6 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
         active.style.setProperty('position', 'relative', 'important');
         active.style.setProperty('z-index', '10', 'important');
       }
-
-      // Hero background is now set per-page in CSS — no JS override needed
-    })();
-
-    // Cursor particle trail — seasonal motes that follow the cursor
-    (function() {
-      const canvas = document.getElementById('cursor-trail');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let W, H, mx = -999, my = -999;
-      const motes = [];
-
-      const PALETTES = {
-        'spring-night': ['#F5A7CC','#D4537E','#AFA9EC','#FAC775'],
-        'spring-dawn':  ['#F5A7CC','#FAC775','#AFA9EC','#F4C0D1'],
-        'spring-day':   ['#D4537E','#7F77DD','#F5A7CC','#EF9F27'],
-        'spring-dusk':  ['#F5A7CC','#EF9F27','#AFA9EC','#D4537E'],
-        'summer-night': ['#FAC775','#EF9F27','#F5A7CC','#7F77DD'],
-        'summer-dawn':  ['#FAC775','#EF9F27','#F5A7CC','#fff'],
-        'summer-day':   ['#EF9F27','#FAC775','#D4537E','#F5A7CC'],
-        'summer-dusk':  ['#D4537E','#FAC775','#EF9F27','#F5A7CC'],
-        'autumn-night': ['#EF9F27','#E85070','#C070E0','#FAC775'],
-        'autumn-dawn':  ['#EF9F27','#E8603A','#FAC775','#E85070'],
-        'autumn-day':   ['#E8603A','#C04060','#EF9F27','#E85070'],
-        'autumn-dusk':  ['#E85070','#C070E0','#EF9F27','#FAC775'],
-        'winter-night': ['#7F77DD','#AFA9EC','#B5D4F4','#F5A7CC'],
-        'winter-dawn':  ['#B5D4F4','#AFA9EC','#F5A7CC','#85B7EB'],
-        'winter-day':   ['#378ADD','#7F77DD','#B5D4F4','#F5A7CC'],
-        'winter-dusk':  ['#AFA9EC','#F5A7CC','#B5D4F4','#7F77DD'],
-      };
-
-      function resize() {
-        W = canvas.width = window.innerWidth;
-        H = canvas.height = window.innerHeight;
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      document.addEventListener('mousemove', e => {
-        mx = e.clientX; my = e.clientY;
-        // Only spawn occasionally — one gentle mote every few moves
-        if (Math.random() > 0.25) return;
-        const palette = PALETTES[window.__huhbubMoment] || PALETTES['spring-night'];
-        motes.push({
-          x: mx + (Math.random()-0.5)*6,
-          y: my + (Math.random()-0.5)*6,
-          vx: (Math.random()-0.5)*0.4,
-          vy: -Math.random()*0.5-0.2,
-          r: Math.random()*1.8+0.5,
-          col: palette[Math.floor(Math.random()*palette.length)],
-          life: 0,
-          maxLife: Math.random()*50+30,
-          phase: Math.random()*Math.PI*2,
-        });
-        if (motes.length > 30) motes.splice(0, motes.length - 30);
-      });
-
-      function anim() {
-        ctx.clearRect(0,0,W,H);
-        for (let i = motes.length-1; i >= 0; i--) {
-          const m = motes[i];
-          m.life++;
-          m.x += m.vx; m.y += m.vy;
-          m.vy -= 0.015; // gentle float upward
-          m.vx *= 0.98;
-          const t = m.life / m.maxLife;
-          const tw = 0.6 + 0.4 * Math.sin(m.phase + m.life * 0.15);
-          const alpha = (1 - t) * tw * 0.7;
-          if (alpha <= 0 || m.life >= m.maxLife) { motes.splice(i,1); continue; }
-          // Glow
-          const grd = ctx.createRadialGradient(m.x,m.y,0,m.x,m.y,m.r*2.5);
-          grd.addColorStop(0, m.col);
-          grd.addColorStop(1, 'rgba(0,0,0,0)');
-          ctx.save();
-          ctx.globalAlpha = alpha * 0.4;
-          ctx.fillStyle = grd;
-          ctx.beginPath(); ctx.arc(m.x,m.y,m.r*2.5,0,Math.PI*2); ctx.fill();
-          // Core
-          ctx.globalAlpha = alpha;
-          ctx.fillStyle = m.col;
-          ctx.beginPath(); ctx.arc(m.x,m.y,m.r,0,Math.PI*2); ctx.fill();
-          ctx.restore();
-        }
-        requestAnimationFrame(anim);
-      }
-      anim();
     })();
   </script>
 </body>
