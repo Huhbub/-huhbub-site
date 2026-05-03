@@ -158,7 +158,7 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     .nav-links { margin-left: 48px; }
 
     /* More breathing room above nav */
-    nav { padding-top: 22px !important; }
+    nav { padding-top: 28px !important; padding-bottom: 10px !important; }
 
     /* All inactive tabs — below the folder bar */
     .nav-links a { z-index: 1; }
@@ -245,13 +245,15 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       nav.style.overflow = 'visible';
       nav.appendChild(bar);
 
-      // Active tab sits above the bar
+      // Active tab sits above the bar, merges seamlessly
       if (active) {
         active.style.setProperty('border-bottom', `10px solid ${color}`, 'important');
         active.style.setProperty('margin-bottom', '-10px', 'important');
         active.style.setProperty('padding-bottom', '14px', 'important');
         active.style.setProperty('z-index', '100', 'important');
         active.style.setProperty('position', 'relative', 'important');
+        active.style.setProperty('border-radius', '6px 8px 0 0', 'important');
+        active.style.setProperty('background', color, 'important');
       }
     })();
 
