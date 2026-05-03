@@ -54,13 +54,17 @@ import Base from '../layouts/Base.astro';
       <div class="footer-left">
         <p class="footer-logo">huhbub</p>
         <p class="footer-sub">huhbub ltd · sara veal · est. 2016</p>
-        <p class="footer-address" style="font-size:10px;color:#534AB7;margin-top:2px;">The Design Chapel, Cemetery Rd, Southampton SO15 7AF</p>
+        <p class="footer-address">The Design Chapel, Cemetery Rd, Southampton SO15 7AF</p>
+      </div>
+      <div class="footer-middle">
+        <p class="footer-subscribe-label">read the curious mermaid</p>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
       </div>
       <div class="footer-links">
         <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
         <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener">linkedin</a>
         <a href="/press" class="nav-link">press</a>
-          <a href="mailto:hello@huhbub.com">email</a>
+        <a href="mailto:hello@huhbub.com">email</a>
       </div>
     </div>
   </footer>
@@ -94,14 +98,21 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
   .btn-home:hover { opacity: 0.85; }
   .btn-ghost { font-size: 14px; color: var(--text-secondary) !important; border: 0.5px solid var(--border-subtle); padding: 12px 24px; border-radius: 8px; transition: all 0.2s; }
   .btn-ghost:hover { color: #1E1040 !important; background: rgba(255,255,255,0.04); }
-  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
-  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #AFA9EC; margin-bottom: 2px; letter-spacing: -0.3px; }
-  .footer-sub { font-size: 12px; color: #AFA9EC; }
-  .footer-links { display: flex; gap: 20px; }
   .footer-links a { font-size: 13px; color: #AFA9EC; transition: color 0.2s; }
   .footer-links a:hover { color: #fff; }
   @media (max-width: 768px) { .nav-links { display: none; } .nav-burger { display: flex; } h1 { letter-spacing: -0.5px; } .error-links { flex-direction: column; align-items: center; } }
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #AFA9EC; margin-bottom: 2px; letter-spacing: -0.3px; }
+  .footer-sub { font-size: 11px; color: #7F77DD; }
+  .footer-address { font-size: 10px; color: #9B96CC; margin-top: 2px; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #AFA9EC; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #AFA9EC; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
 </style>
 
 <script>
