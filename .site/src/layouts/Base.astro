@@ -245,10 +245,21 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
         active.style.setProperty('z-index', '10', 'important');
       }
 
-      // Tint the page hero to match the tab colour
+      // Solid hero background matching tab colour, dark text for legibility
       const hero = document.querySelector('.page-hero');
       if (hero) {
-        hero.style.background = `linear-gradient(180deg, ${color}40 0%, transparent 100%)`;
+        hero.style.background = color;
+        // All tab colours are pastels — use dark text
+        hero.style.setProperty('--text-primary', '#1E1040');
+        hero.style.setProperty('--text-secondary', '#3C2870');
+        hero.style.setProperty('--accent-soft', '#7F77DD');
+        // Also tint the overline and h1
+        const overline = hero.querySelector('.page-overline');
+        if (overline) overline.style.color = '#7F77DD';
+        const h1 = hero.querySelector('h1');
+        if (h1) h1.style.color = '#1E1040';
+        const sub = hero.querySelector('.page-sub');
+        if (sub) sub.style.color = '#3C2870';
       }
     })();
 
