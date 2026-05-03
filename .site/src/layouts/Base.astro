@@ -154,44 +154,8 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     }
 
     /* Folder line — sits ABOVE all tabs via z-index */
-    nav::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 4px;
-      background: var(--tab-color, rgba(255,255,255,0.08));
-      transition: background 0.3s;
-      z-index: 4;
-      pointer-events: none;
-    }
-
-    /* Set tab colour per active page */
-    nav:has(a[href="/services"].active)  { --tab-color: #FAD9A0; }
-    nav:has(a[href="/projects"].active)  { --tab-color: #F5C8DC; }
-    nav:has(a[href="/events"].active)    { --tab-color: #B8E8D8; }
-    nav:has(a[href="/about"].active)     { --tab-color: #F5B8C4; }
-    nav:has(a[href="/stories"].active)   { --tab-color: #D4C8F0; }
-    nav:has(a[href="/"].active)          { --tab-color: rgba(255,255,255,0.08); }
-    nav:has(a[href="/contact"].active)   { --tab-color: #B8CCF0; }
-
-    /* All inactive tabs — below the folder line */
+    /* All inactive tabs — below the folder bar */
     .nav-links a { z-index: 1; }
-
-    /* Active tab — above the folder line, bottom blends in */
-    .nav-links a.active {
-      transform: translateY(4px) !important;
-      margin-bottom: -4px;
-      padding-bottom: 10px;
-      z-index: 5 !important;
-      border-bottom: 4px solid transparent !important;
-    }
-
-    .nav-links a[href="/services"].active  { border-bottom-color: #FAD9A0 !important; }
-    .nav-links a[href="/projects"].active  { border-bottom-color: #F5C8DC !important; }
-    .nav-links a[href="/events"].active    { border-bottom-color: #B8E8D8 !important; }
-    .nav-links a[href="/about"].active     { border-bottom-color: #F5B8C4 !important; }
-    .nav-links a[href="/stories"].active   { border-bottom-color: #D4C8F0 !important; }
-    .nav-links a[href="/contact"].active   { border-bottom-color: #B8CCF0 !important; }
 
     /* CURSOR TRAIL CANVAS */
     #cursor-trail {
@@ -257,10 +221,22 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       if (!nav) return;
       const active = nav.querySelector('.nav-link.active');
       const href = active?.getAttribute('href');
-      const color = TAB_COLORS[href] || 'rgba(255,255,255,0.08)';
-      nav.style.setProperty('--tab-color', color);
-      // Also set the active tab's own bottom border
-      if (active) active.style.borderBottomColor = color;
+      const color = TAB_COLORS[href] || 'rgba(255,255,255,0.1)';
+
+      // Inject a real folder bar div below the nav
+      const bar = document.createElement('div');
+      bar.id = 'folder-bar';
+      bar.style.cssText = `height:4px;background:${color};width:100%;position:relative;z-index:99;transition:background 0.3s;`;
+      nav.insertAdjacentElement('afterend', bar);
+
+      // Active tab merges with bar — extend its bottom
+      if (active) {
+        active.style.transform = 'translateY(4px)';
+        active.style.marginBottom = '-4px';
+        active.style.borderBottom = `4px solid ${color}`;
+        active.style.paddingBottom = '10px';
+        active.style.zIndex = '100';
+      }
     })();
 
     // Cursor particle trail — seasonal motes that follow the cursor
