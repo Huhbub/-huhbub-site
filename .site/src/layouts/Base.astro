@@ -229,25 +229,28 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       const href = active?.getAttribute('href');
       const color = TAB_COLORS[href] || 'rgba(255,255,255,0.1)';
 
-      // Inject folder bar below nav — casts shadow DOWN onto inactive tabs
+      // Bar inside nav, absolutely positioned at bottom — sticks with nav
       const bar = document.createElement('div');
       bar.id = 'folder-bar';
       bar.style.cssText = `
+        position: absolute;
+        bottom: -10px;
+        left: 0; right: 0;
         height: 10px;
         background: ${color};
-        width: 100%;
-        position: relative;
-        z-index: 200;
+        z-index: 99;
         box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+        pointer-events: none;
       `;
-      nav.insertAdjacentElement('afterend', bar);
+      nav.style.overflow = 'visible';
+      nav.appendChild(bar);
 
-      // Active tab — just match the bar colour at bottom, no translateY
+      // Active tab sits above the bar
       if (active) {
         active.style.setProperty('border-bottom', `10px solid ${color}`, 'important');
         active.style.setProperty('margin-bottom', '-10px', 'important');
         active.style.setProperty('padding-bottom', '14px', 'important');
-        active.style.setProperty('z-index', '201', 'important');
+        active.style.setProperty('z-index', '100', 'important');
         active.style.setProperty('position', 'relative', 'important');
       }
     })();
