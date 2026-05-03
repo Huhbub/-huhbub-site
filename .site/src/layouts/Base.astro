@@ -255,6 +255,9 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       // Solid hero background matching tab colour, dark text
       const hero = document.querySelector('.page-hero');
       if (hero) {
+        hero.style.transition = 'none';
+        hero.style.setProperty('--sky', color);
+        hero.style.setProperty('--sky-mid', color);
         hero.style.setProperty('background', color, 'important');
         const overline = hero.querySelector('.page-overline');
         if (overline) overline.style.color = '#7F77DD';
@@ -262,7 +265,6 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
         if (h1) h1.style.setProperty('color', '#1E1040', 'important');
         const sub = hero.querySelector('.page-sub');
         if (sub) sub.style.setProperty('color', '#3C2870', 'important');
-        // Overline line colour
         hero.style.setProperty('--accent-soft', '#7F77DD');
       }
     })();
