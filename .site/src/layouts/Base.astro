@@ -157,6 +157,9 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     /* Push tabs away from logo */
     .nav-links { margin-left: 48px; }
 
+    /* More breathing room above nav */
+    nav { padding-top: 22px !important; }
+
     /* All inactive tabs — below the folder bar */
     .nav-links a { z-index: 1; }
 
@@ -230,20 +233,20 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       const bar = document.createElement('div');
       bar.id = 'folder-bar';
       bar.style.cssText = `
-        height: 6px;
+        height: 10px;
         background: ${color};
         width: 100%;
         position: relative;
         z-index: 200;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.18);
       `;
       nav.insertAdjacentElement('afterend', bar);
 
       // Active tab — just match the bar colour at bottom, no translateY
       if (active) {
-        active.style.setProperty('border-bottom', `6px solid ${color}`, 'important');
-        active.style.setProperty('margin-bottom', '-6px', 'important');
-        active.style.setProperty('padding-bottom', '12px', 'important');
+        active.style.setProperty('border-bottom', `10px solid ${color}`, 'important');
+        active.style.setProperty('margin-bottom', '-10px', 'important');
+        active.style.setProperty('padding-bottom', '14px', 'important');
         active.style.setProperty('z-index', '201', 'important');
         active.style.setProperty('position', 'relative', 'important');
       }
