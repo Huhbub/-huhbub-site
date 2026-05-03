@@ -297,7 +297,7 @@ import Splash from '../components/Splash.astro';
   .feat-link-secondary:hover { color: var(--text-primary); }
 
   /* CURIOUS MERMAID */
-  .mermaid-section { background: rgba(127,119,221,0.04); padding: 48px 32px 56px; border-top: 0.5px solid rgba(127,119,221,0.15); border-bottom: 0.5px solid rgba(127,119,221,0.1); }
+  .mermaid-section { background: #FDF8F4; padding: 48px 32px 56px; border-top: 3px solid #7F77DD; border-bottom: 0.5px solid rgba(0,0,0,0.06); }
   .mermaid-inner { max-width: 1060px; margin: 0 auto; }
 
   /* Masthead */
@@ -306,8 +306,8 @@ import Splash from '../components/Splash.astro';
   .mermaid-heart { width: 44px; height: 40px; flex-shrink: 0; filter: drop-shadow(0 0 10px rgba(212,83,126,0.4)); animation: mermaid-float 4s ease-in-out infinite; }
   @keyframes mermaid-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
   .mermaid-overline { font-size: 10px; color: #7F77DD; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-  .mermaid-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: var(--text-primary); letter-spacing: -0.5px; line-height: 1; margin-bottom: 4px; }
-  .mermaid-sub { font-size: 13px; color: var(--text-secondary); line-height: 1.5; max-width: 360px; }
+  .mermaid-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: #1E1756; letter-spacing: -0.5px; line-height: 1; margin-bottom: 4px; }
+  .mermaid-sub { font-size: 13px; color: #534AB7; line-height: 1.5; max-width: 360px; }
   .mermaid-all-link { font-size: 13px; color: #7F77DD; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; white-space: nowrap; transition: color 0.2s; flex-shrink: 0; }
   .mermaid-all-link:hover { color: #534AB7; }
 
@@ -316,16 +316,16 @@ import Splash from '../components/Splash.astro';
   .mermaid-essay-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
   .mermaid-category { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(127,119,221,0.12); padding: 3px 8px; border-radius: 20px; }
   .mermaid-date { font-size: 12px; color: #534AB7; }
-  .mermaid-essay-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: var(--text-primary); letter-spacing: -0.5px; margin-bottom: 10px; line-height: 1.2; }
-  .mermaid-essay-lede { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+  .mermaid-essay-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: #1E1756; letter-spacing: -0.5px; margin-bottom: 10px; line-height: 1.2; }
+  .mermaid-essay-lede { font-size: 14px; color: #3C3489; line-height: 1.7; margin-bottom: 16px; }
   .mermaid-pullquote { font-family: var(--font-display); font-size: 16px; font-style: italic; color: #534AB7; border-left: 2px solid #7F77DD; padding-left: 14px; margin: 0 0 18px; line-height: 1.5; }
   .mermaid-read-link { font-size: 13px; color: #7F77DD; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; transition: color 0.2s; display: inline-block; }
   .mermaid-read-link:hover { color: #fff; }
 
   /* Subscribe */
-  .mermaid-subscribe-box { background: linear-gradient(135deg, rgba(127,119,221,0.1), rgba(83,74,183,0.06)); border: 0.5px solid rgba(127,119,221,0.2); border-radius: 4px; padding: 24px; }
+  .mermaid-subscribe-box { background: rgba(127,119,221,0.08); border: 0.5px solid rgba(127,119,221,0.25); border-radius: 4px; padding: 24px; }
   .mermaid-subscribe-eyebrow { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
-  .mermaid-subscribe-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
+  .mermaid-subscribe-body { font-size: 13px; color: #534AB7; line-height: 1.6; margin-bottom: 16px; }
   .btn-mermaid-subscribe { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 10px 18px; border-radius: 6px; transition: opacity 0.2s; display: inline-block; }
   .btn-mermaid-subscribe:hover { opacity: 0.85; }
 
