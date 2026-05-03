@@ -198,23 +198,23 @@ const rotations = [-2, 1.5, -1, 2.5, -1.5, 1];
   .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
   .nav-links { display: flex; gap: 24px; align-items: center; }
   .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
-  .nav-links a:hover { color: #1E1040; }
+  .nav-links a:hover { color: var(--text-primary, #F5F0FF); }
   .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
   .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
   .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
   .mobile-menu.open { opacity: 1; pointer-events: all; }
   .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; }
   .mobile-menu-links { display: flex; flex-direction: column; align-items: center; }
-  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #1E1040; padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--text-primary, #F5F0FF); padding: 8px 0; transition: color 0.2s; }
   .mobile-menu-links a:hover { color: var(--accent-soft); }
 
   /* PAGE HERO */
-  .page-hero { background: #C8E0F8; padding: 48px 32px 40px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .page-hero { background: var(--sky, #07051A); padding: 48px 32px 40px; border-bottom: 0.5px solid var(--border-subtle);  }
   .page-hero-inner { max-width: 960px; margin: 0 auto; }
-  .page-overline { font-size: 11px; color: #7F77DD; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-  .page-overline::before { content: ''; width: 24px; height: 1px; background: #7F77DD; display: block; }
-  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: #1E1040; line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
-  .page-sub { font-size: 15px; color: #3C2870; line-height: 1.7; max-width: 520px; }
+  .page-overline { font-size: 11px; color: #B5D4F4; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1px; background: #B5D4F4; display: block; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: var(--text-primary, #F5F0FF); line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: var(--text-secondary, #9B96CC); line-height: 1.7; max-width: 520px; }
 
   /* GALLERY WALL */
   .gallery-wall {
@@ -366,7 +366,7 @@ const rotations = [-2, 1.5, -1, 2.5, -1.5, 1];
   /* CTA */
   .collab-cta { background: var(--sky, #07051A); padding: 56px 32px; text-align: center; border-top: 0.5px solid var(--border-subtle);  }
   .cta-inner { max-width: 480px; margin: 0 auto; }
-  .cta-inner h2 { font-family: var(--font-display); font-size: 32px; font-weight: 300; color: #1E1040; margin-bottom: 10px; letter-spacing: -0.5px; }
+  .cta-inner h2 { font-family: var(--font-display); font-size: 32px; font-weight: 300; color: var(--text-primary, #F5F0FF); margin-bottom: 10px; letter-spacing: -0.5px; }
   .cta-inner p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px; }
   .btn-cta { display: inline-block; font-size: 14px; font-weight: 500; color: #fff; background: var(--accent, #D4537E); padding: 12px 28px; border-radius: 8px; transition: opacity 0.2s; }
   .btn-cta:hover { opacity: 0.85; }
@@ -375,7 +375,7 @@ const rotations = [-2, 1.5, -1, 2.5, -1.5, 1];
   footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
   .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
   .footer-logo { font-family: var(--font-display); font-size: 20px; font-weight: 300; color: #AFA9EC; margin-bottom: 4px; }
-  .footer-sub { font-size: 12px; color: #7F77DD; }
+  .footer-sub { font-size: 12px; color: #B5D4F4; }
   .footer-middle { text-align: center; }
   .footer-subscribe-label { font-size: 11px; color: #AFA9EC; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
   .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }

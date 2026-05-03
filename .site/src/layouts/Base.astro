@@ -47,23 +47,23 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     .nav-links a {
       position: relative; display: inline-block;
       padding: 6px 14px 10px; font-size: 12px;
-      color: rgba(20,10,40,0.7) !important; font-weight: 500;
-      text-shadow: none !important;
+      color: rgba(255,255,255,0.9) !important; font-weight: 500;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2) !important;
       border-radius: 6px 8px 0 0; margin-right: 2px;
-      background: #E8D8F0;
-      box-shadow: 1px -2px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.12);
+      box-shadow: 1px -2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2);
       clip-path: polygon(0 100%, 0 8px, 6px 0, 100% 0, 100% 8px, 100% 100%);
       transition: filter 0.2s;
       z-index: 1;
     }
-    .nav-links a[href="/services"]  { background: #FAD9A0; }
-    .nav-links a[href="/projects"]  { background: #F5C8DC; }
-    .nav-links a[href="/events"]    { background: #B8E8D8; }
-    .nav-links a[href="/about"]     { background: #F5B8C4; }
-    .nav-links a[href="/stories"]   { background: #D4C8F0; }
-    .nav-links a[href="/contact"]   { background: #B8CCF0; }
-    .nav-links a:hover { filter: brightness(1.08); color: rgba(10,5,30,0.9) !important; }
-    .nav-links a.active { filter: brightness(1.05) saturate(1.1); z-index: 10; color: rgba(10,5,30,0.9) !important; }
+    .nav-links a[href="/services"]  { background: #EF9F27; }
+    .nav-links a[href="/projects"]  { background: #D4537E; }
+    .nav-links a[href="/events"]    { background: #7F77DD; }
+    .nav-links a[href="/about"]     { background: #E8829A; }
+    .nav-links a[href="/stories"]   { background: #AFA9EC; color: rgba(30,16,64,0.9) !important; }
+    .nav-links a[href="/contact"]   { background: #F5A7CC; color: rgba(30,16,64,0.9) !important; }
+    .nav-links a:hover { filter: brightness(1.15); }
+    .nav-links a.active { filter: brightness(1.1) saturate(1.1); z-index: 10; }
     .nav-links a::after { display: none; }
     .nav-links a, .nav-links a.active { border-bottom: none !important; }
 
@@ -82,14 +82,14 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     (function() {
       const TAB_COLORS = {
         '/':         'rgba(255,255,255,0.08)',
-        '/services': '#FAD9A0',
-        '/projects': '#F5C8DC',
-        '/events':   '#B8E8D8',
-        '/about':    '#F5B8C4',
-        '/stories':  '#D4C8F0',
-        '/people':   '#C8E0F8',
-        '/press':    '#D4E8C8',
-        '/contact':  '#B8CCF0',
+        '/services': '#EF9F27',
+        '/projects': '#D4537E',
+        '/events':   '#7F77DD',
+        '/about':    '#E8829A',
+        '/stories':  '#AFA9EC',
+        '/people':   '#B5D4F4',
+        '/press':    '#FAC775',
+        '/contact':  '#F5A7CC',
       };
       const nav = document.querySelector('nav');
       if (!nav) return;
