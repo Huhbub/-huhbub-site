@@ -131,10 +131,13 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       color: rgba(10,5,30,0.9) !important;
       z-index: 10;
       padding-bottom: 11px;
+      border-bottom: none !important;
     }
 
     /* Remove the old pseudo-element glow */
     .nav-links a::after { display: none; }
+    /* Kill any border-bottom — tabs handle active state */
+    .nav-links a, .nav-links a.active { border-bottom: none !important; }
 
     /* Mobile menu always on top */
     .mobile-menu { z-index: 9000 !important; }
