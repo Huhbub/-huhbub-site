@@ -148,18 +148,22 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     nav {
       padding-bottom: 0 !important;
       align-items: flex-end !important;
-      border-bottom: 3px solid var(--tab-color, rgba(255,255,255,0.08)) !important;
-      transition: border-color 0.3s;
-      gap: 0 !important;
+      border-bottom: none !important;
+      position: relative;
+      overflow: visible !important;
     }
 
-    /* Push tabs away from logo */
-    .nav-links {
-      margin-left: auto;
+    /* Folder line — sits ABOVE all tabs via z-index */
+    nav::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--tab-color, rgba(255,255,255,0.08));
+      transition: background 0.3s;
+      z-index: 4;
+      pointer-events: none;
     }
-
-    /* Remove the ::after bar */
-    nav::after { display: none; }
 
     /* Set tab colour per active page */
     nav:has(a[href="/services"].active)  { --tab-color: #FAD9A0; }
@@ -169,21 +173,18 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     nav:has(a[href="/stories"].active)   { --tab-color: #D4C8F0; }
     nav:has(a[href="/"].active)          { --tab-color: rgba(255,255,255,0.08); }
 
-    /* All inactive tabs sit below the folder line */
-    .nav-links a {
-      z-index: 1;
-    }
+    /* All inactive tabs — below the folder line */
+    .nav-links a { z-index: 1; }
 
-    /* Active tab — sits ON TOP of the folder line */
+    /* Active tab — above the folder line, bottom blends in */
     .nav-links a.active {
-      transform: translateY(3px) !important;
-      margin-bottom: -3px;
-      padding-bottom: 9px;
+      transform: translateY(4px) !important;
+      margin-bottom: -4px;
+      padding-bottom: 10px;
       z-index: 5 !important;
-      border-bottom: 3px solid transparent !important;
+      border-bottom: 4px solid transparent !important;
     }
 
-    /* Each active tab's bottom border matches its own colour to merge with the line */
     .nav-links a[href="/services"].active  { border-bottom-color: #FAD9A0 !important; }
     .nav-links a[href="/projects"].active  { border-bottom-color: #F5C8DC !important; }
     .nav-links a[href="/events"].active    { border-bottom-color: #B8E8D8 !important; }
