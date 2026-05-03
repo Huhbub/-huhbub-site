@@ -226,21 +226,26 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       const href = active?.getAttribute('href');
       const color = TAB_COLORS[href] || 'rgba(255,255,255,0.1)';
 
-      // Inject folder bar below nav
-      const BAR_HEIGHT = 6;
+      // Inject folder bar below nav — casts shadow DOWN onto inactive tabs
       const bar = document.createElement('div');
       bar.id = 'folder-bar';
-      bar.style.cssText = `height:${BAR_HEIGHT}px;background:${color};width:100%;position:relative;z-index:98;transition:background 0.3s;margin-top:0;`;
+      bar.style.cssText = `
+        height: 6px;
+        background: ${color};
+        width: 100%;
+        position: relative;
+        z-index: 200;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      `;
       nav.insertAdjacentElement('afterend', bar);
 
-      // Active tab — extend down to cover the bar
+      // Active tab — just match the bar colour at bottom, no translateY
       if (active) {
-        active.style.setProperty('transform', `translateY(${BAR_HEIGHT}px)`, 'important');
-        active.style.setProperty('margin-bottom', `-${BAR_HEIGHT}px`, 'important');
-        active.style.setProperty('padding-bottom', `${BAR_HEIGHT + 6}px`, 'important');
-        active.style.setProperty('border-bottom', `${BAR_HEIGHT}px solid ${color}`, 'important');
+        active.style.setProperty('border-bottom', `6px solid ${color}`, 'important');
+        active.style.setProperty('margin-bottom', '-6px', 'important');
+        active.style.setProperty('padding-bottom', '12px', 'important');
+        active.style.setProperty('z-index', '201', 'important');
         active.style.setProperty('position', 'relative', 'important');
-        active.style.setProperty('z-index', '9999', 'important');
       }
     })();
 
