@@ -154,6 +154,9 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     }
 
     /* Folder line — sits ABOVE all tabs via z-index */
+    /* Push tabs away from logo */
+    .nav-links { margin-left: 48px; }
+
     /* All inactive tabs — below the folder bar */
     .nav-links a { z-index: 1; }
 
@@ -223,19 +226,21 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       const href = active?.getAttribute('href');
       const color = TAB_COLORS[href] || 'rgba(255,255,255,0.1)';
 
-      // Inject a real folder bar div below the nav
+      // Inject folder bar below nav
+      const BAR_HEIGHT = 6;
       const bar = document.createElement('div');
       bar.id = 'folder-bar';
-      bar.style.cssText = `height:4px;background:${color};width:100%;position:relative;z-index:99;transition:background 0.3s;`;
+      bar.style.cssText = `height:${BAR_HEIGHT}px;background:${color};width:100%;position:relative;z-index:98;transition:background 0.3s;margin-top:0;`;
       nav.insertAdjacentElement('afterend', bar);
 
-      // Active tab merges with bar — extend its bottom
+      // Active tab — extend down to cover the bar
       if (active) {
-        active.style.transform = 'translateY(4px)';
-        active.style.marginBottom = '-4px';
-        active.style.borderBottom = `4px solid ${color}`;
-        active.style.paddingBottom = '10px';
-        active.style.zIndex = '100';
+        active.style.setProperty('transform', `translateY(${BAR_HEIGHT}px)`, 'important');
+        active.style.setProperty('margin-bottom', `-${BAR_HEIGHT}px`, 'important');
+        active.style.setProperty('padding-bottom', `${BAR_HEIGHT + 6}px`, 'important');
+        active.style.setProperty('border-bottom', `${BAR_HEIGHT}px solid ${color}`, 'important');
+        active.style.setProperty('position', 'relative', 'important');
+        active.style.setProperty('z-index', '9999', 'important');
       }
     })();
 
