@@ -172,6 +172,7 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     nav:has(a[href="/about"].active)     { --tab-color: #F5B8C4; }
     nav:has(a[href="/stories"].active)   { --tab-color: #D4C8F0; }
     nav:has(a[href="/"].active)          { --tab-color: rgba(255,255,255,0.08); }
+    nav:has(a[href="/contact"].active)   { --tab-color: #B8CCF0; }
 
     /* All inactive tabs — below the folder line */
     .nav-links a { z-index: 1; }
@@ -190,6 +191,7 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     .nav-links a[href="/events"].active    { border-bottom-color: #B8E8D8 !important; }
     .nav-links a[href="/about"].active     { border-bottom-color: #F5B8C4 !important; }
     .nav-links a[href="/stories"].active   { border-bottom-color: #D4C8F0 !important; }
+    .nav-links a[href="/contact"].active   { border-bottom-color: #B8CCF0 !important; }
 
     /* CURSOR TRAIL CANVAS */
     #cursor-trail {
@@ -249,6 +251,7 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
         '/stories':  '#D4C8F0',
         '/people':   '#C8E0F8',
         '/press':    '#D4E8C8',
+        '/contact':  '#B8CCF0',
       };
       const nav = document.querySelector('nav');
       if (!nav) return;
