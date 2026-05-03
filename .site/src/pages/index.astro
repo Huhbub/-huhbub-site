@@ -141,7 +141,7 @@ import Splash from '../components/Splash.astro';
               <path d="M30 49 C30 49 3 31 3 17 C3 8 9 3 17 3 C22 3 26 6 30 10 C34 6 38 3 43 3 C51 3 57 8 57 17 C57 31 30 49 30 49Z" fill="url(#mhg)"/>
             </svg>
             <div>
-              <p class="mermaid-overline">from the writer's desk</p>
+              <p class="mermaid-overline">latest from huhbub & The Curious Mermaid</p>
               <h2 class="mermaid-title">The Curious Mermaid</h2>
               <p class="mermaid-sub">Stories of creativity, community and the beauty in what others might overlook.</p>
             </div>
@@ -297,7 +297,7 @@ import Splash from '../components/Splash.astro';
   .feat-link-secondary:hover { color: var(--text-primary); }
 
   /* CURIOUS MERMAID */
-  .mermaid-section { background: #0A0820; padding: 48px 32px 56px; border-top: 0.5px solid rgba(127,119,221,0.2); }
+  .mermaid-section { background: rgba(127,119,221,0.04); padding: 48px 32px 56px; border-top: 0.5px solid rgba(127,119,221,0.15); border-bottom: 0.5px solid rgba(127,119,221,0.1); }
   .mermaid-inner { max-width: 1060px; margin: 0 auto; }
 
   /* Masthead */
@@ -306,26 +306,26 @@ import Splash from '../components/Splash.astro';
   .mermaid-heart { width: 44px; height: 40px; flex-shrink: 0; filter: drop-shadow(0 0 10px rgba(212,83,126,0.4)); animation: mermaid-float 4s ease-in-out infinite; }
   @keyframes mermaid-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
   .mermaid-overline { font-size: 10px; color: #7F77DD; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-  .mermaid-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: #fff; letter-spacing: -0.5px; line-height: 1; margin-bottom: 4px; }
-  .mermaid-sub { font-size: 13px; color: #7F77DD; line-height: 1.5; max-width: 360px; }
+  .mermaid-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: var(--text-primary); letter-spacing: -0.5px; line-height: 1; margin-bottom: 4px; }
+  .mermaid-sub { font-size: 13px; color: var(--text-secondary); line-height: 1.5; max-width: 360px; }
   .mermaid-all-link { font-size: 13px; color: #7F77DD; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; white-space: nowrap; transition: color 0.2s; flex-shrink: 0; }
-  .mermaid-all-link:hover { color: #AFA9EC; }
+  .mermaid-all-link:hover { color: #534AB7; }
 
   /* Body */
   .mermaid-body { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
   .mermaid-essay-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
   .mermaid-category { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(127,119,221,0.12); padding: 3px 8px; border-radius: 20px; }
   .mermaid-date { font-size: 12px; color: #534AB7; }
-  .mermaid-essay-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: #fff; letter-spacing: -0.5px; margin-bottom: 10px; line-height: 1.2; }
-  .mermaid-essay-lede { font-size: 14px; color: #AFA9EC; line-height: 1.7; margin-bottom: 16px; }
-  .mermaid-pullquote { font-family: var(--font-display); font-size: 16px; font-style: italic; color: #D4B8F8; border-left: 2px solid #7F77DD; padding-left: 14px; margin: 0 0 18px; line-height: 1.5; }
-  .mermaid-read-link { font-size: 13px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.3); padding-bottom: 2px; transition: color 0.2s; display: inline-block; }
+  .mermaid-essay-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: var(--text-primary); letter-spacing: -0.5px; margin-bottom: 10px; line-height: 1.2; }
+  .mermaid-essay-lede { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+  .mermaid-pullquote { font-family: var(--font-display); font-size: 16px; font-style: italic; color: #534AB7; border-left: 2px solid #7F77DD; padding-left: 14px; margin: 0 0 18px; line-height: 1.5; }
+  .mermaid-read-link { font-size: 13px; color: #7F77DD; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; transition: color 0.2s; display: inline-block; }
   .mermaid-read-link:hover { color: #fff; }
 
   /* Subscribe */
   .mermaid-subscribe-box { background: linear-gradient(135deg, rgba(127,119,221,0.1), rgba(83,74,183,0.06)); border: 0.5px solid rgba(127,119,221,0.2); border-radius: 4px; padding: 24px; }
   .mermaid-subscribe-eyebrow { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
-  .mermaid-subscribe-body { font-size: 13px; color: #AFA9EC; line-height: 1.6; margin-bottom: 16px; }
+  .mermaid-subscribe-body { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px; }
   .btn-mermaid-subscribe { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 10px 18px; border-radius: 6px; transition: opacity 0.2s; display: inline-block; }
   .btn-mermaid-subscribe:hover { opacity: 0.85; }
 
