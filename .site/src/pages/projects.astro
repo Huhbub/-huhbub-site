@@ -151,7 +151,7 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
   .mobile-menu-links a:hover { color: var(--accent-soft); }
 
   /* PAGE HERO */
-  .page-hero { background: var(--sky, #07051A); padding: 48px 32px 36px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .page-hero { background: #D4537E; padding: 48px 32px 36px; }
   .page-hero-inner { max-width: 960px; margin: 0 auto; }
   .page-overline { font-size: 11px; color: #6B0030; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
   .page-overline::before { content: ''; width: 24px; height: 1px; background: #D4537E; display: block; }
@@ -160,7 +160,9 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
 
   /* FILTER PILLS */
   .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-  .filter-pill { font-size: 12px; color: var(--text-secondary); padding: 6px 16px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.12); background: transparent; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+  .filter-pill { font-size: 12px; color: rgba(30,16,64,0.75); padding: 6px 16px; border-radius: 20px; border: 0.5px solid rgba(30,16,64,0.25); background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+  .filter-pill:hover { background: rgba(255,255,255,0.35); color: #1E1040; }
+  .filter-pill.active { background: #1E1040; color: #F5A7CC; border-color: #1E1040; }
   .filter-pill.active { background: var(--accent, #D4537E); color: #fff; border-color: var(--accent, #D4537E); }
   .filter-pill:hover:not(.active) { background: rgba(255,255,255,0.06); color: #1E1040; }
 
