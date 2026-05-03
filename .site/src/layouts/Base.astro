@@ -144,29 +144,39 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     /* Ensure burger is always tappable */
     .nav-burger { position: relative; z-index: 101; }
 
-    /* Nav bar — tabs hang from bottom edge */
+    /* Nav bar — tabs sit on a coloured folder edge */
     nav {
       padding-bottom: 0 !important;
       align-items: flex-end !important;
+      border-bottom: 3px solid var(--tab-color, rgba(255,255,255,0.08)) !important;
+      transition: border-color 0.3s;
     }
 
-    /* Folder bar — thin strip below nav matching active tab */
-    nav::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--tab-color, rgba(255,255,255,0.08));
-      transition: background 0.3s;
-    }
+    /* Remove the ::after bar — border-bottom handles it now */
+    nav::after { display: none; }
 
     /* Set tab colour variable per active page */
-    nav:has(a[href="/services"].active)     { --tab-color: #FAD9A0; }
-    nav:has(a[href="/projects"].active)     { --tab-color: #F5C8DC; }
-    nav:has(a[href="/events"].active)       { --tab-color: #B8E8D8; }
-    nav:has(a[href="/about"].active)        { --tab-color: #F5B8C4; }
-    nav:has(a[href="/stories"].active)      { --tab-color: #D4C8F0; }
-    nav:has(a.nav-cta.active)              { --tab-color: #B8CCF0; }
+    nav:has(a[href="/services"].active)  { --tab-color: #FAD9A0; }
+    nav:has(a[href="/projects"].active)  { --tab-color: #F5C8DC; }
+    nav:has(a[href="/events"].active)    { --tab-color: #B8E8D8; }
+    nav:has(a[href="/about"].active)     { --tab-color: #F5B8C4; }
+    nav:has(a[href="/stories"].active)   { --tab-color: #D4C8F0; }
+    nav:has(a[href="/"].active)          { --tab-color: rgba(255,255,255,0.08); }
+
+    /* Active tab — extend down to touch the border, creating the "open folder" illusion */
+    .nav-links a.active {
+      transform: translateY(3px) !important;
+      border-bottom: 3px solid var(--tab-color, #F5C8DC) !important;
+      margin-bottom: -3px;
+      padding-bottom: 9px;
+    }
+
+    /* Active tab border colour matches its own tab */
+    .nav-links a[href="/services"].active  { --tab-color: #FAD9A0; border-bottom-color: #FAD9A0 !important; }
+    .nav-links a[href="/projects"].active  { --tab-color: #F5C8DC; border-bottom-color: #F5C8DC !important; }
+    .nav-links a[href="/events"].active    { --tab-color: #B8E8D8; border-bottom-color: #B8E8D8 !important; }
+    .nav-links a[href="/about"].active     { --tab-color: #F5B8C4; border-bottom-color: #F5B8C4 !important; }
+    .nav-links a[href="/stories"].active   { --tab-color: #D4C8F0; border-bottom-color: #D4C8F0 !important; }
 
     /* CURSOR TRAIL CANVAS */
     #cursor-trail {
