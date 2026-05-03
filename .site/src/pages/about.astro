@@ -60,20 +60,11 @@ const recognition = [
   </div>
 
   <!-- HERO -->
-  <div class="about-hero">
-    <div class="about-hero-inner">
-      <div class="about-portrait">
-        <div class="portrait-frame">
-          <img src="/images/sara-portrait.jpg" alt="Sara Veal" onerror="this.parentElement.classList.add('no-img')" />
-          <div class="portrait-placeholder">SV</div>
-        </div>
-        <p class="portrait-caption">Sara Veal · founder, huhbub</p>
-      </div>
-      <div class="about-intro">
-        <p class="page-overline">about</p>
-        <h1>the story so far</h1>
-        <p class="about-lead">huhbub is a cultural consultancy founded by Sara Veal — producer, community builder, people strategist, and writer. Based in Southampton. Working everywhere.</p>
-      </div>
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-overline">about</p>
+      <h1>the story so far</h1>
+      <p class="page-sub">huhbub is a cultural consultancy founded by Sara Veal — producer, community builder, people strategist, and writer. Based in Southampton. Working everywhere.</p>
     </div>
   </div>
 
@@ -129,6 +120,21 @@ const recognition = [
           <p>If you're wondering whether huhbub is right for your project — get in touch. I have a good sense, quickly, of whether something is a fit.</p>
           <a href="mailto:sara@huhbub.com" class="story-cta">sara@huhbub.com →</a>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SARA PORTRAIT STRIP -->
+  <div class="portrait-strip">
+    <div class="portrait-strip-inner">
+      <div class="portrait-strip-frame">
+        <img src="/images/sara-portrait.jpg" alt="Sara Veal" onerror="this.parentElement.classList.add('no-img')" />
+        <div class="portrait-strip-placeholder">SV</div>
+      </div>
+      <div class="portrait-strip-content">
+        <p class="portrait-strip-name">Sara Veal</p>
+        <p class="portrait-strip-title">founder & digital witch, huhbub</p>
+        <p class="portrait-strip-bio">A fuller portrait of Sara — her writing, her non-huhbub work, and everything in between — lives at <a href="/sara">huhbub.com/sara</a>.</p>
       </div>
     </div>
   </div>
@@ -225,18 +231,26 @@ const recognition = [
   .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--text-primary); padding: 8px 0; transition: color 0.2s; }
   .mobile-menu-links a:hover { color: var(--accent-soft); }
 
-  /* HERO */
-  .about-hero { background: var(--sky, #07051A); padding: 56px 32px; border-bottom: 0.5px solid var(--border-subtle); transition: background 1s; }
-  .about-hero-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 56px; align-items: center; }
-  .portrait-frame { width: 220px; height: 280px; position: relative; overflow: hidden; border-radius: 2px; box-shadow: 4px 6px 20px rgba(0,0,0,0.4); border: 6px solid #fff; }
-  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
-  .portrait-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A0A2E, #0E0B2E); font-family: var(--font-display); font-size: 48px; font-weight: 300; color: rgba(245,167,204,0.4); z-index: 0; }
-  .portrait-frame.no-img img { display: none; }
-  .portrait-caption { font-size: 11px; color: var(--text-secondary); margin-top: 10px; letter-spacing: 0.5px; }
+  /* PAGE HERO */
+  .page-hero { background: var(--sky, #07051A); padding: 48px 32px 40px; border-bottom: 0.5px solid var(--border-subtle); transition: background 1s; }
+  .page-hero-inner { max-width: 960px; margin: 0 auto; }
   .page-overline { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
   .page-overline::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); display: block; }
-  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: var(--text-primary); line-height: 1.05; letter-spacing: -2px; margin-bottom: 18px; }
-  .about-lead { font-size: 16px; color: var(--text-secondary); line-height: 1.75; max-width: 520px; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: var(--text-primary); line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: var(--text-secondary); line-height: 1.7; max-width: 520px; }
+
+  /* PORTRAIT STRIP */
+  .portrait-strip { background: var(--sky-mid, #0E0B2E); padding: 40px 32px; border-bottom: 0.5px solid var(--border-subtle); transition: background 1s; }
+  .portrait-strip-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 32px; align-items: center; }
+  .portrait-strip-frame { width: 96px; height: 96px; border-radius: 50%; overflow: hidden; flex-shrink: 0; position: relative; border: 3px solid #fff; box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 4px 16px rgba(0,0,0,0.4); }
+  .portrait-strip-frame img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
+  .portrait-strip-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A0A2E, #0E0B2E); font-family: var(--font-display); font-size: 24px; font-weight: 300; color: rgba(245,167,204,0.5); z-index: 0; }
+  .portrait-strip-frame.no-img img { display: none; }
+  .portrait-strip-name { font-family: var(--font-display); font-size: 22px; font-weight: 300; color: var(--text-primary); letter-spacing: -0.3px; margin-bottom: 2px; }
+  .portrait-strip-title { font-size: 12px; color: var(--accent-soft); letter-spacing: 0.5px; margin-bottom: 8px; }
+  .portrait-strip-bio { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .portrait-strip-bio a { color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); transition: border-color 0.2s; }
+  .portrait-strip-bio a:hover { border-color: var(--accent-soft); }
 
   /* RECOGNITION STRIP */
   .recognition-strip { background: var(--sky-mid, #0E0B2E); border-bottom: 0.5px solid var(--border-subtle); padding: 0 32px; display: flex; overflow-x: auto; scrollbar-width: none; transition: background 1s; }
@@ -345,11 +359,9 @@ const recognition = [
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .nav-burger { display: flex; }
-    .about-hero-inner { grid-template-columns: 1fr; gap: 32px; }
-    .portrait-frame { width: 160px; height: 200px; }
     .story-inner { grid-template-columns: 1fr; gap: 32px; }
     .story-nav { flex-direction: row; flex-wrap: wrap; }
-    .collaborators-gallery { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .portrait-strip-inner { flex-direction: column; text-align: center; }
     h1 { letter-spacing: -1px; }
   }
 </style>

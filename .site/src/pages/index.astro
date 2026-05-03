@@ -147,61 +147,48 @@ import Splash from '../components/Splash.astro';
     <!-- THE CURIOUS MERMAID — EDITORIAL -->
     <div class="mermaid-section">
       <div class="mermaid-inner">
-        <div class="mermaid-header">
-          <div class="mermaid-title-lockup">
-            <p class="mermaid-overline">from the writer's desk</p>
-            <h2 class="mermaid-title">The Curious Mermaid</h2>
-            <p class="mermaid-sub">Stories of creativity, community and the beauty in what others might overlook. Published on Substack.</p>
+
+        <!-- MASTHEAD -->
+        <div class="mermaid-masthead">
+          <div class="mermaid-masthead-left">
+            <svg viewBox="0 0 60 54" xmlns="http://www.w3.org/2000/svg" class="mermaid-heart">
+              <defs>
+                <linearGradient id="mhg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#F5A7CC"/>
+                  <stop offset="50%" stop-color="#D4537E"/>
+                  <stop offset="100%" stop-color="#AFA9EC"/>
+                </linearGradient>
+              </defs>
+              <path d="M30 49 C30 49 3 31 3 17 C3 8 9 3 17 3 C22 3 26 6 30 10 C34 6 38 3 43 3 C51 3 57 8 57 17 C57 31 30 49 30 49Z" fill="url(#mhg)"/>
+            </svg>
+            <div>
+              <p class="mermaid-overline">from the writer's desk</p>
+              <h2 class="mermaid-title">The Curious Mermaid</h2>
+              <p class="mermaid-sub">Stories of creativity, community and the beauty in what others might overlook.</p>
+            </div>
           </div>
-          <a href="/stories" class="mermaid-all-link">read all essays →</a>
+          <a href="/stories" class="nav-link mermaid-all-link">read all →</a>
         </div>
 
-        <div class="mermaid-grid">
-          <!-- FEATURED — The Siren's Gift -->
-          <div class="mermaid-feature">
-            <div class="mermaid-feature-img">
-              <div class="mermaid-img-placeholder">
-                <span>🐚</span>
-              </div>
+        <!-- ESSAY + SUBSCRIBE -->
+        <div class="mermaid-body">
+          <div class="mermaid-essay">
+            <div class="mermaid-essay-meta">
+              <span class="mermaid-category">personal</span>
+              <span class="mermaid-date">Apr 2025</span>
             </div>
-            <div class="mermaid-feature-body">
-              <div class="mermaid-meta">
-                <span class="mermaid-category">personal</span>
-                <span class="mermaid-date">Apr 2025</span>
-              </div>
-              <h3 class="mermaid-feature-title">The Siren's Gift</h3>
-              <p class="mermaid-feature-lede">How a shop of secondhand treasures led me to creativity, community, and myself. The story of Sirena Curiosa — a 6×6 stall, a diagnosis, and what happens when you finally let go.</p>
-              <blockquote class="mermaid-pullquote">"I was told I lit up like a lighthouse when I spoke about the shop."</blockquote>
-              <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="mermaid-read-link">read on substack →</a>
-            </div>
+            <h3 class="mermaid-essay-title">The Siren's Gift</h3>
+            <p class="mermaid-essay-lede">How a shop of secondhand treasures led me to creativity, community, and myself.</p>
+            <blockquote class="mermaid-pullquote">"I was told I lit up like a lighthouse when I spoke about the shop."</blockquote>
+            <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="mermaid-read-link">read on substack →</a>
           </div>
-
-          <!-- SECONDARY CARDS -->
-          <div class="mermaid-cards">
-            <div class="mermaid-card">
-              <div class="mermaid-card-meta">
-                <span class="mermaid-category">community</span>
-                <span class="mermaid-date">coming soon</span>
-              </div>
-              <h4 class="mermaid-card-title">huhbub turns 10</h4>
-              <p class="mermaid-card-lede">A decade of making culture happen. What it cost, what it built, and what comes next.</p>
-              <a href="/stories" class="mermaid-card-link">read when published →</a>
-            </div>
-            <div class="mermaid-card">
-              <div class="mermaid-card-meta">
-                <span class="mermaid-category">huhbub</span>
-                <span class="mermaid-date">coming soon</span>
-              </div>
-              <h4 class="mermaid-card-title">The power of the room</h4>
-              <p class="mermaid-card-lede">On why live events still matter — and what gets lost when we stop making space for them.</p>
-              <a href="/stories" class="mermaid-card-link">read when published →</a>
-            </div>
-            <div class="mermaid-subscribe">
-              <p class="mermaid-subscribe-label">get new essays in your inbox</p>
-              <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-mermaid-subscribe">subscribe free on substack →</a>
-            </div>
+          <div class="mermaid-subscribe-box">
+            <p class="mermaid-subscribe-eyebrow">get new essays in your inbox</p>
+            <p class="mermaid-subscribe-body">Subscribe free on Substack — no spam, just writing.</p>
+            <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-mermaid-subscribe">subscribe on substack →</a>
           </div>
         </div>
+
       </div>
     </div>
 
@@ -309,44 +296,37 @@ import Splash from '../components/Splash.astro';
   .feat-link-secondary { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
   .feat-link-secondary:hover { color: var(--text-primary); }
 
-  /* CURIOUS MERMAID EDITORIAL */
-  .mermaid-section { background: #0A0820; padding: 56px 32px; border-top: 0.5px solid rgba(127,119,221,0.2); }
+  /* CURIOUS MERMAID */
+  .mermaid-section { background: #0A0820; padding: 48px 32px 56px; border-top: 0.5px solid rgba(127,119,221,0.2); }
   .mermaid-inner { max-width: 1060px; margin: 0 auto; }
-  .mermaid-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; gap: 24px; flex-wrap: wrap; }
-  .mermaid-overline { font-size: 10px; color: #7F77DD; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
-  .mermaid-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 300; color: #fff; letter-spacing: -1px; line-height: 1; margin-bottom: 8px; }
-  .mermaid-sub { font-size: 14px; color: #AFA9EC; line-height: 1.6; max-width: 400px; }
+
+  /* Masthead */
+  .mermaid-masthead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(127,119,221,0.15); gap: 24px; flex-wrap: wrap; }
+  .mermaid-masthead-left { display: flex; align-items: center; gap: 20px; }
+  .mermaid-heart { width: 44px; height: 40px; flex-shrink: 0; filter: drop-shadow(0 0 10px rgba(212,83,126,0.4)); animation: mermaid-float 4s ease-in-out infinite; }
+  @keyframes mermaid-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+  .mermaid-overline { font-size: 10px; color: #7F77DD; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+  .mermaid-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: #fff; letter-spacing: -0.5px; line-height: 1; margin-bottom: 4px; }
+  .mermaid-sub { font-size: 13px; color: #7F77DD; line-height: 1.5; max-width: 360px; }
   .mermaid-all-link { font-size: 13px; color: #7F77DD; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; white-space: nowrap; transition: color 0.2s; flex-shrink: 0; }
   .mermaid-all-link:hover { color: #AFA9EC; }
-  .mermaid-grid { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
 
-  /* Feature piece */
-  .mermaid-feature { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(127,119,221,0.2); border-radius: 4px; overflow: hidden; }
-  .mermaid-feature-img { height: 200px; background: linear-gradient(135deg, #1A1040 0%, #0D0B2E 100%); display: flex; align-items: center; justify-content: center; border-bottom: 0.5px solid rgba(127,119,221,0.2); }
-  .mermaid-img-placeholder { font-size: 48px; opacity: 0.5; }
-  .mermaid-feature-body { padding: 28px; }
-  .mermaid-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 14px; }
-  .mermaid-category { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(127,119,221,0.15); padding: 3px 8px; border-radius: 20px; }
+  /* Body */
+  .mermaid-body { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
+  .mermaid-essay-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .mermaid-category { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(127,119,221,0.12); padding: 3px 8px; border-radius: 20px; }
   .mermaid-date { font-size: 12px; color: #534AB7; }
-  .mermaid-feature-title { font-family: var(--font-display); font-size: 28px; font-weight: 300; color: #fff; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.15; }
-  .mermaid-feature-lede { font-size: 14px; color: #AFA9EC; line-height: 1.75; margin-bottom: 20px; }
-  .mermaid-pullquote { font-family: var(--font-display); font-size: 17px; font-style: italic; color: #D4B8F8; border-left: 2px solid #7F77DD; padding-left: 16px; margin: 20px 0; line-height: 1.5; }
+  .mermaid-essay-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: #fff; letter-spacing: -0.5px; margin-bottom: 10px; line-height: 1.2; }
+  .mermaid-essay-lede { font-size: 14px; color: #AFA9EC; line-height: 1.7; margin-bottom: 16px; }
+  .mermaid-pullquote { font-family: var(--font-display); font-size: 16px; font-style: italic; color: #D4B8F8; border-left: 2px solid #7F77DD; padding-left: 14px; margin: 0 0 18px; line-height: 1.5; }
   .mermaid-read-link { font-size: 13px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.3); padding-bottom: 2px; transition: color 0.2s; display: inline-block; }
   .mermaid-read-link:hover { color: #fff; }
 
-  /* Secondary cards */
-  .mermaid-cards { display: flex; flex-direction: column; gap: 16px; }
-  .mermaid-card { background: rgba(255,255,255,0.03); border: 0.5px solid rgba(127,119,221,0.15); border-radius: 4px; padding: 22px; transition: border-color 0.2s; }
-  .mermaid-card:hover { border-color: rgba(127,119,221,0.4); }
-  .mermaid-card-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
-  .mermaid-card-title { font-family: var(--font-display); font-size: 18px; font-weight: 300; color: #D4B8F8; letter-spacing: -0.3px; margin-bottom: 6px; }
-  .mermaid-card-lede { font-size: 13px; color: #7F77DD; line-height: 1.65; margin-bottom: 12px; }
-  .mermaid-card-link { font-size: 12px; color: #534AB7; border-bottom: 0.5px solid rgba(83,74,183,0.3); padding-bottom: 1px; }
-
-  /* Subscribe nudge */
-  .mermaid-subscribe { background: linear-gradient(135deg, rgba(127,119,221,0.12) 0%, rgba(83,74,183,0.08) 100%); border: 0.5px solid rgba(127,119,221,0.25); border-radius: 4px; padding: 24px; text-align: center; }
-  .mermaid-subscribe-label { font-size: 13px; color: #AFA9EC; margin-bottom: 14px; line-height: 1.5; }
-  .btn-mermaid-subscribe { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 10px 20px; border-radius: 6px; transition: opacity 0.2s; display: inline-block; }
+  /* Subscribe */
+  .mermaid-subscribe-box { background: linear-gradient(135deg, rgba(127,119,221,0.1), rgba(83,74,183,0.06)); border: 0.5px solid rgba(127,119,221,0.2); border-radius: 4px; padding: 24px; }
+  .mermaid-subscribe-eyebrow { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .mermaid-subscribe-body { font-size: 13px; color: #AFA9EC; line-height: 1.6; margin-bottom: 16px; }
+  .btn-mermaid-subscribe { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 10px 18px; border-radius: 6px; transition: opacity 0.2s; display: inline-block; }
   .btn-mermaid-subscribe:hover { opacity: 0.85; }
 
   /* SHIMMER TRANSITION */
@@ -377,8 +357,9 @@ import Splash from '../components/Splash.astro';
     .nav-burger { display: flex; }
     .hero-featured-inner { grid-template-columns: 1fr; }
     .featured-polaroid { margin: 0 auto; }
-    .mermaid-grid { grid-template-columns: 1fr; }
-    .mermaid-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .mermaid-body { grid-template-columns: 1fr; }
+    .mermaid-masthead { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .mermaid-masthead-left { flex-direction: row; }
     .about-grid { grid-template-columns: 1fr; gap: 28px; }
   }
 
