@@ -123,27 +123,6 @@ import Splash from '../components/Splash.astro';
       </div>
     </div>
 
-    <!-- LOGO BAR -->
-    <div class="logo-bar">
-      <p class="logo-bar-label">partners & clients</p>
-      <div class="logo-bar-inner">
-        {['British Library','Royal Society of Literature','Barbican','Primadonna Festival','Primo Toys','Games London','WorkWise for Screen','October Books','GamesAid','Failbetter Games'].map(org => (
-          <span class="logo-pill">{org}</span>
-        ))}
-      </div>
-    </div>
-
-    <!-- PRESS STRIP -->
-    <div class="press-strip">
-      <span class="press-label">as featured in</span>
-      <div class="press-inner">
-        {['The Guardian','The Bookseller','GamesIndustry.biz','Ensemble 2026'].map(pub => (
-          <span class="press-name">{pub}</span>
-        ))}
-      </div>
-      <a href="/press" class="press-all">read the press →</a>
-    </div>
-
     <!-- THE CURIOUS MERMAID — EDITORIAL -->
     <div class="mermaid-section">
       <div class="mermaid-inner">
@@ -190,6 +169,27 @@ import Splash from '../components/Splash.astro';
         </div>
 
       </div>
+    </div>
+
+    <!-- LOGO BAR -->
+    <div class="logo-bar">
+      <p class="logo-bar-label">partners & clients</p>
+      <div class="logo-bar-inner">
+        {['British Library','Royal Society of Literature','Barbican','Primadonna Festival','Primo Toys','Games London','WorkWise for Screen','October Books','GamesAid','Failbetter Games'].map(org => (
+          <span class="logo-pill">{org}</span>
+        ))}
+      </div>
+    </div>
+
+    <!-- PRESS STRIP -->
+    <div class="press-strip">
+      <span class="press-label">as featured in</span>
+      <div class="press-inner">
+        {['The Guardian','The Bookseller','GamesIndustry.biz','Ensemble 2026'].map(pub => (
+          <span class="press-name">{pub}</span>
+        ))}
+      </div>
+      <a href="/press" class="press-all">read the press →</a>
     </div>
 
     <!-- FOOTER -->
