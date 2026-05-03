@@ -252,21 +252,7 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
         active.style.setProperty('z-index', '10', 'important');
       }
 
-      // Solid hero background matching tab colour, dark text
-      const hero = document.querySelector('.page-hero');
-      if (hero) {
-        hero.style.transition = 'none';
-        hero.style.setProperty('--sky', color);
-        hero.style.setProperty('--sky-mid', color);
-        hero.style.setProperty('background', color, 'important');
-        const overline = hero.querySelector('.page-overline');
-        if (overline) overline.style.color = '#7F77DD';
-        const h1 = hero.querySelector('h1');
-        if (h1) h1.style.setProperty('color', '#1E1040', 'important');
-        const sub = hero.querySelector('.page-sub');
-        if (sub) sub.style.setProperty('color', '#3C2870', 'important');
-        hero.style.setProperty('--accent-soft', '#7F77DD');
-      }
+      // Hero background is now set per-page in CSS — no JS override needed
     })();
 
     // Cursor particle trail — seasonal motes that follow the cursor
