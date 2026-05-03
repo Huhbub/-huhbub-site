@@ -235,9 +235,10 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       const href = active?.getAttribute('href');
       const color = TAB_COLORS[href] || 'rgba(255,255,255,0.1)';
 
-    // Folder tab bar — simple reliable approach
+    // Folder tab bar
     (function() {
       const TAB_COLORS = {
+        '/':         '#E8E0F8',
         '/services': '#FAD9A0',
         '/projects': '#F5C8DC',
         '/events':   '#B8E8D8',
@@ -251,12 +252,8 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       if (!nav) return;
       const active = nav.querySelector('.nav-link.active');
       const href = active?.getAttribute('href');
-      const color = TAB_COLORS[href] || 'rgba(255,255,255,0.1)';
-
-      // Set nav bottom border as the folder line
+      const color = TAB_COLORS[href] || TAB_COLORS['/'];
       nav.style.borderBottom = `8px solid ${color}`;
-
-      // Active tab: match background + remove bottom radius so it flows into bar
       if (active) {
         active.style.setProperty('background', color, 'important');
         active.style.setProperty('border-radius', '6px 8px 0 0', 'important');
@@ -264,7 +261,12 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
         active.style.setProperty('margin-bottom', '-8px', 'important');
         active.style.setProperty('position', 'relative', 'important');
         active.style.setProperty('z-index', '10', 'important');
-        active.style.setProperty('box-shadow', `0 8px 0 ${color}`, 'important');
+      }
+
+      // Tint the page hero to match the tab colour
+      const hero = document.querySelector('.page-hero');
+      if (hero) {
+        hero.style.background = `linear-gradient(180deg, ${color}40 0%, transparent 100%)`;
       }
     })();
 
