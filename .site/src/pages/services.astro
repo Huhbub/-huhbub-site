@@ -117,21 +117,56 @@ import Base from '../layouts/Base.astro';
         <div class="origami-cluster" id="origami-cluster">
           <div class="origami-heart-wrap" id="origami-toggle">
             <div class="origami-closed">
-              <svg viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg" class="origami-svg">
+              <svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" class="origami-svg">
                 <defs>
-                  <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#F5A7CC"/>
-                    <stop offset="45%" stop-color="#D4537E"/>
-                    <stop offset="100%" stop-color="#AFA9EC"/>
+                  <!-- Light face — top left lobe -->
+                  <linearGradient id="hg-light" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#F5B8C8"/>
+                    <stop offset="100%" stop-color="#E8829A"/>
                   </linearGradient>
+                  <!-- Mid face — top right lobe -->
+                  <linearGradient id="hg-mid" x1="100%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stop-color="#D4537E"/>
+                    <stop offset="100%" stop-color="#C04060"/>
+                  </linearGradient>
+                  <!-- Dark face — bottom point -->
+                  <linearGradient id="hg-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#C04060"/>
+                    <stop offset="100%" stop-color="#A03050"/>
+                  </linearGradient>
+                  <!-- Shadow -->
+                  <filter id="shadow">
+                    <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(0,0,0,0.25)"/>
+                  </filter>
                 </defs>
-                <path d="M50 82 C50 82 5 52 5 28 C5 14 15 5 28 5 C36 5 43 9 50 16 C57 9 64 5 72 5 C85 5 95 14 95 28 C95 52 50 82 50 82Z" fill="url(#hg)"/>
-                <line x1="50" y1="16" x2="50" y2="82" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
-                <line x1="5" y1="28" x2="95" y2="28" stroke="rgba(255,255,255,0.15)" stroke-width="0.8"/>
-                <line x1="5" y1="28" x2="50" y2="82" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
-                <line x1="95" y1="28" x2="50" y2="82" stroke="rgba(255,255,255,0.1)" stroke-width="0.8"/>
-                <text x="50" y="46" text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.75)" font-family="serif" font-style="italic">open me</text>
-                <text x="50" y="57" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.5)" font-family="serif" font-style="italic">happiness origami</text>
+
+                <!-- Left lobe — lighter pink, facing slightly upward -->
+                <path d="M60 38 C60 38 8 35 8 18 C8 7 17 2 28 2 C38 2 48 10 60 22 Z"
+                      fill="url(#hg-light)" stroke="#C8607A" stroke-width="0.5"/>
+
+                <!-- Right lobe — darker pink -->
+                <path d="M60 38 C60 38 112 35 112 18 C112 7 103 2 92 2 C82 2 72 10 60 22 Z"
+                      fill="url(#hg-mid)" stroke="#A84060" stroke-width="0.5"/>
+
+                <!-- Bottom point — darkest, the folded-down triangle -->
+                <path d="M60 38 L8 18 L60 105 L112 18 Z"
+                      fill="url(#hg-dark)" stroke="#903050" stroke-width="0.5"/>
+
+                <!-- Central crease line — the fold -->
+                <line x1="60" y1="22" x2="60" y2="105" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+
+                <!-- Horizontal fold line across the lobes -->
+                <line x1="8" y1="18" x2="112" y2="18" stroke="rgba(255,255,255,0.2)" stroke-width="0.6"/>
+
+                <!-- Inner fold detail — left lobe crease -->
+                <line x1="34" y1="2" x2="60" y2="38" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+
+                <!-- Inner fold detail — right lobe crease -->
+                <line x1="86" y1="2" x2="60" y2="38" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+
+                <!-- "open me" text -->
+                <text x="60" y="58" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,0.8)" font-family="Georgia, serif" font-style="italic">open me</text>
+                <text x="60" y="70" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.55)" font-family="Georgia, serif" font-style="italic">happiness origami</text>
               </svg>
             </div>
             <div class="origami-open" id="origami-open">
@@ -299,8 +334,8 @@ import Base from '../layouts/Base.astro';
   }
   .origami-cluster.is-open .origami-closed { opacity: 0; pointer-events: none; position: absolute; }
   .origami-svg {
-    width: 160px; height: 144px;
-    filter: drop-shadow(3px 5px 12px rgba(212,83,126,0.35));
+    width: 220px; height: 200px;
+    filter: drop-shadow(3px 6px 12px rgba(180,60,80,0.3));
     transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
   }
   .origami-closed:hover .origami-svg { transform: scale(1.06) rotate(-3deg); }
