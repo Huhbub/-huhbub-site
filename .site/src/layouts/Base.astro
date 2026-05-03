@@ -232,10 +232,17 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       };
       const nav = document.querySelector('nav');
       if (!nav) return;
-      const active = nav.querySelector('.nav-link.active');
-      const href = active?.getAttribute('href');
+
+      // Detect current page
+      const homeMarker = nav.querySelector('.nav-home-active');
+      const active = homeMarker ? null : nav.querySelector('.nav-link.active');
+      const href = homeMarker ? '/' : active?.getAttribute('href');
       const color = TAB_COLORS[href] || TAB_COLORS['/'];
+
+      // Set nav border
       nav.style.borderBottom = `8px solid ${color}`;
+
+      // Style active tab (not on home — logo stays clean)
       if (active) {
         active.style.setProperty('background', color, 'important');
         active.style.setProperty('border-radius', '6px 8px 0 0', 'important');
@@ -245,21 +252,18 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
         active.style.setProperty('z-index', '10', 'important');
       }
 
-      // Solid hero background matching tab colour, dark text for legibility
+      // Solid hero background matching tab colour, dark text
       const hero = document.querySelector('.page-hero');
       if (hero) {
-        hero.style.background = color;
-        // All tab colours are pastels — use dark text
-        hero.style.setProperty('--text-primary', '#1E1040');
-        hero.style.setProperty('--text-secondary', '#3C2870');
-        hero.style.setProperty('--accent-soft', '#7F77DD');
-        // Also tint the overline and h1
+        hero.style.setProperty('background', color, 'important');
         const overline = hero.querySelector('.page-overline');
         if (overline) overline.style.color = '#7F77DD';
         const h1 = hero.querySelector('h1');
-        if (h1) h1.style.color = '#1E1040';
+        if (h1) h1.style.setProperty('color', '#1E1040', 'important');
         const sub = hero.querySelector('.page-sub');
-        if (sub) sub.style.color = '#3C2870';
+        if (sub) sub.style.setProperty('color', '#3C2870', 'important');
+        // Overline line colour
+        hero.style.setProperty('--accent-soft', '#7F77DD');
       }
     })();
 
