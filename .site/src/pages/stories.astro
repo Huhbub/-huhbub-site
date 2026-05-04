@@ -94,21 +94,12 @@ import Base from '../layouts/Base.astro';
           <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="paper-byline">By Sara Veal · read on substack →</a>
         </div>
 
-        <!-- RIGHT: snippets + subscribe -->
+        <!-- RIGHT: subscribe only -->
         <div class="paper-col paper-col-side">
-          <div class="paper-snippet">
-            <div class="paper-snippet-tag">coming soon</div>
-            <div class="paper-snippet-title">Paris Syndrome</div>
-            <div class="paper-snippet-desc">On belonging, disappointment, and the city that doesn't love you back.</div>
-          </div>
-          <div class="paper-snippet">
-            <div class="paper-snippet-tag">essay collection</div>
-            <div class="paper-snippet-title">You Don't Have to Be Cool</div>
-            <div class="paper-snippet-desc">Pop culture as a lens for identity, belonging, and authenticity.</div>
-          </div>
-          <div class="paper-snippet" style="border-bottom:none;padding-bottom:0;margin-bottom:24px;">
+          <div class="paper-snippet" style="border-bottom:none;margin-bottom:24px;">
             <div class="paper-snippet-tag">in development</div>
             <div class="paper-snippet-title">More stories taking shape for huhbub's 10th year</div>
+            <div class="paper-snippet-desc">Subscribe to be notified when new essays land.</div>
           </div>
           <div class="paper-subscribe">
             <div class="paper-subscribe-label">get new essays in your inbox</div>
@@ -201,10 +192,10 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
 
   /* POSTCARD */
   /* FLIP POSTCARD */
-  .postcard-wrap { margin-bottom: 24px; perspective: 1000px; }
+  .postcard-wrap { margin-bottom: 28px; perspective: 1000px; display: flex; justify-content: center; }
   .postcard-flip {
-    width: 100%; max-width: 360px;
-    transform: rotate(-2deg);
+    width: 100%; max-width: 440px;
+    transform: rotate(-1.5deg);
     cursor: pointer;
   }
   .postcard-flip:hover .postcard-front-hint { opacity: 1; }

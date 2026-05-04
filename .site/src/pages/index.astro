@@ -139,33 +139,45 @@ import Splash from '../components/Splash.astro';
 
         <div class="mermaid-body">
 
-          <!-- POSTCARD -->
+          <!-- FLIP POSTCARD -->
           <div class="mermaid-postcard-wrap">
-            <div class="mermaid-postcard">
-              <div class="mermaid-postcard-img">
-                <img src="/images/siren-gift-postcard.jpg" alt="The Siren's Gift" onerror="this.style.display='none'"/>
-              </div>
-              <div class="mermaid-postcard-back">
-                <div class="mermaid-postcard-hand">The Siren's Gift</div>
-                <div class="mermaid-postcard-sub">a story about letting go</div>
+            <div class="mermaid-postcard-flip" id="mermaid-postcard-flip">
+              <div class="mermaid-postcard-inner">
+                <div class="mermaid-postcard-front">
+                  <img src="/images/siren-gift-postcard.jpg" alt="The Siren's Gift"/>
+                  <div class="mermaid-postcard-hint">turn over →</div>
+                </div>
+                <div class="mermaid-postcard-back">
+                  <div class="mermaid-postcard-back-inner">
+                    <div class="mermaid-postcard-back-left">
+                      <div class="mermaid-postcard-pullquote">"I was told I lit up like a lighthouse when I spoke about the shop."</div>
+                      <div class="mermaid-postcard-divider"></div>
+                      <div class="mermaid-postcard-hand">The Siren's Gift</div>
+                      <div class="mermaid-postcard-sub">— Apr 2025</div>
+                    </div>
+                    <div class="mermaid-postcard-back-right">
+                      <div class="mermaid-stamp">✦</div>
+                      <div class="mermaid-postmark">APR<br>2025<br>SO14</div>
+                      <div class="mermaid-address-lines">
+                        <div class="mermaid-address-line"></div>
+                        <div class="mermaid-address-line"></div>
+                        <div class="mermaid-address-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <!-- SINGLE ESSAY -->
+          <!-- TEXT SIDE -->
           <div class="mermaid-feed">
-            <div class="mermaid-feed-item" style="border-bottom:none;">
-              <div class="mermaid-feed-date"><span>APR</span><span>2025</span></div>
-              <div>
-                <div class="mermaid-feed-tag">personal</div>
-                <div class="mermaid-feed-title">The Siren's Gift</div>
-                <p class="mermaid-feed-desc">How a shop of secondhand treasures led me to creativity, community, and myself. The story of Sirena Curiosa — a 6×6 stall, a diagnosis, and what happens when you finally let go.</p>
-                <blockquote class="mermaid-feed-quote">"I was told I lit up like a lighthouse when I spoke about the shop."</blockquote>
-                <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="mermaid-feed-read">read on substack →</a>
-              </div>
-            </div>
+            <div class="mermaid-feed-tag">personal · apr 2025</div>
+            <div class="mermaid-feed-title">The Siren's Gift</div>
+            <p class="mermaid-feed-desc">How a shop of secondhand treasures led me to creativity, community, and myself. The story of Sirena Curiosa — a 6×6 stall, a diagnosis, and what happens when you finally let go.</p>
+            <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="mermaid-feed-read">read on substack →</a>
             <div class="mermaid-subscribe">
-              <span class="mermaid-subscribe-text">Subscribe to The Curious Mermaid on Substack — no spam, just writing.</span>
+              <span class="mermaid-subscribe-text">Subscribe to The Curious Mermaid — no spam, just writing.</span>
               <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="mermaid-subscribe-btn">subscribe free →</a>
             </div>
           </div>
@@ -308,28 +320,42 @@ import Splash from '../components/Splash.astro';
   .mermaid-feed-quote { font-family: var(--font-display); font-size: 15px; font-style: italic; color: #AFA9EC; border-left: 2px solid rgba(175,169,236,0.4); padding-left: 12px; margin: 10px 0 12px; line-height: 1.5; }
   .mermaid-all-link { font-size: 12px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.4); padding-bottom: 1px; white-space: nowrap; flex-shrink: 0; transition: color 0.2s; }
   .mermaid-all-link:hover { color: #F5F0FF; }
-  .mermaid-body { display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: start; }
+  .mermaid-body { display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: start; }
 
-  /* Postcard */
-  .mermaid-postcard-wrap { flex-shrink: 0; }
-  .mermaid-postcard { background: #fff; border: 4px solid #fff; outline: 0.5px solid #c8c0b8; box-shadow: 2px 3px 10px rgba(0,0,0,0.35); transform: rotate(-2deg); }
-  .mermaid-postcard-img { width: 100%; overflow: hidden; background: #1a0a2e; }
-  .mermaid-postcard-img img { width: 100%; height: auto; display: block; }
-  .mermaid-postcard-back { padding: 10px 12px; background: #fffdf8; border-top: 0.5px solid #e0d8cc; }
-  .mermaid-postcard-hand { font-family: var(--font-handwriting); font-size: 15px; color: #2a1a1a; line-height: 1.3; }
-  .mermaid-postcard-sub { font-family: var(--font-handwriting); font-size: 12px; color: #888; }
+  /* Flip postcard */
+  .mermaid-postcard-wrap { perspective: 1000px; }
+  .mermaid-postcard-flip { width: 100%; transform: rotate(-2deg); cursor: pointer; }
+  .mermaid-postcard-flip:hover .mermaid-postcard-hint { opacity: 1; }
+  .mermaid-postcard-inner { position: relative; transform-style: preserve-3d; transition: transform 0.7s cubic-bezier(0.4,0,0.2,1); }
+  .mermaid-postcard-flip.flipped .mermaid-postcard-inner { transform: rotateY(180deg); }
+  .mermaid-postcard-front { backface-visibility: hidden; border: 6px solid #fff; outline: 0.5px solid #c8c0b8; box-shadow: 2px 4px 14px rgba(0,0,0,0.3); overflow: hidden; position: relative; background: #000; }
+  .mermaid-postcard-front img { width: 100%; height: auto; display: block; }
+  .mermaid-postcard-hint { position: absolute; bottom: 10px; right: 12px; font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.85); font-family: var(--font-body); opacity: 0; transition: opacity 0.2s; background: rgba(0,0,0,0.35); padding: 3px 8px; border-radius: 2px; }
+  .mermaid-postcard-back { position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); border: 6px solid #fff; outline: 0.5px solid #c8c0b8; box-shadow: 2px 4px 14px rgba(0,0,0,0.3); background: #fffdf8; overflow: hidden; }
+  .mermaid-postcard-back-inner { display: grid; grid-template-columns: 1fr 72px; height: 100%; min-height: 180px; }
+  .mermaid-postcard-back-left { padding: 20px 16px; border-right: 0.5px solid #e0d8cc; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+  .mermaid-postcard-pullquote { font-family: var(--font-display); font-size: clamp(14px, 1.5vw, 18px); font-style: italic; color: #1E1040; line-height: 1.4; }
+  .mermaid-postcard-divider { width: 32px; height: 0.5px; background: #ddd; }
+  .mermaid-postcard-hand { font-family: var(--font-handwriting); font-size: 16px; color: #2a1a1a; }
+  .mermaid-postcard-sub { font-family: var(--font-handwriting); font-size: 13px; color: #888; }
+  .mermaid-postcard-back-right { padding: 14px 10px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; }
+  .mermaid-stamp { width: 28px; height: 34px; border: 1px solid #c8b8c8; background: #f8eef8; display: flex; align-items: center; justify-content: center; font-size: 12px; position: relative; }
+  .mermaid-stamp::after { content: ''; position: absolute; inset: 2px; border: 0.5px dashed #D4537E; }
+  .mermaid-postmark { font-size: 8px; color: #aaa; letter-spacing: 0.5px; text-align: right; line-height: 1.6; font-family: var(--font-body); }
+  .mermaid-address-lines { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+  .mermaid-address-line { width: 100%; height: 0.5px; background: #ddd; }
 
-  /* Feed */
-  .mermaid-feed { display: flex; flex-direction: column; }
+  /* Feed/text side */
+  .mermaid-feed { display: flex; flex-direction: column; gap: 12px; padding-top: 8px; }
   .mermaid-feed-item { display: grid; grid-template-columns: 48px 1fr; border-bottom: 0.5px solid rgba(255,255,255,0.06); padding: 16px 0; }
   .mermaid-feed-item:first-child { padding-top: 0; }
   .mermaid-feed-date { display: flex; flex-direction: column; gap: 1px; padding-top: 2px; }
   .mermaid-feed-date span { font-size: 9px; letter-spacing: 0.5px; color: #AFA9EC; text-transform: uppercase; line-height: 1.4; }
   .mermaid-feed-date span:last-child { color: #7F77DD; }
-  .mermaid-feed-tag { font-size: 9px; letter-spacing: 1.5px; color: #D4537E; text-transform: uppercase; margin-bottom: 3px; }
-  .mermaid-feed-title { font-family: var(--font-display); font-size: 18px; color: #F5F0FF; line-height: 1.2; margin-bottom: 4px; }
-  .mermaid-feed-desc { font-size: 12px; color: #C8C4E0; line-height: 1.6; margin-bottom: 6px; }
-  .mermaid-feed-read { font-size: 11px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.4); padding-bottom: 1px; display: inline-block; transition: color 0.2s; }
+  .mermaid-feed-tag { font-size: 10px; letter-spacing: 1.5px; color: #D4537E; text-transform: uppercase; margin-bottom: 6px; }
+  .mermaid-feed-title { font-family: var(--font-display); font-size: clamp(22px, 2.5vw, 30px); color: #F5F0FF; line-height: 1.15; margin-bottom: 10px; font-weight: 300; }
+  .mermaid-feed-desc { font-size: 14px; color: #C8C4E0; line-height: 1.75; margin-bottom: 12px; }
+  .mermaid-feed-read { font-size: 13px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.4); padding-bottom: 1px; display: inline-block; transition: color 0.2s; }
   .mermaid-feed-read:hover { color: #F5F0FF; }
   .mermaid-feed-coming { opacity: 0.45; }
   .mermaid-subscribe { margin-top: 20px; padding-top: 16px; border-top: 0.5px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
@@ -1064,4 +1090,8 @@ document.querySelectorAll('.filter').forEach(btn => {
     });
   });
 });
+
+// Homepage postcard flip
+const mp = document.getElementById('mermaid-postcard-flip');
+if (mp) mp.addEventListener('click', () => mp.classList.toggle('flipped'));
 </script>
