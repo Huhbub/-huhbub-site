@@ -31,7 +31,12 @@ const projects = [
   { slug:'primadonna', title:'Primadonna Festival', dates:'2019–2024', type:'volunteer', caption:'festival · 2019–24', blurb:'Administration support for the Primadonna Prize and event hosting across five years of this beloved feminist festival.', poster:'/images/poster-primadonna.jpg', rot:1.5 },
 ];
 
-const typeLabel = { flagship: 'flagship', commissioned: 'commissioned', 'creative partnership': 'creative partnership', volunteer: 'volunteer' };
+// Sort by start year, most recent first
+const sorted = [...projects].sort((a, b) => {
+  const yearA = parseInt(a.dates.split('–')[0].split('–')[0]);
+  const yearB = parseInt(b.dates.split('–')[0].split('–')[0]);
+  return yearB - yearA;
+});
 const typeColor = { flagship: '#D4537E', commissioned: '#EF9F27', 'creative partnership': '#7F77DD', volunteer: '#B5D4F4' };
 ---
 
@@ -87,7 +92,7 @@ const typeColor = { flagship: '#D4537E', commissioned: '#EF9F27', 'creative part
   <div class="corkboard">
     <div class="corkboard-texture"></div>
     <div class="polaroids-grid" id="polaroids-grid">
-      {projects.map((p, i) => (
+      {sorted.map((p, i) => (
         <div
           class="polaroid-wrap"
           data-type={p.type}
@@ -272,14 +277,10 @@ const typeColor = { flagship: '#D4537E', commissioned: '#EF9F27', 'creative part
     font-family: var(--font-display); font-size: 56px; font-weight: 300;
     color: rgba(80,60,40,0.3); line-height: 1;
   }
-  .polaroid-label { padding: 8px 2px 0; }
+  .polaroid-label { padding: 10px 4px 2px; }
   .polaroid-caption {
     display: block; font-family: var(--font-handwriting, 'Caveat', cursive);
-    font-size: 14px; color: #C8C4E0; line-height: 1.3;
-  }
-  .polaroid-year {
-    display: block; font-size: 10px; color: #C8C4E0;
-    margin-top: 2px; letter-spacing: 0.5px;
+    font-size: 16px; color: #1a1a1a; line-height: 1.3;
   }
 
   /* BACK */
