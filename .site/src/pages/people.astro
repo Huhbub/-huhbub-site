@@ -210,12 +210,12 @@ const rotations = [-2, 1.5, -1, 2.5, -1.5, 1];
   .mobile-menu-links a:hover { color: var(--accent-soft); }
 
   /* PAGE HERO */
-  .page-hero { background: #B5D4F4; margin-top: -4px; padding: 48px 32px 40px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .page-hero { background: #E8829A; margin-top: -4px; padding: 48px 32px 40px; border-bottom: 0.5px solid var(--border-subtle);  }
   .page-hero-inner { max-width: 960px; margin: 0 auto; }
-  .page-overline { font-size: 11px; color: rgba(30,16,64,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline { font-size: 11px; color: rgba(30,16,64,0.65); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
   .page-overline::before { content: ''; width: 24px; height: 1.5px; background: rgba(30,16,64,0.45); display: inline-block; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
-  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: #D4D0F0; line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
-  .page-sub { font-size: 15px; color: #C8C4E0; line-height: 1.7; max-width: 520px; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: #1E1040; line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: #2A1040; line-height: 1.7; max-width: 520px; }
 
   /* GALLERY WALL */
   .gallery-wall {
@@ -309,7 +309,7 @@ const rotations = [-2, 1.5, -1, 2.5, -1.5, 1];
   /* PORTRAIT */
   .frame-portrait {
     width: 100%;
-    background: #2A1E14;
+    background: linear-gradient(135deg, #2A1848, #0E0B2E);
     overflow: hidden;
     position: relative;
   }
@@ -324,9 +324,9 @@ const rotations = [-2, 1.5, -1, 2.5, -1.5, 1];
   .portrait-fallback {
     position: absolute; inset: 0;
     display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(135deg, #2A1E14, #1A1208);
+    background: linear-gradient(135deg, #2A1848, #0E0B2E);
     font-family: var(--font-display); font-size: 32px; font-weight: 300;
-    color: rgba(200,168,118,0.4);
+    color: rgba(245,167,204,0.4);
     z-index: 0;
   }
   .frame-portrait.no-img img { display: none; }
