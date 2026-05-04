@@ -103,8 +103,8 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
   #float-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.5; }
   .sara-inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 240px 1fr; gap: 64px; align-items: center; }
   .portrait-frame { width: 240px; height: 240px; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 4px 6px 24px rgba(0,0,0,0.5); border: 3px solid rgba(255,255,255,0.2); }
-  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .portrait-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2A1848, #0E0B2E); font-family: var(--font-display); font-size: 64px; font-weight: 300; color: rgba(245,167,204,0.5); letter-spacing: 4px; }
+  .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; }
+  .portrait-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2A1848, #0E0B2E); font-family: var(--font-display); font-size: 64px; font-weight: 300; color: rgba(245,167,204,0.5); letter-spacing: 4px; z-index: 1; }
   .portrait-frame.no-img img { display: none; }
   .sara-overline { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
   .sara-overline::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); display: block; }
