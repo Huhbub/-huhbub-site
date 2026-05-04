@@ -275,7 +275,7 @@ import Base from '../layouts/Base.astro';
   .page-hero { background: #EF9F27; padding: 56px 32px 48px; }
   .page-hero-inner { max-width: 960px; margin: 0 auto; }
   .page-overline { font-size: 11px; color: rgba(30,16,64,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-  .page-overline::before { content: ''; width: 24px; height: 1px; background: #2A1040; display: block; opacity: 0.5; }
+  .page-overline::before { content: ''; width: 24px; height: 1.5px; background: rgba(30,16,64,0.45); display: inline-block; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
   h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: #1E1040; line-height: 1.05; letter-spacing: -2px; margin-bottom: 16px; }
   .page-sub { font-size: 16px; color: #2A1040; line-height: 1.75; max-width: 560px; }
 
@@ -366,8 +366,8 @@ import Base from '../layouts/Base.astro';
     padding: 18px 18px 10px; border-bottom: 0.5px solid rgba(212,83,126,0.15);
   }
   .origami-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
-  .origami-title { font-size: 15px; font-weight: 500; color: #AFA9EC; margin-bottom: 2px; }
-  .origami-tagline { font-size: 12px; color: #AFA9EC; line-height: 1.4; }
+  .origami-title { font-size: 15px; font-weight: 500; color: #C8C4E0; margin-bottom: 2px; }
+  .origami-tagline { font-size: 12px; color: #C8C4E0; line-height: 1.4; }
   .origami-close-btn {
     margin-left: auto; background: none; border: none; cursor: pointer;
     font-size: 20px; color: #C07080; line-height: 1; flex-shrink: 0; padding: 0 2px;
@@ -377,9 +377,9 @@ import Base from '../layouts/Base.astro';
   .origami-svc-list { padding: 0 10px 10px; }
   .origami-trigger { background: none; }
   .origami-trigger:hover, .origami-trigger.open { background: rgba(212,83,126,0.08) !important; }
-  .origami-trigger .svc-name { color: #AFA9EC; }
+  .origami-trigger .svc-name { color: #C8C4E0; }
   .origami-trigger .svc-arrow svg { stroke: #993556; }
-  .origami-inner-text { color: #AFA9EC; border-top-color: rgba(212,83,126,0.15); }
+  .origami-inner-text { color: #C8C4E0; border-top-color: rgba(212,83,126,0.15); }
 
   .services-cta { background: var(--sky, #07051A); padding: 56px 32px; border-top: 0.5px solid var(--border-subtle); text-align: center;  }
   .cta-inner { max-width: 560px; margin: 0 auto; }
@@ -389,7 +389,7 @@ import Base from '../layouts/Base.astro';
   .btn-cta:hover { opacity: 0.85; }
 
   /* FOOTER */
-  .footer-links a { font-size: 13px; color: #AFA9EC; transition: color 0.2s; }
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
   .footer-links a:hover { color: #fff; }
 
   @media (max-width: 768px) {
@@ -400,15 +400,15 @@ import Base from '../layouts/Base.astro';
   }
   footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
   .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #AFA9EC; margin-bottom: 2px; letter-spacing: -0.3px; }
+  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #C8C4E0; margin-bottom: 2px; letter-spacing: -0.3px; }
   .footer-sub { font-size: 11px; color: #7F77DD; }
-  .footer-address { font-size: 10px; color: #9B96CC; margin-top: 2px; }
+  .footer-address { font-size: 10px; color: #C8C4E0; margin-top: 2px; }
   .footer-middle { text-align: center; }
-  .footer-subscribe-label { font-size: 11px; color: #AFA9EC; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
   .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
   .btn-subscribe-footer:hover { opacity: 0.85; }
   .footer-links { display: flex; gap: 20px; }
-  .footer-links a { font-size: 13px; color: #AFA9EC; transition: color 0.2s; }
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
   .footer-links a:hover { color: #fff; }
 </style>
 

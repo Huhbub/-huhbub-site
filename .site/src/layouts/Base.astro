@@ -67,6 +67,7 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       transition: filter 0.2s, color 0.2s;
       z-index: 1;
       border: none !important;
+      margin-bottom: 0;
     }
     .nav-links a[href="/services"]  { background: #EF9F27; }
     .nav-links a[href="/projects"]  { background: #D4537E; }
@@ -76,16 +77,22 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     .nav-links a[href="/contact"],
     .nav-links a.nav-cta            { background: #F5A7CC; border-radius: 6px 6px 0 0 !important; padding: 6px 14px 10px !important; color: rgba(10,5,30,0.9) !important; }
     .nav-links a:hover { filter: brightness(1.1); color: #fff !important; }
-    .nav-links a.active { filter: brightness(1.05); z-index: 10; color: rgba(10,5,30,0.85) !important; margin-bottom: -8px; padding-bottom: 18px; }
+    .nav-links a.active {
+      filter: brightness(1.05); z-index: 10;
+      color: rgba(10,5,30,0.85) !important;
+      /* Extend tab down to overlap nav border AND any gap */
+      margin-bottom: -16px !important;
+      padding-bottom: 24px !important;
+    }
     .nav-links a::after { display: none; }
-    .nav-links a, .nav-links a.active { border-bottom: none !important; }
+    .nav-links a { border-bottom: none !important; }
 
     /* Mobile menu always on top */
     .mobile-menu { z-index: 9000 !important; }
     .nav-burger { position: relative; z-index: 101; }
 
-    /* Nav top padding */
-    nav { padding-top: 28px !important; padding-bottom: 0 !important; overflow: visible !important; }
+    /* Nav — overflow visible so tabs can extend below */
+    nav { padding-top: 28px !important; padding-bottom: 0 !important; overflow: visible !important; position: relative; z-index: 100; }
   </style>
 </head>
 <body>
@@ -114,8 +121,8 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       if (active) {
         active.style.setProperty('background', color, 'important');
         active.style.setProperty('border-radius', '6px 6px 0 0', 'important');
-        active.style.setProperty('margin-bottom', '-8px', 'important');
-        active.style.setProperty('padding-bottom', '18px', 'important');
+        active.style.setProperty('margin-bottom', '-16px', 'important');
+        active.style.setProperty('padding-bottom', '24px', 'important');
         active.style.setProperty('position', 'relative', 'important');
         active.style.setProperty('z-index', '10', 'important');
       }
