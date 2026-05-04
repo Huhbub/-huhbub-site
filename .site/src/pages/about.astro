@@ -17,14 +17,6 @@ const clients = [
   'CMC / WorkWise for Screen', 'GamesAid', 'The Sewing Hub CIC',
 ];
 
-const recognition = [
-  { label: 'Game Dev Heroes', detail: 'Unsung Hero 2025' },
-  { label: 'Lovies', detail: '× 2' },
-  { label: 'Inclusion Dividend', detail: 'finalist 2025' },
-  { label: 'LGF Ensemble', detail: '2026' },
-  { label: 'BAFTA Connect', detail: 'member' },
-  { label: 'Develop', detail: "Tomorrow's Star nominee" },
-];
 ---
 
 <Base title="about — huhbub">
@@ -66,16 +58,6 @@ const recognition = [
       <h1>the story so far</h1>
       <p class="page-sub">huhbub is a cultural consultancy founded by Sara Veal — producer, community builder, people strategist, and writer. Based in Southampton. Working everywhere.</p>
     </div>
-  </div>
-
-  <!-- RECOGNITION STRIP -->
-  <div class="recognition-strip">
-    {recognition.map(r => (
-      <div class="recognition-item">
-        <span class="recognition-label">{r.label}</span>
-        <span class="recognition-detail">{r.detail}</span>
-      </div>
-    ))}
   </div>
 
   <!-- THE STORY -->
@@ -254,8 +236,6 @@ const recognition = [
   .portrait-strip-bio a:hover { border-color: var(--accent-soft); }
 
   /* RECOGNITION STRIP */
-  .recognition-strip { background: var(--sky-mid, #0E0B2E); border-bottom: 0.5px solid var(--border-subtle); padding: 0 32px; display: flex; overflow-x: auto; scrollbar-width: none;  }
-  .recognition-strip::-webkit-scrollbar { display: none; }
   .recognition-item { display: flex; flex-direction: column; padding: 16px 28px; border-right: 0.5px solid var(--border-subtle); white-space: nowrap; flex-shrink: 0; }
   .recognition-item:first-child { padding-left: 0; }
   .recognition-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }

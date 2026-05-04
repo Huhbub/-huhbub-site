@@ -1,7 +1,49 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const recognition = [
+  { label: 'Game Dev Heroes', detail: 'Unsung Hero 2025' },
+  { label: 'LGF Ensemble', detail: '2026 participant' },
+  { label: 'BAFTA Connect', detail: 'member' },
+  { label: 'Inclusion Dividend', detail: 'finalist 2025' },
+  { label: 'Develop:Brighton', detail: "Tomorrow's Star nominee" },
+  { label: 'Lovie Awards', detail: '× 2 (via Chayn)' },
+];
+
+const career = [
+  {
+    period: '2003–2015',
+    label: 'journalism & publishing',
+    body: 'Started in journalism — writing for The Jakarta Post, The Guardian Tanzania, and The Phnom Penh Post — before moving into publishing at Atlantic Books and Harlequin. Learned storytelling, audience building, and how to champion voices that deserved wider reach.',
+  },
+  {
+    period: '2020–2021',
+    label: 'games & narrative',
+    body: 'Joined Failbetter Games as Marketing Manager, leading a £170k Kickstarter for Mask of the Rose. Fell in love with narrative games — and with the creativity, care, and community that indie studios can embody when they\'re resourced properly.',
+  },
+  {
+    period: '2022–2024',
+    label: 'people & culture',
+    body: 'Built workplace wellbeing infrastructure at Uplift Games as Workplace Experience Manager, creating data-informed culture programmes that contributed to Best Places to Work recognition. Where policy, care, and culture intersect in practice.',
+  },
+  {
+    period: '2016–present',
+    label: 'huhbub & beyond',
+    body: 'Weaving together community production, advocacy, and governance. Chair of GamesAid, culture and community producer, writer, and facilitator. Designed and delivered fair employment workshops for the screen industries. Based in Southampton, working everywhere.',
+  },
+];
+
+const writing = [
+  { pub: 'The Bookseller', piece: '"Discomfort creates great events"', year: '2024' },
+  { pub: 'Dear Damsels', piece: '"Return to Hyrule" / poetry', year: '2021–22' },
+  { pub: 'Lucent Dreaming', piece: '"Sirena"', year: '2021' },
+  { pub: 'Snowflake Magazine', piece: '"A Feather Upon His Lips"', year: '2022' },
+  { pub: 'The Jakarta Post', piece: 'profiles, features, culture', year: '2003–2009' },
+  { pub: 'The Guardian Tanzania', piece: '50+ arts & culture features', year: '2009–2013' },
+];
 ---
-<Base title="Sara Veal">
+
+<Base title="Sara Veal — huhbub">
 <div id="site">
 
   <!-- NAV -->
@@ -33,27 +75,92 @@ import Base from '../layouts/Base.astro';
     </div>
   </div>
 
-  <!-- CONTENT -->
-  <div class="sara-page">
+  <!-- HERO -->
+  <div class="sara-hero">
     <canvas id="float-canvas"></canvas>
-    <div class="sara-inner">
+    <div class="sara-hero-inner">
       <div class="sara-portrait">
         <div class="portrait-frame">
           <img src="/images/sara-portrait.jpg" alt="Sara Veal" onerror="this.parentElement.classList.add('no-img')" />
           <div class="portrait-placeholder">SV</div>
         </div>
       </div>
-      <div class="sara-content">
-        <p class="sara-overline">founder & digital witch</p>
+      <div class="sara-intro">
+        <p class="sara-overline">founder · producer · writer</p>
         <h1>Sara Veal</h1>
-        <p class="sara-lead">Producer. Community builder. People strategist. Writer. Founder of huhbub. Based in Southampton.</p>
-        <p class="sara-body">A full portfolio — career, projects, writing, and everything in between — is coming soon.</p>
-        <p class="sara-body">In the meantime, the best place to find out what I do is <a href="/about">huhbub.com/about</a>, and the best way to reach me is <a href="mailto:hello@huhbub.com">hello@huhbub.com</a>.</p>
+        <p class="sara-lead">Community producer, people strategist, and writer. Founder of huhbub. Chair of GamesAid. Based in Southampton, working everywhere.</p>
         <div class="sara-links">
           <a href="/about" class="nav-link btn-primary">about huhbub →</a>
           <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener" class="btn-secondary">linkedin →</a>
           <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-secondary">the curious mermaid →</a>
+          <a href="mailto:hello@huhbub.com" class="btn-secondary">email →</a>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECOGNITION STRIP -->
+  <div class="recognition-strip">
+    {recognition.map(r => (
+      <div class="recognition-item">
+        <span class="recognition-label">{r.label}</span>
+        <span class="recognition-detail">{r.detail}</span>
+      </div>
+    ))}
+  </div>
+
+  <!-- CAREER -->
+  <div class="sara-section sara-career-section">
+    <div class="sara-section-inner">
+      <div class="sara-section-header">
+        <p class="sara-section-overline">career</p>
+        <h2 class="sara-section-title">the journey so far</h2>
+        <p class="sara-section-sub">Twenty years across journalism, publishing, games, and cultural production — always at the intersection of people, story, and community.</p>
+      </div>
+      <div class="career-grid">
+        {career.map(c => (
+          <div class="career-item">
+            <div class="career-period">{c.period}</div>
+            <div class="career-label">{c.label}</div>
+            <p class="career-body">{c.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="sara-section sara-values-section">
+    <div class="sara-section-inner sara-values-inner">
+      <div class="values-col">
+        <p class="sara-section-overline">on representation</p>
+        <blockquote class="values-quote">"Who gets to make games determines whose experiences become playable — whose stories feel universal, and whose joy, pain, and complexity we recognise as fully human."</blockquote>
+        <p class="values-body">True representation means Black, Asian, and marginalised creatives aren't just hired to add "diversity". We're trusted to lead, to shape culture, and to be compensated fairly for that labour. It means recognising community building and inclusive practice as strategic expertise.</p>
+      </div>
+      <div class="values-col">
+        <p class="sara-section-overline">on community</p>
+        <blockquote class="values-quote">"Find your people. Build connections rooted in mutual respect and care — they'll outlast any single role."</blockquote>
+        <p class="values-body">The Unsung Hero award at Game Dev Heroes 2025 was collectively nominated by peers and former colleagues. Not for a shipped title — for the care work that usually goes unseen: wellbeing check-ins, quiet advocacy, showing up consistently for people.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WRITING -->
+  <div class="sara-section sara-writing-section">
+    <div class="sara-section-inner">
+      <div class="sara-section-header">
+        <p class="sara-section-overline">writing</p>
+        <h2 class="sara-section-title">on the page</h2>
+        <p class="sara-section-sub">Published across journalism, fiction, and creative non-fiction. An essay collection — <em>You Don't Have to Be Cool</em> — is in development. <a href="/stories" class="nav-link writing-link">The Curious Mermaid</a> is her Substack.</p>
+      </div>
+      <div class="writing-grid">
+        {writing.map(w => (
+          <div class="writing-item">
+            <div class="writing-pub">{w.pub}</div>
+            <div class="writing-piece">{w.piece}</div>
+            <div class="writing-year">{w.year}</div>
+          </div>
+        ))}
       </div>
     </div>
   </div>
@@ -82,13 +189,12 @@ import Base from '../layouts/Base.astro';
 </Base>
 
 <style>
-.nav-links a:hover { color: #fff !important; text-shadow: 0 0 10px rgba(245,167,204,0.7), 0 0 20px rgba(245,167,204,0.3); }
-nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); padding: 16px 32px 0 32px; display: flex; justify-content: space-between; align-items: center; box-shadow: none;  }
+  .nav-links a:hover { color: #fff !important; }
+  nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); padding: 16px 32px 0 32px; display: flex; justify-content: space-between; align-items: center; }
   .nav-logo { display: flex; align-items: center; }
   .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
   .nav-links { display: flex; gap: 24px; align-items: center; }
   .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
-  .nav-links a:hover { color: #D4D0F0; }
   .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
   .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
   .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
@@ -98,63 +204,97 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
   .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #D4D0F0; padding: 8px 0; transition: color 0.2s; }
   .mobile-menu-links a:hover { color: var(--accent-soft); }
 
-  /* SARA PAGE */
-  .sara-page { position: relative; min-height: calc(100vh - 58px - 80px); background: var(--sky, #07051A); display: flex; align-items: center; justify-content: center; padding: 64px 32px; overflow: hidden;  }
-  #float-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.5; }
-  .sara-inner { position: relative; z-index: 2; max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 240px 1fr; gap: 64px; align-items: center; }
-  .portrait-frame { width: 200px; height: 200px; position: relative; overflow: hidden; border-radius: 0; flex-shrink: 0;
-    background: #F8F2EC; padding: 6px 6px 0;
-    box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 0 0 3px #C8A876, 0 0 0 4px rgba(0,0,0,0.15), 3px 6px 16px rgba(0,0,0,0.5); }
+  /* HERO */
+  .sara-hero { position: relative; background: var(--sky, #07051A); padding: 72px 32px 64px; overflow: hidden; border-bottom: 0.5px solid rgba(255,255,255,0.06); }
+  #float-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.4; }
+  .sara-hero-inner { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 220px 1fr; gap: 64px; align-items: center; }
+  .portrait-frame { width: 200px; height: 200px; position: relative; overflow: hidden; background: #F8F2EC; padding: 6px 6px 0; box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 0 0 3px #C8A876, 0 0 0 4px rgba(0,0,0,0.15), 3px 6px 16px rgba(0,0,0,0.5); }
   .portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 2; }
   .portrait-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2A1848, #0E0B2E); font-family: var(--font-display); font-size: 64px; font-weight: 300; color: rgba(245,167,204,0.5); letter-spacing: 4px; z-index: 1; }
   .portrait-frame.no-img img { display: none; }
-  .sara-overline { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .sara-overline { font-size: 11px; color: var(--accent-soft, #F5A7CC); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
   .sara-overline::before { content: ''; width: 24px; height: 1px; background: var(--accent-soft); display: block; }
-  h1 { font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: #D4D0F0; letter-spacing: -2px; line-height: 1; margin-bottom: 20px; }
-  .sara-lead { font-size: 16px; color: #D4D0F0; line-height: 1.7; margin-bottom: 12px; max-width: 500px; }
-  .sara-body { font-size: 14px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 10px; max-width: 500px; }
-  .sara-body a { color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); transition: border-color 0.2s; }
-  .sara-body a:hover { border-color: var(--accent-soft); }
-  .sara-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-  .btn-primary { font-size: 13px !important; font-weight: 500; color: #fff !important; background: var(--accent, #D4537E); padding: 10px 20px; border-radius: 8px; transition: opacity 0.2s; }
+  h1 { font-family: var(--font-display); font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: #F5F0FF; letter-spacing: -2px; line-height: 1; margin-bottom: 16px; }
+  .sara-lead { font-size: 15px; color: #C8C4E0; line-height: 1.75; margin-bottom: 24px; max-width: 500px; }
+  .sara-links { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn-primary { font-size: 13px !important; font-weight: 500; color: #fff !important; background: #D4537E; padding: 10px 20px; border-radius: 8px; transition: opacity 0.2s; }
   .btn-primary:hover { opacity: 0.85; }
-  .btn-secondary { font-size: 13px; color: var(--text-secondary); border: 0.5px solid var(--border-subtle); padding: 10px 20px; border-radius: 8px; transition: all 0.2s; }
-  .btn-secondary:hover { color: #D4D0F0; background: rgba(255,255,255,0.04); }
+  .btn-secondary { font-size: 13px; color: #C8C4E0; border: 0.5px solid rgba(255,255,255,0.15); padding: 10px 20px; border-radius: 8px; transition: all 0.2s; }
+  .btn-secondary:hover { color: #F5F0FF; background: rgba(255,255,255,0.05); }
 
-  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  /* RECOGNITION */
+  .recognition-strip { background: #0E0B2E; border-bottom: 0.5px solid rgba(255,255,255,0.06); padding: 0 32px; display: flex; overflow-x: auto; scrollbar-width: none; }
+  .recognition-strip::-webkit-scrollbar { display: none; }
+  .recognition-item { display: flex; flex-direction: column; padding: 16px 28px; border-right: 0.5px solid rgba(255,255,255,0.06); white-space: nowrap; flex-shrink: 0; }
+  .recognition-item:first-child { padding-left: 0; }
+  .recognition-label { font-size: 10px; color: #AFA9EC; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 3px; }
+  .recognition-detail { font-size: 13px; color: #F5F0FF; font-family: var(--font-display); font-weight: 300; }
+
+  /* SHARED SECTION */
+  .sara-section { padding: 56px 32px; }
+  .sara-section-inner { max-width: 960px; margin: 0 auto; }
+  .sara-section-header { margin-bottom: 36px; }
+  .sara-section-overline { font-size: 10px; letter-spacing: 2px; color: #AFA9EC; text-transform: uppercase; margin-bottom: 8px; }
+  .sara-section-title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); font-weight: 300; color: #F5F0FF; margin-bottom: 10px; letter-spacing: -0.5px; }
+  .sara-section-sub { font-size: 14px; color: #C8C4E0; line-height: 1.7; max-width: 560px; }
+  .writing-link { color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.4); padding-bottom: 1px; }
+
+  /* CAREER */
+  .sara-career-section { background: #07051A; }
+  .career-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.05); }
+  .career-item { background: #07051A; padding: 28px 32px; }
+  .career-period { font-size: 10px; letter-spacing: 2px; color: #7F77DD; text-transform: uppercase; margin-bottom: 4px; }
+  .career-label { font-family: var(--font-display); font-size: 18px; color: #F5F0FF; font-weight: 300; margin-bottom: 10px; }
+  .career-body { font-size: 13px; color: #C8C4E0; line-height: 1.75; }
+
+  /* VALUES */
+  .sara-values-section { background: #0E0B2E; }
+  .sara-values-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .values-quote { font-family: var(--font-display); font-size: clamp(15px, 1.8vw, 19px); font-style: italic; color: #F5F0FF; line-height: 1.5; border-left: 2px solid #AFA9EC; padding-left: 16px; margin-bottom: 16px; }
+  .values-body { font-size: 13px; color: #C8C4E0; line-height: 1.75; }
+
+  /* WRITING */
+  .sara-writing-section { background: #07051A; }
+  .writing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.05); }
+  .writing-item { background: #07051A; padding: 20px 24px; }
+  .writing-pub { font-size: 10px; letter-spacing: 1.5px; color: #D4537E; text-transform: uppercase; margin-bottom: 4px; }
+  .writing-piece { font-family: var(--font-display); font-size: 15px; color: #F5F0FF; margin-bottom: 4px; line-height: 1.3; font-style: italic; }
+  .writing-year { font-size: 11px; color: #7F77DD; }
+
+  /* FOOTER */
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #AFA9EC; margin-bottom: 2px; }
+  .footer-sub { font-size: 11px; color: #7F77DD; }
+  .footer-address { font-size: 10px; color: #9B96CC; margin-top: 2px; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; display: inline-block; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #AFA9EC; transition: color 0.2s; }
   .footer-links a:hover { color: #fff; }
 
   @media (max-width: 768px) {
     .nav-links { display: none; } .nav-burger { display: flex; }
-    .sara-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
+    .sara-hero-inner { grid-template-columns: 1fr; gap: 32px; text-align: center; }
     .sara-portrait { display: flex; justify-content: center; }
     .sara-overline { justify-content: center; }
     .sara-overline::before { display: none; }
     h1 { letter-spacing: -1px; }
     .sara-links { justify-content: center; }
+    .career-grid { grid-template-columns: 1fr; }
+    .sara-values-inner { grid-template-columns: 1fr; gap: 32px; }
+    .writing-grid { grid-template-columns: 1fr 1fr; }
   }
-  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
-  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #C8C4E0; margin-bottom: 2px; letter-spacing: -0.3px; }
-  .footer-sub { font-size: 11px; color: #7F77DD; }
-  .footer-address { font-size: 10px; color: #C8C4E0; margin-top: 2px; }
-  .footer-middle { text-align: center; }
-  .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
-  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
-  .btn-subscribe-footer:hover { opacity: 0.85; }
-  .footer-links { display: flex; gap: 20px; }
-  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
-  .footer-links a:hover { color: #fff; }
 </style>
 
 <script>
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
-  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
-  window.closeMenu = () => mobileMenu.classList.remove('open');
+  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu?.classList.remove('open'));
+  burger?.addEventListener('click', () => mobileMenu?.classList.add('open'));
+  window.closeMenu = () => mobileMenu?.classList.remove('open');
 
-  // Gentle floating particles
   (function() {
     const canvas = document.getElementById('float-canvas');
     if (!canvas) return;
@@ -164,8 +304,8 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
     function resize() { W = canvas.width = canvas.offsetWidth; H = canvas.height = canvas.offsetHeight; }
     resize(); window.addEventListener('resize', resize);
     const ps = Array.from({length: 24}, () => ({
-      x: Math.random() * 800, y: Math.random() * 600,
-      r: Math.random() * 3 + 1, vx: (Math.random()-.5)*.35, vy: -Math.random()*.3-.1,
+      x: Math.random()*800, y: Math.random()*600,
+      r: Math.random()*3+1, vx: (Math.random()-.5)*.35, vy: -Math.random()*.3-.1,
       col: COLORS[Math.floor(Math.random()*COLORS.length)],
       phase: Math.random()*Math.PI*2, alpha: Math.random()*.35+.1,
     }));
@@ -189,5 +329,4 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
     }
     anim();
   })();
-
 </script>
