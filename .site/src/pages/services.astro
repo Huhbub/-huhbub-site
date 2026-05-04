@@ -117,56 +117,73 @@ import Base from '../layouts/Base.astro';
         <div class="origami-cluster" id="origami-cluster">
           <div class="origami-heart-wrap" id="origami-toggle">
             <div class="origami-closed">
-              <svg viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" class="origami-svg">
+              <svg viewBox="0 0 140 130" xmlns="http://www.w3.org/2000/svg" class="origami-svg">
                 <defs>
-                  <!-- Light face — top left lobe -->
-                  <linearGradient id="hg-light" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#F5B8C8"/>
-                    <stop offset="100%" stop-color="#E8829A"/>
+                  <!-- Left panel — slightly lighter -->
+                  <linearGradient id="hg-left" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#E06080"/>
+                    <stop offset="100%" stop-color="#C8405E"/>
                   </linearGradient>
-                  <!-- Mid face — top right lobe -->
-                  <linearGradient id="hg-mid" x1="100%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stop-color="#D4537E"/>
-                    <stop offset="100%" stop-color="#C04060"/>
+                  <!-- Right panel — slightly darker -->
+                  <linearGradient id="hg-right" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#B83058"/>
+                    <stop offset="100%" stop-color="#A02048"/>
                   </linearGradient>
-                  <!-- Dark face — bottom point -->
-                  <linearGradient id="hg-dark" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#C04060"/>
-                    <stop offset="100%" stop-color="#A03050"/>
-                  </linearGradient>
-                  <!-- Shadow -->
-                  <filter id="shadow">
-                    <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(0,0,0,0.25)"/>
+                  <filter id="hs">
+                    <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.3)"/>
                   </filter>
                 </defs>
 
-                <!-- Left lobe — lighter pink, facing slightly upward -->
-                <path d="M60 38 C60 38 8 35 8 18 C8 7 17 2 28 2 C38 2 48 10 60 22 Z"
-                      fill="url(#hg-light)" stroke="#C8607A" stroke-width="0.5"/>
+                <!--
+                  Flat geometric origami heart — like the reference:
+                  Two trapezoidal top panels (left and right of centre crease)
+                  Meeting at centre vertical crease
+                  Bottom comes to a point
+                  Diagonal fold lines visible on each panel
+                  
+                  Heart outline: top-left curves then point at bottom
+                  Key points:
+                  - Top-left corner: (10, 34)
+                  - Top-left peak: (35, 8)
+                  - Centre top: (70, 34)
+                  - Top-right peak: (105, 8)
+                  - Top-right corner: (130, 34)
+                  - Bottom point: (70, 118)
+                -->
 
-                <!-- Right lobe — darker pink -->
-                <path d="M60 38 C60 38 112 35 112 18 C112 7 103 2 92 2 C82 2 72 10 60 22 Z"
-                      fill="url(#hg-mid)" stroke="#A84060" stroke-width="0.5"/>
+                <!-- Left half of heart -->
+                <polygon points="10,34 35,8 70,34 70,118"
+                  fill="url(#hg-left)" filter="url(#hs)"/>
 
-                <!-- Bottom point — darkest, the folded-down triangle -->
-                <path d="M60 38 L8 18 L60 105 L112 18 Z"
-                      fill="url(#hg-dark)" stroke="#903050" stroke-width="0.5"/>
+                <!-- Right half of heart -->
+                <polygon points="130,34 105,8 70,34 70,118"
+                  fill="url(#hg-right)"/>
 
-                <!-- Central crease line — the fold -->
-                <line x1="60" y1="22" x2="60" y2="105" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+                <!-- Centre crease — vertical -->
+                <line x1="70" y1="34" x2="70" y2="118"
+                  stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
 
-                <!-- Horizontal fold line across the lobes -->
-                <line x1="8" y1="18" x2="112" y2="18" stroke="rgba(255,255,255,0.2)" stroke-width="0.6"/>
+                <!-- Left panel diagonal fold — top-left corner to centre -->
+                <line x1="10" y1="34" x2="70" y2="34"
+                  stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+                <line x1="35" y1="8" x2="70" y2="118"
+                  stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
 
-                <!-- Inner fold detail — left lobe crease -->
-                <line x1="34" y1="2" x2="60" y2="38" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+                <!-- Right panel diagonal fold -->
+                <line x1="130" y1="34" x2="70" y2="34"
+                  stroke="rgba(0,0,0,0.12)" stroke-width="0.8"/>
+                <line x1="105" y1="8" x2="70" y2="118"
+                  stroke="rgba(0,0,0,0.1)" stroke-width="0.8"/>
 
-                <!-- Inner fold detail — right lobe crease -->
-                <line x1="86" y1="2" x2="60" y2="38" stroke="rgba(255,255,255,0.15)" stroke-width="0.5"/>
+                <!-- Subtle top horizontal fold line -->
+                <line x1="10" y1="34" x2="130" y2="34"
+                  stroke="rgba(0,0,0,0.15)" stroke-width="0.8"/>
 
-                <!-- "open me" text -->
-                <text x="60" y="58" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,0.8)" font-family="Georgia, serif" font-style="italic">open me</text>
-                <text x="60" y="70" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.55)" font-family="Georgia, serif" font-style="italic">happiness origami</text>
+                <!-- open me text -->
+                <text x="70" y="72" text-anchor="middle" font-size="7.5"
+                  fill="rgba(255,255,255,0.75)" font-family="Georgia, serif" font-style="italic">open me</text>
+                <text x="70" y="84" text-anchor="middle" font-size="6.5"
+                  fill="rgba(255,255,255,0.5)" font-family="Georgia, serif" font-style="italic">happiness origami</text>
               </svg>
             </div>
             <div class="origami-open" id="origami-open">
@@ -303,10 +320,10 @@ import Base from '../layouts/Base.astro';
   @keyframes burst-out { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0} }
 
   /* Post-it colours */
-  .postit-pink { background: #FADADD; } .postit-pink .cluster-title { color: #AFA9EC; } .postit-pink .cluster-desc,.postit-pink .svc-inner { color: #AFA9EC; } .postit-pink .svc-name { color: #AFA9EC; } .postit-pink .svc-arrow svg { stroke: #993556; } .postit-pink::after { border-width: 0 0 18px 18px; border-color: transparent transparent #E8B8BC transparent; }
-  .postit-lavender { background: #E8D8F8; } .postit-lavender .cluster-title { color: #3C2060; } .postit-lavender .cluster-desc,.postit-lavender .svc-inner { color: #9B96CC; } .postit-lavender .svc-name { color: #9B96CC; } .postit-lavender .svc-arrow svg { stroke: #534AB7; } .postit-lavender::after { border-width: 0 0 18px 18px; border-color: transparent transparent #C8B8E8 transparent; }
-  .postit-yellow { background: #FFF3A3; } .postit-yellow .cluster-title { color: #9B96CC; } .postit-yellow .cluster-desc,.postit-yellow .svc-inner { color: #9B96CC; } .postit-yellow .svc-name { color: #9B96CC; } .postit-yellow .svc-arrow svg { stroke: #BA7517; } .postit-yellow::after { border-width: 0 0 18px 18px; border-color: transparent transparent #E8DC80 transparent; }
-  .postit-mint { background: #C8F0E0; } .postit-mint .cluster-title { color: #9B96CC; } .postit-mint .cluster-desc,.postit-mint .svc-inner { color: #9B96CC; } .postit-mint .svc-name { color: #9B96CC; } .postit-mint .svc-arrow svg { stroke: #0F6E56; } .postit-mint::after { border-width: 0 0 18px 18px; border-color: transparent transparent #A0D8C0 transparent; }
+  .postit-pink { background: #FADADD; } .postit-pink .cluster-title { color: #7A1830; } .postit-pink .cluster-desc,.postit-pink .svc-inner { color: #5A1828; } .postit-pink .svc-name { color: #7A1830; } .postit-pink .svc-arrow svg { stroke: #993556; } .postit-pink::after { border-width: 0 0 18px 18px; border-color: transparent transparent #E8B8BC transparent; }
+  .postit-lavender { background: #E8D8F8; } .postit-lavender .cluster-title { color: #2A1040; } .postit-lavender .cluster-desc,.postit-lavender .svc-inner { color: #3C2060; } .postit-lavender .svc-name { color: #2A1040; } .postit-lavender .svc-arrow svg { stroke: #534AB7; } .postit-lavender::after { border-width: 0 0 18px 18px; border-color: transparent transparent #C8B8E8 transparent; }
+  .postit-yellow { background: #FFF3A3; } .postit-yellow .cluster-title { color: #4A3A00; } .postit-yellow .cluster-desc,.postit-yellow .svc-inner { color: #5A4800; } .postit-yellow .svc-name { color: #4A3A00; } .postit-yellow .svc-arrow svg { stroke: #BA7517; } .postit-yellow::after { border-width: 0 0 18px 18px; border-color: transparent transparent #E8DC80 transparent; }
+  .postit-mint { background: #C8F0E0; } .postit-mint .cluster-title { color: #0A3828; } .postit-mint .cluster-desc,.postit-mint .svc-inner { color: #0F4A34; } .postit-mint .svc-name { color: #0A3828; } .postit-mint .svc-arrow svg { stroke: #0F6E56; } .postit-mint::after { border-width: 0 0 18px 18px; border-color: transparent transparent #A0D8C0 transparent; }
 
   /* Seasonal tinting */
 
