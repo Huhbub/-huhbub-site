@@ -35,12 +35,15 @@ const projects = [
 const typeLabel = { flagship: 'flagship', commissioned: 'commissioned', 'creative partnership': 'creative partnership', volunteer: 'volunteer' };
 const typeColor = { flagship: '#D4537E', commissioned: '#EF9F27', 'creative partnership': '#7F77DD', volunteer: '#B5D4F4' };
 
-// Sort by start year, most recent first
-const sorted = [...projects].sort((a, b) => {
-  const yearA = parseInt(a.dates.split('–')[0]);
-  const yearB = parseInt(b.dates.split('–')[0]);
-  return yearB - yearA;
-});
+// Sort by end date (most recent first). "present" = 9999. Range: use end year.
+function endYear(dates) {
+  const parts = dates.split('–');
+  const end = parts.length > 1 ? parts[1].trim() : parts[0].trim();
+  if (end === 'present') return 9999;
+  const y = parseInt(end);
+  return isNaN(y) ? parseInt(parts[0]) : y;
+}
+const sorted = [...projects].sort((a, b) => endYear(b.dates) - endYear(a.dates));
 ---
 
 <Base title="projects — huhbub">
@@ -224,7 +227,7 @@ const sorted = [...projects].sort((a, b) => {
     animation: polaroid-drop 0.5s ease backwards;
     animation-delay: var(--delay);
   }
-  .polaroid-wrap.hidden { opacity: 0; pointer-events: none; transform: rotate(var(--rot)) scale(0.9); }
+  .polaroid-wrap.hidden { display: none; }
   @keyframes polaroid-drop {
     from { opacity: 0; transform: rotate(var(--rot)) translateY(-20px); }
     to   { opacity: 1; transform: rotate(var(--rot)) translateY(0); }
