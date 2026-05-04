@@ -55,21 +55,36 @@ import Base from '../layouts/Base.astro';
         <!-- LEFT: featured essay with postcard -->
         <div class="paper-col paper-col-main">
           <div class="postcard-wrap">
-            <div class="postcard">
-              <div class="postcard-img">
-                <img src="/images/siren-gift-postcard.jpg" alt="The Siren's Gift — The Curious Mermaid unveiling, The Design Chapel" onerror="this.parentElement.classList.add('no-img')"/>
-                <div class="postcard-img-placeholder">essay image</div>
-                <div class="postcard-img-corner">the design chapel</div>
-              </div>
-              <div class="postcard-bottom">
-                <div class="postcard-left">
-                  <div class="postcard-handwriting">The Siren's Gift</div>
-                  <div class="postcard-handwriting-sub">a story about letting go</div>
+            <div class="postcard-flip" id="postcard-flip">
+              <div class="postcard-inner">
+
+                <!-- FRONT: pure image -->
+                <div class="postcard-front">
+                  <img src="/images/siren-gift-postcard.jpg" alt="The Curious Mermaid unveiling"/>
+                  <div class="postcard-front-hint">turn over →</div>
                 </div>
-                <div class="postcard-right">
-                  <div class="stamp">✦</div>
-                  <div class="postmark">APR<br>2025<br>SO14</div>
+
+                <!-- BACK: postcard writing side -->
+                <div class="postcard-back">
+                  <div class="postcard-back-inner">
+                    <div class="postcard-back-left">
+                      <div class="postcard-handwriting">The Siren's Gift</div>
+                      <div class="postcard-handwriting-sub">a story about letting go</div>
+                      <div class="postcard-back-divider"></div>
+                      <div class="postcard-handwriting-body">How a secondhand stall led me back to myself — and what it means to finally let go.</div>
+                    </div>
+                    <div class="postcard-back-right">
+                      <div class="stamp">✦</div>
+                      <div class="postmark">APR<br>2025<br>SO14</div>
+                      <div class="address-lines">
+                        <div class="address-line"></div>
+                        <div class="address-line"></div>
+                        <div class="address-line"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
@@ -187,22 +202,73 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
   .paper-subscribe-btn:hover { background: #ede6ff; }
 
   /* POSTCARD */
-  .postcard-wrap { margin-bottom: 24px; }
-  .postcard { background: #fff; border: 0.5px solid #c8c0b8; box-shadow: 2px 4px 12px rgba(0,0,0,0.12); transform: rotate(-2deg); width: 100%; max-width: 340px; }
-  .postcard-img { width: 100%; background: #1a0a2e; position: relative; overflow: hidden; }
-  .postcard-img img { width: 100%; height: auto; display: block; object-fit: contain; }
-  .postcard-img.no-img img { display: none; }
-  .postcard-img-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 13px; font-style: italic; color: rgba(30,16,64,0.4); }
-  .postcard-img.no-img .postcard-img-placeholder { display: flex; }
-  .postcard-img-corner { position: absolute; bottom: 6px; right: 8px; font-size: 8px; letter-spacing: 1px; color: rgba(30,16,64,0.35); font-family: var(--font-body); text-transform: uppercase; }
-  .postcard-bottom { display: grid; grid-template-columns: 1fr auto; border-top: 0.5px solid #e0d8d0; min-height: 76px; }
-  .postcard-left { padding: 10px 14px; border-right: 0.5px solid #e8e0d8; }
-  .postcard-handwriting { font-family: var(--font-handwriting); font-size: 17px; color: #2a1a1a; line-height: 1.4; }
-  .postcard-handwriting-sub { font-family: var(--font-handwriting); font-size: 13px; color: #888; margin-top: 3px; }
-  .postcard-right { padding: 10px; display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; min-width: 68px; }
-  .stamp { width: 26px; height: 32px; border: 1px solid #c8b8c8; background: #f8eef8; display: flex; align-items: center; justify-content: center; font-size: 11px; position: relative; }
-  .stamp::after { content: ''; position: absolute; inset: 2px; border: 0.5px dashed #D4537E; }
-  .postmark { font-size: 8px; color: #aaa; letter-spacing: 0.5px; text-align: right; line-height: 1.5; font-family: var(--font-body); }
+  /* FLIP POSTCARD */
+  .postcard-wrap { margin-bottom: 24px; perspective: 1000px; }
+  .postcard-flip {
+    width: 100%; max-width: 360px;
+    transform: rotate(-2deg);
+    cursor: pointer;
+  }
+  .postcard-flip:hover .postcard-front-hint { opacity: 1; }
+  .postcard-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .postcard-flip.flipped .postcard-inner { transform: rotateY(180deg); }
+
+  /* FRONT */
+  .postcard-front {
+    backface-visibility: hidden;
+    border: 0.5px solid #c8c0b8;
+    box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+    overflow: hidden;
+    position: relative;
+    background: #000;
+  }
+  .postcard-front img { width: 100%; height: auto; display: block; }
+  .postcard-front-hint {
+    position: absolute; bottom: 10px; right: 12px;
+    font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.7);
+    font-family: var(--font-body); opacity: 0;
+    transition: opacity 0.2s;
+    background: rgba(0,0,0,0.3); padding: 3px 8px; border-radius: 2px;
+  }
+
+  /* BACK */
+  .postcard-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    border: 0.5px solid #c8c0b8;
+    box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+    background: #fffdf8;
+    overflow: hidden;
+  }
+  .postcard-back-inner {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    height: 100%;
+    min-height: 200px;
+  }
+  .postcard-back-left {
+    padding: 20px 16px;
+    border-right: 0.5px solid #e0d8cc;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .postcard-handwriting { font-family: var(--font-handwriting); font-size: 20px; color: #2a1a1a; line-height: 1.3; }
+  .postcard-handwriting-sub { font-family: var(--font-handwriting); font-size: 14px; color: #888; }
+  .postcard-back-divider { width: 32px; height: 0.5px; background: #ddd; margin: 4px 0; }
+  .postcard-handwriting-body { font-family: var(--font-handwriting); font-size: 13px; color: #555; line-height: 1.6; }
+  .postcard-back-right {
+    padding: 14px 10px;
+    display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between;
+  }
+  .stamp { width: 32px; height: 40px; border: 1px solid #c8b8c8; background: #f8eef8; display: flex; align-items: center; justify-content: center; font-size: 14px; position: relative; }
+  .stamp::after { content: ''; position: absolute; inset: 3px; border: 0.5px dashed #D4537E; }
+  .postmark { font-size: 8px; color: #aaa; letter-spacing: 0.5px; text-align: right; line-height: 1.6; font-family: var(--font-body); }
+  .address-lines { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+  .address-line { width: 100%; height: 0.5px; background: #ddd; }
 
   @media (max-width: 640px) {
     .paper-body { grid-template-columns: 1fr; }
@@ -255,6 +321,11 @@ nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E
   .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
   .footer-links a:hover { color: #fff; }
 </style>
+
+<script>
+  const card = document.getElementById('postcard-flip');
+  if (card) card.addEventListener('click', () => card.classList.toggle('flipped'));
+</script>
 
 <script>
   const burger = document.getElementById('burger');
