@@ -80,9 +80,8 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     .nav-links a.active {
       filter: brightness(1.05); z-index: 10;
       color: rgba(10,5,30,0.85) !important;
-      /* Extend tab down to overlap nav border AND any gap */
-      margin-bottom: -16px !important;
-      padding-bottom: 24px !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 10px !important;
     }
     .nav-links a::after { display: none; }
     .nav-links a { border-bottom: none !important; }
@@ -117,12 +116,13 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
       const active = homeMarker ? null : nav.querySelector('.nav-link.active');
       const href = homeMarker ? '/' : active?.getAttribute('href');
       const color = TAB_COLORS[href] || TAB_COLORS['/'];
-      nav.style.borderBottom = `8px solid ${color}`;
+      // Nav border matches tab colour — visual seam disappears by colour match
+      nav.style.borderBottom = `4px solid ${color}`;
       if (active) {
         active.style.setProperty('background', color, 'important');
         active.style.setProperty('border-radius', '6px 6px 0 0', 'important');
-        active.style.setProperty('margin-bottom', '-16px', 'important');
-        active.style.setProperty('padding-bottom', '24px', 'important');
+        active.style.setProperty('margin-bottom', '0', 'important');
+        active.style.setProperty('padding-bottom', '10px', 'important');
         active.style.setProperty('position', 'relative', 'important');
         active.style.setProperty('z-index', '10', 'important');
       }
