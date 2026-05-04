@@ -2,18 +2,37 @@
 import Base from '../layouts/Base.astro';
 
 const projects = [
-  { slug:'black-to-the-future', title:'Black to the Future', year:'2023', type:'collaborative', tags:['festival','afrofuturism','curation'], caption:'afrofuturism at the British Library', description:'A ground-breaking Afrofuturist festival at the British Library. huhbub produced and creatively directed; Irenosen Okojie founded and led artistically.', image:'/images/project-bttf.jpg', poster:'/images/poster-bttf.jpg', rot:-2 },
-  { slug:'clean-prose', title:'Clean Prose', year:'2016–2020', type:'commissioned', tags:['literary events','writers','community'], caption:'London\'s first co-working space for writers', description:'Clean Prose was London\'s first co-working space for writers. huhbub was first hire — leading recruitment, programming 70+ events with bestselling and debut authors, running industry outreach, publicity, social media and community. Strong DEI lens throughout. Created an edible book launch for Irenosen Okojie\'s Nudibranch.', image:'/images/project-clean-prose.jpg', poster:'/images/poster-clean-prose.jpg', rot:1.5 },
-  { slug:'that-time-of-the-month', title:'That Time of the Month', year:'2018–2019', type:'self', tags:['book club','jane austen','community'], caption:'Jane Austen, feminist readings, feelings', description:'A feminist book club and screening series bringing women together around Jane Austen — with wine, feelings, and zero irony.', image:'/images/project-that-time.jpg', poster:'/images/poster-that-time.jpg', rot:-1 },
-  { slug:'strong-women-squad', title:'Strong Women Squad', year:'2018', type:'self', tags:['community','wellbeing','events'], caption:'sisterhood in east London', description:'A community of women and non-binary people making space for strength, softness and solidarity — parties, panels and everything in between.', image:'/images/project-strong-women.jpg', poster:'/images/poster-strong-women.jpg', rot:2 },
-  { slug:'purple-reign', title:'Purple Reign', year:'2018', type:'self', tags:['music','cabaret','celebration'], caption:'a Prince-inspired birthday bakeoff cabaret', description:'A vegan birthday bakeoff cabaret in tribute to Prince. One night, one legend, many cakes.', image:'/images/project-purple-reign.jpg', poster:'/images/poster-purple-reign.jpg', rot:-2.5 },
-  { slug:'feeling-noughties', title:'Feeling Noughties', year:'2016', type:'self', tags:['music','nostalgia','party'], caption:'noughties nostalgia at Drink Shop & Do', description:'A Y2K nostalgia party celebrating the music, fashion and chaos of the 2000s. Sold out. Obviously.', image:'/images/project-feeling-noughties.jpg', poster:'/images/poster-feeling-noughties.jpg', rot:1 },
-  { slug:'happiness-workshop', title:'The Happiness Workshop', year:'2019–present', type:'self', tags:['wellbeing','workshop','facilitation'], caption:'joy as a practice, not a destination', description:'A standalone workshop on the science and art of happiness. Delivered at the Barbican, Primadonna, Also Festival, Logging Off Club and more.', image:'/images/project-happiness.jpg', poster:'/images/poster-happiness.jpg', rot:-1.5 },
-  { slug:'curious-mermaid', title:'The Curious Mermaid', year:'2024–present', type:'self', tags:['writing','community','substack'], caption:'stories of creativity, community & belonging', description:'An essay series and community newsletter exploring creativity, community and the beauty in what others might overlook.', image:'/images/project-curious-mermaid.jpg', poster:'/images/poster-curious-mermaid.jpg', rot:2.5 },
+  // FLAGSHIP
+  { slug:'curious-mermaid', title:'Curious Mermaid / Sirena Curiosa', dates:'2024–present', type:'flagship', caption:'pop-up · 2024–present', blurb:'A homegrown world of supper clubs, pop-up galleries and a market stall — bringing an original creative concept to life at scale.', poster:'/images/poster-curious-mermaid.jpg', rot:-2 },
+  { slug:'happiness-origami', title:'Happiness Origami', dates:'2023–present', type:'flagship', caption:'workshops · 2023–present', blurb:'Joy as a practice — a standalone happiness workshop delivered at Primadonna, ALSO Festival, the Barbican and beyond.', poster:'/images/poster-happiness.jpg', rot:1.5 },
+  { slug:'purple-reign', title:'Purple Reign', dates:'2018', type:'flagship', caption:'bakeoff · 2018', blurb:'A Prince-themed birthday bakeoff cabaret marking what would have been his 60th — fundraising for Code Club.', poster:'/images/poster-purple-reign.jpg', rot:-1.5 },
+  { slug:'feeling-noughties', title:'Feeling Noughties', dates:'2016', type:'flagship', caption:"huhbub's first · 2016", blurb:'The very first huhbub event — a Noughties cabaret marking the launch of Goodbye Ruby Tuesday, fundraising for Core Arts.', poster:'/images/poster-feeling-noughties.jpg', rot:2 },
+
+  // CREATIVE PARTNERSHIP
+  { slug:'black-to-the-future', title:'Black to the Future', dates:'2023–2024', type:'creative partnership', caption:'afrofuturism · 2023–24', blurb:'An afrofuturistic festival co-created with Irenosen Okojie, platforming 25+ Black creatives at iconic London venues in partnership with the British Library.', poster:'/images/poster-bttf.jpg', rot:-2.5 },
+  { slug:'strong-women-squad', title:'Strong Women Squad', dates:'2018', type:'creative partnership', caption:'dance · 2018', blurb:"Lisa Dickenson's feminist initiative brought to life — dance classes and lightning talks fundraising for Women's Aid and CoppaFeel!", poster:'/images/poster-strong-women.jpg', rot:1 },
+  { slug:'that-time-of-the-month', title:'That Time of the Month', dates:'2018–2019', type:'creative partnership', caption:'screenings · 2018–19', blurb:'A series of period drama screenings fundraising for local Red Box Projects and raising awareness of period poverty.', poster:'/images/poster-that-time.jpg', rot:-1 },
+  { slug:'power-of-storytelling', title:'The Power of Storytelling', dates:'2024', type:'creative partnership', caption:'pride · 2024', blurb:"A networking mixer celebrating Pride Month at the Common Press, in partnership with Ukie's #RaisetheGame and fundraising for Code Coven.", poster:'/images/poster-power-storytelling.jpg', rot:2.5 },
+
+  // COMMISSIONED
+  { slug:'workwise-develop', title:'WorkWise for Screen at Develop', dates:'2025', type:'commissioned', caption:'games industry · 2025', blurb:'Produced the WorkWise stand, employment clinic and panel at Develop: Brighton on behalf of the Children\'s Media Conference.', poster:'/images/poster-workwise-develop.jpg', rot:-1 },
+  { slug:'fray-world', title:'Fray World Game Jam', dates:'2025', type:'commissioned', caption:'game jam · 2025', blurb:'Producer and event designer for the second edition of Fray World — community-building through game-making, fundraising for GamesAid.', poster:'/images/poster-fray-world.jpg', rot:2 },
+  { slug:'clean-prose', title:'Clean Prose', dates:'2019–2020', type:'commissioned', caption:'literary events · 2019–20', blurb:'Founded the member community and produced 70+ literary events during the launch phase of this writers\' collective.', poster:'/images/poster-clean-prose.jpg', rot:-2 },
+  { slug:'own-it', title:'OWN IT!', dates:'2018', type:'commissioned', caption:'publicity · 2018', blurb:'Press and publicity support for a roster of bold creative voices — launch events, radio slots and agency announcements.', poster:'/images/poster-own-it.jpg', rot:1.5 },
+  { slug:'cubetto', title:'Cubetto', dates:'2018–2019', type:'commissioned', caption:'community · 2018–19', blurb:'Content and community management for Primo Toys, including managing the Cubetto Kickstarter campaign.', poster:'/images/poster-cubetto.jpg', rot:-1.5 },
+  { slug:'robot-coding', title:'Robot Coding', dates:'2018–2021', type:'commissioned', caption:'workshops · 2018–21', blurb:'Screen-free coding workshops bringing hands-on tech education to festival audiences at Sunrise and ALSO.', poster:'/images/poster-robot-coding.jpg', rot:2.5 },
+  { slug:'woogie', title:'Woogie Big Pants Universe', dates:'2021–2022', type:'commissioned', caption:'PR · 2021–22', blurb:'Press, distribution and event placement for a children\'s book series — securing festival slots at Primadonna and ALSO.', poster:'/images/poster-woogie.jpg', rot:-2 },
+  { slug:'salon-london', title:'Salon London', dates:'2020–2021', type:'commissioned', caption:'social media · 2020–21', blurb:'Marketing and social media support for a beloved London events brand through in-person and virtual programming.', poster:'/images/poster-salon-london.jpg', rot:1 },
+  { slug:'read-with-audrey', title:'Read with Audrey', dates:'2019–2021', type:'commissioned', caption:'outreach · 2019–21', blurb:'Product tester sourcing and author and influencer outreach for an independent book discovery platform.', poster:'/images/poster-read-audrey.jpg', rot:-1 },
+  { slug:'larmer-tree', title:'Larmer Tree Festival', dates:'2016–2019', type:'commissioned', caption:'literary · 2016–19', blurb:'Owned the literary programming strand across three years — author outreach, panel development, hosting and workshop facilitation.', poster:'/images/poster-larmer-tree.jpg', rot:2 },
+
+  // VOLUNTEER
+  { slug:'less-than-2', title:'Less than 2%', dates:'2022', type:'volunteer', caption:'podcast · 2022', blurb:'A three-episode podcast walking with survivors of sexual violence seeking justice, produced with Chayn — winner of five Lovie Awards.', poster:'/images/poster-less-than-2.jpg', rot:-2.5 },
+  { slug:'primadonna', title:'Primadonna Festival', dates:'2019–2024', type:'volunteer', caption:'festival · 2019–24', blurb:'Administration support for the Primadonna Prize and event hosting across five years of this beloved feminist festival.', poster:'/images/poster-primadonna.jpg', rot:1.5 },
 ];
 
-const typeLabel = { self: '', commissioned: 'commissioned', collaborative: 'creative partnership' };
-const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7F77DD' };
+const typeLabel = { flagship: 'flagship', commissioned: 'commissioned', 'creative partnership': 'creative partnership', volunteer: 'volunteer' };
+const typeColor = { flagship: '#D4537E', commissioned: '#EF9F27', 'creative partnership': '#7F77DD', volunteer: '#B5D4F4' };
 ---
 
 <Base title="projects — huhbub">
@@ -56,8 +75,10 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
       <p class="page-sub">Events, series, festivals and cultural experiences, including commissions and creative partnerships. Hover to flip.</p>
       <div class="filter-pills">
         <button class="filter-pill active" data-filter="all">all</button>
+        <button class="filter-pill" data-filter="flagship">flagship</button>
         <button class="filter-pill" data-filter="commissioned">commissioned</button>
-        <button class="filter-pill" data-filter="collaborative">creative partnership</button>
+        <button class="filter-pill" data-filter="creative partnership">creative partnership</button>
+        <button class="filter-pill" data-filter="volunteer">volunteer</button>
       </div>
     </div>
   </div>
@@ -86,17 +107,14 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
               </div>
               <div class="polaroid-label">
                 <span class="polaroid-caption">{p.caption}</span>
-                <span class="polaroid-year">{p.year}</span>
               </div>
             </div>
             <!-- BACK: info -->
             <div class="polaroid-back">
               {typeLabel[p.type] && <div class="back-type" style={`color: ${typeColor[p.type]}`}>{typeLabel[p.type]}</div>}
               <h3 class="back-title">{p.title}</h3>
-              <p class="back-desc">{p.description}</p>
-              <div class="back-tags">
-                {p.tags.map(t => <span class="back-tag">{t}</span>)}
-              </div>
+              <p class="back-dates">{p.dates}</p>
+              <p class="back-desc">{p.blurb}</p>
             </div>
           </div>
         </div>
@@ -278,16 +296,14 @@ const typeColor = { self: '#D4537E', commissioned: '#EF9F27', collaborative: '#7
   }
   .back-title {
     font-family: var(--font-display); font-size: 16px; font-weight: 400;
-    color: #C8C4E0; line-height: 1.2; margin-bottom: 8px; letter-spacing: -0.2px;
+    color: #1E1040; line-height: 1.2; margin-bottom: 4px; letter-spacing: -0.2px;
+  }
+  .back-dates {
+    font-size: 10px; color: #888; letter-spacing: 0.5px; margin-bottom: 8px;
   }
   .back-desc {
-    font-size: 11px; color: #C8C4E0; line-height: 1.6; margin-bottom: 10px;
+    font-size: 11px; color: #3a3030; line-height: 1.6;
     flex: 1;
-  }
-  .back-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .back-tag {
-    font-size: 9px; color: #C8C4E0; background: #EDE4D8;
-    padding: 2px 7px; border-radius: 10px; letter-spacing: 0.3px;
   }
 
   .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
