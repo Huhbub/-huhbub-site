@@ -128,47 +128,68 @@ import Splash from '../components/Splash.astro';
     <div class="mermaid-section">
       <div class="mermaid-inner">
 
-        <!-- MASTHEAD -->
-        <div class="mermaid-masthead">
-          <div class="mermaid-masthead-left">
-            <svg viewBox="0 0 60 54" xmlns="http://www.w3.org/2000/svg" class="mermaid-heart">
-              <defs>
-                <linearGradient id="mhg" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#F5A7CC"/>
-                  <stop offset="50%" stop-color="#D4537E"/>
-                  <stop offset="100%" stop-color="#AFA9EC"/>
-                </linearGradient>
-              </defs>
-              <path d="M30 49 C30 49 3 31 3 17 C3 8 9 3 17 3 C22 3 26 6 30 10 C34 6 38 3 43 3 C51 3 57 8 57 17 C57 31 30 49 30 49Z" fill="url(#mhg)"/>
-            </svg>
-            <div>
-              <p class="mermaid-overline">latest from huhbub & the curious mermaid</p>
-              <h2 class="mermaid-title">the curious mermaid</h2>
-              <p class="mermaid-sub">Stories of creativity, community and the beauty in what others might overlook.</p>
-            </div>
+        <div class="mermaid-header">
+          <div>
+            <p class="mermaid-overline">latest from huhbub</p>
+            <h2 class="mermaid-title">the curious mermaid</h2>
           </div>
           <a href="/stories" class="nav-link mermaid-all-link">read all →</a>
         </div>
 
-        <!-- ESSAY + SUBSCRIBE -->
         <div class="mermaid-body">
-          <div class="mermaid-essay">
-            <div class="mermaid-essay-meta">
-              <span class="mermaid-category">personal</span>
-              <span class="mermaid-date">Apr 2025</span>
-            </div>
-            <h3 class="mermaid-essay-title">The Siren's Gift</h3>
-            <p class="mermaid-essay-lede">How a shop of secondhand treasures led me to creativity, community, and myself.</p>
-            <blockquote class="mermaid-pullquote">"I was told I lit up like a lighthouse when I spoke about the shop."</blockquote>
-            <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="mermaid-read-link">read on substack →</a>
-          </div>
-          <div class="mermaid-subscribe-box">
-            <p class="mermaid-subscribe-eyebrow">get new essays in your inbox</p>
-            <p class="mermaid-subscribe-body">Subscribe free on Substack — no spam, just writing.</p>
-            <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-mermaid-subscribe">subscribe on substack →</a>
-          </div>
-        </div>
 
+          <!-- POSTCARD -->
+          <div class="mermaid-postcard-wrap">
+            <div class="mermaid-postcard">
+              <div class="mermaid-postcard-img">
+                <img src="/images/siren-gift-postcard.jpg" alt="The Siren's Gift" onerror="this.style.display='none'"/>
+              </div>
+              <div class="mermaid-postcard-back">
+                <div class="mermaid-postcard-hand">The Siren's Gift</div>
+                <div class="mermaid-postcard-sub">a story about letting go</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FEED -->
+          <div class="mermaid-feed">
+
+            <div class="mermaid-feed-item">
+              <div class="mermaid-feed-date"><span>APR</span><span>2025</span></div>
+              <div>
+                <div class="mermaid-feed-tag">personal</div>
+                <div class="mermaid-feed-title">The Siren's Gift</div>
+                <p class="mermaid-feed-desc">How a shop of secondhand treasures led me to creativity, community, and myself.</p>
+                <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="mermaid-feed-read">read on substack →</a>
+              </div>
+            </div>
+
+            <div class="mermaid-feed-item mermaid-feed-coming">
+              <div class="mermaid-feed-date"><span>SOON</span></div>
+              <div>
+                <div class="mermaid-feed-tag">essay</div>
+                <div class="mermaid-feed-title">Paris Syndrome</div>
+                <p class="mermaid-feed-desc">On belonging, disappointment, and the city that doesn't love you back.</p>
+              </div>
+            </div>
+
+            <div class="mermaid-feed-item mermaid-feed-coming" style="border-bottom:none;">
+              <div class="mermaid-feed-date"><span>SOON</span></div>
+              <div>
+                <div class="mermaid-feed-tag">collection</div>
+                <div class="mermaid-feed-title">You Don't Have to Be Cool</div>
+                <p class="mermaid-feed-desc">Pop culture as a lens for identity, belonging, and authenticity.</p>
+              </div>
+            </div>
+
+            <div class="mermaid-subscribe">
+              <span class="mermaid-subscribe-text">new essays in your inbox — no spam, just writing.</span>
+              <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="mermaid-subscribe-btn">subscribe on substack →</a>
+            </div>
+
+          </div>
+
+        </div>
       </div>
     </div>
 
@@ -297,37 +318,41 @@ import Splash from '../components/Splash.astro';
   .feat-link-secondary:hover { color: var(--text-primary); }
 
   /* CURIOUS MERMAID */
-  .mermaid-section { background: #FDF8F4; padding: 48px 32px 56px; border-top: 3px solid #7F77DD; border-bottom: 0.5px solid rgba(0,0,0,0.06); }
+  .mermaid-section { background: #07051A; padding: 48px 32px 56px; border-top: 0.5px solid rgba(255,255,255,0.06); }
   .mermaid-inner { max-width: 1060px; margin: 0 auto; }
+  .mermaid-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; padding-bottom: 12px; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+  .mermaid-overline { font-size: 9px; letter-spacing: 3px; color: #AFA9EC; text-transform: uppercase; margin-bottom: 4px; }
+  .mermaid-title { font-family: var(--font-display); font-size: clamp(20px, 2.5vw, 28px); font-weight: 300; color: #F5F0FF; letter-spacing: -0.5px; line-height: 1; }
+  .mermaid-all-link { font-size: 12px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.4); padding-bottom: 1px; white-space: nowrap; flex-shrink: 0; transition: color 0.2s; }
+  .mermaid-all-link:hover { color: #F5F0FF; }
+  .mermaid-body { display: grid; grid-template-columns: 200px 1fr; gap: 36px; align-items: start; }
 
-  /* Masthead */
-  .mermaid-masthead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; padding-bottom: 28px; border-bottom: 0.5px solid rgba(127,119,221,0.15); gap: 24px; flex-wrap: wrap; }
-  .mermaid-masthead-left { display: flex; align-items: center; gap: 20px; }
-  .mermaid-heart { width: 44px; height: 40px; flex-shrink: 0; filter: drop-shadow(0 0 10px rgba(212,83,126,0.4)); animation: mermaid-float 4s ease-in-out infinite; }
-  @keyframes mermaid-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
-  .mermaid-overline { font-size: 10px; color: #7F77DD; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-  .mermaid-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: #1E1756; letter-spacing: -0.5px; line-height: 1; margin-bottom: 4px; }
-  .mermaid-sub { font-size: 13px; color: #3C3070; line-height: 1.5; max-width: 360px; }
-  .mermaid-all-link { font-size: 13px; color: #7F77DD; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; white-space: nowrap; transition: color 0.2s; flex-shrink: 0; }
-  .mermaid-all-link:hover { color: #C8C4E0; }
+  /* Postcard */
+  .mermaid-postcard-wrap { flex-shrink: 0; }
+  .mermaid-postcard { background: #fff; border: 4px solid #fff; outline: 0.5px solid #c8c0b8; box-shadow: 2px 3px 10px rgba(0,0,0,0.35); transform: rotate(-2deg); }
+  .mermaid-postcard-img { width: 100%; overflow: hidden; background: #1a0a2e; }
+  .mermaid-postcard-img img { width: 100%; height: auto; display: block; }
+  .mermaid-postcard-back { padding: 10px 12px; background: #fffdf8; border-top: 0.5px solid #e0d8cc; }
+  .mermaid-postcard-hand { font-family: var(--font-handwriting); font-size: 15px; color: #2a1a1a; line-height: 1.3; }
+  .mermaid-postcard-sub { font-family: var(--font-handwriting); font-size: 12px; color: #888; }
 
-  /* Body */
-  .mermaid-body { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
-  .mermaid-essay-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
-  .mermaid-category { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(127,119,221,0.12); padding: 3px 8px; border-radius: 20px; }
-  .mermaid-date { font-size: 12px; color: #C8C4E0; }
-  .mermaid-essay-title { font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px); font-weight: 300; color: #1E1756; letter-spacing: -0.5px; margin-bottom: 10px; line-height: 1.2; }
-  .mermaid-essay-lede { font-size: 14px; color: #C8C4E0; line-height: 1.7; margin-bottom: 16px; }
-  .mermaid-pullquote { font-family: var(--font-display); font-size: 16px; font-style: italic; color: #C8C4E0; border-left: 2px solid #7F77DD; padding-left: 14px; margin: 0 0 18px; line-height: 1.5; }
-  .mermaid-read-link { font-size: 13px; color: #7F77DD; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; transition: color 0.2s; display: inline-block; }
-  .mermaid-read-link:hover { color: #fff; }
-
-  /* Subscribe */
-  .mermaid-subscribe-box { background: rgba(127,119,221,0.08); border: 0.5px solid rgba(127,119,221,0.25); border-radius: 4px; padding: 24px; }
-  .mermaid-subscribe-eyebrow { font-size: 10px; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
-  .mermaid-subscribe-body { font-size: 13px; color: #3C3070; line-height: 1.6; margin-bottom: 16px; }
-  .btn-mermaid-subscribe { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 10px 18px; border-radius: 6px; transition: opacity 0.2s; display: inline-block; }
-  .btn-mermaid-subscribe:hover { opacity: 0.85; }
+  /* Feed */
+  .mermaid-feed { display: flex; flex-direction: column; }
+  .mermaid-feed-item { display: grid; grid-template-columns: 48px 1fr; border-bottom: 0.5px solid rgba(255,255,255,0.06); padding: 16px 0; }
+  .mermaid-feed-item:first-child { padding-top: 0; }
+  .mermaid-feed-date { display: flex; flex-direction: column; gap: 1px; padding-top: 2px; }
+  .mermaid-feed-date span { font-size: 9px; letter-spacing: 0.5px; color: #AFA9EC; text-transform: uppercase; line-height: 1.4; }
+  .mermaid-feed-date span:last-child { color: #7F77DD; }
+  .mermaid-feed-tag { font-size: 9px; letter-spacing: 1.5px; color: #D4537E; text-transform: uppercase; margin-bottom: 3px; }
+  .mermaid-feed-title { font-family: var(--font-display); font-size: 18px; color: #F5F0FF; line-height: 1.2; margin-bottom: 4px; }
+  .mermaid-feed-desc { font-size: 12px; color: #C8C4E0; line-height: 1.6; margin-bottom: 6px; }
+  .mermaid-feed-read { font-size: 11px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.4); padding-bottom: 1px; display: inline-block; transition: color 0.2s; }
+  .mermaid-feed-read:hover { color: #F5F0FF; }
+  .mermaid-feed-coming { opacity: 0.45; }
+  .mermaid-subscribe { margin-top: 20px; padding-top: 16px; border-top: 0.5px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .mermaid-subscribe-text { font-size: 12px; color: #C8C4E0; }
+  .mermaid-subscribe-btn { font-size: 12px; font-weight: 500; color: #fff; background: #534AB7; padding: 8px 16px; border-radius: 6px; transition: opacity 0.2s; white-space: nowrap; flex-shrink: 0; }
+  .mermaid-subscribe-btn:hover { opacity: 0.85; }
 
   /* SHIMMER TRANSITION */
 .nav-links a:hover { color: #fff !important; text-shadow: 0 0 12px rgba(245,167,204,0.8), 0 0 24px rgba(245,167,204,0.4); }
@@ -358,8 +383,6 @@ import Splash from '../components/Splash.astro';
     .hero-featured-inner { grid-template-columns: 1fr; }
     .featured-polaroid { margin: 0 auto; }
     .mermaid-body { grid-template-columns: 1fr; }
-    .mermaid-masthead { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .mermaid-masthead-left { flex-direction: row; }
     .about-grid { grid-template-columns: 1fr; gap: 28px; }
   }
 
