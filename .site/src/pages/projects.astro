@@ -32,12 +32,15 @@ const projects = [
 ];
 
 // Sort by start year, most recent first
+const typeLabel = { flagship: 'flagship', commissioned: 'commissioned', 'creative partnership': 'creative partnership', volunteer: 'volunteer' };
+const typeColor = { flagship: '#D4537E', commissioned: '#EF9F27', 'creative partnership': '#7F77DD', volunteer: '#B5D4F4' };
+
+// Sort by start year, most recent first
 const sorted = [...projects].sort((a, b) => {
-  const yearA = parseInt(a.dates.split('–')[0].split('–')[0]);
-  const yearB = parseInt(b.dates.split('–')[0].split('–')[0]);
+  const yearA = parseInt(a.dates.split('–')[0]);
+  const yearB = parseInt(b.dates.split('–')[0]);
   return yearB - yearA;
 });
-const typeColor = { flagship: '#D4537E', commissioned: '#EF9F27', 'creative partnership': '#7F77DD', volunteer: '#B5D4F4' };
 ---
 
 <Base title="projects — huhbub">
