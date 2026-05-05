@@ -106,6 +106,7 @@ import Base from '../layouts/Base.astro';
         <p class="footer-logo">huhbub</p>
         <p class="footer-sub">huhbub ltd · sara veal · est. 2016</p>
         <p class="footer-address">The Design Chapel, Cemetery Rd, Southampton SO15 7AF</p>
+        <p class="footer-credit">site built with Astro by huhbub</p>
       </div>
       <div class="footer-middle">
         <p class="footer-subscribe-label">read the curious mermaid</p>
@@ -203,6 +204,7 @@ import Base from '../layouts/Base.astro';
   .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #C8C4E0; margin-bottom: 2px; letter-spacing: -0.3px; }
   .footer-sub { font-size: 11px; color: #7F77DD; }
   .footer-address { font-size: 10px; color: #C8C4E0; margin-top: 2px; }
+  .footer-credit { font-size: 9px; color: #534AB7; margin-top: 6px; letter-spacing: 0.5px; }
   .footer-middle { text-align: center; }
   .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
   .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
@@ -219,3 +221,4 @@ import Base from '../layouts/Base.astro';
   burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
   window.closeMenu = () => mobileMenu.classList.remove('open');
 </script>
+
