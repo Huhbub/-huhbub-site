@@ -129,11 +129,9 @@ import Splash from '../components/Splash.astro';
       <div class="mermaid-inner">
 
         <div class="mermaid-header">
-          <div>
-            <p class="mermaid-overline">news, essays & stories</p>
-            <h2 class="mermaid-title">the curious mermaid</h2>
-            <p class="mermaid-desc">The latest huhbub news and stories from Sara Veal on creativity and community.</p>
-          </div>
+          <p class="mermaid-overline">news, essays & stories</p>
+          <h2 class="mermaid-title">the curious mermaid</h2>
+          <p class="mermaid-desc">The latest huhbub news and stories from Sara Veal on creativity and community.</p>
           <a href="/stories" class="nav-link mermaid-all-link">read all →</a>
         </div>
 
@@ -313,12 +311,12 @@ import Splash from '../components/Splash.astro';
   /* CURIOUS MERMAID */
   .mermaid-section { background: #07051A; padding: 48px 32px 56px; border-top: 0.5px solid rgba(255,255,255,0.06); }
   .mermaid-inner { max-width: 1060px; margin: 0 auto; }
-  .mermaid-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; padding-bottom: 12px; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
-  .mermaid-overline { font-size: 9px; letter-spacing: 3px; color: #AFA9EC; text-transform: uppercase; margin-bottom: 4px; }
-  .mermaid-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 300; color: #F5F0FF; letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
+  .mermaid-header { position: relative; margin-bottom: 28px; padding-bottom: 12px; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+  .mermaid-overline { font-size: 11px; letter-spacing: 1.5px; color: #AFA9EC; text-transform: uppercase; margin-bottom: 12px; font-weight: 500; }
+  .mermaid-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 300; color: #F5F0FF; letter-spacing: -1px; line-height: 1.1; margin-bottom: 6px; }
   .mermaid-desc { font-size: 15px; color: #C8C4E0; line-height: 1.7; max-width: 460px; margin-top: 8px; }
   .mermaid-feed-quote { font-family: var(--font-display); font-size: 15px; font-style: italic; color: #AFA9EC; border-left: 2px solid rgba(175,169,236,0.4); padding-left: 12px; margin: 10px 0 12px; line-height: 1.5; }
-  .mermaid-all-link { font-size: 12px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.4); padding-bottom: 1px; white-space: nowrap; flex-shrink: 0; transition: color 0.2s; }
+  .mermaid-all-link { font-size: 12px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.4); padding-bottom: 1px; white-space: nowrap; position: absolute; right: 0; top: 0; transition: color 0.2s; }
   .mermaid-all-link:hover { color: #F5F0FF; }
   .mermaid-body { display: grid; grid-template-columns: 320px 1fr; gap: 48px; align-items: start; }
 
