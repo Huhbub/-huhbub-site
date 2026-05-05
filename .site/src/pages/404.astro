@@ -7,11 +7,10 @@ import Base from '../layouts/Base.astro';
   <!-- NAV -->
   <nav>
     <a href="/" class="nav-logo nav-link"><span class="logo-text">huhbub</span></a>
-    <div class="nav-links">
+    <div class="nav-links">      <a href="/about" class="nav-link">about</a>
       <a href="/services" class="nav-link">services</a>
       <a href="/projects" class="nav-link">projects</a>
       <a href="/events" class="nav-link">events</a>
-      <a href="/about" class="nav-link">about</a>
       <a href="/stories" class="nav-link">stories</a>
       <a href="/contact" class="nav-link nav-cta">contact</a>
     </div>
@@ -23,11 +22,11 @@ import Base from '../layouts/Base.astro';
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobile-menu">
     <button class="mobile-menu-close" id="menu-close">×</button>
-    <div class="mobile-menu-links">
+    <div class="mobile-menu-links">      <a href="/about" onclick="closeMenu()">about</a>
       <a href="/services" onclick="closeMenu()">services</a>
       <a href="/projects" onclick="closeMenu()">projects</a>
       <a href="/events" onclick="closeMenu()">events</a>
-      <a href="/about" onclick="closeMenu()">about</a>
+      <a href="/stories" onclick="closeMenu()">stories</a>
       <a href="/stories" onclick="closeMenu()">stories</a>
       <a href="mailto:hello@huhbub.com" onclick="closeMenu()">contact</a>
     </div>
