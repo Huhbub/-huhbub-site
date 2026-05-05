@@ -130,9 +130,9 @@ import Splash from '../components/Splash.astro';
 
         <div class="mermaid-header">
           <div>
-            <p class="mermaid-overline">essays & stories</p>
+            <p class="mermaid-overline">news, essays & stories</p>
             <h2 class="mermaid-title">the curious mermaid</h2>
-            <p class="mermaid-desc">Writing from Sara Veal on creativity, community, and the beauty in what others might overlook — plus updates from huhbub.</p>
+            <p class="mermaid-desc">The latest huhbub news and stories from Sara Veal on creativity and community.</p>
           </div>
           <a href="/stories" class="nav-link mermaid-all-link">read all →</a>
         </div>
@@ -315,8 +315,8 @@ import Splash from '../components/Splash.astro';
   .mermaid-inner { max-width: 1060px; margin: 0 auto; }
   .mermaid-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 28px; padding-bottom: 12px; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
   .mermaid-overline { font-size: 9px; letter-spacing: 3px; color: #AFA9EC; text-transform: uppercase; margin-bottom: 4px; }
-  .mermaid-title { font-family: var(--font-display); font-size: clamp(20px, 2.5vw, 28px); font-weight: 300; color: #F5F0FF; letter-spacing: -0.5px; line-height: 1; margin-bottom: 6px; }
-  .mermaid-desc { font-size: 13px; color: #C8C4E0; line-height: 1.6; max-width: 460px; margin-top: 4px; }
+  .mermaid-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 44px); font-weight: 300; color: #F5F0FF; letter-spacing: -1px; line-height: 1; margin-bottom: 6px; }
+  .mermaid-desc { font-size: 15px; color: #C8C4E0; line-height: 1.7; max-width: 460px; margin-top: 8px; }
   .mermaid-feed-quote { font-family: var(--font-display); font-size: 15px; font-style: italic; color: #AFA9EC; border-left: 2px solid rgba(175,169,236,0.4); padding-left: 12px; margin: 10px 0 12px; line-height: 1.5; }
   .mermaid-all-link { font-size: 12px; color: #AFA9EC; border-bottom: 0.5px solid rgba(175,169,236,0.4); padding-bottom: 1px; white-space: nowrap; flex-shrink: 0; transition: color 0.2s; }
   .mermaid-all-link:hover { color: #F5F0FF; }
@@ -847,11 +847,11 @@ import Splash from '../components/Splash.astro';
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-    .bubbles { height: 180px; display: flex; justify-content: center; align-items: center; gap: 20px; }
+    .bubbles { height: 180px; display: flex; justify-content: center; align-items: center; gap: 16px; overflow: hidden; width: 100%; }
     .bubble-wrap { position: relative !important; top: auto !important; left: auto !important; right: auto !important; bottom: auto !important; }
-    .bw1 { width: 130px !important; height: 130px !important; animation: float2 8s ease-in-out infinite !important; }
-    .bw2 { width: 130px !important; height: 130px !important; animation: float3 6s ease-in-out infinite !important; margin-top: -20px; }
-    .bw3 { width: 130px !important; height: 130px !important; animation: float1 9s ease-in-out infinite !important; }
+    .bw1 { width: 110px !important; height: 110px !important; animation: float2 8s ease-in-out infinite !important; }
+    .bw2 { width: 110px !important; height: 110px !important; animation: float3 6s ease-in-out infinite !important; margin-top: -10px; }
+    .bw3 { width: 110px !important; height: 110px !important; animation: float1 9s ease-in-out infinite !important; }
     #hero-sparkle-canvas { display: none; }
     .featured-inner { grid-template-columns: 1fr; }
     .polaroid-grid { grid-template-columns: 1fr 1fr; gap: 20px; }    .personal-pair { grid-template-columns: 1fr; }

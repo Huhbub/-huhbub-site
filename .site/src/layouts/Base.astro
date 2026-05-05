@@ -87,7 +87,12 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     .nav-links a { border-bottom: none !important; }
 
     /* Mobile menu always on top */
-    .mobile-menu { z-index: 9000 !important; }
+    .mobile-menu { z-index: 9000 !important; position: fixed !important; inset: 0 !important; background: #0E0B2E !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-menu.open { opacity: 1 !important; pointer-events: all !important; }
+    .mobile-menu-close { position: absolute !important; top: 20px !important; right: 24px !important; background: none !important; border: none !important; color: #F5A7CC !important; font-size: 32px !important; cursor: pointer !important; z-index: 10; }
+    .mobile-menu-links { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 0 !important; }
+    .mobile-menu-links a { font-family: 'Cormorant Garamond', serif !important; font-size: 36px !important; font-weight: 300 !important; color: #D4D0F0 !important; padding: 10px 0 !important; transition: color 0.2s !important; text-decoration: none !important; }
+    .mobile-menu-links a:hover { color: #F5A7CC !important; }
     .nav-burger { position: relative; z-index: 101; }
 
     /* Nav — overflow visible so tabs can extend below */
