@@ -11,10 +11,7 @@ const collaborators = [
 ];
 
 const clients = [
-  'Primo Toys', 'Barbican', 'Salon London', 'Also Festival', 'Primadonna Festival',
-  'Port Eliot', 'Larmer Tree', 'Shambala', 'Sunrise Festival', 'Logging Off Club',
-  'Woogie Big Pants', 'October Books', 'Read with Audrey', 'OWN IT!',
-  'CMC / WorkWise for Screen', 'GamesAid', 'The Sewing Hub CIC',
+  'Primo Toys', 'The Garden Cinema', 'The Royal Society of Literature', 'Barbican', 'Salon London', 'Also Festival', 'Primadonna Festival', 'Larmer Tree Festival', 'Sunrise Festival', 'Logging Off Club', 'Woogie Big Pants', 'Read with Audrey', 'OWN IT!', 'Children's Media Conference', 'WorkWise for Screen', 'FLOW CO',
 ];
 
 ---
@@ -55,7 +52,7 @@ const clients = [
     <div class="page-hero-inner">
       <p class="page-overline">about</p>
       <h1>the story so far</h1>
-      <p class="page-sub">huhbub is a cultural consultancy founded by Sara Veal — producer, community builder, people strategist, and writer. Based in Southampton. Working everywhere.</p>
+      <p class="page-sub">huhbub is a cultural consultancy and studio founded by Sara Veal — producer, community builder, people strategist, and writer. Based in Southampton. Working everywhere.</p>
     </div>
   </div>
 
@@ -160,8 +157,8 @@ const clients = [
     <div class="clients-inner">
       <p class="section-overline">partners & clients</p>
       <div class="clients-cloud">
-        {clients.map(c => (
-          <span class="client-name">{c}</span>
+        {clients.map(cl => (
+          <span class="logo-pill">{cl}</span>
         ))}
       </div>
     </div>
@@ -317,7 +314,9 @@ const clients = [
   .clients-section { background: var(--sky, #07051A); padding: 56px 32px; border-bottom: 0.5px solid var(--border-subtle); }
   .clients-inner { max-width: 900px; margin: 0 auto; text-align: center; }
   .clients-inner { max-width: 1060px; margin: 0 auto; }
-  .clients-cloud { display: flex; flex-wrap: wrap; gap: 12px 16px; margin-top: 24px; justify-content: center; }
+  .clients-cloud { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 24px; justify-content: center; }
+  .logo-pill { font-size: 13px; color: #D4D0F0; padding: 6px 16px; border: 0.5px solid rgba(255,255,255,0.2); border-radius: 20px; transition: opacity 0.2s, border-color 0.2s; white-space: nowrap; }
+  .logo-pill:hover { border-color: #7F77DD; }
   .client-name { font-family: var(--font-display); font-size: clamp(16px, 2vw, 22px); font-weight: 300; color: #C8C4E0; letter-spacing: -0.3px; transition: color 0.2s; cursor: default; }
   .client-name:hover { color: #F5F0FF; }
 
