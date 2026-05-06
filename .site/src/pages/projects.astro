@@ -72,7 +72,6 @@ const sorted = [...projects].sort((a, b) => endYear(b.dates) - endYear(a.dates))
       <a href="/projects" onclick="closeMenu()">projects</a>
       <a href="/events" onclick="closeMenu()">events</a>
       <a href="/stories" onclick="closeMenu()">stories</a>
-      <a href="/stories" onclick="closeMenu()">stories</a>
       <a href="mailto:hello@huhbub.com" onclick="closeMenu()">contact</a>
     </div>
   </div>
@@ -299,26 +298,28 @@ const sorted = [...projects].sort((a, b) => endYear(b.dates) - endYear(a.dates))
   /* BACK */
   .polaroid-back {
     position: absolute; inset: 0;
-    background: #FFF8F0; padding: 16px 14px;
+    background: #FFF8F0; padding: 14px 12px;
     transform: rotateY(180deg);
     -webkit-transform: rotateY(180deg);
-    display: flex; flex-direction: column; justify-content: center;
+    display: flex; flex-direction: column; justify-content: flex-start;
     border: 0.5px solid #E0D4C8;
+    overflow: hidden;
   }
   .back-type {
-    font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
-    font-weight: 600; margin-bottom: 8px;
+    font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 6px;
   }
   .back-title {
-    font-family: var(--font-display); font-size: 16px; font-weight: 400;
-    color: #1E1040; line-height: 1.2; margin-bottom: 4px; letter-spacing: -0.2px;
+    font-family: var(--font-display); font-size: 14px; font-weight: 400;
+    color: #1E1040; line-height: 1.2; margin-bottom: 3px; letter-spacing: -0.2px;
   }
   .back-dates {
-    font-size: 10px; color: #888; letter-spacing: 0.5px; margin-bottom: 8px;
+    font-size: 9px; color: #888; letter-spacing: 0.5px; margin-bottom: 6px;
   }
   .back-desc {
-    font-size: 12px; color: #2a2020; line-height: 1.65;
-    flex: 1;
+    font-size: 11px; color: #2a2020; line-height: 1.55;
+    flex: 1; overflow: hidden;
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
   }
 
   .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
