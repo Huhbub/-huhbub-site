@@ -1,0 +1,223 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="contact — huhbub">
+<div id="site">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo nav-link"><span class="logo-text">huhbub</span></a>
+    <div class="nav-links">      <a href="/about" class="nav-link">about</a>
+      <a href="/services" class="nav-link">services</a>
+      <a href="/projects" class="nav-link">projects</a>
+      <a href="/events" class="nav-link">events</a>
+      <a href="/stories" class="nav-link">stories</a>
+      <a href="/contact" class="nav-link nav-cta active">contact</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close">×</button>
+    <div class="mobile-menu-links">      <a href="/about" onclick="closeMenu()">about</a>
+      <a href="/services" onclick="closeMenu()">services</a>
+      <a href="/projects" onclick="closeMenu()">projects</a>
+      <a href="/events" onclick="closeMenu()">events</a>
+      <a href="/stories" onclick="closeMenu()">stories</a>
+      <a href="/contact" onclick="closeMenu()">contact</a>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-overline">contact</p>
+      <h1>let's talk</h1>
+      <p class="page-sub">Whether you want to commission an event, book a workshop, explore a collaboration, or just say hello — get in touch.</p>
+    </div>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <div class="contact-section">
+    <div class="contact-inner">
+
+      <div class="contact-grid">
+        <!-- FORM -->
+        <div class="contact-form-wrap">
+          <form class="contact-form" name="contact" netlify>
+            <div class="form-field">
+              <label for="name">your name</label>
+              <input type="text" id="name" name="name" placeholder="Sara Veal" required />
+            </div>
+            <div class="form-field">
+              <label for="email">your email</label>
+              <input type="email" id="email" name="email" placeholder="hello@example.com" required />
+            </div>
+            <div class="form-field">
+              <label for="subject">what's it about?</label>
+              <select id="subject" name="subject">
+                <option value="">choose one...</option>
+                <option value="event">commissioning an event</option>
+                <option value="workshop">booking a workshop</option>
+                <option value="collaboration">creative collaboration</option>
+                <option value="consultancy">people & culture consultancy</option>
+                <option value="press">press enquiry</option>
+                <option value="other">something else</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="message">your message</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell me a bit about what you have in mind..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">send →</button>
+          </form>
+        </div>
+
+        <!-- SIDEBAR -->
+        <div class="contact-sidebar">
+          <div class="contact-direct">
+            <p class="contact-sidebar-label">prefer email?</p>
+            <a href="mailto:hello@huhbub.com" class="contact-email">hello@huhbub.com</a>
+          </div>
+          <div class="contact-direct">
+            <p class="contact-sidebar-label">on the web</p>
+            <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener" class="contact-link">instagram →</a>
+            <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener" class="contact-link">linkedin →</a>
+            <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="contact-link">substack →</a>
+          </div>
+          <div class="contact-direct">
+            <p class="contact-sidebar-label">response time</p>
+            <p class="contact-note">huhbub aims to respond within 3 working days. For urgent enquiries, email directly.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-logo">huhbub</p>
+        <p class="footer-sub">huhbub ltd · sara veal · est. 2016</p>
+        <p class="footer-address">The Design Chapel, Cemetery Rd, Southampton SO15 7AF</p>
+        <p class="footer-credit">site built with Astro by huhbub</p>
+      </div>
+      <div class="footer-middle">
+        <p class="footer-subscribe-label">read the curious mermaid</p>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+        <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener">linkedin</a>
+        <a href="/press" class="nav-link">press</a>
+        <a href="mailto:hello@huhbub.com">email</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</Base>
+
+<style>
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); padding: 16px 32px 0 32px; display: flex; justify-content: space-between; align-items: center; box-shadow: none;  }
+  .nav-logo { display: flex; align-items: center; }
+  .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+  .nav-links a:hover { color: #D4D0F0; }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
+  .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #D4D0F0; padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--accent-soft); }
+
+  /* PAGE HERO */
+  .page-hero { background: #F5A7CC; margin-top: -4px; padding: 48px 32px 40px; }
+  .page-hero-inner { max-width: 960px; margin: 0 auto; }
+  .page-overline { font-size: 11px; color: rgba(30,16,64,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1.5px; background: rgba(30,16,64,0.45); display: inline-block; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: #1E1040; line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: #2A1040; line-height: 1.7; max-width: 520px; }
+
+  /* CONTACT */
+  .contact-section { background: var(--sky, #07051A); padding: 56px 32px 80px;  }
+  .contact-inner { max-width: 960px; margin: 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 280px; gap: 64px; align-items: start; }
+
+  /* FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+  .form-field label { font-size: 11px; color: var(--accent-soft); letter-spacing: 1.5px; text-transform: uppercase; }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid var(--border-subtle);
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #D4D0F0;
+    font-family: var(--font-body);
+    transition: border-color 0.2s;
+    outline: none;
+    resize: vertical;
+  }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: #7F77DD; }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: var(--accent-soft); }
+  .form-field select option { background: #0E0B2E; color: #D4D0F0; }
+  .btn-submit { align-self: flex-start; font-size: 14px; font-weight: 500; color: #fff; background: var(--accent, #D4537E); padding: 12px 28px; border-radius: 8px; border: none; cursor: pointer; transition: opacity 0.2s; font-family: var(--font-body); }
+  .btn-submit:hover { opacity: 0.85; }
+
+  /* SIDEBAR */
+  .contact-sidebar { display: flex; flex-direction: column; gap: 32px; padding-top: 8px; }
+  .contact-sidebar-label { font-size: 10px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .contact-email { font-family: var(--font-display); font-size: 20px; font-weight: 300; color: #D4D0F0; letter-spacing: -0.3px; border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 2px; display: inline-block; transition: border-color 0.2s; }
+  .contact-email:hover { border-color: var(--accent-soft); }
+  .contact-link { display: block; font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; transition: color 0.2s; }
+  .contact-link:hover { color: var(--accent-soft); }
+  .contact-note { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
+
+  /* FOOTER */
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; } .nav-burger { display: flex; }
+    h1 { letter-spacing: -1px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #C8C4E0; margin-bottom: 2px; letter-spacing: -0.3px; }
+  .footer-sub { font-size: 11px; color: #7F77DD; }
+  .footer-address { font-size: 10px; color: #C8C4E0; margin-top: 2px; }
+  .footer-credit { font-size: 9px; color: #534AB7; margin-top: 6px; letter-spacing: 0.5px; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+</style>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
+  window.closeMenu = () => mobileMenu.classList.remove('open');
+</script>
+

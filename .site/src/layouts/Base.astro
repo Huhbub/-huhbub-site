@@ -12,106 +12,127 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Nunito:wght@300;400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&family=Nunito:wght@300;400;600&family=Caveat:wght@400;500&display=swap" rel="stylesheet" />
   <style is:global>
     :root {
       --font-display: 'Cormorant Garamond', Georgia, serif;
       --font-body: 'DM Sans', system-ui, sans-serif;
       --font-logo: 'Nunito', system-ui, sans-serif;
+      --font-handwriting: 'Caveat', cursive;
 
-      /* Base palette — overridden per season/time */
       --sky: #07051A;
       --sky-mid: #0E0B2E;
       --accent: #D4537E;
       --accent-soft: #F5A7CC;
       --accent-gold: #EF9F27;
       --accent-purple: #7F77DD;
-      --text-primary: #F5F0FF;
-      --text-secondary: #9B96CC;
-      --text-dark: #1E1756;
+      --text-primary: #F0EEF8;
+      --text-secondary: #C8C4E0;
+      --text-muted: #9B96CC;
       --border-subtle: rgba(255,255,255,0.08);
     }
 
-    /* Season × time overrides */
-    [data-moment="spring-dawn"] { --sky:#1A0E2E; --sky-mid:#251540; --accent:#F5A7CC; --accent-gold:#FAC775; --text-secondary:#C4B8E8; }
-    [data-moment="spring-day"]  { --sky:#FDF6FF; --sky-mid:#F5EEF8; --accent:#D4537E; --accent-gold:#EF9F27; --text-primary:#1E1756; --text-secondary:#534AB7; --border-subtle:rgba(0,0,0,0.07); }
-    [data-moment="spring-dusk"] { --sky:#2D1040; --sky-mid:#3A1550; --accent:#F5A7CC; --accent-gold:#EF9F27; --text-secondary:#C4A8E0; }
-    [data-moment="spring-night"]{ --sky:#07051A; --sky-mid:#0E0B2E; --accent:#D4537E; --accent-gold:#FAC775; }
-
-    [data-moment="summer-dawn"] { --sky:#1A1530; --sky-mid:#221B3A; --accent:#FAC775; --accent-gold:#EF9F27; --text-secondary:#C8C0E8; }
-    [data-moment="summer-day"]  { --sky:#FFFBF0; --sky-mid:#FFF5E0; --accent:#D4537E; --accent-gold:#BA7517; --text-primary:#1E1756; --text-secondary:#634A10; --border-subtle:rgba(0,0,0,0.07); }
-    [data-moment="summer-dusk"] { --sky:#2A0A20; --sky-mid:#380D2A; --accent:#D4537E; --accent-gold:#FAC775; --text-secondary:#D4A8C8; }
-    [data-moment="summer-night"]{ --sky:#040312; --sky-mid:#080525; --accent:#FAC775; --accent-gold:#EF9F27; --accent-soft:#F5C6A0; }
-
-    [data-moment="autumn-dawn"] { --sky:#1A0A08; --sky-mid:#251008; --accent:#EF9F27; --accent-gold:#D85A30; --text-secondary:#C8A880; }
-    [data-moment="autumn-day"]  { --sky:#FDF4E8; --sky-mid:#F8EDD8; --accent:#BA7517; --accent-gold:#D85A30; --text-primary:#2C1A08; --text-secondary:#634A10; --border-subtle:rgba(0,0,0,0.07); }
-    [data-moment="autumn-dusk"] { --sky:#200A08; --sky-mid:#2D0E08; --accent:#EF9F27; --accent-gold:#D4537E; --text-secondary:#C8A080; }
-    [data-moment="autumn-night"]{ --sky:#08050A; --sky-mid:#100810; --accent:#EF9F27; --accent-gold:#D85A30; --accent-soft:#FAC775; }
-
-    [data-moment="winter-dawn"] { --sky:#0A1020; --sky-mid:#0E1828; --accent:#B5D4F4; --accent-gold:#F5A7CC; --text-secondary:#A0B8D8; }
-    [data-moment="winter-day"]  { --sky:#F0F4FF; --sky-mid:#E8EEF8; --accent:#378ADD; --accent-gold:#7F77DD; --text-primary:#1E1756; --text-secondary:#3C5080; --border-subtle:rgba(0,0,0,0.07); }
-    [data-moment="winter-dusk"] { --sky:#150A25; --sky-mid:#1E1035; --accent:#AFA9EC; --accent-gold:#F5A7CC; --text-secondary:#B0A8D8; }
-    [data-moment="winter-night"]{ --sky:#04060F; --sky-mid:#08091A; --accent:#7F77DD; --accent-gold:#B5D4F4; --accent-soft:#AFA9EC; }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { font-size: 16px; -webkit-font-smoothing: antialiased; }
-
-    body {
-      font-family: var(--font-body);
-      background: var(--sky);
-      color: var(--text-primary);
-      transition: background 2s ease, color 1s ease;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: var(--font-display);
-      font-weight: 400;
-    }
-
+    body { font-family: var(--font-body); background: var(--sky); color: var(--text-primary); overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; }
     a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--accent); color: #fff; }
 
-    ::selection {
-      background: var(--accent);
-      color: #fff;
+    /* Logo wordmark — matches splash screen */
+    .nav-logo { display: flex; align-items: center; text-decoration: none; }
+    .logo-text {
+      font-family: var(--font-logo);
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--accent-soft, #F5A7CC);
+      letter-spacing: -0.5px;
+      line-height: 1;
     }
 
-    /* Scrollbar */
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--sky); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+    /* PAGE FADE-IN */
+    #site { animation: site-arrive 0.4s ease forwards; }
+    @keyframes site-arrive { from { opacity: 0; } to { opacity: 1; } }
+
+    /* NAV TABS */
+    .nav-links { display: flex; align-items: flex-end; gap: 0; margin-left: 48px; }
+    .nav-links a {
+      position: relative; display: inline-block;
+      padding: 6px 14px 10px; font-size: 12px;
+      color: rgba(10,5,30,0.85) !important; font-weight: 500;
+      text-shadow: none !important;
+      border-radius: 6px 6px 0 0; margin-right: 2px;
+      background: rgba(255,255,255,0.12);
+      box-shadow: none;
+      transition: filter 0.2s, color 0.2s;
+      z-index: 1;
+      border: none !important;
+      margin-bottom: 0;
+    }
+    .nav-links a[href="/about"]     { background: #E8829A; }
+    .nav-links a[href="/services"]  { background: #EF9F27; }
+    .nav-links a[href="/projects"]  { background: #D4537E; }
+    .nav-links a[href="/events"]    { background: #7F77DD; }
+    .nav-links a[href="/stories"]   { background: #AFA9EC; }
+    .nav-links a[href="/contact"],
+    .nav-links a.nav-cta            { background: #F5A7CC; border-radius: 6px 6px 0 0 !important; padding: 6px 14px 10px !important; color: rgba(10,5,30,0.9) !important; }
+    .nav-links a:hover { filter: brightness(1.1); color: #fff !important; }
+    .nav-links a.active {
+      filter: brightness(1.05); z-index: 10;
+      color: rgba(10,5,30,0.85) !important;
+      margin-bottom: 0 !important;
+      padding-bottom: 10px !important;
+    }
+    .nav-links a::after { display: none; }
+    .nav-links a { border-bottom: none !important; }
+
+    /* Mobile menu always on top */
+    .mobile-menu { z-index: 9000 !important; position: fixed !important; inset: 0 !important; background: #0E0B2E !important; display: flex !important; flex-direction: column !important; align-items: center !important; justify-content: center !important; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+    .mobile-menu.open { opacity: 1 !important; pointer-events: all !important; }
+    .mobile-menu-close { position: absolute !important; top: 20px !important; right: 24px !important; background: none !important; border: none !important; color: #F5A7CC !important; font-size: 32px !important; cursor: pointer !important; z-index: 10; }
+    .mobile-menu-links { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 0 !important; }
+    .mobile-menu-links a { font-family: 'Cormorant Garamond', serif !important; font-size: 36px !important; font-weight: 300 !important; color: #D4D0F0 !important; padding: 10px 0 !important; transition: color 0.2s !important; text-decoration: none !important; }
+    .mobile-menu-links a:hover { color: #F5A7CC !important; }
+    .nav-burger { position: relative; z-index: 101; }
+
+    /* Nav — overflow visible so tabs can extend below */
+    nav { padding-top: 28px !important; padding-bottom: 0 !important; overflow: visible !important; position: relative; z-index: 100; }
   </style>
 </head>
 <body>
   <slot />
   <script>
-    function getMoment() {
-      const now = new Date();
-      const month = now.getMonth(); // 0-11
-      const hour = now.getHours();  // 0-23
-
-      // Season
-      let season;
-      if (month >= 2 && month <= 4) season = 'spring';
-      else if (month >= 5 && month <= 7) season = 'summer';
-      else if (month >= 8 && month <= 10) season = 'autumn';
-      else season = 'winter';
-
-      // Time of day
-      let time;
-      if (hour >= 5 && hour < 9) time = 'dawn';
-      else if (hour >= 9 && hour < 18) time = 'day';
-      else if (hour >= 18 && hour < 21) time = 'dusk';
-      else time = 'night';
-
-      return `${season}-${time}`;
-    }
-
-    const moment = getMoment();
-    document.documentElement.setAttribute('data-moment', moment);
-    // Store for use in components
-    window.__huhbubMoment = moment;
+    // Folder tab bar — set nav border-bottom to match active tab
+    (function() {
+      const TAB_COLORS = {
+        '/':         'rgba(255,255,255,0.08)',
+        '/about':    '#E8829A',
+        '/services': '#EF9F27',
+        '/projects': '#D4537E',
+        '/events':   '#7F77DD',
+        '/stories':  '#AFA9EC',
+        '/people':   '#E8829A',
+        '/press':    '#FAC775',
+        '/contact':  '#F5A7CC',
+      };
+      const nav = document.querySelector('nav');
+      if (!nav) return;
+      const homeMarker = nav.querySelector('.nav-home-active');
+      const active = homeMarker ? null : nav.querySelector('.nav-link.active');
+      const href = homeMarker ? '/' : active?.getAttribute('href');
+      const color = TAB_COLORS[href] || TAB_COLORS['/'];
+      // Nav border matches tab colour — visual seam disappears by colour match
+      nav.style.borderBottom = `4px solid ${color}`;
+      if (active) {
+        active.style.setProperty('background', color, 'important');
+        active.style.setProperty('border-radius', '6px 6px 0 0', 'important');
+        active.style.setProperty('margin-bottom', '0', 'important');
+        active.style.setProperty('padding-bottom', '10px', 'important');
+        active.style.setProperty('position', 'relative', 'important');
+        active.style.setProperty('z-index', '10', 'important');
+      }
+    })();
   </script>
 </body>
 </html>
+

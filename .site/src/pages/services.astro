@@ -1,0 +1,478 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="services — huhbub">
+
+  <div id="site">
+
+    <!-- NAV -->
+    <nav>
+      <a href="/" class="nav-logo nav-link"><span class="logo-text">huhbub</span></a>
+      <div class="nav-links">      <a href="/about" class="nav-link">about</a>
+      <a href="/services" class="nav-link active">services</a>
+      <a href="/projects" class="nav-link">projects</a>
+      <a href="/events" class="nav-link">events</a>
+      <a href="/stories" class="nav-link">stories</a>
+        <a href="/contact" class="nav-link nav-cta">contact</a>
+      </div>
+      <button class="nav-burger" id="burger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-menu" id="mobile-menu">
+      <button class="mobile-menu-close" id="menu-close" aria-label="Close menu">×</button>
+      <div class="mobile-menu-links">      <a href="/about" onclick="closeMenu()">about</a>
+      <a href="/services" onclick="closeMenu()">services</a>
+      <a href="/projects" onclick="closeMenu()">projects</a>
+      <a href="/events" onclick="closeMenu()">events</a>
+      <a href="/stories" onclick="closeMenu()">stories</a>
+        <a href="mailto:hello@huhbub.com" onclick="closeMenu()">contact</a>
+      </div>
+    </div>
+
+    <!-- PAGE HERO -->
+    <div class="page-hero">
+      <div class="page-hero-inner">
+        <p class="page-overline">services</p>
+        <h1>let's work together</h1>
+        <p class="page-sub">huhbub works with organisations, initiatives and individuals who make culture — helping them build better from the inside out. Here's how.</p>
+      </div>
+    </div>
+
+    <!-- SERVICES GRID -->
+    <section class="services-section">
+      <div class="clusters-grid">
+
+        <div class="cluster postit-pink">
+          <div class="cluster-header">
+            <div class="cluster-icon">✦</div>
+            <div class="cluster-title">events & production</div>
+            <div class="cluster-desc">Making culture happen — in rooms, on stages, in the world.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">make culture happen</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">huhbub produces and creatively directs cultural events, series and experiences — from concept to room. Originating, producing and directing the kind of events that bring people together around something that matters.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">create cultural moments for good</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">huhbub translates values, causes and missions into cultural experiences — events, campaigns and moments that build community around something that matters. Because the best advocacy doesn't feel like advocacy.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">in the room</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Sara is available to host, chair, speak or sit on panels — bringing warmth, curiosity and a genuinely cross-sector perspective to stages, screens and boardrooms. Topics include creative industries, workplace culture, community building, social impact and happiness.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cluster postit-lavender">
+          <div class="cluster-header">
+            <div class="cluster-icon">❋</div>
+            <div class="cluster-title">people & organisations</div>
+            <div class="cluster-desc">The inside work that makes the outside work possible.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">build better environments</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">huhbub offers people and culture consultancy — HR infrastructure, workplace culture, community and engagement strategy for creative organisations. The inside work that makes the outside work possible.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">make work feel alive</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">huhbub designs and delivers internal events, rituals and communications that turn a workplace into a community — from all-hands to onboarding, from internal newsletters to team rituals. The culture your people experience every day, not just on special occasions.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">build something that lasts</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">huhbub helps new organisations, studios and initiatives get the foundations right — brand identity and positioning, people infrastructure, internal culture, community strategy. The scaffolding that lets everything else grow, built from scratch across the games industry, cultural sector and beyond.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cluster postit-yellow">
+          <div class="cluster-header">
+            <div class="cluster-icon">◈</div>
+            <div class="cluster-title">growth & connection</div>
+            <div class="cluster-desc">Finding the people, building the relationships, growing the thing.</div>
+          </div>
+          <div class="svc-list">
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">find your people</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">huhbub helps cultural organisations and initiatives identify, reach and genuinely connect with the communities they exist to serve — audience development that builds real relationships, not just numbers.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">let's build it together</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">huhbub offers mentoring and consultancy for people with an idea they're ready to make real. No conventional path required — just curiosity, commitment and the will to make something happen.</div></div>
+            </div>
+            <div class="svc-item">
+              <button class="svc-trigger"><span class="svc-name">creative partnership</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+              <div class="svc-body"><div class="svc-inner">Being brought in as a collaborator, not a contractor. You bring the vision, huhbub brings the producing, the relationships, the judgment. Black to the Future is the model.</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HAPPINESS ORIGAMI — folded heart, click to open -->
+        <div class="origami-cluster" id="origami-cluster">
+          <div class="origami-heart-wrap" id="origami-toggle">
+            <div class="origami-closed">
+              <svg viewBox="0 0 140 120" xmlns="http://www.w3.org/2000/svg" class="origami-svg">
+                <defs>
+                  <!-- Left panel — slightly lighter -->
+                  <linearGradient id="hg-left" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#E06080"/>
+                    <stop offset="100%" stop-color="#C8405E"/>
+                  </linearGradient>
+                  <!-- Right panel — slightly darker -->
+                  <linearGradient id="hg-right" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#B83058"/>
+                    <stop offset="100%" stop-color="#A02048"/>
+                  </linearGradient>
+                  <filter id="hs">
+                    <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="rgba(0,0,0,0.3)"/>
+                  </filter>
+                </defs>
+
+                <!--
+                  Flat geometric origami heart — like the reference:
+                  Two trapezoidal top panels (left and right of centre crease)
+                  Meeting at centre vertical crease
+                  Bottom comes to a point
+                  Diagonal fold lines visible on each panel
+                  
+                  Heart outline: top-left curves then point at bottom
+                  Key points:
+                  - Top-left corner: (10, 34)
+                  - Top-left peak: (35, 8)
+                  - Centre top: (70, 34)
+                  - Top-right peak: (105, 8)
+                  - Top-right corner: (130, 34)
+                  - Bottom point: (70, 118)
+                -->
+
+                <!-- Left half of heart -->
+                <polygon points="10,34 35,8 70,34 70,118"
+                  fill="url(#hg-left)" filter="url(#hs)"/>
+
+                <!-- Right half of heart -->
+                <polygon points="130,34 105,8 70,34 70,118"
+                  fill="url(#hg-right)"/>
+
+                <!-- Centre crease — vertical -->
+                <line x1="70" y1="34" x2="70" y2="118"
+                  stroke="rgba(0,0,0,0.2)" stroke-width="1.5"/>
+
+                <!-- Left panel diagonal fold — top-left corner to centre -->
+                <line x1="10" y1="34" x2="70" y2="34"
+                  stroke="rgba(255,255,255,0.25)" stroke-width="0.8"/>
+                <line x1="35" y1="8" x2="70" y2="118"
+                  stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+
+                <!-- Right panel diagonal fold -->
+                <line x1="130" y1="34" x2="70" y2="34"
+                  stroke="rgba(0,0,0,0.12)" stroke-width="0.8"/>
+                <line x1="105" y1="8" x2="70" y2="118"
+                  stroke="rgba(0,0,0,0.1)" stroke-width="0.8"/>
+
+                <!-- Subtle top horizontal fold line -->
+                <line x1="10" y1="34" x2="130" y2="34"
+                  stroke="rgba(0,0,0,0.15)" stroke-width="0.8"/>
+
+                <!-- open me text -->
+                <text x="70" y="50" text-anchor="middle" font-size="9"
+                  fill="rgba(255,255,255,0.95)" font-family="Georgia, serif" font-style="italic">open me</text>
+                <text x="70" y="63" text-anchor="middle" font-size="8"
+                  fill="rgba(255,255,255,0.75)" font-family="Georgia, serif" font-style="italic">happiness origami</text>
+              </svg>
+            </div>
+            <div class="origami-open" id="origami-open">
+              <div class="origami-open-header">
+                <div class="origami-icon">✿</div>
+                <div>
+                  <div class="origami-title">happiness origami</div>
+                  <div class="origami-tagline">A standalone offering. Bookable. Joyful. Transformative.</div>
+                </div>
+                <button class="origami-close-btn" id="origami-close">×</button>
+              </div>
+              <div class="svc-list origami-svc-list">
+                <div class="svc-item">
+                  <button class="svc-trigger origami-trigger"><span class="svc-name">what is it?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+                  <div class="svc-body"><div class="svc-inner origami-inner-text">A named, bookable workshop for festivals, organisations, teams and individuals. Delivered at the Barbican, Primadonna Festival, Also Festival, Logging Off Club and more. Get in touch to book.</div></div>
+                </div>
+                <div class="svc-item">
+                  <button class="svc-trigger origami-trigger"><span class="svc-name">who is it for?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+                  <div class="svc-body"><div class="svc-inner origami-inner-text">Teams who've forgotten to have fun. Individuals at a crossroads. Festival audiences who want something that lasts beyond the weekend. Anyone who wants to think differently about joy.</div></div>
+                </div>
+                <div class="svc-item">
+                  <button class="svc-trigger origami-trigger"><span class="svc-name">what will you leave with?</span><span class="svc-arrow"><svg viewBox="0 0 8 8"><path d="M1 2.5l3 3 3-3"/></svg></span></button>
+                  <div class="svc-body"><div class="svc-inner origami-inner-text">A clearer sense of what makes you happy — and practical tools to protect it. Not a list of tips, but a shift in how you think about joy, work, and what you're actually doing this for.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="services-cta">
+      <div class="cta-inner">
+        <h2>sound like what you need?</h2>
+        <p>Get in touch and let's talk about what huhbub could make happen for you.</p>
+        <a href="mailto:hello@huhbub.com" class="btn-cta">hello@huhbub.com</a>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-logo">huhbub</p>
+        <p class="footer-sub">huhbub ltd · sara veal · est. 2016</p>
+        <p class="footer-address">The Design Chapel, Cemetery Rd, Southampton SO15 7AF</p>
+        <p class="footer-credit">site built with Astro by huhbub</p>
+      </div>
+      <div class="footer-middle">
+        <p class="footer-subscribe-label">read the curious mermaid</p>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+        <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener">linkedin</a>
+        <a href="/press" class="nav-link">press</a>
+        <a href="mailto:hello@huhbub.com">email</a>
+      </div>
+    </div>
+  </footer>
+
+  </div>
+</Base>
+
+<style>
+.nav-links a:hover { color: #fff !important; text-shadow: 0 0 10px rgba(245,167,204,0.7), 0 0 20px rgba(245,167,204,0.3); }
+/* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); padding: 16px 32px 0 32px; display: flex; justify-content: space-between; align-items: center; box-shadow: none;  }
+  .nav-logo { display: flex; align-items: center; }
+  .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #1E1040; }
+  .nav-links a.active { border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px; }
+  .nav-cta { border: 0.5px solid var(--border-subtle); padding: 7px 16px; border-radius: 20px; color: var(--accent-soft) !important; transition: background 0.2s !important; }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
+
+  /* MOBILE MENU */
+  .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; line-height: 1; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #1E1040; letter-spacing: -0.5px; padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--accent-soft); }
+
+  /* PAGE HERO */
+  .page-hero { background: #EF9F27; margin-top: -4px; padding: 56px 32px 48px; }
+  .page-hero-inner { max-width: 960px; margin: 0 auto; }
+  .page-overline { font-size: 11px; color: rgba(30,16,64,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1.5px; background: rgba(30,16,64,0.45); display: inline-block; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: #1E1040; line-height: 1.05; letter-spacing: -2px; margin-bottom: 16px; }
+  .page-sub { font-size: 16px; color: #2A1040; line-height: 1.75; max-width: 560px; }
+
+  /* SERVICES */
+  .services-section { background: #FDF6F0; padding: 56px 32px; }
+  .clusters-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 1100px; margin: 0 auto; padding: 8px; }
+
+  /* POST-IT CLUSTERS */
+  .cluster {
+    position: relative; border-radius: 2px; padding: 0;
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.12), 0 1px 3px rgba(0,0,0,0.08);
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+  }
+  .cluster:hover { box-shadow: 4px 8px 20px rgba(0,0,0,0.18); z-index: 10; }
+  .cluster:nth-child(1) { transform: rotate(-1deg); } .cluster:nth-child(1):hover { transform: rotate(0deg) scale(1.02); }
+  .cluster:nth-child(2) { transform: rotate(0.8deg); } .cluster:nth-child(2):hover { transform: rotate(0deg) scale(1.02); }
+  .cluster:nth-child(3) { transform: rotate(-0.5deg); } .cluster:nth-child(3):hover { transform: rotate(0deg) scale(1.02); }
+  .cluster:nth-child(4) { transform: rotate(1.2deg); } .cluster:nth-child(4):hover { transform: rotate(0deg) scale(1.02); }
+
+  .cluster::after { content: ''; position: absolute; bottom: 0; right: 0; width: 0; height: 0; border-style: solid; pointer-events: none; z-index: 2; }
+
+  .cluster-header { padding: 22px 22px 14px; }
+  .cluster-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; font-size: 16px; background: rgba(255,255,255,0.4); }
+  .cluster-title { font-size: 16px; font-weight: 500; margin-bottom: 4px; font-family: var(--font-body); }
+  .cluster-desc { font-size: 14px; line-height: 1.6; }
+
+  .svc-list { padding: 0 12px 12px; }
+  .svc-item { border-radius: 3px; overflow: hidden; margin-bottom: 4px; }
+  .svc-trigger { width: 100%; background: none; border: none; padding: 11px 12px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; text-align: left; transition: background 0.2s; font-family: var(--font-body); border-radius: 3px; }
+  .svc-trigger:hover, .svc-trigger.open { background: rgba(255,255,255,0.5); }
+  .svc-name { font-size: 13px; font-weight: 500; }
+  .svc-arrow { width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+  .svc-arrow svg { width: 8px; height: 8px; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .svc-trigger.open .svc-arrow { transform: rotate(180deg); }
+  .svc-body { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1); }
+  .svc-body.open { max-height: 200px; }
+  .svc-inner { padding: 4px 12px 14px; font-size: 13px; line-height: 1.7; border-top: 0.5px solid rgba(0,0,0,0.08); }
+
+  /* Burst */
+  .burst { position: fixed; pointer-events: none; z-index: 9999; }
+  .burst-dot { position: absolute; width: 5px; height: 5px; border-radius: 50%; animation: burst-out 0.7s ease-out forwards; }
+  @keyframes burst-out { 0%{transform:translate(0,0) scale(1);opacity:1} 100%{transform:translate(var(--tx),var(--ty)) scale(0);opacity:0} }
+
+  /* Post-it colours */
+  .postit-pink { background: #FADADD; } .postit-pink .cluster-title { color: #2A1040; } .postit-pink .cluster-desc,.postit-pink .svc-inner { color: #2A1040; } .postit-pink .svc-name { color: #2A1040; } .postit-pink .svc-arrow svg { stroke: #2A1040; } .postit-pink::after { border-width: 0 0 18px 18px; border-color: transparent transparent #E8B8BC transparent; }
+  .postit-lavender { background: #E8D8F8; } .postit-lavender .cluster-title { color: #2A1040; } .postit-lavender .cluster-desc,.postit-lavender .svc-inner { color: #2A1040; } .postit-lavender .svc-name { color: #2A1040; } .postit-lavender .svc-arrow svg { stroke: #2A1040; } .postit-lavender::after { border-width: 0 0 18px 18px; border-color: transparent transparent #C8B8E8 transparent; }
+  .postit-yellow { background: #FFF3A3; } .postit-yellow .cluster-title { color: #2A1040; } .postit-yellow .cluster-desc,.postit-yellow .svc-inner { color: #2A1040; } .postit-yellow .svc-name { color: #2A1040; } .postit-yellow .svc-arrow svg { stroke: #2A1040; } .postit-yellow::after { border-width: 0 0 18px 18px; border-color: transparent transparent #E8DC80 transparent; }
+  .postit-mint { background: #C8F0E0; } .postit-mint .cluster-title { color: #2A1040; } .postit-mint .cluster-desc,.postit-mint .svc-inner { color: #2A1040; } .postit-mint .svc-name { color: #2A1040; } .postit-mint .svc-arrow svg { stroke: #2A1040; } .postit-mint::after { border-width: 0 0 18px 18px; border-color: transparent transparent #A0D8C0 transparent; }
+
+  /* Seasonal tinting */
+
+  /* CTA */
+  /* ORIGAMI HEART CLUSTER */
+  .origami-cluster {
+    position: relative; display: flex; align-items: center; justify-content: center;
+    transform: rotate(1deg);
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .origami-cluster:hover { transform: rotate(0deg) scale(1.02); z-index: 10; }
+  .origami-heart-wrap { position: relative; width: 100%; min-height: 200px; display: flex; align-items: center; justify-content: center; }
+  .origami-closed {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    cursor: pointer; padding: 24px;
+    transition: opacity 0.35s;
+  }
+  .origami-cluster.is-open .origami-closed { opacity: 0; pointer-events: none; position: absolute; }
+  .origami-svg {
+    width: 300px; height: 280px;
+    filter: drop-shadow(3px 6px 12px rgba(180,60,80,0.3));
+    transition: transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .origami-closed:hover .origami-svg { transform: scale(1.06) rotate(-3deg); }
+
+  .origami-open {
+    background: #FADADD; border-radius: 2px; padding: 0;
+    box-shadow: 2px 3px 10px rgba(0,0,0,0.12);
+    width: 100%;
+    opacity: 0; transform: scale(0.85); pointer-events: none;
+    transition: opacity 0.4s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    position: absolute; inset: 0; height: 100%;
+  }
+  .origami-cluster.is-open .origami-open {
+    opacity: 1; transform: scale(1); pointer-events: all;
+    position: relative; inset: auto; height: auto;
+  }
+  .origami-open-header {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 18px 18px 10px; border-bottom: 0.5px solid rgba(42,16,64,0.15);
+  }
+  .origami-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+  .origami-title { font-size: 15px; font-weight: 500; color: #2A1040; margin-bottom: 2px; }
+  .origami-tagline { font-size: 12px; color: #2A1040; line-height: 1.4; opacity: 0.7; }
+  .origami-close-btn {
+    margin-left: auto; background: none; border: none; cursor: pointer;
+    font-size: 20px; color: #2A1040; line-height: 1; flex-shrink: 0; padding: 0 2px;
+    transition: color 0.2s; opacity: 0.6;
+  }
+  .origami-close-btn:hover { opacity: 1; }
+  .origami-svc-list { padding: 0 10px 10px; }
+  .origami-trigger { background: none; }
+  .origami-trigger:hover, .origami-trigger.open { background: rgba(42,16,64,0.06) !important; }
+  .origami-trigger .svc-name { color: #2A1040; }
+  .origami-trigger .svc-arrow svg { stroke: #2A1040; }
+  .origami-inner-text { color: #2A1040; border-top-color: rgba(42,16,64,0.15); }
+
+  .services-cta { background: var(--sky, #07051A); padding: 56px 32px; border-top: 0.5px solid var(--border-subtle); text-align: center; }
+  .cta-inner { max-width: 560px; margin: 0 auto; }
+  .cta-inner h2 { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #F5F0FF; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .cta-inner p { font-size: 15px; color: #C8C4E0; line-height: 1.7; margin-bottom: 28px; }
+  .btn-cta { display: inline-block; font-size: 14px; font-weight: 500; color: #fff; background: var(--accent, #D4537E); padding: 14px 28px; border-radius: 8px; transition: opacity 0.2s; }
+  .btn-cta:hover { opacity: 0.85; }
+
+  /* FOOTER */
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .clusters-grid { grid-template-columns: 1fr; }
+    h1 { letter-spacing: -1px; }
+  }
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #C8C4E0; margin-bottom: 2px; letter-spacing: -0.3px; }
+  .footer-sub { font-size: 11px; color: #7F77DD; }
+  .footer-address { font-size: 10px; color: #C8C4E0; margin-top: 2px; }
+  .footer-credit { font-size: 9px; color: #534AB7; margin-top: 6px; letter-spacing: 0.5px; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+</style>
+
+<script>
+  // Reveal
+  function revealSite() {
+    const site = document.getElementById('site');
+    const splash = document.getElementById('splash');
+    if (!splash) { site.classList.add('is-visible'); return; }
+    const observer = new MutationObserver(() => {
+      if (!document.getElementById('splash')) { site.classList.add('is-visible'); observer.disconnect(); }
+    });
+    observer.observe(document.body, { childList: true });
+  }
+  revealSite();
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
+  window.closeMenu = () => mobileMenu.classList.remove('open');
+
+  // Origami heart — open/close
+  const origamiCluster = document.getElementById('origami-cluster');
+  const origamiToggle = document.getElementById('origami-toggle');
+  const origamiClose = document.getElementById('origami-close');
+  origamiToggle?.addEventListener('click', e => {
+    if (e.target.closest('.origami-open')) return; // clicks inside open card don't toggle
+    origamiCluster.classList.toggle('is-open');
+  });
+  origamiClose?.addEventListener('click', e => {
+    e.stopPropagation();
+    origamiCluster.classList.remove('is-open');
+  });
+
+  // Services expand/collapse with burst
+  document.querySelectorAll('.svc-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.svc-trigger.open').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('open'); });
+      if (!isOpen) { btn.classList.add('open'); body.classList.add('open'); burstEffect(btn); }
+    });
+  });
+
+  function burstEffect(el) {
+    const rect = el.getBoundingClientRect();
+    const colors = ['#D4537E','#F5A7CC','#EF9F27','#7F77DD','#FAC775','#AFA9EC'];
+    const container = document.createElement('div');
+    container.className = 'burst';
+    container.style.cssText = `left:${rect.right-18}px;top:${rect.top+rect.height/2}px`;
+    document.body.appendChild(container);
+    for (let i = 0; i < 10; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'burst-dot';
+      const angle = (i/10)*Math.PI*2, dist = 22+Math.random()*18;
+      dot.style.setProperty('--tx', Math.cos(angle)*dist+'px');
+      dot.style.setProperty('--ty', Math.sin(angle)*dist+'px');
+      dot.style.background = colors[i%colors.length];
+      dot.style.animationDelay = (Math.random()*0.08)+'s';
+      container.appendChild(dot);
+    }
+    setTimeout(() => container.remove(), 800);
+  }
+
+</script>
+

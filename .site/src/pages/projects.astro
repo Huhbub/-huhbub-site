@@ -1,0 +1,383 @@
+---
+import Base from '../layouts/Base.astro';
+
+const projects = [
+  // FLAGSHIP
+  { slug:'curious-mermaid', title:'Curious Mermaid / Sirena Curiosa', dates:'2024–present', type:'flagship', caption:'pop-up · 2024–present', blurb:'A homegrown world of supper clubs, pop-up galleries and a market stall — bringing an original creative concept to life at scale.', poster:'/images/poster-curious-mermaid.jpg', rot:-2 },
+  { slug:'happiness-origami', title:'Happiness Origami', dates:'2023–present', type:'flagship', caption:'workshops · 2023–present', blurb:'Joy as a practice — a standalone happiness workshop delivered at Primadonna, ALSO Festival, the Barbican and beyond.', poster:'/images/poster-happiness.jpg', rot:1.5 },
+  { slug:'purple-reign', title:'Purple Reign', dates:'2018', type:'flagship', caption:'bakeoff · 2018', blurb:'A Prince-themed birthday bakeoff cabaret marking what would have been his 60th — fundraising for Code Club.', poster:'/images/poster-purple-reign.jpg', rot:-1.5 },
+  { slug:'feeling-noughties', title:'Feeling Noughties', dates:'2016', type:'flagship', caption:"huhbub's first · 2016", blurb:'The very first huhbub event — a Noughties cabaret marking the launch of Goodbye Ruby Tuesday, fundraising for Core Arts.', poster:'/images/poster-feeling-noughties.jpg', rot:2 },
+
+  // CREATIVE PARTNERSHIP
+  { slug:'black-to-the-future', title:'Black to the Future', dates:'2023–2024', type:'creative partnership', caption:'afrofuturism · 2023–24', blurb:'An afrofuturistic festival co-created with Irenosen Okojie, platforming 25+ Black creatives at iconic London venues in partnership with the British Library.', poster:'/images/poster-bttf.jpg', rot:-2.5 },
+  { slug:'strong-women-squad', title:'Strong Women Squad', dates:'2018', type:'creative partnership', caption:'dance · 2018', blurb:"Lisa Dickenson's feminist initiative brought to life — dance classes and lightning talks fundraising for Women's Aid and CoppaFeel!", poster:'/images/poster-strong-women.jpg', rot:1 },
+  { slug:'that-time-of-the-month', title:'That Time of the Month', dates:'2018–2019', type:'creative partnership', caption:'screenings · 2018–19', blurb:'A series of period drama screenings fundraising for local Red Box Projects and raising awareness of period poverty.', poster:'/images/poster-that-time.jpg', rot:-1 },
+  { slug:'power-of-storytelling', title:'The Power of Storytelling', dates:'2024', type:'creative partnership', caption:'pride · 2024', blurb:"A networking mixer celebrating Pride Month at the Common Press, in partnership with Ukie's #RaisetheGame and fundraising for Code Coven.", poster:'/images/poster-power-storytelling.jpg', rot:2.5 },
+
+  // COMMISSIONED
+  { slug:'workwise-develop', title:'WorkWise for Screen at Develop', dates:'2025', type:'commissioned', caption:'games industry · 2025', blurb:'Produced the WorkWise stand, employment clinic and panel at Develop: Brighton on behalf of the Children\'s Media Conference.', poster:'/images/poster-workwise-develop.jpg', rot:-1 },
+  { slug:'fray-world', title:'Fray World Game Jam', dates:'2025', type:'commissioned', caption:'game jam · 2025', blurb:'Producer and event designer for the second edition of Fray World — community-building through game-making, fundraising for GamesAid.', poster:'/images/poster-fray-world.jpg', rot:2 },
+  { slug:'clean-prose', title:'Clean Prose', dates:'2019–2020', type:'commissioned', caption:'literary events · 2019–20', blurb:'Founded the member community and produced 70+ literary events during the launch phase of this writers\' collective.', poster:'/images/poster-clean-prose.jpg', rot:-2 },
+  { slug:'own-it', title:'OWN IT!', dates:'2018', type:'commissioned', caption:'publicity · 2018', blurb:'Press and publicity support for a roster of bold creative voices — launch events, radio slots and agency announcements.', poster:'/images/poster-own-it.jpg', rot:1.5 },
+  { slug:'cubetto', title:'Cubetto', dates:'2018–2019', type:'commissioned', caption:'community · 2018–19', blurb:'Content and community management for Primo Toys, including managing the Cubetto Kickstarter campaign.', poster:'/images/poster-cubetto.jpg', rot:-1.5 },
+  { slug:'robot-coding', title:'Robot Coding', dates:'2018–2021', type:'commissioned', caption:'workshops · 2018–21', blurb:'Screen-free coding workshops bringing hands-on tech education to festival audiences at Sunrise and ALSO.', poster:'/images/poster-robot-coding.jpg', rot:2.5 },
+  { slug:'woogie', title:'Woogie Big Pants Universe', dates:'2021–2022', type:'commissioned', caption:'PR · 2021–22', blurb:'Press, distribution and event placement for a children\'s book series — securing festival slots at Primadonna and ALSO.', poster:'/images/poster-woogie.jpg', rot:-2 },
+  { slug:'salon-london', title:'Salon London', dates:'2020–2021', type:'commissioned', caption:'social media · 2020–21', blurb:'Marketing and social media support for a beloved London events brand through in-person and virtual programming.', poster:'/images/poster-salon-london.jpg', rot:1 },
+  { slug:'read-with-audrey', title:'Read with Audrey', dates:'2019–2021', type:'commissioned', caption:'outreach · 2019–21', blurb:'Product tester sourcing and author and influencer outreach for an independent book discovery platform.', poster:'/images/poster-read-audrey.jpg', rot:-1 },
+  { slug:'larmer-tree', title:'Larmer Tree Festival', dates:'2016–2019', type:'commissioned', caption:'literary · 2016–19', blurb:'Owned the literary programming strand across three years — author outreach, panel development, hosting and workshop facilitation.', poster:'/images/poster-larmer-tree.jpg', rot:2 },
+
+  // VOLUNTEER
+  { slug:'less-than-2', title:'Less than 2%', dates:'2022', type:'volunteer', caption:'podcast · 2022', blurb:'A three-episode podcast walking with survivors of sexual violence seeking justice, produced with Chayn — winner of five Lovie Awards.', poster:'/images/poster-less-than-2.jpg', rot:-2.5 },
+  { slug:'primadonna', title:'Primadonna Festival', dates:'2019–2024', type:'volunteer', caption:'festival · 2019–24', blurb:'Administration support for the Primadonna Prize and event hosting across five years of this beloved feminist festival.', poster:'/images/poster-primadonna.jpg', rot:1.5 },
+];
+
+// Sort by start year, most recent first
+const typeLabel = { flagship: 'flagship', commissioned: 'commissioned', 'creative partnership': 'creative partnership', volunteer: 'volunteer' };
+const typeColor = { flagship: '#D4537E', commissioned: '#EF9F27', 'creative partnership': '#7F77DD', volunteer: '#B5D4F4' };
+
+// Sort by end date (most recent first). "present" = 9999. Range: use end year.
+function endYear(dates) {
+  const parts = dates.split('–');
+  const end = parts.length > 1 ? parts[1].trim() : parts[0].trim();
+  if (end === 'present') return 9999;
+  const y = parseInt(end);
+  return isNaN(y) ? parseInt(parts[0]) : y;
+}
+const sorted = [...projects].sort((a, b) => endYear(b.dates) - endYear(a.dates));
+---
+
+<Base title="projects — huhbub">
+<div id="site">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo nav-link"><span class="logo-text">huhbub</span></a>
+    <div class="nav-links">      <a href="/about" class="nav-link">about</a>
+      <a href="/services" class="nav-link">services</a>
+      <a href="/projects" class="nav-link active">projects</a>
+      <a href="/events" class="nav-link">events</a>
+      <a href="/stories" class="nav-link">stories</a>
+      <a href="/contact" class="nav-link nav-cta">contact</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close">×</button>
+    <div class="mobile-menu-links">      <a href="/about" onclick="closeMenu()">about</a>
+      <a href="/services" onclick="closeMenu()">services</a>
+      <a href="/projects" onclick="closeMenu()">projects</a>
+      <a href="/events" onclick="closeMenu()">events</a>
+      <a href="/stories" onclick="closeMenu()">stories</a>
+      <a href="mailto:hello@huhbub.com" onclick="closeMenu()">contact</a>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-overline">projects</p>
+      <h1>what we've made happen</h1>
+      <p class="page-sub">Events, series, festivals and cultural experiences, including commissions and creative partnerships. Hover to flip.</p>
+      <div class="filter-pills">
+        <button class="filter-pill active" data-filter="all">all</button>
+        <button class="filter-pill" data-filter="flagship">flagship</button>
+        <button class="filter-pill" data-filter="commissioned">commissioned</button>
+        <button class="filter-pill" data-filter="creative partnership">creative partnership</button>
+        <button class="filter-pill" data-filter="volunteer">volunteer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CORKBOARD -->
+  <div class="corkboard">
+    <div class="corkboard-texture"></div>
+    <div class="polaroids-grid" id="polaroids-grid">
+      {sorted.map((p, i) => (
+        <div
+          class="polaroid-wrap"
+          data-type={p.type}
+          style={`--rot: ${p.rot}deg; --delay: ${i * 0.07}s`}
+        >
+          <!-- PIN -->
+          <div class="pin"></div>
+
+          <div class="polaroid">
+            <!-- FRONT: poster -->
+            <div class="polaroid-front">
+              <div class="polaroid-img">
+                <img src={p.poster} alt={p.title} loading="lazy" onerror="this.parentElement.classList.add('no-img')" />
+                <div class="polaroid-img-placeholder">
+                  <span class="placeholder-initial">{p.title[0]}</span>
+                </div>
+              </div>
+              <div class="polaroid-label">
+                <span class="polaroid-caption">{p.caption}</span>
+              </div>
+            </div>
+            <!-- BACK: info -->
+            <div class="polaroid-back">
+              {typeLabel[p.type] && <div class="back-type" style={`color: ${typeColor[p.type]}`}>{typeLabel[p.type]}</div>}
+              <h3 class="back-title">{p.title}</h3>
+              <p class="back-dates">{p.dates}</p>
+              <p class="back-desc">{p.blurb}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-logo">huhbub</p>
+        <p class="footer-sub">huhbub ltd · sara veal · est. 2016</p>
+        <p class="footer-address">The Design Chapel, Cemetery Rd, Southampton SO15 7AF</p>
+        <p class="footer-credit">site built with Astro by huhbub</p>
+      </div>
+      <div class="footer-middle">
+        <p class="footer-subscribe-label">read the curious mermaid</p>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+        <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener">linkedin</a>
+        <a href="/press" class="nav-link">press</a>
+        <a href="mailto:hello@huhbub.com">email</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</Base>
+
+<style>
+/* SPARKLE */
+.nav-links a:hover { color: #fff !important; text-shadow: 0 0 10px rgba(245,167,204,0.7), 0 0 20px rgba(245,167,204,0.3); }
+/* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); padding: 16px 32px 0 32px; display: flex; justify-content: space-between; align-items: center; box-shadow: none;  }
+  .nav-logo { display: flex; align-items: center; }
+  .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #1E1040; }
+  .nav-links a.active { border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px; }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
+
+  /* MOBILE MENU */
+  .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #1E1040; padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--accent-soft); }
+
+  /* PAGE HERO */
+  .page-hero { background: #D4537E; margin-top: -4px; padding: 48px 32px 36px; }
+  .page-hero-inner { max-width: 960px; margin: 0 auto; }
+  .page-overline { font-size: 11px; color: rgba(30,16,64,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1.5px; background: rgba(30,16,64,0.45); display: inline-block; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 60px); font-weight: 300; color: #1E1040; line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: #1E1040; line-height: 1.7; max-width: 520px; margin-bottom: 28px; }
+
+  /* FILTER PILLS */
+  .filter-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-pill { font-size: 12px; color: rgba(30,16,64,0.75); padding: 6px 16px; border-radius: 20px; border: 0.5px solid rgba(30,16,64,0.25); background: rgba(255,255,255,0.2); cursor: pointer; transition: all 0.2s; font-family: var(--font-body); }
+  .filter-pill:hover { background: rgba(255,255,255,0.35); color: #1E1040; }
+  .filter-pill.active { background: #1E1040; color: #F5A7CC; border-color: #1E1040; }
+  .filter-pill.active { background: var(--accent, #D4537E); color: #fff; border-color: var(--accent, #D4537E); }
+  .filter-pill:hover:not(.active) { background: rgba(255,255,255,0.06); color: #1E1040; }
+
+  /* CORKBOARD */
+  .corkboard {
+    position: relative;
+    background: #C9A96E;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E"),
+      repeating-linear-gradient(0deg, transparent, transparent 5px, rgba(0,0,0,0.015) 5px, rgba(0,0,0,0.015) 6px),
+      repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(0,0,0,0.015) 5px, rgba(0,0,0,0.015) 6px);
+    min-height: 600px;
+    padding: 60px 40px 80px;
+    border-top: 8px solid #B8904A;
+    border-bottom: 8px solid #B8904A;
+    box-shadow: inset 0 4px 24px rgba(0,0,0,0.15), inset 0 -4px 24px rgba(0,0,0,0.1);
+  }
+
+  .polaroids-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px 24px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* POLAROID WRAP */
+  .polaroid-wrap {
+    position: relative;
+    transform: rotate(var(--rot));
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), opacity 0.3s;
+    animation: polaroid-drop 0.5s ease backwards;
+    animation-delay: var(--delay);
+    perspective: 1000px;
+  }
+  .polaroid-wrap.hidden { display: none; }
+  @keyframes polaroid-drop {
+    from { opacity: 0; transform: rotate(var(--rot)) translateY(-20px); }
+    to   { opacity: 1; transform: rotate(var(--rot)) translateY(0); }
+  }
+  .polaroid-wrap:hover { transform: rotate(0deg) scale(1.04); z-index: 10; }
+
+  /* PIN */
+  .pin {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    width: 14px; height: 14px; border-radius: 50%; z-index: 5;
+    background: radial-gradient(circle at 35% 35%, #F5A7CC, #D4537E);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.4), inset 0 1px 2px rgba(255,255,255,0.3);
+  }
+  .polaroid-wrap:nth-child(2n) .pin { background: radial-gradient(circle at 35% 35%, #FAC775, #EF9F27); }
+  .polaroid-wrap:nth-child(3n) .pin { background: radial-gradient(circle at 35% 35%, #AFA9EC, #7F77DD); }
+  .polaroid-wrap:nth-child(4n) .pin { background: radial-gradient(circle at 35% 35%, #B5D4F4, #378ADD); }
+
+  /* POLAROID CARD — 3D flip */
+  .polaroid {
+    width: 200px;
+    background: #fff;
+    padding: 10px 10px 32px;
+    box-shadow: 3px 4px 14px rgba(0,0,0,0.28), 0 1px 4px rgba(0,0,0,0.15);
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+  }
+  .polaroid-wrap:hover .polaroid,
+  .polaroid-wrap.flipped .polaroid { transform: rotateY(180deg); }
+
+  .polaroid-front,
+  .polaroid-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  /* FRONT */
+  .polaroid-front {
+    position: relative;
+    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+  }
+  .polaroid-img {
+    width: 100%; height: 180px;
+    background: #E8E0D8; overflow: hidden; position: relative;
+  }
+  .polaroid-img img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; }
+  .polaroid-img-placeholder {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, #E8D8C8, #D0C0B0);
+    opacity: 1; z-index: 0;
+  }
+  .polaroid-img img + .polaroid-img-placeholder { opacity: 0; }
+  .polaroid-img.no-img img { display: none; }
+  .polaroid-img.no-img .polaroid-img-placeholder { opacity: 1; }
+  .placeholder-initial {
+    font-family: var(--font-display); font-size: 56px; font-weight: 300;
+    color: rgba(80,60,40,0.3); line-height: 1;
+  }
+  .polaroid-label { padding: 10px 4px 2px; }
+  .polaroid-caption {
+    display: block; font-family: var(--font-handwriting, 'Caveat', cursive);
+    font-size: 16px; color: #1a1a1a; line-height: 1.3;
+  }
+
+  /* BACK */
+  .polaroid-back {
+    position: absolute; inset: 0;
+    background: #FFF8F0; padding: 14px 12px;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    display: flex; flex-direction: column; justify-content: flex-start;
+    border: 0.5px solid #E0D4C8;
+    overflow: hidden;
+  }
+  .back-type {
+    font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 600; margin-bottom: 6px;
+  }
+  .back-title {
+    font-family: var(--font-display); font-size: 14px; font-weight: 400;
+    color: #1E1040; line-height: 1.2; margin-bottom: 3px; letter-spacing: -0.2px;
+  }
+  .back-dates {
+    font-size: 9px; color: #888; letter-spacing: 0.5px; margin-bottom: 6px;
+  }
+  .back-desc {
+    font-size: 11px; color: #2a2020; line-height: 1.55;
+    flex: 1; overflow: hidden;
+    display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical;
+  }
+
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .polaroid { width: 160px; }
+    .polaroid-img { height: 140px; }
+    .corkboard { padding: 40px 20px 60px; }
+    .polaroids-grid { gap: 24px 16px; }
+    h1 { letter-spacing: -1px; }
+  }
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #C8C4E0; margin-bottom: 2px; letter-spacing: -0.3px; }
+  .footer-sub { font-size: 11px; color: #7F77DD; }
+  .footer-address { font-size: 10px; color: #C8C4E0; margin-top: 2px; }
+  .footer-credit { font-size: 9px; color: #534AB7; margin-top: 6px; letter-spacing: 0.5px; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+</style>
+
+<script>
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
+  window.closeMenu = () => mobileMenu.classList.remove('open');
+
+  // Filter
+  document.querySelectorAll('.filter-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.polaroid-wrap').forEach(card => {
+        const show = filter === 'all' || card.dataset.type === filter;
+        card.classList.toggle('hidden', !show);
+      });
+    });
+  });
+
+  // Tap to flip on touch devices
+  document.querySelectorAll('.polaroid-wrap').forEach(wrap => {
+    wrap.addEventListener('click', () => {
+      if (window.matchMedia('(hover: none)').matches) {
+        wrap.classList.toggle('flipped');
+      }
+    });
+  });
+
+</script>
+

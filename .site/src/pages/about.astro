@@ -1,0 +1,379 @@
+---
+import Base from '../layouts/Base.astro';
+
+const collaborators = [
+  { name: 'Ria Lina', role: 'comedian, writer & performer', bio: 'Ria Lina is a Filipina-Irish comedian, writer and performer. Sharp, warm and politically astute — a recurring huhbub collaborator across events exploring identity, culture and comedy.', img: '/images/collab-ria-lina.jpg' },
+  { name: 'Leena Norms', role: 'author, YouTuber & presenter', bio: 'Leena Norms is an author, YouTuber and presenter known for thoughtful content on books, culture and mental health. A recurring huhbub collaborator.', img: '/images/collab-leena-norms.jpg' },
+  { name: 'Sanne Vliegenthart', role: 'author & content creator', bio: 'Sanne Vliegenthart is a Dutch author and content creator based in the UK. huhbub has worked with Sanne across literary events and book community programming.', img: '/images/collab-sanne-vliegenthart.jpg' },
+  { name: 'Viv Groskop', role: 'author, comedian & broadcaster', bio: 'Viv Groskop is an author, comedian and broadcaster. Her work on confidence, ambition and how women talk has been a natural fit with the huhbub ethos.', img: '/images/collab-viv-groskop.jpg' },
+  { name: 'Irenosen Okojie', role: 'author & artistic director', bio: 'Award-winning author and artistic director of Black to the Future. Her creative partnership with huhbub has been one of the great privileges of the last decade.', img: '/images/collab-irenosen-okojie.jpg' },
+  { name: 'Sarah LaWak', role: 'illustrator & artist', bio: 'Sarah LaWak created the original vision of The Curious Mermaid — paper and paint, a purple frame. The results stunned everyone who saw them.', img: '/images/collab-sarah-lawak.jpg' },
+];
+
+const clients = [
+  'Primo Toys', 'The Garden Cinema', 'The Royal Society of Literature', 'Barbican', 'Salon London', 'Also Festival', 'Primadonna Festival', 'Larmer Tree Festival', 'Sunrise Festival', 'Logging Off Club', 'Woogie Big Pants', 'Read with Audrey', 'OWN IT!', "Children's Media Conference", 'WorkWise for Screen', 'FLOW CO',
+];
+
+---
+
+<Base title="about — huhbub">
+<div id="site">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo nav-link"><span class="logo-text">huhbub</span></a>
+    <div class="nav-links">      <a href="/about" class="nav-link active">about</a>
+      <a href="/services" class="nav-link">services</a>
+      <a href="/projects" class="nav-link">projects</a>
+      <a href="/events" class="nav-link">events</a>
+      <a href="/stories" class="nav-link">stories</a>
+      <a href="/contact" class="nav-link nav-cta">contact</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close">×</button>
+    <div class="mobile-menu-links">      <a href="/about" onclick="closeMenu()">about</a>
+      <a href="/services" onclick="closeMenu()">services</a>
+      <a href="/projects" onclick="closeMenu()">projects</a>
+      <a href="/events" onclick="closeMenu()">events</a>
+      <a href="/stories" onclick="closeMenu()">stories</a>
+      <a href="mailto:hello@huhbub.com" onclick="closeMenu()">contact</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-overline">about</p>
+      <h1>the story so far</h1>
+      <p class="page-sub">huhbub is a cultural consultancy and studio founded by Sara Veal — producer, community builder, people strategist, and writer. Based in Southampton. Working everywhere.</p>
+    </div>
+  </div>
+
+  <!-- THE STORY -->
+  <div class="story-section">
+    <div class="story-inner">
+      <div class="story-sidebar">
+        <div class="story-nav">
+          <button class="story-nav-btn active" data-section="origin">the beginning</button>
+          <button class="story-nav-btn" data-section="before">before huhbub</button>
+          <button class="story-nav-btn" data-section="now">right now</button>
+        </div>
+        <div class="ten-years-badge">
+          <div class="badge-inner">
+            <span class="badge-number">10</span>
+            <span class="badge-label">years</span>
+            <span class="badge-sub">july 2016 – 2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-content">
+        <div class="story-panel active" id="section-origin">
+          <h2>the beginning</h2>
+          <p>I launched huhbub in July 2016, shortly after my first child's first birthday, so I could keep doing the work I loved most — creating events and community — in tandem with parenthood.</p>
+          <p>huhbub was inspired by the first sounds my son made, and by living in Bristol at the time, where babies were usually called "bubs". The name also speaks to my desire to create a hubbub — to share excitement and to create experiences that make you feel truly in the moment. A state of being I have spent my life seeking out, and been fortunate to find repeatedly.</p>
+          <p>In ten years, huhbub has produced and directed events, designed workshops, worked with creative organisations from start-ups to 100+ year institutions, programmed literary festivals, and made many things happen that create culture alongside social impact.</p>
+        </div>
+
+        <div class="story-panel" id="section-before">
+          <h2>before huhbub</h2>
+          <p>I studied social anthropology at SOAS, which gave me a way of thinking about people, culture and community that has never really left me.</p>
+          <p>Before huhbub, I worked in publishing at Atlantic Books and Harlequin, and in games at Failbetter Games. Before that: journalism and subediting in Indonesia, Cambodia and Tanzania; research at Amnesty International; the International Development Office at Lambeth Palace. An assortment, as I used to say.</p>
+          <p>I also received a scholarship from Thoughtworks to study web development at Makers Academy. My second child was born a few weeks after I graduated.</p>
+          <p>The through-line, looking back, was always this: finding the people, making the room, and making something happen in it.</p>
+        </div>
+
+        <div class="story-panel" id="section-now">
+          <h2>right now</h2>
+          <p>huhbub turns 10 in July 2026. This site is part of marking that — taking stock of what's been built, and pointing clearly at what comes next.</p>
+          <p>Currently: Chair of GamesAid, Community and Member Engagement Lead at October Books, Director of The Sewing Hub CIC, London Games Festival Ensemble 2026 participant, BAFTA Connect member.</p>
+          <p>Also: solo parent to Zelda and Reuben. Owner of two cats — Cheesecake and Xavi. Writer of a fantasy novel called <em>Dandelion</em> and an essay collection called <em>You Don't Have to Be Cool</em>. Based in Southampton, which suits me more than I expected.</p>
+          <p>If you're wondering whether huhbub is right for your project — get in touch. I have a good sense, quickly, of whether something is a fit.</p>
+          <a href="mailto:hello@huhbub.com" class="story-cta">hello@huhbub.com →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SARA PORTRAIT STRIP -->
+  <div class="portrait-strip">
+    <div class="portrait-strip-inner">
+      <div class="portrait-strip-frame">
+        <img src="/images/sara-portrait.jpg" alt="Sara Veal" onerror="this.parentElement.classList.add('no-img')" />
+        <div class="portrait-strip-placeholder">SV</div>
+        <div class="portrait-strip-nameplate">Sara Veal</div>
+      </div>
+      <div class="portrait-strip-content">
+        <p class="portrait-strip-name">Sara Veal</p>
+        <p class="portrait-strip-title">founder & digital witch, huhbub</p>
+        <p class="portrait-strip-bio">Writer, producer, and the person behind huhbub. <a href="/sara" class="nav-link">Find out more about Sara →</a></p>
+      </div>
+    </div>
+  </div>
+
+  {/* COLLABORATORS SECTION — hidden until people page is ready
+  <div class="collaborators-section">
+    <div class="collaborators-inner">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">people huhbub has worked with</h2>
+        </div>
+        <a href="/people" class="nav-link meet-all-link">see everyone →</a>
+      </div>
+      <div class="collaborators-gallery" id="collab-sample">
+        {collaborators.map((c, i) => (
+          <div class="collaborator-card" data-slug={c.name.toLowerCase().replace(/ /g,'-')}>
+            <div class="collab-frame-wrap" style={`--rot: ${[-2, 1.5, -1][i % 3]}deg`}>
+              <div class="collab-wire"></div>
+              <div class="collab-frame">
+                <div class="collab-portrait">
+                  <img src={c.img} alt={c.name} onerror="this.parentElement.classList.add('no-img')" />
+                  <div class="collab-placeholder" style="z-index:0">{c.name.split(' ').map((n: string) => n[0]).join('')}</div>
+                </div>
+                <div class="collab-nameplate">
+                  <span class="collab-name-label">{c.name}</span>
+                </div>
+              </div>
+            </div>
+            <p class="collab-role-small">{c.role}</p>
+          </div>
+        ))}
+      </div>
+      <div class="meet-all-mobile">
+        <a href="/people" class="nav-link btn-meet-all">see everyone →</a>
+      </div>
+    </div>
+  </div>
+  */}
+
+  <!-- PARTNERS & CLIENTS -->
+  <div class="clients-section">
+    <div class="clients-inner">
+      <p class="section-overline">partners & clients</p>
+      <div class="clients-cloud">
+        {clients.map(cl => (
+          <span class="logo-pill">{cl}</span>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-logo">huhbub</p>
+        <p class="footer-sub">huhbub ltd · sara veal · est. 2016</p>
+        <p class="footer-address">The Design Chapel, Cemetery Rd, Southampton SO15 7AF</p>
+        <p class="footer-credit">site built with Astro by huhbub</p>
+      </div>
+      <div class="footer-middle">
+        <p class="footer-subscribe-label">read the curious mermaid</p>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+        <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener">linkedin</a>
+        <a href="/press" class="nav-link">press</a>
+        <a href="mailto:hello@huhbub.com">email</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</Base>
+
+<style>
+.nav-links a:hover { color: #fff !important; text-shadow: 0 0 10px rgba(245,167,204,0.7), 0 0 20px rgba(245,167,204,0.3); }
+/* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); padding: 16px 32px 0 32px; display: flex; justify-content: space-between; align-items: center; box-shadow: none;  }
+  .nav-logo { display: flex; align-items: center; }
+  .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #D4D0F0; }
+  .nav-links a.active { border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px; }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
+
+  /* MOBILE MENU */
+  .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #D4D0F0; padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--accent-soft); }
+
+  /* PAGE HERO */
+  .page-hero { background: #E8829A; margin-top: -4px; padding: 48px 32px 40px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .page-hero-inner { max-width: 960px; margin: 0 auto; }
+  .page-overline { font-size: 11px; color: rgba(30,16,64,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1.5px; background: rgba(30,16,64,0.45); display: inline-block; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: #1E1040; line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: #2A1040; line-height: 1.7; max-width: 520px; }
+
+  /* PORTRAIT STRIP */
+  .portrait-strip { background: var(--sky-mid, #0E0B2E); padding: 40px 32px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .portrait-strip-inner { max-width: 960px; margin: 0 auto; display: flex; gap: 32px; align-items: center; }
+  .portrait-strip-frame { width: 110px; border-radius: 0; flex-shrink: 0; position: relative; background: #F8F2EC; padding: 6px 6px 0; box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 0 0 3px #C8A876, 0 0 0 4px rgba(0,0,0,0.15), 3px 6px 16px rgba(0,0,0,0.5); }
+  .portrait-strip-frame img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; position: relative; z-index: 1; object-position: top; }
+  .portrait-strip-placeholder { position: absolute; top: 6px; left: 6px; right: 6px; bottom: 28px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1A0A2E, #0E0B2E); font-family: var(--font-display); font-size: 24px; font-weight: 300; color: rgba(245,167,204,0.5); z-index: 0; }
+  .portrait-strip-frame.no-img img { display: none; }
+  .portrait-strip-nameplate { font-family: var(--font-handwriting, 'Caveat', cursive); font-size: 13px; color: #C8C4E0; text-align: center; padding: 5px 4px 7px; background: #F8F2EC; border-top: 0.5px solid rgba(0,0,0,0.06); }
+  .portrait-strip-name { font-family: var(--font-display); font-size: 22px; font-weight: 300; color: #D4D0F0; letter-spacing: -0.3px; margin-bottom: 2px; }
+  .portrait-strip-title { font-size: 12px; color: var(--accent-soft); letter-spacing: 0.5px; margin-bottom: 8px; }
+  .portrait-strip-bio { font-size: 14px; color: #C8C4E0; line-height: 1.65; }
+  .portrait-strip-bio a { color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); transition: border-color 0.2s; }
+  .portrait-strip-bio a:hover { border-color: var(--accent-soft); }
+
+  /* RECOGNITION STRIP */
+  .recognition-item { display: flex; flex-direction: column; padding: 16px 28px; border-right: 0.5px solid var(--border-subtle); white-space: nowrap; flex-shrink: 0; }
+  .recognition-item:first-child { padding-left: 0; }
+  .recognition-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
+  .recognition-detail { font-size: 13px; color: #D4D0F0; font-family: var(--font-display); font-weight: 300; }
+
+  /* STORY */
+  .story-section { background: var(--sky, #07051A); padding: 64px 32px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .story-inner { max-width: 1060px; margin: 0 auto; display: grid; grid-template-columns: 220px 1fr; gap: 64px; }
+  .story-nav { display: flex; flex-direction: column; gap: 4px; margin-bottom: 32px; }
+  .story-nav-btn { background: none; border: none; text-align: left; font-size: 14px; color: #C8C4E0; cursor: pointer; padding: 8px 12px; border-radius: 4px; transition: all 0.2s; font-family: var(--font-body); border-left: 2px solid transparent; }
+  .story-nav-btn:hover { color: #D4D0F0; background: rgba(255,255,255,0.04); }
+  .story-nav-btn.active { color: var(--accent-soft); border-left-color: var(--accent-soft); background: rgba(212,83,126,0.06); }
+
+  /* 10 years badge */
+  .ten-years-badge { margin-top: 16px; }
+  .badge-inner { width: 100px; height: 100px; border-radius: 50%; border: 1.5px solid rgba(212,83,126,0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(212,83,126,0.06); }
+  .badge-number { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: var(--accent-soft); line-height: 1; }
+  .badge-label { font-size: 10px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; }
+  .badge-sub { font-size: 8px; color: var(--text-secondary); letter-spacing: 0.5px; margin-top: 4px; text-align: center; }
+
+  .story-panel { display: none; animation: fadeIn 0.4s ease; }
+  .story-panel.active { display: block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .story-panel h2 { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #F5F0FF; margin-bottom: 24px; letter-spacing: -0.5px; }
+  .story-panel p { font-size: 16px; color: #D4D0F0; line-height: 1.85; margin-bottom: 18px; max-width: 600px; }
+  .story-panel p em { color: var(--accent-soft); font-style: italic; }
+  .story-cta { display: inline-block; font-size: 14px; color: var(--accent-soft); border-bottom: 0.5px solid rgba(245,167,204,0.3); padding-bottom: 2px; margin-top: 8px; transition: border-color 0.2s; }
+  .story-cta:hover { border-color: var(--accent-soft); }
+
+  /* COLLABORATORS */
+  .collaborators-section { background: #0A0820; padding: 64px 32px; border-bottom: 0.5px solid rgba(127,119,221,0.15); }
+  .collaborators-inner { max-width: 1060px; margin: 0 auto; }
+  .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; flex-wrap: wrap; gap: 12px; }
+  .meet-all-link { font-size: 13px; color: #E8829A; border-bottom: 0.5px solid rgba(127,119,221,0.3); padding-bottom: 2px; white-space: nowrap; transition: color 0.2s; }
+  .meet-all-link:hover { color: #C8C4E0; }
+  .meet-all-mobile { display: none; text-align: center; margin-top: 32px; }
+  .btn-meet-all { font-size: 13px; color: #E8829A; border: 0.5px solid rgba(127,119,221,0.3); padding: 10px 20px; border-radius: 20px; display: inline-block; transition: all 0.2s; }
+  .btn-meet-all:hover { background: rgba(127,119,221,0.1); }
+  .section-overline { font-size: 10px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .section-title { font-family: var(--font-display); font-size: clamp(28px, 4vw, 42px); font-weight: 300; color: #D4D0F0; letter-spacing: -1px; }
+  .collaborators-gallery { display: flex; flex-wrap: wrap; gap: 24px 16px; justify-content: flex-start; align-items: flex-end; }
+  .collaborator-card { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .collab-frame-wrap {
+    position: relative;
+    transform: rotate(var(--rot));
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .collab-frame-wrap:hover { transform: rotate(0deg) scale(1.05); z-index: 10; }
+  .collab-wire {
+    position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+    width: 1px; height: 20px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.15), rgba(255,255,255,0.06));
+  }
+  .collab-wire::before {
+    content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+    width: 4px; height: 4px; border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+  .collab-frame {
+    background: #F8F2EC; padding: 6px 6px 0;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.2), 0 0 0 3px #C8A876, 0 0 0 4px rgba(0,0,0,0.15), 3px 6px 16px rgba(0,0,0,0.4);
+    width: 120px;
+  }
+  .collab-frame::before {
+    content: ''; position: absolute; inset: 3px;
+    border: 0.5px solid rgba(255,215,100,0.15); pointer-events: none; z-index: 5;
+  }
+  .collab-portrait {
+    width: 100%; aspect-ratio: 1; overflow: hidden; position: relative; background: #2A1E14;
+  }
+  .collab-portrait img { width: 100%; height: 100%; object-fit: cover; display: block; position: relative; z-index: 1; transition: transform 0.4s; }
+  .collab-frame-wrap:hover .collab-portrait img { transform: scale(1.04); }
+  .collab-placeholder { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #2A1E14, #1A1208); font-family: var(--font-display); font-size: 24px; font-weight: 300; color: rgba(200,168,118,0.4); }
+  .collab-portrait.no-img img { display: none; }
+  .collab-nameplate { padding: 5px 4px 7px; text-align: center; background: #F8F2EC; border-top: 0.5px solid rgba(0,0,0,0.06); }
+  .collab-name-label { font-family: var(--font-handwriting, 'Caveat', cursive); font-size: 12px; color: #C8C4E0; display: block; }
+  .collab-role-small { font-size: 11px; color: var(--text-secondary); text-align: center; line-height: 1.4; max-width: 120px; }
+
+  /* PARTNERS & CLIENTS */
+  .clients-section { background: var(--sky, #07051A); padding: 56px 32px; border-bottom: 0.5px solid var(--border-subtle); }
+  .clients-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .clients-inner { max-width: 1060px; margin: 0 auto; }
+  .clients-cloud { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 24px; justify-content: center; }
+  .logo-pill { font-size: 13px; color: #D4D0F0; padding: 6px 16px; border: 0.5px solid rgba(255,255,255,0.2); border-radius: 20px; transition: opacity 0.2s, border-color 0.2s; white-space: nowrap; }
+  .logo-pill:hover { border-color: #7F77DD; }
+  .client-name { font-family: var(--font-display); font-size: clamp(16px, 2vw, 22px); font-weight: 300; color: #C8C4E0; letter-spacing: -0.3px; transition: color 0.2s; cursor: default; }
+  .client-name:hover { color: #F5F0FF; }
+
+  /* FOOTER */
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .story-inner { grid-template-columns: 1fr; gap: 32px; }
+    .story-nav { flex-direction: row; flex-wrap: wrap; }
+    .portrait-strip-inner { flex-direction: column; text-align: center; }
+    h1 { letter-spacing: -1px; }
+  }
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #C8C4E0; margin-bottom: 2px; letter-spacing: -0.3px; }
+  .footer-sub { font-size: 11px; color: #7F77DD; }
+  .footer-address { font-size: 10px; color: #C8C4E0; margin-top: 2px; }
+  .footer-credit { font-size: 9px; color: #534AB7; margin-top: 6px; letter-spacing: 0.5px; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+</style>
+
+<script>
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
+  window.closeMenu = () => mobileMenu.classList.remove('open');
+
+  // Random collaborator sample — show 3, shuffled each visit
+  const cards = Array.from(document.querySelectorAll('#collab-sample .collaborator-card'));
+  const shuffled = cards.sort(() => Math.random() - 0.5).slice(0, 3);
+  const grid = document.getElementById('collab-sample');
+  if (grid) {
+    grid.innerHTML = '';
+    shuffled.forEach(c => grid.appendChild(c));
+  }
+
+  // Story tabs
+  document.querySelectorAll('.story-nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.story-nav-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.story-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('section-' + btn.dataset.section)?.classList.add('active');
+    });
+  });
+
+</script>
+

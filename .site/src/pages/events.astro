@@ -1,0 +1,287 @@
+---
+import Base from '../layouts/Base.astro';
+
+const upcomingEvents = [
+  // Add events here when confirmed
+  // { title: '', date: '', venue: '', location: '', projectSlug: '', ticketUrl: '', description: '' }
+];
+
+const archiveEvents = [
+  // 2025
+  { title: 'Logging Off Club: Happiness Origami', date: 'March 2025', venue: 'October Books', location: 'Southampton', projectSlug: 'happiness-workshop', tags: ['workshop', 'wellbeing'] },
+  { title: "Palentines Supper Club", date: 'February 2025', venue: 'October Books', location: 'Southampton', projectSlug: '', tags: ['community', 'supper club'] },
+  { title: 'Carlton Place Artisanal Market', date: 'February 2025', venue: 'Carlton Place', location: 'Southampton', projectSlug: '', tags: ['market', 'community'] },
+  // 2024
+  { title: 'The Curious Mermaid: An Unveiling', date: 'December 2024', venue: 'The Design Chapel', location: 'Southampton', projectSlug: 'curious-mermaid', tags: ['art', 'community'] },
+  { title: 'Black to the Future', date: 'Oct 2023 – Feb 2024', venue: 'British Library & partner venues', location: 'London', projectSlug: 'black-to-the-future', tags: ['festival', 'afrofuturism'] },
+  { title: 'Happiness Origami', date: 'July 2024', venue: 'Also Festival', location: 'Dorset', projectSlug: 'happiness-workshop', tags: ['workshop', 'festival'] },
+  { title: 'Happiness Origami', date: 'July 2024', venue: 'Primadonna Festival', location: 'Oxfordshire', projectSlug: 'happiness-workshop', tags: ['workshop', 'festival'] },
+  // 2023
+  { title: 'A Toolkit for Happiness', date: '2023', venue: 'Also Festival', location: 'Dorset', projectSlug: 'happiness-workshop', tags: ['workshop', 'festival'] },
+  { title: 'Black to the Future', date: '2023', venue: 'British Library', location: 'London', projectSlug: 'black-to-the-future', tags: ['festival', 'afrofuturism'] },
+  // 2022
+  { title: 'Bargain Bin Com — Leena Norms', date: '2022', venue: 'Also Festival', location: 'Dorset', projectSlug: '', tags: ['comedy', 'festival'] },
+  // 2021
+  { title: 'Robot Coding', date: '2021', venue: 'Also Festival', location: 'Dorset', projectSlug: '', tags: ['technology', 'festival'] },
+  // 2019
+  { title: 'Nudibranch: An Edible Book Launch', date: '2019', venue: 'Clean Prose', location: 'London', projectSlug: 'clean-prose', tags: ['book launch', 'literary'] },
+  { title: 'Do We Need to Read the Classics?', date: '2019', venue: 'Larmer Tree Festival', location: 'Wiltshire', projectSlug: '', tags: ['panel', 'festival'] },
+  { title: 'Find Your Voice with Mahsuda Snaith', date: '2019', venue: 'Larmer Tree Festival', location: 'Wiltshire', projectSlug: '', tags: ['workshop', 'festival'] },
+  { title: 'My Life in Books — Cathy Rentzenbrink', date: '2019', venue: 'Larmer Tree Festival', location: 'Wiltshire', projectSlug: '', tags: ['talk', 'festival'] },
+  { title: 'Emma: An Easter Screening', date: '2019', venue: 'The Book Club', location: 'London', projectSlug: 'that-time-of-the-month', tags: ['screening', 'jane austen'] },
+  { title: '(Wo)Mansfield Park: International Women\'s Day', date: 'March 2019', venue: 'The Book Club', location: 'London', projectSlug: 'that-time-of-the-month', tags: ['screening', 'jane austen'] },
+  { title: 'Love & Friendship: A Galentines Screening', date: 'February 2019', venue: 'Queen of Hoxton', location: 'London', projectSlug: 'that-time-of-the-month', tags: ['screening', 'jane austen'] },
+  { title: 'Northanger Abbey', date: '2019', venue: 'The Book Club', location: 'London', projectSlug: 'that-time-of-the-month', tags: ['screening', 'jane austen'] },
+  // 2018
+  { title: 'Pride and Prejudice: A Pajama Party Marathon', date: '2018', venue: 'The Book Club', location: 'London', projectSlug: 'that-time-of-the-month', tags: ['screening', 'jane austen'] },
+  { title: 'That Time of the Month: Persuasion', date: '2018', venue: 'The Book Club', location: 'London', projectSlug: 'that-time-of-the-month', tags: ['screening', 'jane austen'] },
+  { title: 'That Time of the Month: Sense and Sensibility', date: '2018', venue: 'Fontaine\'s', location: 'London', projectSlug: 'that-time-of-the-month', tags: ['screening', 'jane austen'] },
+  { title: 'Shake It Off! Strong Women Squad Summer Party', date: '2018', venue: 'Trapeze Bar', location: 'London', projectSlug: 'strong-women-squad', tags: ['party', 'community'] },
+  { title: 'Purple Reign: The Prince-Inspired Birthday Bakeoff Cabaret', date: '2018', venue: "Maker's Academy", location: 'London', projectSlug: 'purple-reign', tags: ['cabaret', 'music'] },
+  { title: 'Strong Women Squad: Run the World', date: '2018', venue: 'The Dead Dolls House', location: 'London', projectSlug: 'strong-women-squad', tags: ['community', 'party'] },
+  { title: 'Writing in the Woods', date: '2018', venue: 'Larmer Tree Festival', location: 'Wiltshire', projectSlug: '', tags: ['workshop', 'festival'] },
+  { title: 'Hidden Histories and Heroines', date: '2018', venue: 'Larmer Tree Festival', location: 'Wiltshire', projectSlug: '', tags: ['panel', 'festival'] },
+  // 2016
+  { title: 'Publishing 101', date: '2016', venue: 'Larmer Tree Festival', location: 'Wiltshire', projectSlug: '', tags: ['talk', 'festival'] },
+  { title: 'Ruby Tuesday Presents… Feeling Noughties', date: '2016', venue: 'Drink Shop & Do', location: 'London', projectSlug: 'feeling-noughties', tags: ['party', 'music'] },
+];
+
+const hasUpcoming = upcomingEvents.length > 0;
+---
+
+<Base title="events — huhbub">
+<div id="site">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo nav-link"><span class="logo-text">huhbub</span></a>
+    <div class="nav-links">      <a href="/about" class="nav-link">about</a>
+      <a href="/services" class="nav-link">services</a>
+      <a href="/projects" class="nav-link">projects</a>
+      <a href="/events" class="nav-link active">events</a>
+      <a href="/stories" class="nav-link">stories</a>
+      <a href="/contact" class="nav-link nav-cta">contact</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close">×</button>
+    <div class="mobile-menu-links">      <a href="/about" onclick="closeMenu()">about</a>
+      <a href="/services" onclick="closeMenu()">services</a>
+      <a href="/projects" onclick="closeMenu()">projects</a>
+      <a href="/events" onclick="closeMenu()">events</a>
+      <a href="/stories" onclick="closeMenu()">stories</a>
+      <a href="mailto:hello@huhbub.com" onclick="closeMenu()">contact</a>
+    </div>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-overline">events</p>
+      <h1>where we show up</h1>
+      <p class="page-sub">Workshops, festivals, screenings, parties, supper clubs and everything in between. A record of things made and rooms filled.</p>
+    </div>
+  </div>
+
+  <!-- UPCOMING -->
+  {hasUpcoming ? (
+    <div class="upcoming-section">
+      <div class="section-inner">
+        <h2 class="section-heading">upcoming</h2>
+        <div class="upcoming-list">
+          {upcomingEvents.map(e => (
+            <div class="upcoming-event">
+              <div class="upcoming-date">{e.date}</div>
+              <div class="upcoming-details">
+                <h3 class="upcoming-title">{e.title}</h3>
+                <p class="upcoming-venue">{e.venue} · {e.location}</p>
+                {e.description && <p class="upcoming-desc">{e.description}</p>}
+              </div>
+              {e.ticketUrl && (
+                <a href={e.ticketUrl} target="_blank" rel="noopener" class="btn-tickets">tickets →</a>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div class="coming-soon-section">
+      <div class="coming-soon-inner">
+        <div class="coming-soon-icon">✦</div>
+        <h2>something's coming.</h2>
+        <p>No upcoming events confirmed just yet — but huhbub is always making things happen. Get in touch if you'd like to book a workshop or collaborate on an event, or leave your email to be notified when tickets go live.</p>
+        <a href="mailto:hello@huhbub.com" class="btn-notify">get in touch →</a>
+      </div>
+    </div>
+  )}
+
+  <!-- ARCHIVE -->
+  <div class="archive-section">
+    <div class="section-inner">
+      <div class="archive-header">
+        <h2 class="section-heading">archive</h2>
+        <p class="archive-count">{archiveEvents.length} events</p>
+      </div>
+
+      <div class="archive-list">
+        {archiveEvents.map((e, i) => (
+          <div class="archive-event" style={`--delay: ${(i % 10) * 0.03}s`}>
+            <div class="archive-date">{e.date}</div>
+            <div class="archive-main">
+              <span class="archive-title">{e.title}</span>
+              <span class="archive-venue">{e.venue}</span>
+            </div>
+            <div class="archive-location">{e.location}</div>
+            {e.projectSlug && (
+              <a href={`/projects/${e.projectSlug}`} class="archive-project-link nav-link">↗</a>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <p class="archive-note">This is a partial list — a more complete record is coming as huhbub marks its 10th anniversary in July 2026.</p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-logo">huhbub</p>
+        <p class="footer-sub">huhbub ltd · sara veal · est. 2016</p>
+        <p class="footer-address">The Design Chapel, Cemetery Rd, Southampton SO15 7AF</p>
+        <p class="footer-credit">site built with Astro by huhbub</p>
+      </div>
+      <div class="footer-middle">
+        <p class="footer-subscribe-label">read the curious mermaid</p>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+        <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener">linkedin</a>
+        <a href="/press" class="nav-link">press</a>
+        <a href="mailto:hello@huhbub.com">email</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</Base>
+
+<style>
+.nav-links a:hover { color: #fff !important; text-shadow: 0 0 10px rgba(245,167,204,0.7), 0 0 20px rgba(245,167,204,0.3); }
+/* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); padding: 16px 32px 0 32px; display: flex; justify-content: space-between; align-items: center; box-shadow: none;  }
+  .nav-logo { display: flex; align-items: center; }
+  .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #1E1040; }
+  .nav-links a.active { border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px; }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
+  .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #1E1040; padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--accent-soft); }
+
+  /* PAGE HERO */
+  .page-hero { background: #7F77DD; margin-top: -4px; padding: 48px 32px 40px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .page-hero-inner { max-width: 960px; margin: 0 auto; }
+  .page-overline { font-size: 11px; color: rgba(30,16,64,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1.5px; background: rgba(30,16,64,0.45); display: inline-block; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: #1E1040; line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: #1E1040; line-height: 1.7; max-width: 520px; }
+
+  /* COMING SOON */
+  .coming-soon-section { background: var(--sky, #07051A); padding: 64px 32px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .coming-soon-inner { max-width: 480px; margin: 0 auto; text-align: center; }
+  .coming-soon-icon { font-size: 24px; color: var(--accent-soft); margin-bottom: 20px; animation: pulse 3s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:0.5;transform:scale(1)} 50%{opacity:1;transform:scale(1.1)} }
+  .coming-soon-inner h2 { font-family: var(--font-display); font-size: 32px; font-weight: 300; color: #F5F0FF; letter-spacing: -0.5px; margin-bottom: 14px; }
+  .coming-soon-inner p { font-size: 15px; color: var(--text-secondary); line-height: 1.75; margin-bottom: 28px; }
+  .btn-notify { display: inline-block; font-size: 14px; font-weight: 500; color: #fff; background: var(--accent, #D4537E); padding: 12px 24px; border-radius: 8px; transition: opacity 0.2s; }
+  .btn-notify:hover { opacity: 0.85; }
+
+  /* UPCOMING */
+  .upcoming-section { background: var(--sky, #07051A); padding: 56px 32px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .section-inner { max-width: 960px; margin: 0 auto; }
+  .section-heading { font-family: var(--font-display); font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 28px; display: flex; align-items: center; gap: 10px; }
+  .section-heading::before { content: ''; width: 24px; height: 1px; background: currentColor; display: block; opacity: 0.5; }
+  .upcoming-event { display: grid; grid-template-columns: 120px 1fr auto; gap: 24px; align-items: start; padding: 24px 0; border-bottom: 0.5px solid var(--border-subtle); }
+  .upcoming-date { font-size: 12px; color: var(--text-secondary); padding-top: 3px; }
+  .upcoming-title { font-family: var(--font-display); font-size: 22px; font-weight: 300; color: #F5F0FF; letter-spacing: -0.3px; margin-bottom: 4px; }
+  .upcoming-venue { font-size: 14px; color: #C8C4E0; }
+  .upcoming-desc { font-size: 14px; color: #C8C4E0; margin-top: 6px; line-height: 1.7; }
+  .btn-tickets { font-size: 13px; font-weight: 500; color: #fff; background: var(--accent, #D4537E); padding: 8px 16px; border-radius: 6px; white-space: nowrap; transition: opacity 0.2s; }
+  .btn-tickets:hover { opacity: 0.85; }
+
+  /* ARCHIVE */
+  .archive-section { background: #070314; padding: 56px 32px 64px;  }
+  .archive-header { display: flex; align-items: baseline; gap: 16px; margin-bottom: 32px; }
+  .archive-count { font-size: 13px; color: #C8C4E0; }
+  .archive-list { border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .archive-event {
+    display: grid;
+    grid-template-columns: 110px 1fr 100px 32px;
+    gap: 16px; align-items: center;
+    padding: 12px 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.04);
+    animation: fadeIn 0.4s ease backwards;
+    animation-delay: var(--delay);
+    transition: background 0.15s;
+  }
+  .archive-event:hover { background: rgba(255,255,255,0.02); }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(4px)} to{opacity:1;transform:translateY(0)} }
+  .archive-date { font-size: 11px; color: #C8C4E0; }
+  .archive-main { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .archive-title { font-size: 14px; color: #D4D0F0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .archive-venue { font-size: 12px; color: #C8C4E0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .archive-location { font-size: 12px; color: #C8C4E0; text-align: right; }
+  .archive-project-link { font-size: 14px; color: var(--accent-soft); opacity: 0.5; transition: opacity 0.2s; text-align: center; }
+  .archive-project-link:hover { opacity: 1; }
+  .archive-note { font-size: 12px; color: #7F77DD; margin-top: 32px; font-style: italic; }
+
+  /* FOOTER */
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; } .nav-burger { display: flex; }
+    h1 { letter-spacing: -1px; }
+    .upcoming-event { grid-template-columns: 1fr; gap: 8px; }
+    .archive-event { grid-template-columns: 80px 1fr 32px; }
+    .archive-location { display: none; }
+  }
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #C8C4E0; margin-bottom: 2px; letter-spacing: -0.3px; }
+  .footer-sub { font-size: 11px; color: #7F77DD; }
+  .footer-address { font-size: 10px; color: #C8C4E0; margin-top: 2px; }
+  .footer-credit { font-size: 9px; color: #534AB7; margin-top: 6px; letter-spacing: 0.5px; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+</style>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
+  window.closeMenu = () => mobileMenu.classList.remove('open');
+
+</script>
+

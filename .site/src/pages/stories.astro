@@ -1,0 +1,336 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="stories — huhbub">
+<div id="site">
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo nav-link"><span class="logo-text">huhbub</span></a>
+    <div class="nav-links">      <a href="/about" class="nav-link">about</a>
+      <a href="/services" class="nav-link">services</a>
+      <a href="/projects" class="nav-link">projects</a>
+      <a href="/events" class="nav-link">events</a>
+      <a href="/stories" class="nav-link active">stories</a>
+      <a href="/contact" class="nav-link nav-cta">contact</a>
+    </div>
+    <button class="nav-burger" id="burger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="menu-close">×</button>
+    <div class="mobile-menu-links">      <a href="/about" onclick="closeMenu()">about</a>
+      <a href="/services" onclick="closeMenu()">services</a>
+      <a href="/projects" onclick="closeMenu()">projects</a>
+      <a href="/events" onclick="closeMenu()">events</a>
+      <a href="/stories" onclick="closeMenu()">stories</a>
+      <a href="mailto:hello@huhbub.com" onclick="closeMenu()">contact</a>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <p class="page-overline">stories</p>
+      <h1>the curious mermaid</h1>
+      <p class="page-sub">Essays, updates and stories from Sara Veal and huhbub — on creativity, community, culture and what it means to make things happen.</p>
+      <div class="hero-links">
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-primary">read on substack →</a>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-ghost">subscribe free →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LATEST ESSAY -->
+  <div class="broadsheet-section">
+    <div class="broadsheet">
+      <div class="paper-body">
+
+        <!-- LEFT: featured essay with postcard -->
+        <div class="paper-col paper-col-main">
+          <div class="postcard-wrap">
+            <div class="postcard-flip" id="postcard-flip">
+              <div class="postcard-inner">
+
+                <!-- FRONT: pure image -->
+                <div class="postcard-front">
+                  <img src="/images/siren-gift-postcard.jpg" alt="The Curious Mermaid unveiling"/>
+                  <div class="postcard-front-hint">turn over →</div>
+                </div>
+
+                <!-- BACK: postcard writing side -->
+                <div class="postcard-back">
+                  <div class="postcard-back-inner">
+                    <div class="postcard-back-left">
+                      <div class="postcard-pullquote">"I was told I lit up like a lighthouse when I spoke about the shop."</div>
+                      <div class="postcard-back-divider"></div>
+                      <div class="postcard-handwriting-sub">— The Siren's Gift, Apr 2025</div>
+                    </div>
+                    <div class="postcard-back-right">
+                      <div class="stamp">✦</div>
+                      <div class="postmark">APR<br>2025<br>SO14</div>
+                      <div class="address-lines">
+                        <div class="address-line"></div>
+                        <div class="address-line"></div>
+                        <div class="address-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="paper-kicker">personal · apr 2025</div>
+          <h2 class="paper-headline">The Siren's Gift</h2>
+          <p class="paper-body-text">How a shop of secondhand treasures led me to creativity, community, and myself. The story of Sirena Curiosa — a 6×6 stall, a diagnosis, and what happens when you finally let go.</p>
+          <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="paper-byline">By Sara Veal · read on substack →</a>
+        </div>
+
+        <!-- RIGHT: subscribe only -->
+        <div class="paper-col paper-col-side">
+          <div class="paper-snippet" style="border-bottom:none;margin-bottom:24px;">
+            <div class="paper-snippet-tag">in development</div>
+            <div class="paper-snippet-title">More stories taking shape for huhbub's 10th year</div>
+            <div class="paper-snippet-desc">Subscribe to be notified when new essays land.</div>
+          </div>
+          <div class="paper-subscribe">
+            <div class="paper-subscribe-label">get new essays in your inbox</div>
+            <p class="paper-subscribe-body">Subscribe free on Substack — no spam, just writing.</p>
+            <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="paper-subscribe-btn">subscribe on substack →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <p class="footer-logo">huhbub</p>
+        <p class="footer-sub">huhbub ltd · sara veal · est. 2016</p>
+        <p class="footer-address">The Design Chapel, Cemetery Rd, Southampton SO15 7AF</p>
+        <p class="footer-credit">site built with Astro by huhbub</p>
+      </div>
+      <div class="footer-middle">
+        <p class="footer-subscribe-label">read the curious mermaid</p>
+        <a href="https://thecuriousmermaid.substack.com" target="_blank" rel="noopener" class="btn-subscribe-footer">subscribe on substack →</a>
+      </div>
+      <div class="footer-links">
+        <a href="https://instagram.com/huhbubltd" target="_blank" rel="noopener">instagram</a>
+        <a href="https://linkedin.com/in/sara-veal-37557715b" target="_blank" rel="noopener">linkedin</a>
+        <a href="/press" class="nav-link">press</a>
+        <a href="mailto:hello@huhbub.com">email</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</Base>
+
+<style>
+.nav-links a:hover { color: #fff !important; text-shadow: 0 0 10px rgba(245,167,204,0.7), 0 0 20px rgba(245,167,204,0.3); }
+nav { position: sticky; top: 0; z-index: 100; background: var(--sky-mid, #0E0B2E); padding: 16px 32px 0 32px; display: flex; justify-content: space-between; align-items: center; box-shadow: none;  }
+  .nav-logo { display: flex; align-items: center; }
+  .logo-text { font-family: var(--font-logo); font-size: 26px; font-weight: 600; color: var(--accent-soft, #F5A7CC); letter-spacing: -0.5px; line-height: 1; }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--text-secondary); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: #D4D0F0; }
+  .nav-links a.active { border-bottom: 1px solid var(--accent-soft); padding-bottom: 1px; }
+  .nav-burger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+  .nav-burger span { display: block; width: 22px; height: 2px; background: var(--accent-soft, #F5A7CC); border-radius: 2px; }
+  .mobile-menu { position: fixed; inset: 0; background: var(--sky-mid, #0E0B2E); z-index: 200; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .mobile-menu.open { opacity: 1; pointer-events: all; }
+  .mobile-menu-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--accent-soft); font-size: 32px; cursor: pointer; }
+  .mobile-menu-links { display: flex; flex-direction: column; align-items: center; }
+  .mobile-menu-links a { font-family: var(--font-display); font-size: 36px; font-weight: 300; color: #D4D0F0; padding: 8px 0; transition: color 0.2s; }
+  .mobile-menu-links a:hover { color: var(--accent-soft); }
+
+  /* PAGE HERO */
+  .page-hero { background: #AFA9EC; margin-top: -4px; padding: 48px 32px 40px; border-bottom: 0.5px solid var(--border-subtle);  }
+  .page-hero-inner { max-width: 960px; margin: 0 auto; }
+  .page-overline { font-size: 11px; color: rgba(30,16,64,0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .page-overline::before { content: ''; width: 24px; height: 1.5px; background: rgba(30,16,64,0.45); display: inline-block; margin-right: 10px; vertical-align: middle; flex-shrink: 0; }
+  h1 { font-family: var(--font-display); font-size: clamp(36px, 5vw, 62px); font-weight: 300; color: #1E1040; line-height: 1.05; letter-spacing: -2px; margin-bottom: 14px; }
+  .page-sub { font-size: 15px; color: #1E1040; line-height: 1.7; max-width: 520px; margin-bottom: 24px; font-family: var(--font-body); }
+  .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { font-size: 13px; font-weight: 500; color: #fff; background: var(--accent, #D4537E); padding: 10px 20px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-primary:hover { opacity: 0.85; }
+  .btn-ghost { font-size: 13px; color: #1E1040; border: 1px solid rgba(30,16,64,0.3); padding: 10px 20px; border-radius: 8px; transition: all 0.2s; display: inline-block; }
+  .btn-ghost:hover { color: #1E1040; background: rgba(30,16,64,0.08); border-color: rgba(30,16,64,0.5); }
+
+  /* STORIES SECTION */
+  /* BROADSHEET */
+  .broadsheet-section { background: #07051A; padding: 0; }
+  .broadsheet { background: #FDF8F4; max-width: 100%; margin: 0; border: none; border-top: 0.5px solid #ccc; }
+  .paper-body { display: grid; grid-template-columns: 1.1fr 1fr; max-width: 1100px; margin: 0 auto; }
+  .paper-col { padding: 32px 36px; }
+  .paper-col-main { border-right: 0.5px solid #ccc; }
+  .paper-kicker { font-size: 9px; letter-spacing: 2px; color: #7F77DD; text-transform: uppercase; margin-bottom: 8px; }
+  .paper-headline { font-family: var(--font-display); font-size: clamp(22px, 2.5vw, 30px); font-weight: 400; color: #1E1040; line-height: 1.1; margin-bottom: 12px; }
+  .paper-pullquote { font-family: var(--font-display); font-size: 14px; font-style: italic; color: #2A1040; border-left: 2px solid #7F77DD; padding-left: 10px; margin-bottom: 14px; line-height: 1.6; }
+  .paper-body-text { font-size: 14px; color: #3a3030; line-height: 1.8; margin-bottom: 14px; }
+  .paper-byline { font-size: 9px; letter-spacing: 1.5px; color: #555; text-transform: uppercase; display: block; }
+  .paper-byline:hover { color: #534AB7; }
+  .paper-snippet { border-bottom: 0.5px solid #ddd; padding-bottom: 16px; margin-bottom: 16px; }
+  .paper-snippet-tag { font-size: 9px; letter-spacing: 1.5px; color: #D4537E; text-transform: uppercase; margin-bottom: 4px; }
+  .paper-snippet-title { font-family: var(--font-display); font-size: 18px; color: #1E1040; line-height: 1.2; margin-bottom: 4px; }
+  .paper-snippet-desc { font-size: 12px; color: #666; line-height: 1.5; }
+  .paper-subscribe { background: #f5f0ff; border: 0.5px solid #AFA9EC; padding: 14px; }
+  .paper-subscribe-label { font-size: 9px; letter-spacing: 2px; color: #3C3489; text-transform: uppercase; margin-bottom: 6px; }
+  .paper-subscribe-body { font-size: 12px; color: #444; line-height: 1.5; margin-bottom: 10px; }
+  .paper-subscribe-btn { font-size: 11px; color: #2A1A7A; border: 0.5px solid #AFA9EC; padding: 8px 12px; display: block; text-align: center; transition: background 0.2s; }
+  .paper-subscribe-btn:hover { background: #ede6ff; }
+
+  /* POSTCARD */
+  /* FLIP POSTCARD */
+  .postcard-wrap { margin-bottom: 28px; perspective: 1000px; display: flex; justify-content: center; }
+  .postcard-flip {
+    width: 100%; max-width: 440px;
+    transform: rotate(-1.5deg);
+    cursor: pointer;
+  }
+  .postcard-flip:hover .postcard-front-hint { opacity: 1; }
+  .postcard-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .postcard-flip.flipped .postcard-inner { transform: rotateY(180deg); }
+
+  /* FRONT */
+  .postcard-front {
+    backface-visibility: hidden;
+    border: 6px solid #fff;
+    outline: 0.5px solid #c8c0b8;
+    box-shadow: 2px 4px 14px rgba(0,0,0,0.15);
+    overflow: hidden;
+    position: relative;
+    background: #000;
+  }
+  .postcard-front img { width: 100%; height: auto; display: block; }
+  .postcard-front-hint {
+    position: absolute; bottom: 10px; right: 12px;
+    font-size: 10px; letter-spacing: 1px; color: rgba(255,255,255,0.85);
+    font-family: var(--font-body); opacity: 0;
+    transition: opacity 0.2s;
+    background: rgba(0,0,0,0.35); padding: 3px 8px; border-radius: 2px;
+  }
+
+  /* BACK */
+  .postcard-back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    border: 6px solid #fff;
+    outline: 0.5px solid #c8c0b8;
+    box-shadow: 2px 4px 14px rgba(0,0,0,0.15);
+    background: #fffdf8;
+    overflow: hidden;
+  }
+  .postcard-back-inner {
+    display: grid;
+    grid-template-columns: 1fr 80px;
+    height: 100%;
+    min-height: 200px;
+  }
+  .postcard-back-left {
+    padding: 20px 18px;
+    border-right: 0.5px solid #e0d8cc;
+    display: flex; flex-direction: column; justify-content: center; gap: 12px;
+  }
+  .postcard-pullquote {
+    font-family: var(--font-display);
+    font-size: clamp(16px, 2vw, 22px);
+    font-style: italic;
+    color: #1E1040;
+    line-height: 1.4;
+  }
+  .postcard-back-divider { width: 32px; height: 0.5px; background: #ddd; }
+  .postcard-handwriting { font-family: var(--font-handwriting); font-size: 20px; color: #2a1a1a; line-height: 1.3; }
+  .postcard-handwriting-sub { font-family: var(--font-handwriting); font-size: 13px; color: #888; }
+  .postcard-back-right {
+    padding: 14px 10px;
+    display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between;
+  }
+  .stamp { width: 32px; height: 40px; border: 1px solid #c8b8c8; background: #f8eef8; display: flex; align-items: center; justify-content: center; font-size: 14px; position: relative; }
+  .stamp::after { content: ''; position: absolute; inset: 3px; border: 0.5px dashed #D4537E; }
+  .postmark { font-size: 8px; color: #aaa; letter-spacing: 0.5px; text-align: right; line-height: 1.6; font-family: var(--font-body); }
+  .address-lines { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+  .address-line { width: 100%; height: 0.5px; background: #ddd; }
+
+  @media (max-width: 640px) {
+    .paper-body { grid-template-columns: 1fr; }
+    .paper-col-main { border-right: none; border-bottom: 0.5px solid #ccc; }
+    .postcard { width: 200px; }
+  }
+  .stories-inner { max-width: 960px; margin: 0 auto; }
+
+  /* FEATURED ESSAY */
+  .essay-featured { display: grid; grid-template-columns: 280px 1fr; gap: 48px; align-items: start; margin-bottom: 48px; padding-bottom: 48px; border-bottom: 0.5px solid rgba(127,119,221,0.15); }
+  .essay-featured-img { display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.02); border: 0.5px solid rgba(127,119,221,0.15); border-radius: 4px; aspect-ratio: 1; }
+  .essay-heart svg { width: 80px; height: 72px; filter: drop-shadow(0 0 16px rgba(212,83,126,0.4)); animation: float-heart 4s ease-in-out infinite; }
+  @keyframes float-heart { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .essay-meta { display: flex; gap: 12px; align-items: center; margin-bottom: 12px; }
+  .essay-category { font-size: 10px; color: #C8C4E0; letter-spacing: 1.5px; text-transform: uppercase; background: rgba(127,119,221,0.12); padding: 3px 8px; border-radius: 20px; }
+  .essay-date { font-size: 12px; color: #C8C4E0; }
+  .essay-title { font-family: var(--font-display); font-size: clamp(24px, 3vw, 36px); font-weight: 300; color: #fff; letter-spacing: -0.5px; margin-bottom: 12px; line-height: 1.15; }
+  .essay-lede { font-size: 14px; color: #C8C4E0; line-height: 1.75; margin-bottom: 18px; }
+  .essay-quote { font-family: var(--font-display); font-size: 17px; font-style: italic; color: #D4B8F8; border-left: 2px solid #7F77DD; padding-left: 16px; margin: 0 0 20px; line-height: 1.5; }
+  .essay-read { font-size: 13px; color: #C8C4E0; border-bottom: 0.5px solid rgba(175,169,236,0.3); padding-bottom: 2px; transition: color 0.2s; display: inline-block; }
+  .essay-read:hover { color: #fff; }
+
+  /* COMING SOON */
+  .stories-coming { max-width: 480px; }
+  .stories-coming-label { font-size: 11px; color: var(--accent-soft); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+  .stories-coming-label::before { content: ''; width: 24px; height: 1px; background: rgba(30,16,64,0.5); display: block; }
+  .stories-coming p { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 18px; }
+  .btn-subscribe-inline { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 10px 20px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-inline:hover { opacity: 0.85; }
+
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; } .nav-burger { display: flex; }
+    h1 { letter-spacing: -1px; }
+    .essay-featured { grid-template-columns: 1fr; gap: 28px; }
+    .essay-featured-img { aspect-ratio: 2; }
+  }
+  footer { background: #070520; padding: 32px; border-top: 0.5px solid rgba(255,255,255,0.06); }
+  .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  .footer-logo { font-family: var(--font-logo); font-size: 20px; font-weight: 700; color: #C8C4E0; margin-bottom: 2px; letter-spacing: -0.3px; }
+  .footer-sub { font-size: 11px; color: #7F77DD; }
+  .footer-address { font-size: 10px; color: #C8C4E0; margin-top: 2px; }
+  .footer-credit { font-size: 9px; color: #534AB7; margin-top: 6px; letter-spacing: 0.5px; }
+  .footer-middle { text-align: center; }
+  .footer-subscribe-label { font-size: 11px; color: #C8C4E0; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .btn-subscribe-footer { font-size: 13px; font-weight: 500; color: #fff; background: #534AB7; padding: 9px 18px; border-radius: 8px; transition: opacity 0.2s; display: inline-block; }
+  .btn-subscribe-footer:hover { opacity: 0.85; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: #C8C4E0; transition: color 0.2s; }
+  .footer-links a:hover { color: #fff; }
+</style>
+
+<script>
+  const card = document.getElementById('postcard-flip');
+  if (card) card.addEventListener('click', () => card.classList.toggle('flipped'));
+</script>
+
+<script>
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  document.getElementById('menu-close')?.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  burger?.addEventListener('click', () => mobileMenu.classList.add('open'));
+  window.closeMenu = () => mobileMenu.classList.remove('open');
+
+
+</script>
+
