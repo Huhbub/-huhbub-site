@@ -98,6 +98,14 @@ const { title = "huhbub — creating experiences for creative people" } = Astro.
     /* Nav — overflow visible so tabs can extend below */
     nav { padding-top: 28px !important; padding-bottom: 0 !important; overflow: visible !important; position: relative; z-index: 100; }
   </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0K1PQK3K76"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0K1PQK3K76');
+  </script>
 </head>
 <body>
   <slot />
